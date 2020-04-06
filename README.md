@@ -8,18 +8,18 @@
 
 # All Effects
 
- - RouletteView 自实现轮盘，实现圆形等分成扇形绘制，每个扇形区的点击事件。
+ - No.001. RouletteView 自实现轮盘，实现圆形等分成扇形绘制，每个扇形区的点击事件。
 
     ![RouletteView](https://github.com/aa86799/images/blob/master/rouletteview2.gif)
 
- - SatelliteMenu 卫星式菜单，绘制四分之一圆，n个item，则夹角为90度/(n-1); 利用弧度、角度、半径(作三角斜边)，以正、余弦公式求(x,y)
+ - No.002. SatelliteMenu 卫星式菜单，绘制四分之一圆，n个item，则夹角为90度/(n-1); 利用弧度、角度、半径(作三角斜边)，以正、余弦公式求(x,y)
 
     ![SatelliteMenu](https://github.com/aa86799/images/blob/master/satellitemenu.gif)
 
- - RadarView 雷达效果，主要是SweepGradient的运用
+ - No.003. RadarView 雷达效果，主要是SweepGradient的运用
 
     ![RadarView](https://github.com/aa86799/images/blob/master/radar.gif)
 
- - BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
+ - No.004. BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
  
     ![BaseGrayActivity](https://github.com/aa86799/images/blob/master/grayapp.png)
