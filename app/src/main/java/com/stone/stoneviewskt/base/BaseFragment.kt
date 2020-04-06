@@ -17,10 +17,10 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseFragment : Fragment() {
 
-    protected lateinit var _mActivity: Activity
+    protected lateinit var mActivity: Activity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _mActivity = activity!!
+        mActivity = activity!!
         return getLayoutView() ?: inflater.inflate(getLayoutRes(), container, false)
     }
 

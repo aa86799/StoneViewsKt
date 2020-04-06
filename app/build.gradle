@@ -33,6 +33,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation refs.recyclerviewX
     implementation refs.anko
+    implementation refs.kotlinCoroutineAndroid
+    implementation refs.kotlinCoroutineCore
+    implementation refs.androidxLifecycle
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

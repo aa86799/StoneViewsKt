@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.util.showShort
@@ -24,6 +25,7 @@ class SatelliteFragment: BaseFragment() {
         fragment_satellite_sm_menu.setOnMenuItemClickListener { v, position ->
             showShort("${v.tag}(position $position) is click")
         }
+
     }
 
     override fun getLayoutRes(): Int {
