@@ -22,4 +22,4 @@
 
  - BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
  
-    ![BaseGrayActivity](https://github.com/aa86799/images/blob/master/grayapp.jpeg)
+    ![BaseGrayActivity](https://github.com/aa86799/images/blob/master/grayapp.png)
