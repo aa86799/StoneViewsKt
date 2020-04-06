@@ -1,6 +1,5 @@
 package com.stone.stoneviewskt.util
 
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.stone.stoneviewskt.StoneApplication
@@ -27,11 +26,11 @@ fun showLong(msg: String) {
 }
 
 fun showLong(@StringRes resId: Int) {
-//    StoneApplication.instance.mTopActivity?.apply {
-//        ToastFlash.instance.mToast.setText(getString(resId))
-//        ToastFlash.instance.mToast.duration = Toast.LENGTH_LONG
-//        ToastFlash.instance.mToast.show()
-//    }
+    StoneApplication.instance.mTopActivity?.apply {
+        ToastStone.instance.mToast.setText(getString(resId))
+        ToastStone.instance.mToast.duration = Toast.LENGTH_LONG
+        ToastStone.instance.mToast.show()
+    }
 }
 
 fun showShort(msg: String) {
@@ -41,9 +40,9 @@ fun showShort(msg: String) {
 }
 
 fun showShort(@StringRes resId: Int) {
-//    StoneApplication.instance.mTopActivity?.apply {
-//        ToastFlash.instance.mToast.setText(getString(resId))
-//        ToastFlash.instance.mToast.duration = Toast.LENGTH_SHORT
-//        ToastFlash.instance.mToast.show()
-//    }
+    StoneApplication.instance.mTopActivity?.apply {
+        ToastStone.instance.mToast.setText(getString(resId))
+        ToastStone.instance.mToast.duration = Toast.LENGTH_SHORT
+        ToastStone.instance.mToast.show()
+    }
 }

@@ -23,9 +23,9 @@ fun getRandomColor(): Int {
         temp = Integer.toHexString(random.nextInt(0xFF))
 
         if (temp.length == 1) {
-            temp = "0" + temp
+            temp = "0$temp"
         }
         sb.append(temp)
     }
-    return Color.parseColor("#" + sb.toString())
+    return Color.parseColor("#$sb")
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.SatelliteActivity">
+    <!--
+    android:showAsAction
+      always：总是显示在界面上
+      never：不显示在界面上，只让出现在右边的三个点中
+      ifRoom：如果有位置才显示，不然就出现在右边的三个点中
+    -->
+    <item
+        android:id="@+id/action_leftTop"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="左上"/>
+    <item
+        android:id="@+id/action_rightTop"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="右上"/>
+    <item
+        android:id="@+id/action_leftBottom"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="左下"/>
+    <item
+        android:id="@+id/action_rightBottom"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="右下"/>
+</menu>

@@ -1,6 +1,8 @@
 package com.stone.stoneviewskt
 
+import android.app.Activity
 import android.app.Application
+import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
 
 /**
  * desc:
@@ -11,6 +13,8 @@ import android.app.Application
  */
 class StoneApplication : Application() {
 
+    var mTopActivity: Activity? = null
+
     companion object {
         lateinit var instance: StoneApplication
     }
@@ -18,5 +22,7 @@ class StoneApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
     }
+
 }

@@ -20,10 +20,17 @@ abstract class BaseFragment : Fragment() {
         return getLayoutView() ?: inflater.inflate(getLayoutRes(), container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onPreparedView(savedInstanceState)
+    }
+
     @LayoutRes
     protected abstract fun getLayoutRes(): Int
 
     protected open fun getLayoutView(): View? {
         return null
     }
+
+    protected open fun onPreparedView(savedInstanceState: Bundle?) {}
 }

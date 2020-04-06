@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
+import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
+import com.stone.stoneviewskt.util.showLong
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -12,12 +14,20 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        activity_main_rv.adapter = SampleAdapter(TITLES) { _, _ ->
-            startNewUI(RouletteFragment::class.java)
+        activity_main_rv.adapter = SampleAdapter(TITLES) { _, title ->
+            when (title) {
+                "轮盘等分" -> startNewUI(RouletteFragment::class.java)
+                "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
+            }
         }
+
+        showLong(R.string.app_name)
     }
 
     companion object {
-        val TITLES = listOf("轮盘等分")
+        val TITLES = listOf(
+            "轮盘等分",
+            "卫星式菜单"
+        )
     }
 }
