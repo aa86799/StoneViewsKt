@@ -1,0 +1,2 @@
+rootProject.name='StoneViewsKt'
+include ':app'

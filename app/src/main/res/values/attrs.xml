@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RouletteView -->
+    <attr format="dimension" name="radius"/>
+    <declare-styleable name="RouletteView">
+        <attr name="radius"/>
+        <attr format="integer" name="part"/>
+    </declare-styleable>
+
+</resources>
