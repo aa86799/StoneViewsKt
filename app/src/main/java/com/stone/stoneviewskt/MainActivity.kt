@@ -3,6 +3,7 @@ package com.stone.stoneviewskt
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
+import com.stone.stoneviewskt.ui.radar.RadarFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.util.showLong
@@ -18,6 +19,7 @@ class MainActivity : BaseActivity() {
             when (title) {
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
                 "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
+                "雷达" -> startNewUI(RadarFragment::class.java)
             }
         }
 
@@ -27,7 +29,8 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "轮盘等分",
-            "卫星式菜单"
+            "卫星式菜单",
+            "雷达"
         )
     }
 }
