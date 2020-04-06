@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
             when (title) {
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
                 "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
-                "雷达" -> startNewUI(RadarFragment::class.java)
+                "雷达扫描旋转" -> startNewUI(RadarFragment::class.java)
             }
         }
 
@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
         val TITLES = listOf(
             "轮盘等分",
             "卫星式菜单",
-            "雷达"
+            "雷达扫描旋转"
         )
     }
 }
