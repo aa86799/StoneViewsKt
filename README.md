@@ -23,3 +23,15 @@
  - No.004. BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
  
     ![BaseGrayActivity](https://github.com/aa86799/images/blob/master/grayapp.png)
+
+ - No.005. ObliqueProgressbarView 斜线进度条，与随机位置绘制小点
+ 
+    ![ObliqueProgressbarView](https://github.com/aa86799/images/blob/master/ObliqueProgressbarView.gif) 
+
+ - No.006. CircleProgressbarView 圆环进度。自适应text宽度
+ 
+    ![CircleProgressbarView](https://github.com/aa86799/images/blob/master/CircleProgressbarView.gif)  
+
+ - No.007. ComplexProgressBarView 左边横向圆角进度条，右边文本为  "进度/最大进度"
+ 
+    ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/ComplexProgressBarView.gif)
