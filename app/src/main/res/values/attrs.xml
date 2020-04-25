@@ -23,4 +23,18 @@
         <attr format="dimension" name="sm_radius"/>
     </declare-styleable>
 
+    <!--    -->
+    <declare-styleable name="TitleToolbar">
+        <attr name="leftText" format="string" />
+        <attr name="leftVisibility" format="boolean" />
+        <attr name="leftImage" format="reference" />
+        <attr name="leftImageVisibility" format="boolean" />
+        <attr name="middleText" format="string" />
+        <attr name="rightText" format="string" />
+        <attr name="rightVisibility" format="boolean" />
+        <attr name="rightImage" format="reference" />
+        <attr name="rightImageVisibility" format="boolean" />
+        <attr name="rightView" format="reference" />
+    </declare-styleable>
+
 </resources>

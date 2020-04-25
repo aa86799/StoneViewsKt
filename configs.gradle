@@ -38,7 +38,7 @@ versions.constraintLayout = '2.0.0-beta4'
 versions.recyclerviewX = '1.1.0'
 versions.viewpager2 = '1.0.0'
 //原 design 包下的大部分类移到了这里，含有：appbar, tabLayout 等
-versions.material = '1.1.0-rc01'
+versions.material = '1.1.0'
 //官方多 dex 分包. doc: https://developer.android.com/studio/build/multidex
 versions.multidex = '2.0.1'
 versions.multidexInstrumentation = '2.0.0'
