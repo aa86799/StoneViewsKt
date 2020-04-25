@@ -36,6 +36,7 @@ dependencies {
     implementation refs.kotlinCoroutineAndroid
     implementation refs.kotlinCoroutineCore
     implementation refs.androidxLifecycle
+    implementation refs.material
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

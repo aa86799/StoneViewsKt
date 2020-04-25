@@ -1,6 +1,8 @@
 package com.stone.stoneviewskt.base
 
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.jetbrains.anko.startActivity
@@ -19,7 +21,11 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         (intent?.getSerializableExtra(KEY_FRAGMENT) as? Class<*>)?.let { cls ->
             val fragment = cls.newInstance() as Fragment
@@ -27,7 +33,12 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun <T> startNewUI(cls: Class<T>, vararg params: Pair<String, Any?>) {
+    /*
+     * inline fun 内联函数；
+     * <reified T: Fragment>  具体化泛型，使用 reified 关键字必须是 inline 函数。
+     * 可以不使用  inline + reified 来声明.
+     */
+    inline fun <reified T : Fragment> startNewUI(cls: Class<T>, vararg params: Pair<String, Any?>) {
         startActivity<BaseActivity>(KEY_FRAGMENT to cls, *params)
     }
 }

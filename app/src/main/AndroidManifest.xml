@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".base.BaseActivity" />
+        <activity android:name=".base.BaseActivity" android:theme="@style/StoneBaseTheme"/>
         <activity android:name="com.stone.stoneviewskt.ui.gray.BaseGrayActivity" />
     </application>
 
