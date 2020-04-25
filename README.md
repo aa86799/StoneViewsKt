@@ -35,3 +35,12 @@
  - No.007. ComplexProgressBarView 左边横向圆角进度条，右边文本为  "进度/最大进度"
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/ComplexProgressBarView.gif)
+    
+ - No.008. ClockView 时钟
+ 
+    ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/ClockView.gif)
+    
+ - No.009. TabLayoutFragment,  MD-TabLayout，自定义Tab，加ViewPager+FragmentPagerAdapter 
+ 
+    ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/TabLayoutFragment.gif)
+
