@@ -11,6 +11,6 @@ android:angle
         android:angle="135"
         android:startColor="@color/colorPrimary"
         android:centerColor="@color/colorAccent"
-        android:endColor="@color/colorPrimaryDark"/>
+        android:endColor="@color/colorPrimaryLight"/>
 
 </shape>

@@ -23,6 +23,7 @@
 
         <activity android:name=".base.BaseActivity" android:theme="@style/StoneBaseMaterialTheme"/>
         <activity android:name="com.stone.stoneviewskt.ui.gray.BaseGrayActivity" />
+        <activity android:name=".ui.materialdesign.MDActivity" android:theme="@style/StoneBaseMaterialTheme"/>
 
     </application>
 

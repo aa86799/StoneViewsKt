@@ -6,6 +6,7 @@ import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
+import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
@@ -34,7 +35,7 @@ class MainActivity : BaseActivity() {
                 "圆环进度条" -> startNewUI(CircleProgressbarFragment::class.java)
                 "左边横向圆角进度条，右边文本为  \"进度/最大进度\"" -> startNewUI(ComplexProgressBarViewFragment::class.java)
                 "绘制时钟表盘" -> startNewUI(ClockFragment::class.java)
-                "材料设计" -> startNewUI(MDMainFragment::class.java)
+                "材料设计" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
             }
         }
 
