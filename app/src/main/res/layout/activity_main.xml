@@ -18,6 +18,6 @@
         android:scrollbarSize="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="30"
-        tools:listitem="@android:layout/simple_list_item_1" />
+        tools:listitem="@layout/item_simple_list4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

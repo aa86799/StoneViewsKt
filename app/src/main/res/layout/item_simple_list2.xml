@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+com.google.android.material.button.MaterialButton，应用了材料主题后，会将哪下的Button自动转换为 MaterialButton
+
+style="?attr/materialButtonOutlinedStyle"
+style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+-->
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_simple_list_tv"
+    style="?attr/materialButtonOutlinedStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:textSize="14sp">
+
+</Button>
+
