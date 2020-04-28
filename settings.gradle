@@ -1,2 +1,3 @@
 rootProject.name='StoneViewsKt'
 include ':app'
+include ':camerax-simple'
