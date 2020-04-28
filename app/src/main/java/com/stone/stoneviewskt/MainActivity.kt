@@ -14,6 +14,7 @@ import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
 import com.stone.stoneviewskt.ui.radar.RadarFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
+import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.util.showLong
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
@@ -36,6 +37,7 @@ class MainActivity : BaseActivity() {
                 "左边横向圆角进度条，右边文本为  \"进度/最大进度\"" -> startNewUI(ComplexProgressBarViewFragment::class.java)
                 "绘制时钟表盘" -> startNewUI(ClockFragment::class.java)
                 "材料设计" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
+                "Spinner" -> startNewUI(SpinnerFragment::class.java)
             }
         }
 
@@ -53,7 +55,8 @@ class MainActivity : BaseActivity() {
                 "圆环进度条",
                 "左边横向圆角进度条，右边文本为  \"进度/最大进度\"",
                 "绘制时钟表盘",
-                "材料设计"
+                "材料设计",
+                "Spinner"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
