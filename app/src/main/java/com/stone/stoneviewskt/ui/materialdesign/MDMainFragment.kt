@@ -5,6 +5,7 @@ import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.adapter.SampleAdapter2
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabcoor.TabCoorAppbarFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabv.TabLayoutFragment
 import kotlinx.android.synthetic.main.fragment_md_main.*
@@ -27,6 +28,7 @@ class MDMainFragment : BaseFragment() {
             when (title) {
                 "TabLayout+ViewPager" -> (mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
                 "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
+                "BottomNavigationView" -> (mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
             }
         }
 
@@ -35,7 +37,8 @@ class MDMainFragment : BaseFragment() {
     companion object {
         val TITLES = listOf(
             "TabLayout+ViewPager",
-            "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView"
+            "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
+            "BottomNavigationView"
         )
     }
 
