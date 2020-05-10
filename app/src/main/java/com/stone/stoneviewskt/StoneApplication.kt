@@ -3,6 +3,8 @@ package com.stone.stoneviewskt
 import android.app.Activity
 import android.app.Application
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
+import com.stone.stoneviewskt.util.logi
+import com.tencent.mmkv.MMKV
 
 /**
  * desc:
@@ -23,6 +25,11 @@ class StoneApplication : Application() {
         super.onCreate()
         instance = this
         registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
+
+        val rootDir = MMKV.initialize(this)
+        logi("MMKV rootDir: $rootDir")
+//        MMKV.defaultMMKV().encode()
+//        MMKV.defaultMMKV().decodeBool()
     }
 
 }

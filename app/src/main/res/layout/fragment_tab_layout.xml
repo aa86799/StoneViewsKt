@@ -43,7 +43,28 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="#ff0000"
-        tools:background="@tools:sample/backgrounds/scenic" />
+        tools:background="@tools:sample/backgrounds/scenic" >
+<!--
+设置icon和文本样式的。上面是icon，下面是文本；
+不能使用 mipmap 下的图片。
+
+-->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/satellite_icn_plus"
+            android:text="tab_a_label"/>
+        <com.google.android.material.tabs.TabItem
+            android:icon="@drawable/ic_launcher_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="tab_b_label"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/abc_vector_test"
+            android:text="tab_c_label"/>
+    </com.google.android.material.tabs.TabLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/fragment_tab_layout_tl3"

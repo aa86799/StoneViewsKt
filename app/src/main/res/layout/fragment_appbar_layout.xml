@@ -39,6 +39,13 @@ scroll|enterAlways|enterAlwaysCollapsed:
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             android:layout_height="wrap_content" />
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_appbar_layout_tb2"
+            android:layout_width="match_parent"
+            android:minHeight="15dp"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            android:layout_height="wrap_content" />
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/fragment_appbar_layout_tl"
             android:layout_width="match_parent"

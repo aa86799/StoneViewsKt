@@ -34,7 +34,7 @@ versions.androidxLifecycle = '2.2.0-rc03'
 versions.supportAppcompat = '28.0.0'
 //官方约束布局.  url: https://dl.google.com/dl/android/maven2/index.html
 //versions.constraintLayout = '1.1.4'
-versions.constraintLayout = '2.0.0-beta4'
+versions.constraintLayout = '2.0.0-beta5'
 versions.recyclerviewX = '1.1.0'
 versions.viewpager2 = '1.0.0'
 //原 design 包下的大部分类移到了这里，含有：appbar, tabLayout 等
@@ -224,6 +224,12 @@ versions.jsoup = '1.12.1'
 //java调用websocket数据. url: https://github.com/TooTallNate/Java-WebSocket
 versions.websocket = '1.4.0'
 
+//基于 mmap 内存映射的 key-value 组件. 替代 SharedPreferences。 url: https://github.com/Tencent/MMKV/blob/master/readme_cn.md
+versions.mmkv = '1.1.1'
+
+//支持多个滑动布局(RecyclerView、WebView、ScrollView等)和普通控件(TextView、ImageView、LinearLayou、自定义View等)持续连贯滑动的容器。 url: https://github.com/donkingliang/ConsecutiveScroller
+versions.consecutiveScroller = '2.5.0'
+
 //阿里对flutter的再封装项目. url: https://github.com/alibaba/flutter-go
 //有自己的规范，需要单独学习
 
@@ -390,6 +396,10 @@ refs.appJoint= "io.github.prototypez:app-joint-core:$versions.appJoint"
 refs.jsoup= "org.jsoup:jsoup:$versions.jsoup"
 
 refs.websocket = "org.java-websocket:Java-WebSocket:$versions.websocket"
+
+refs.mmkv = "com.tencent:mmkv-static:$versions.mmkv"
+
+refs.consecutiveScroller = "com.github.donkingliang:ConsecutiveScroller:$versions.consecutiveScroller"
 
 //refs.=":$versions."
 /* ---------------------------------------------------------------------- */
