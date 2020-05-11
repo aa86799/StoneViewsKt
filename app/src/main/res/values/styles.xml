@@ -13,4 +13,11 @@
 
     <style name="StoneBaseMaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar"/>
 
+    <style name="MyBottomSheetDialog" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+<!--    <style name="MyBottomSheetDialog" parent="Widget.Design.BottomSheet.Modal">-->
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

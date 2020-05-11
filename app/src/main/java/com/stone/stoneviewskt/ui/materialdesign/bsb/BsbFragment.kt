@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.ui.materialdesign
+package com.stone.stoneviewskt.ui.materialdesign.bsb
 
 import android.os.Bundle
 import android.util.TypedValue
@@ -62,8 +62,6 @@ class BsbFragment : BaseFragment() {
             bottomSheetBehavior.peekHeight = 50
         }
 
-//        BottomSheetDialog
-//        BottomSheetDialogFragment
     }
 
     override fun getLayoutRes(): Int {
