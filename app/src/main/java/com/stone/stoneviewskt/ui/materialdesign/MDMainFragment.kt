@@ -29,6 +29,7 @@ class MDMainFragment : BaseFragment() {
                 "TabLayout+ViewPager" -> (mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
                 "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
                 "BottomNavigationView" -> (mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
+                "BottomSheetBehavior" -> (mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
             }
         }
 
@@ -38,7 +39,8 @@ class MDMainFragment : BaseFragment() {
         val TITLES = listOf(
             "TabLayout+ViewPager",
             "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
-            "BottomNavigationView"
+            "BottomNavigationView",
+            "BottomSheetBehavior"
         )
     }
 
