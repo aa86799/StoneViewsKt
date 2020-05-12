@@ -1,7 +1,9 @@
 package com.stone.stoneviewskt
 
 import android.app.Activity
-import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
 import com.stone.stoneviewskt.util.logi
 import com.tencent.mmkv.MMKV
@@ -13,12 +15,17 @@ import com.tencent.mmkv.MMKV
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/4 14:27
  */
-class StoneApplication : Application() {
+class StoneApplication : MultiDexApplication() {
 
     var mTopActivity: Activity? = null
 
     companion object {
         lateinit var instance: StoneApplication
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
     override fun onCreate() {
