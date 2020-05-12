@@ -8,6 +8,7 @@ import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbDialogOnlyFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbFragment
+import com.stone.stoneviewskt.ui.materialdesign.chips.ChipsFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabcoor.TabCoorAppbarFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabv.TabLayoutFragment
 import kotlinx.android.synthetic.main.fragment_md_main.*
@@ -33,6 +34,7 @@ class MDMainFragment : BaseFragment() {
                 "BottomNavigationView" -> (mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
                 "BottomSheetBehavior" -> (mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
                 "BsbDialogOnlyFragment" -> (mActivity as BaseActivity).startNewUI(BsbDialogOnlyFragment::class.java)
+                "Chips" -> (mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
             }
         }
 
@@ -40,10 +42,11 @@ class MDMainFragment : BaseFragment() {
 
     companion object {
         val TITLES = listOf(
-            "TabLayout+ViewPager",
-            "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
-            "BottomNavigationView",
-            "BsbDialogOnlyFragment"
+                "TabLayout+ViewPager",
+                "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
+                "BottomNavigationView",
+                "BsbDialogOnlyFragment",
+                "Chips"
         )
     }
 
