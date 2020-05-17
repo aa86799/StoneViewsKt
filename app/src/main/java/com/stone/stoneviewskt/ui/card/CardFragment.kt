@@ -1,0 +1,51 @@
+package com.stone.stoneviewskt.ui.card
+
+import android.os.Bundle
+import android.view.View
+import com.stone.stoneviewskt.R
+import com.stone.stoneviewskt.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_card.*
+
+/**
+ * desc:    卡片
+ *      卡片效果 会阻碍 快速浏览。轻量干净的同类内容，不适合用卡片来突出展示。
+ *      卡片集合内的卡片可以包含一个唯一的数据组，例如带有动作的清单，带有动作的笔记以及带有照片的笔记。
+ *      使用卡内的层次结构来引导用户注意最重要的信息。
+ * author:  stone
+ * email:   aa86799@163.com
+ * blog :   https://stone.blog.csdn.net
+ * time:    2020/5/12 11:00
+ */
+class CardFragment: BaseFragment() {
+
+    override fun onPreparedView(savedInstanceState: Bundle?) {
+        super.onPreparedView(savedInstanceState)
+
+        fragment_card_cv_top.setOnLongClickListener {
+            // isChecked = true ，会显示选中状态的 一个 icon，默认是 对勾；可通过 android: checkedIcon 来设置
+            // 默认是 @drawable/ic_mtrl_checked_circle.xml ；  必须是一个vector 的 drawable， 普通的png，将只保留形状
+            fragment_card_cv_top.isChecked = !fragment_card_cv_top.isChecked
+            true
+        }
+        //可访问代理。无障碍服务，语音阅读
+        fragment_card_cv_top.accessibilityDelegate = object : View.AccessibilityDelegate() {
+            //...
+        }
+
+        fragment_card_main.addDraggableChild(fragment_card_cv_top)
+        fragment_card_main.setViewDragListener(object : DraggableLinearLayout.ViewDragListener {
+            override fun onViewCaptured(view: View, i: Int) {
+
+            }
+
+            override fun onViewReleased(view: View, v: Float, v1: Float) {
+
+            }
+        })
+    }
+
+    override fun getLayoutRes(): Int {
+        return R.layout.fragment_card
+    }
+
+}

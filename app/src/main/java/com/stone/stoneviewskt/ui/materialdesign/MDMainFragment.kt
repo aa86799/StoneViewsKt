@@ -5,6 +5,7 @@ import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.adapter.SampleAdapter2
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.ui.card.CardFragment
 import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbDialogOnlyFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbFragment
@@ -35,6 +36,7 @@ class MDMainFragment : BaseFragment() {
                 "BottomSheetBehavior" -> (mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
                 "BsbDialogOnlyFragment" -> (mActivity as BaseActivity).startNewUI(BsbDialogOnlyFragment::class.java)
                 "Chips" -> (mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
+                "Card" -> (mActivity as BaseActivity).startNewUI(CardFragment::class.java)
             }
         }
 
@@ -46,7 +48,8 @@ class MDMainFragment : BaseFragment() {
                 "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
                 "BottomNavigationView",
                 "BsbDialogOnlyFragment",
-                "Chips"
+                "Chips",
+                "Card"
         )
     }
 

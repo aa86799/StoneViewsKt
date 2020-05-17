@@ -105,17 +105,17 @@ versions.permissionsDispatcher= '3.3.1'
 versions.dagger = '2.25.2'
 
 //编译时生成 .java 源文件. url: https://github.com/square/javapoet
-versions.javapoet = '1.11.1'
+versions.javapoet = '1.12.1'
 
 //google auto-projects (AutoFactory AutoService AutoValue Common )  url: https://github.com/google/auto/
 //一个 对 jsr-330(依赖注入标准)兼容的 源代码生成工厂。 url: https://github.com/google/auto/tree/master/factory
-versions.autoFactory = '1.0-beta6'
+versions.autoFactory = '1.0-beta7'
 //使用java.util.ServiceLoader-style service providers，编译后生成 java 注解处理器源数据的配置
 //      url: https://github.com/google/auto/tree/master/service
-versions.autoService = '1.0-rc5'
+versions.autoService = '1.0-rc6'
 // 生成属性值不可变的 java 类.
 // url: https://github.com/google/auto/tree/master/value  https://github.com/google/auto/blob/master/value/userguide/index.md
-versions.autoValue = '1.6.5'
+versions.autoValue = '1.7.1'
 // Auto 项目的 对帮助简化使用 注解处理环境 的 一个通用的工具(类的)集合。 url: https://github.com/google/auto/tree/master/common
 versions.autoCommon = '0.10'
 

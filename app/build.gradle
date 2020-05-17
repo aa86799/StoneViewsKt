@@ -16,10 +16,29 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs { //gradle assembleRelease
+//        myConfig {
+//            storeFile file("stone.keystore")
+//            storePassword "482935"
+//            keyAlias "stone"
+//            keyPassword "482935"
+//            v1SigningEnabled true
+//            v2SigningEnabled true
+//        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
+//            signingConfig signingConfigs.myConfig
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            zipAlignEnabled true
+//            signingConfig signingConfigs.myConfig
         }
     }
 
