@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    宽高一样就是个圆形了。默认 wrap_content 是个 圆角矩形
+    可以设置text
+    -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fragment_floatingaction_button_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryDark"
+        app:icon="@drawable/ic_arrow_back_green_24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+    app:fabSize
+        normal - the normal sized button, 56dp.
+        mini - the mini sized button, 40dp.
+        auto - default. 按钮大小将根据窗口大小而变化
+    app:fabCustomSize
+        自定义尺寸， 若设置，会忽略 fabSize
+    背景色 app:backgroundTint  要api 21
+
+    app:tint 影响 icon 颜色
+    -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_floatingaction_button_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="Accessible，无障碍朗读"
+        android:src="@drawable/ic_arrow_forward_magenta_24dp"
+        app:borderWidth="5dp"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:shapeAppearance="?attr/shapeAppearanceLargeComponent"
+        app:tint="@android:color/holo_red_dark" />
+
+    <Button
+        android:id="@+id/fragment_floatingaction_button_btn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="显示或隐藏 右边的按钮"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
