@@ -3,6 +3,7 @@ package com.stone.stoneviewskt
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
+import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
@@ -40,6 +41,7 @@ class MainActivity : BaseActivity() {
                 "材料设计" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
                 "Spinner" -> startNewUI(SpinnerFragment::class.java)
                 "NDK: lib jpeg" -> startNewUI(LibJpegFragment::class.java)
+                "FloatingActionButton + ConstraintLayout(圆形布局)" -> startNewUI(CircleLayoutFragment::class.java)
             }
         }
 
@@ -59,7 +61,8 @@ class MainActivity : BaseActivity() {
                 "绘制时钟表盘",
                 "材料设计",
                 "Spinner",
-                "NDK: lib jpeg"
+                "NDK: lib jpeg",
+                "FloatingActionButton + ConstraintLayout(圆形布局)"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
