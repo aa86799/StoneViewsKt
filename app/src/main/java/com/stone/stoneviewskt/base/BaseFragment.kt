@@ -30,7 +30,7 @@ abstract class BaseFragment : Fragment() {
     }
 
     @LayoutRes
-    protected abstract fun getLayoutRes(): Int
+    protected open fun getLayoutRes(): Int = 0
 
     protected open fun getLayoutView(): View? {
         return null

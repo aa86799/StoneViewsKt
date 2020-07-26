@@ -14,6 +14,25 @@ android {
         versionName builds.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11"
+            }
+
+        }
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters /*'armeabi' ,*/ 'armeabi-v7a' //, 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
     }
 
     signingConfigs { //gradle assembleRelease
