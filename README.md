@@ -44,3 +44,6 @@
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/TabLayoutFragment.gif)
 
+ - NO.010 CircleLayoutFragment:  FloatingActionButton + ConstraintLayout(圆形布局) + 两个属性动画的同步使用
+ 
+    ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/CircleLayout.gif)
