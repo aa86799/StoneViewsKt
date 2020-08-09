@@ -5,10 +5,10 @@
 /* -------------------------------- 构建设置 -------------------------------------- */
 def builds = [:] //map
 ext.builds = builds //使用 ext 扩展属性
-builds.compileSdkVersion = 29
+builds.compileSdkVersion = 30
 builds.minSdkVersion = 19
-builds.targetSdkVersion = 29
-builds.buildToolsVersion = '29.0.3'
+builds.targetSdkVersion = 30
+builds.buildToolsVersion = '30.0.1'
 builds.versionCode = 1
 builds.versionName = "1.0"
 

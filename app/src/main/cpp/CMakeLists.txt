@@ -23,7 +23,9 @@ add_library( # Sets the name of the library.
 add_library(
         libturbojpeg STATIC IMPORTED)
 set_target_properties(
-        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.a
+        # 静态库体积太大，改用动态库
+#        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.a
+        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.so
 )
 
 include_directories(include)
