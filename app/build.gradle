@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion builds.compileSdkVersion
@@ -24,7 +25,7 @@ android {
 
         ndk {
             //设置支持的SO库架构
-            abiFilters /*'armeabi' ,*/ 'armeabi-v7a' //, 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters /*'armeabi' ,*/ 'armeabi-v7a' , 'arm64-v8a'//, 'x86', 'x86_64'
         }
     }
 
@@ -85,6 +86,8 @@ dependencies {
     implementation refs.material
     implementation refs.mmkv
     implementation refs.multidex
+    implementation refs.permissionsDispatcher
+    kapt refs.permissionsDispatcherCompiler
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

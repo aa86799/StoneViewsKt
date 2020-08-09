@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/fragment_audio_record_mic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_baseline_mic_off_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment_audio_record_say"/>
+
+    <Button
+        android:id="@+id/fragment_audio_record_say"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始录音"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_audio_record_mic" />
+
+    <Button
+        android:id="@+id/fragment_audio_record_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放"
+        android:visibility="visible"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_audio_record_say" />
+
+    <TextView
+        android:id="@+id/fragment_audio_record_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/fragment_audio_pitch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音高ratio 1"
+        android:visibility="visible"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_audio_record_tv" />
+
+    <Button
+        android:id="@+id/fragment_audio_pitch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音高ratio 1.5"
+        android:visibility="visible"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_audio_pitch1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

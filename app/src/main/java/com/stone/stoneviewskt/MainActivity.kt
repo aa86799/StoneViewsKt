@@ -3,6 +3,9 @@ package com.stone.stoneviewskt
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
+import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
+import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
+import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
@@ -17,6 +20,7 @@ import com.stone.stoneviewskt.ui.radar.RadarFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
+import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.util.showLong
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
@@ -42,6 +46,10 @@ class MainActivity : BaseActivity() {
                 "Spinner" -> startNewUI(SpinnerFragment::class.java)
                 "NDK: lib jpeg" -> startNewUI(LibJpegFragment::class.java)
                 "FloatingActionButton + ConstraintLayout(圆形布局)" -> startNewUI(CircleLayoutFragment::class.java)
+                "MediaRecord" -> startNewUI(MediaRecordFragment::class.java)
+                "MediaRecord2" -> startNewUI(MediaRecordFragment2::class.java)
+                "AudioRecord" -> startNewUI(AudioRecordFragment::class.java)
+                "VideoCompress" -> startNewUI(VideoCompressFragment::class.java)
             }
         }
 
@@ -62,7 +70,11 @@ class MainActivity : BaseActivity() {
                 "材料设计",
                 "Spinner",
                 "NDK: lib jpeg",
-                "FloatingActionButton + ConstraintLayout(圆形布局)"
+                "FloatingActionButton + ConstraintLayout(圆形布局)",
+                "MediaRecord",
+                "MediaRecord2",
+                "AudioRecord",
+                "VideoCompress"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }

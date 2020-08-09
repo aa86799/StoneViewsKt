@@ -99,7 +99,7 @@ versions.rxlifecycle = '3.0.0'
 versions.andPermission= '2.0.1'
 
 //权限处理 url: https://github.com/permissions-dispatcher/PermissionsDispatcher
-versions.permissionsDispatcher= '3.3.1'
+versions.permissionsDispatcher= '4.7.0'
 
 //依赖注入. url: https://github.com/google/dagger
 versions.dagger = '2.25.2'
@@ -318,8 +318,8 @@ refs.rxlifecycleKotlin="com.trello.rxlifecycle3:rxlifecycle-kotlin:$versions.rxl
 
 refs.andPermission = "com.yanzhenjie.permission:support:$versions.andPermission"
 
-refs.permissionsDispatcher = "org.permissionsdispatcher:permissionsdispatcher.permissionsDispatcher"
-refs.permissionsDispatcherCompiler = "org.permissionsdispatcher:permissionsdispatcher-processor.permissionsDispatcher"
+refs.permissionsDispatcher = "org.permissionsdispatcher:permissionsdispatcher:$versions.permissionsDispatcher"
+refs.permissionsDispatcherCompiler = "org.permissionsdispatcher:permissionsdispatcher-processor:$versions.permissionsDispatcher"
 
 refs.dagger="com.google.dagger:dagger:$versions.dagger"
 refs.daggerCompiler="com.google.dagger:dagger-compiler:$versions.dagger"

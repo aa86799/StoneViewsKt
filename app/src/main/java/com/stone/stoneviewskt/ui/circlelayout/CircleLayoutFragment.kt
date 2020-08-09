@@ -32,11 +32,6 @@ class CircleLayoutFragment: BaseFragment() {
         fragment_cl_menu.show()
 //        fragment_cl_menu.hide()
 
-        /*
-         * 由于应用了 dagger ， XxxDataSource 是 @Singleton，
-         * 其 retrofit 属性 无法再修改。
-         * 所以，动态修改ip, 无法立即生效。
-         */
         fragment_cl_ip.onClick {
             alert {
                 title = "当前服务地址"
