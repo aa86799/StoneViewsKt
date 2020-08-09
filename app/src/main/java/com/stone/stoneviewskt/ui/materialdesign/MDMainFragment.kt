@@ -11,6 +11,7 @@ import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbDialogOnlyFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbFragment
 import com.stone.stoneviewskt.ui.materialdesign.chips.ChipsFragment
+import com.stone.stoneviewskt.ui.materialdesign.collapsing.CollapsingFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabcoor.TabCoorAppbarFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabv.TabLayoutFragment
 import kotlinx.android.synthetic.main.fragment_md_main.*
@@ -39,6 +40,7 @@ class MDMainFragment : BaseFragment() {
                 "Chips" -> (mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
                 "Card" -> (mActivity as BaseActivity).startNewUI(CardFragment::class.java)
                 "FloatingActionButton" -> (mActivity as BaseActivity).startNewUI(FloatingActionButtonFragment::class.java)
+                "CollapsingToolbarLayout" -> (mActivity as BaseActivity).startNewUI(CollapsingFragment::class.java)
             }
         }
 
@@ -52,7 +54,8 @@ class MDMainFragment : BaseFragment() {
                 "BsbDialogOnlyFragment",
                 "Chips",
                 "Card",
-                "FloatingActionButton"
+                "FloatingActionButton",
+                "CollapsingToolbarLayout"
         )
     }
 

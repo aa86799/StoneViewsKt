@@ -20,4 +20,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="TextStyle1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
