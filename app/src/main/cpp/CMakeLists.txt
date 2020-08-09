@@ -5,30 +5,36 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+#add_library(
+#        libturbojpeg STATIC IMPORTED)
+#set_target_properties(
+#        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.a
+#
+#)
+#include_directories(include)
+
+# 静态库体积太大，改用动态库。 libturbojpeg.so 链接总是失败；libjpeg.so正常的，压缩函数调用也没问题
+add_library(
+        libturbojpeg SHARED IMPORTED)
+set_target_properties(
+        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libjpeg.so
+)
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             native-lib
+        native-lib
 
-             # Sets the library as a shared library.
-             SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-             # Provides a relative path to your source file(s).
-             smbPitchShift.cpp
-             native-lib.cpp )
-
-add_library(
-        libturbojpeg STATIC IMPORTED)
-set_target_properties(
-        # 静态库体积太大，改用动态库
-#        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.a
-        libturbojpeg PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI}/libturbojpeg.so
-)
-
-include_directories(include)
+        # Provides a relative path to your source file(s).
+        smbPitchShift.cpp
+        native-lib.cpp )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

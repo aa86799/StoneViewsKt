@@ -2,7 +2,7 @@
 #include <string>
 #include <malloc.h>
 #include <android/bitmap.h>
-#include <jpeglib.h>
+#include "jpeglib.h"
 #include "turbojpeg.h"
 
 extern "C" JNIEXPORT jstring JNICALL
