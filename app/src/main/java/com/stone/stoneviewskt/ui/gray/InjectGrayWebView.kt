@@ -44,7 +44,7 @@ class InjectGrayWebView: WebView {
 
     }
 
-    override fun loadUrl(url: String?) {
+    override fun loadUrl(url: String) {
         mScope ?: return super.loadUrl(url)
 
         mScope?.launch {
@@ -69,11 +69,11 @@ class InjectGrayWebView: WebView {
 //                """
                 injectCss(page, css)
             }
-            super.loadDataWithBaseURL(url, resPageData, null, mDefaultEncoding, null)
+            super.loadDataWithBaseURL(url, resPageData!!, null, mDefaultEncoding, null)
         }
     }
 
-    override fun loadUrl(url: String?, additionalHttpHeaders: MutableMap<String, String>?) {
+    override fun loadUrl(url: String, additionalHttpHeaders: MutableMap<String, String>) {
         super.loadUrl(url, additionalHttpHeaders)
     }
 
