@@ -107,7 +107,7 @@ class MediaRecordFragment2 : BaseFragment() {
 
         lifecycleScope.launchWhenResumed {
             MediaRecordManager.releaseRecord()
-            MediaRecordManager.startRecord(requireContext())
+            MediaRecordManager.startRecord()
         }
     }
 

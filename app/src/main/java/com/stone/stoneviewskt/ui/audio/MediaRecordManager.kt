@@ -3,12 +3,14 @@ package com.stone.stoneviewskt.ui.audio
 import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import com.stone.stoneviewskt.StoneApplication
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
- * desc:
+ * desc:    单例，持有了 application - context；
+ *          存储格式改成mp3，利于上传server后， web 端直接播放
  * author:  stone
  * email:   aa86799@163.com
  * blog :   https://stone.blog.csdn.net
@@ -30,10 +32,10 @@ object MediaRecordManager {
     private var mOnPlayBlock: ((duration: Int) -> Unit)? = null
     private var mOnPlayCompleteBlock: (() -> Unit)? = null
 
-    suspend fun startRecord(context: Context) {
+    suspend fun startRecord() {
         releaseRecord()
         val result = withContext(Dispatchers.IO) {
-            doStart(context)
+            doStart(StoneApplication.instance.applicationContext)
         }
         if (!result) {
             failure()
@@ -51,7 +53,8 @@ object MediaRecordManager {
 
     private fun doStart(context: Context): Boolean {
         try {
-            mAudioFile = File("${context.externalCacheDir}/stone.m4a")
+//            mAudioFile = File("${context.externalCacheDir}/stone.m4a")
+            mAudioFile = File("${context.externalCacheDir}/stone.mp3")
             mAudioFile?.createNewFile()
 
             mMediaRecorder = MediaRecorder()
