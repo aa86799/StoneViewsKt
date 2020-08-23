@@ -14,6 +14,8 @@ import com.stone.stoneviewskt.ui.gray.GrayFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
+import com.stone.stoneviewskt.ui.nfc.NfcFragment
+import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
 import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
 import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
@@ -59,6 +61,7 @@ class MainActivity : BaseActivity() {
                 "MediaRecord2" -> startNewUI(MediaRecordFragment2::class.java)
                 "AudioRecord" -> startNewUI(AudioRecordFragment::class.java)
                 "VideoCompress" -> startNewUI(VideoCompressFragment::class.java)
+                "NfcFragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
             }
         }
 
@@ -83,7 +86,8 @@ class MainActivity : BaseActivity() {
                 "MediaRecord",
                 "MediaRecord2",
                 "AudioRecord",
-                "VideoCompress"
+                "VideoCompress",
+                "NfcFragment"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
