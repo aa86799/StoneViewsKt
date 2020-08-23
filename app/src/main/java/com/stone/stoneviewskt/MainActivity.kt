@@ -1,5 +1,6 @@
 package com.stone.stoneviewskt
 
+import android.content.Intent
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
@@ -29,6 +30,14 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (!isTaskRoot) {//activity是否是任务栈中的根activity
+            if (intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
+                finish()
+                return
+            }
+        }
+
         setContentView(R.layout.activity_main)
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
