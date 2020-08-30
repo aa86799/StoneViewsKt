@@ -29,6 +29,9 @@ android {
         }
     }
 
+    //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
+    ndkVersion '20.0.5594570'
+
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
@@ -86,10 +89,11 @@ dependencies {
     implementation refs.material
     implementation refs.mmkv
     implementation refs.multidex
+    implementation refs.fragmentationx
     implementation refs.permissionsDispatcher
     kapt refs.permissionsDispatcherCompiler
 
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

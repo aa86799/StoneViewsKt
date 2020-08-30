@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowInsetsController
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.stone.stoneviewskt.R
 import org.jetbrains.anko.startActivity
@@ -18,7 +17,7 @@ import org.jetbrains.anko.startActivity
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/4 12:06
  */
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : SupportActivity() {
 
     companion object {
         const val KEY_FRAGMENT = "KEY_FRAGMENT"
@@ -51,9 +50,16 @@ open class BaseActivity : AppCompatActivity() {
             window.navigationBarColor = Color.TRANSPARENT //应用内 导航栏，如 actionBar
         }
 
+        //supportFragmentManager 加载 fragment 到 android.R.id.content
+//        (intent?.getSerializableExtra(KEY_FRAGMENT) as? Class<*>)?.let { cls ->
+//            val fragment = cls.newInstance() as Fragment
+//            supportFragmentManager.beginTransaction().replace(android.R.id.content, fragment).commit()
+//        }
+
+        //fragmentation 框架式 加载 SupportFragment
         (intent?.getSerializableExtra(KEY_FRAGMENT) as? Class<*>)?.let { cls ->
-            val fragment = cls.newInstance() as Fragment
-            supportFragmentManager.beginTransaction().replace(android.R.id.content, fragment).commit()
+            val fragment = cls.newInstance() as SupportFragment
+            loadRootFragment(android.R.id.content, fragment)
         }
     }
 

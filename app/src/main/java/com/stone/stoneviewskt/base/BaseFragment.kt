@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
 
 /**
  * desc:
@@ -15,7 +14,7 @@ import androidx.fragment.app.Fragment
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/4 11:51
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : SupportFragment() {
 
     protected lateinit var mActivity: Activity
 
