@@ -9,6 +9,8 @@ import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
+import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
+import com.stone.stoneviewskt.ui.colormatrix.ColorMatrixFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
@@ -62,6 +64,7 @@ class MainActivity : BaseActivity() {
                 "AudioRecord" -> startNewUI(AudioRecordFragment::class.java)
                 "VideoCompress" -> startNewUI(VideoCompressFragment::class.java)
                 "NfcFragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
+                "ColorMatrix" -> startNewUI(ColorMainFragment::class.java)
             }
         }
 
@@ -87,7 +90,7 @@ class MainActivity : BaseActivity() {
                 "MediaRecord2",
                 "AudioRecord",
                 "VideoCompress",
-                "NfcFragment"
+                "ColorMatrix"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
