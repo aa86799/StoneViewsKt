@@ -17,11 +17,13 @@ class ColorMainFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
+        //色相、饱和度、亮度；调节 通过 ColorMatrix
         btnColorPlate.setOnClickListener {
             start(ColorPlateFragment())
 //            startActivity<BaseActivity>(BaseActivity.KEY_FRAGMENT to ColorPlateFragment::class.java)
         }
 
+        //ColorMatrix
         btnColorMatrix.setOnClickListener {
             start(ColorMatrixFragment())
         }

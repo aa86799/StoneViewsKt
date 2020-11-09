@@ -10,9 +10,9 @@ import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
-import com.stone.stoneviewskt.ui.colormatrix.ColorMatrixFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
+import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
@@ -58,13 +58,14 @@ class MainActivity : BaseActivity() {
                 "材料设计" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
                 "Spinner" -> startNewUI(SpinnerFragment::class.java)
                 "NDK: lib jpeg" -> startNewUI(LibJpegFragment::class.java)
-                "FloatingActionButton + ConstraintLayout(圆形布局)" -> startNewUI(CircleLayoutFragment::class.java)
-                "MediaRecord" -> startNewUI(MediaRecordFragment::class.java)
-                "MediaRecord2" -> startNewUI(MediaRecordFragment2::class.java)
-                "AudioRecord" -> startNewUI(AudioRecordFragment::class.java)
-                "VideoCompress" -> startNewUI(VideoCompressFragment::class.java)
-                "NfcFragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
-                "ColorMatrix" -> startNewUI(ColorMainFragment::class.java)
+                "Floating_Action_Button + Constraint_Layout(圆形布局)" -> startNewUI(CircleLayoutFragment::class.java)
+                "Media_Record" -> startNewUI(MediaRecordFragment::class.java)
+                "Media_Record2" -> startNewUI(MediaRecordFragment2::class.java)
+                "Audio_Record" -> startNewUI(AudioRecordFragment::class.java)
+                "Video_Compress" -> startNewUI(VideoCompressFragment::class.java)
+                "Nfc_Fragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
+                "Color_Matrix" -> startNewUI(ColorMainFragment::class.java)
+                "Image_Matrix" -> startNewUI(ImageMatrixFragment::class.java)
             }
         }
 
@@ -85,12 +86,13 @@ class MainActivity : BaseActivity() {
                 "材料设计",
                 "Spinner",
                 "NDK: lib jpeg",
-                "FloatingActionButton + ConstraintLayout(圆形布局)",
-                "MediaRecord",
-                "MediaRecord2",
-                "AudioRecord",
-                "VideoCompress",
-                "ColorMatrix"
+                "Floating_Action_Button + Constraint_Layout(圆形布局)",
+                "Media_Record",
+                "Media_Record2",
+                "Audio_Record",
+                "Video_Compress",
+                "Color_Matrix",
+                "Image_Matrix"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
