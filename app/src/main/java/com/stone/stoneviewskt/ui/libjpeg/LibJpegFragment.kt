@@ -15,12 +15,15 @@ import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.util.logi
 import kotlinx.android.synthetic.main.fragment_lib_jpeg.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 /**
  * desc:    libjpeg-turbo-2.0.5    jpeg图片处理库
  *          https://libjpeg-turbo.org/
  *          https://github.com/libjpeg-turbo/libjpeg-turbo/blob/master/BUILDING.md
+ *          通过压缩处理后，存储的图片size 可能会大过 原始的图片size；
+ *              但其加载出的 Bitmap 大小 会小过， 直接 BitmapFactory.decodeResource 加载的大小。
  * author:  stone
  * email:   aa86799@163.com
  * blog :   https://stone.blog.csdn.net
@@ -36,20 +39,41 @@ class LibJpegFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
+//        val count = resources.openRawResource(R.drawable.kotlin).available()
+        val count = resources.openRawResource(R.mipmap.back_girl).available()
+        fragment_lib_jpeg_before.text = "图片原始字节数(不受图片目录的密度影响)：$count 字节(B) = ${count/1024}KB"
 
-        val count = resources.openRawResource(R.drawable.kotlin).available()
-        fragment_lib_jpeg_before.text = "压缩前原始字节数：$count"
-
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.kotlin)
+//        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.kotlin)
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl) //受dpi目录影响，会自动缩放
+//        val bitmap = BitmapFactory.decodeStream(resources.openRawResource(R.mipmap.back_girl)) //不会自动缩放
         fragment_lib_jpeg_ok.onClick {
             requestPermission()
             if (ContextCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 //                compressJpeg(bitmap, 80, "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)}/jsy.jpg")  //路径方法 过时了
                 logi(mActivity.cacheDir.absolutePath)
                 val output = "${mActivity.cacheDir}/kotlin.jpg"
-                compressJpeg(bitmap, 80, output)
+                var quality = 100
+                do {
+                    compressJpeg(bitmap, quality, output)
+                    val outFile = File(output)
+                    val outFileLength = outFile.length()
+                    val baos = ByteArrayOutputStream()
+                    val op = BitmapFactory.decodeFile(output)
+                        .compress(Bitmap.CompressFormat.JPEG, quality, baos)
+                    fragment_lib_jpeg_after.text = """
+> 存储bitmap像素所占内存: ${bitmap.byteCount} 字节(B) = ${bitmap.byteCount / 1024}KB；
+> bitmap所占像素已经分配的大小: ${bitmap.allocationByteCount} 字节(B) = ${bitmap.allocationByteCount / 1024}KB；
+> 上面的值，就是在当前设备的屏幕密度基础上，加载目标目录下 某dpi 密度，经缩放后的，实际占内存大小；
+> Bitmap 占用内存大小 = 宽度像素 x （inTargetDensity / inDensity） x 高度像素 x （inTargetDensity / inDensity）x 一个像素所占的内存(Bitmap.Config);
+        inDensity 是 Bitmap原始像素密度，即设备屏幕密度； inTargetDensity 是 drawable或mipmap 目录密度；
+> 最终压缩后,再存储的图片原始字节数 $outFileLength  字节(B) = ${outFileLength / 1024}KB
+> 最终压缩后，再加载成Bitmap的字节数 ${if (op) baos.toByteArray().size else 0}  字节(B) = ${baos.toByteArray().size / 1024}KB
+                """
+
+                    quality -= 2 //质量递减
+                } while (outFileLength > 30*1024) //大于30k
+
                 fragment_lib_jpeg_iv.setImageURI(File(output).toUri())
-                fragment_lib_jpeg_after.text = "压缩后原始字节数 ${File(output).length()}"
             }
         }
     }

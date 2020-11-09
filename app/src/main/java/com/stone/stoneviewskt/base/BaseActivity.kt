@@ -31,7 +31,10 @@ open class BaseActivity : SupportActivity() {
 //                it.hide(WindowInsets.Type.statusBars()) //隐藏状态栏
 //                it.hide(WindowInsets.Type.navigationBars()) //隐藏导航栏
 //            }
-            window.insetsController?.setSystemBarsAppearance(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS)
+
+            //在android11  api30的 pixel3a手机上，崩溃了；改成 view.windowInsetsController 来获取。
+//            window.insetsController?.setSystemBarsAppearance(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS)
+            window.decorView.windowInsetsController?.setSystemBarsAppearance(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS)
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//下面的 View.xx 在 api 30 过时
             //深色字体，明亮状态栏; 默认不设置时，为浅色字，深色状态栏
 //            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR

@@ -15,9 +15,9 @@ Java_com_stone_myapplicationasdf_MainActivity_stringFromJNI(
 
 void write_JPEG_file(uint8_t *data, int w, int h, jint q, const char *path) {
 //    3.1、创建jpeg压缩对象
-    jpeg_compress_struct jcs;
+    struct jpeg_compress_struct jcs {};
     //错误回调
-    jpeg_error_mgr error;
+    struct jpeg_error_mgr error {};
     jcs.err = jpeg_std_error(&error);
     //创建压缩对象
     jpeg_create_compress(&jcs);
@@ -33,9 +33,9 @@ void write_JPEG_file(uint8_t *data, int w, int h, jint q, const char *path) {
     jpeg_set_defaults(&jcs);
     //开启哈夫曼功能
     jcs.optimize_coding = true;
-    jpeg_set_quality(&jcs, q, 1);
+    jpeg_set_quality(&jcs, q, true);
 //    3.4、开始压缩
-    jpeg_start_compress(&jcs, 1);
+    jpeg_start_compress(&jcs, true);
 //    3.5、循环写入每一行数据
     int row_stride = w * 3;//一行的字节数
     JSAMPROW row[1];
@@ -57,7 +57,7 @@ JNIEXPORT void JNICALL
 Java_com_stone_stoneviewskt_ui_libjpeg_LibJpegFragment_compressJpeg(JNIEnv *env, jobject thiz,
                                                                     jobject bitmap, jint quality,
                                                                     jstring path_) {
-    const char *path = env->GetStringUTFChars(path_, 0);
+    const char *path = env->GetStringUTFChars(path_, FALSE);
 
     AndroidBitmapInfo info; //初始化 info
     AndroidBitmap_getInfo(env, bitmap, &info); //获取信息到  info
@@ -65,7 +65,7 @@ Java_com_stone_stoneviewskt_ui_libjpeg_LibJpegFragment_compressJpeg(JNIEnv *env,
     AndroidBitmap_lockPixels(env, bitmap, (void **)&pixels);//锁定位图像素
     auto w = info.width;
     auto h = info.height;
-    uint8_t *data = static_cast<uint8_t *>(malloc(w * h * 3)); //动态开空间
+    auto *data = static_cast<uint8_t *>(malloc(w * h * 3)); //动态开空间
     uint8_t *temp = data;
     uint8_t r, g, b;
     int color;
