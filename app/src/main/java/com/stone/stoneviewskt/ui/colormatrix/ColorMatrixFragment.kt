@@ -24,6 +24,7 @@ class ColorMatrixFragment : BaseFragment() {
     private var mEtHeight: Int = 0
     private val mEts = mutableListOf<EditText>()
     private val mColorMatrix = FloatArray(20)
+    private val mOptions = BitmapFactory.Options()
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
@@ -73,7 +74,9 @@ class ColorMatrixFragment : BaseFragment() {
 
     private fun loadBitmap() {
         //后面三个方法，会改变像素点，单纯的 重置矩阵，达不到reset的目的。  所以直接重新 加载 bitmap
+//        mBitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl, mOptions)
         mBitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl)
+        mOptions.inBitmap = mBitmap
         fragment_color_matrix_iv.setImageBitmap(mBitmap)
     }
 

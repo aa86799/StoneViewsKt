@@ -24,7 +24,7 @@ class ColorMainFragment : BaseFragment() {
         }
 
         //ColorMatrix
-        btnColorMatrix.setOnClickListener {
+        btnImageMatrix.setOnClickListener {
             start(ColorMatrixFragment())
         }
     }

@@ -9,7 +9,7 @@ import com.stone.stoneviewskt.base.BaseFragment
 import kotlinx.android.synthetic.main.activity_image_matrix.*
 
 /**
- * Created by Administrator on 2015/2/1 0001.
+ * Matrix 用于图片操作：旋转、缩放、平移、错切。
  */
 class ImageMatrixFragment : BaseFragment() {
     private var mEdWidth = 0

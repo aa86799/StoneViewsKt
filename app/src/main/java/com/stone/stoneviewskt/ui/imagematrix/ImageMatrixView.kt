@@ -10,7 +10,8 @@ import android.view.View
 import com.stone.stoneviewskt.R
 
 /**
- * Created by Administrator on 2015/2/1 0001.
+ * 图片绘制用到 Matrix .
+ *  drawBitmap(@NonNull Bitmap bitmap, @NonNull Matrix matrix, @Nullable Paint paint)
  */
 class ImageMatrixView : View {
     private var mBitmap: Bitmap? = null
