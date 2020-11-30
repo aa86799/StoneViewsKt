@@ -14,6 +14,7 @@ import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
+import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
@@ -66,6 +67,7 @@ class MainActivity : BaseActivity() {
                 "Nfc_Fragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
                 "Color_Matrix" -> startNewUI(ColorMainFragment::class.java)
                 "Image_Matrix" -> startNewUI(ImageMatrixFragment::class.java)
+                "长图加载" -> startNewUI(LongImageFragment::class.java)
             }
         }
 
@@ -92,7 +94,8 @@ class MainActivity : BaseActivity() {
                 "Audio_Record",
                 "Video_Compress",
                 "Color_Matrix",
-                "Image_Matrix"
+                "Image_Matrix",
+                "长图加载"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
