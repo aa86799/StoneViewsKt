@@ -46,7 +46,7 @@ class BitmapUtil {
     }
 
     private fun calculateInSampleSize(w: Int, h: Int, dstW: Int, dstH: Int): Int {
-        var inSampleSize = 1
+        var inSampleSize = 1 //Bitmap.Option.inSampleSize 必须是 2的n次方
         if (w > dstW || h > dstH) {
             inSampleSize = inSampleSize shl 1 // << 1
             while (w / inSampleSize > dstW || h / inSampleSize > dstH) {
