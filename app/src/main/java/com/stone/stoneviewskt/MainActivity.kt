@@ -12,6 +12,7 @@ import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
+import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
@@ -68,6 +69,7 @@ class MainActivity : BaseActivity() {
                 "Color_Matrix" -> startNewUI(ColorMainFragment::class.java)
                 "Image_Matrix" -> startNewUI(ImageMatrixFragment::class.java)
                 "长图加载" -> startNewUI(LongImageFragment::class.java)
+                "图片滤镜" -> startNewUI(ImageFilterFragment::class.java)
             }
         }
 
@@ -95,7 +97,8 @@ class MainActivity : BaseActivity() {
                 "Video_Compress",
                 "Color_Matrix",
                 "Image_Matrix",
-                "长图加载"
+                "长图加载",
+                "图片滤镜"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
