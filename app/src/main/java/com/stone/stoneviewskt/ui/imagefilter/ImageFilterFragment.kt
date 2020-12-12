@@ -1,9 +1,12 @@
 package com.stone.stoneviewskt.ui.imagefilter
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine
 import kotlinx.android.synthetic.main.fragment_image_filter.*
+import org.jetbrains.anko.support.v4.selector
 
 /**
  * desc:
@@ -21,8 +24,49 @@ class ImageFilterFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_image_filter_bw.setOnClickListener {
-            start(ImageBlackWhiteFilterFragment())
+//        val bm = BitmapFactory.decodeResource(resources, R.mipmap.back_girl_cmiki)
+//        val bm = BitmapFactory.decodeResource(resources, R.mipmap.back_girl_test)
+        val bm = BitmapFactory.decodeResource(resources, R.mipmap.screenshot_test)
+//        val bm = BitmapFactory.decodeResource(resources, R.mipmap.test_image)
+        fragment_image_filter_iv.setImageBitmap(bm) //原图
+
+        fragment_image_filter_btn.setOnClickListener {
+            selector(
+                "滤镜选择", listOf(
+                    "黑白",
+                    "黑白反转",
+                    "Floyd-Steinberg扩散抖动算法", //宽高w*h，超过 1000*1000，有crash风险
+                    "Stucki 扩散抖动算法"  //比上面一个更模糊，支持 w*h 更多
+                )
+            ) { _, index ->
+                when (index) {
+                    0 -> {
+                        ImageFilterEngine.blackWhiteImage(bm)?.let {
+                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                        }
+                    }
+
+                    1 -> {
+                        ImageFilterEngine.blackWhiteReverseImage(bm)?.let {
+                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                        }
+                    }
+
+                    2 -> {
+                        ImageFilterEngine.floydImage(bm)?.let {
+                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                        }
+                    }
+
+                    3 -> {
+                        ImageFilterEngine.stuckiImage(bm)?.let {
+                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                        }
+                    }
+
+                    else -> return@selector
+                }
+            }
         }
     }
 

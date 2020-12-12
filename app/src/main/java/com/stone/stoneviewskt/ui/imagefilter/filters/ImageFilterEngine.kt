@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.ui.imagefilter
+package com.stone.stoneviewskt.ui.imagefilter.filters
 
 import android.graphics.Bitmap
 
@@ -17,6 +17,14 @@ object ImageFilterEngine {
 
     fun blackWhiteReverseImage(bitmap: Bitmap): Bitmap? {
         return processBitmap(bitmap, ImageBlackWhiteReverseFilter())
+    }
+
+    fun floydImage(bitmap: Bitmap): Bitmap? {
+        return processBitmap(bitmap, ImageFloydFilter())
+    }
+
+    fun stuckiImage(bitmap: Bitmap): Bitmap? {
+        return processBitmap(bitmap, ImageStuckiFilter())
     }
 
     private fun processBitmap(bitmap: Bitmap, filter: IImageFilter): Bitmap? {

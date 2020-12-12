@@ -12,6 +12,7 @@ import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
+import com.stone.stoneviewskt.ui.imagecrop.StoneImageCropFragment
 import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
@@ -70,6 +71,7 @@ class MainActivity : BaseActivity() {
                 "Image_Matrix" -> startNewUI(ImageMatrixFragment::class.java)
                 "长图加载" -> startNewUI(LongImageFragment::class.java)
                 "图片滤镜" -> startNewUI(ImageFilterFragment::class.java)
+                "图片裁剪" -> startNewUI(StoneImageCropFragment::class.java)
             }
         }
 
@@ -98,7 +100,8 @@ class MainActivity : BaseActivity() {
                 "Color_Matrix",
                 "Image_Matrix",
                 "长图加载",
-                "图片滤镜"
+                "图片滤镜",
+                "图片裁剪"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }

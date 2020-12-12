@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.ui.imagefilter
+package com.stone.stoneviewskt.ui.imagefilter.filters
 
 import android.graphics.Bitmap
 

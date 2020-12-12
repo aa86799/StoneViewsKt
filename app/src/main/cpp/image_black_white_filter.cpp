@@ -24,7 +24,7 @@
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_stone_stoneviewskt_ui_imagefilter_ImageBlackWhiteFilter_blackWhiteFilter(JNIEnv *env,
+Java_com_stone_stoneviewskt_ui_imagefilter_filters_ImageBlackWhiteFilter_blackWhiteFilter(JNIEnv *env,
                                                                               jobject thiz,
                                                                               jobject bitmap) {
     if (bitmap == NULL) {
@@ -52,7 +52,7 @@ Java_com_stone_stoneviewskt_ui_imagefilter_ImageBlackWhiteFilter_blackWhiteFilte
             void *pixel = nullptr;
             // Get each pixel by format
 
-            int ratio = 128;
+            int mid = 128;
             if (bitmapInfo.format == ANDROID_BITMAP_FORMAT_RGBA_8888) {
                 pixel = ((uint32_t *) pixels) + y * bitmapInfo.width + x;
                 uint32_t v = *((uint32_t *) pixel);
@@ -70,7 +70,7 @@ Java_com_stone_stoneviewskt_ui_imagefilter_ImageBlackWhiteFilter_blackWhiteFilte
                 g = RGB565_G(v);
                 b = RGB565_B(v);
                 int sum = r + g + b;
-                *((uint16_t *) pixel) = MAKE_RGB565(sum / ratio, sum / ratio, sum / ratio);
+                *((uint16_t *) pixel) = MAKE_RGB565(sum / mid, sum / mid, sum / mid);
             }
         }
     }

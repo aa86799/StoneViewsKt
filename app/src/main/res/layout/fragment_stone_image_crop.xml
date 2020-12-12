@@ -6,32 +6,31 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/fragment_image_filter_btn"
+        android:id="@+id/fragment_sic_open_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="选择滤镜"
+        android:text="打开相册"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
-        android:id="@+id/fragment_image_filter_iv"
-        android:layout_width="match_parent"
+        android:id="@+id/fragment_sic_iv"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@id/fragment_image_filter_trans_iv"
+        android:scaleType="center"
+        app:layout_constraintBottom_toTopOf="@id/fragment_sic_iv2"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_image_filter_btn"
+        app:layout_constraintTop_toBottomOf="@id/fragment_sic_open_photo"
         tools:background="@tools:sample/backgrounds/scenic" />
 
     <ImageView
-        android:id="@+id/fragment_image_filter_trans_iv"
-        android:layout_width="match_parent"
+        android:id="@+id/fragment_sic_iv2"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerInside"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_image_filter_iv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_sic_iv"
         tools:background="@tools:sample/backgrounds/scenic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

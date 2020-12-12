@@ -36,6 +36,8 @@ add_library( # Sets the name of the library.
         smbPitchShift.cpp
         image_black_white_filter.cpp
         image_black_white_reverse_filter.cpp
+        floyd_steinberg_dithering.cpp
+        stucki_dithering.cpp
         native-lib.cpp )
 
 # Searches for a specified prebuilt library and stores the path as a

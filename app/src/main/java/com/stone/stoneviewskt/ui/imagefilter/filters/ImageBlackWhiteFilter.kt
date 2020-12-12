@@ -1,9 +1,9 @@
-package com.stone.stoneviewskt.ui.imagefilter
+package com.stone.stoneviewskt.ui.imagefilter.filters
 
 import android.graphics.Bitmap
 
 /**
- * desc:
+ * desc:    黑白：除灰、白、黑外，其它会变灰
  * author:  stone
  * email:   aa86799@163.com
  * blog :   https://stone.blog.csdn.net

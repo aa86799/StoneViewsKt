@@ -24,7 +24,7 @@
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_stone_stoneviewskt_ui_imagefilter_ImageBlackWhiteReverseFilter_blackWhiteReverseFilter(JNIEnv *env,
+Java_com_stone_stoneviewskt_ui_imagefilter_filters_ImageBlackWhiteReverseFilter_blackWhiteReverseFilter(JNIEnv *env,
                                                                               jobject thiz,
                                                                               jobject bitmap) {
     if (bitmap == NULL) {
