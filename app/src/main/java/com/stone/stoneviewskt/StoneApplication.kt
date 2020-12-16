@@ -25,6 +25,7 @@ class StoneApplication : MultiDexApplication() {
 
     companion object {
         lateinit var instance: StoneApplication
+        const val DOKIT_PID= "5e73502e25295284cd3a812b95af99a0"
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -37,7 +38,26 @@ class StoneApplication : MultiDexApplication() {
         instance = this
         registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
 
-        val rootDir = MMKV.initialize(this)
+//        val kits = mutableListOf<AbstractKit>()
+//        kits.add(CpuKit())
+//        kits.add(WebDoorKit())
+//        kits.add(LargePictureKit())
+//        kits.add(FileExplorerKit())
+//        kits.add(ColorPickerKit())
+//        kits.add(LayoutBorderKit())
+//        kits.add(UIPerformanceKit())
+//        kits.add(WeakNetworkKit())
+//        kits.add(GpsMockKit())
+//        kits.add(NetworkKit())
+//        kits.add(SysInfoKit())
+//        kits.add(CrashCaptureKit())
+//        kits.add(BlockMonitorKit())
+//        kits.add(LogInfoKit())
+//        kits.add(FrameInfoKit())
+//        kits.add(H5Kit())
+//        DoraemonKit.install(this, kits, DOKIT_PID);
+
+        val rootDir = MMKV.initialize(this) //腾讯mmkv：key-value
         logi("MMKV rootDir: $rootDir")
 //        MMKV.defaultMMKV().encode()
 //        MMKV.defaultMMKV().decodeBool()
