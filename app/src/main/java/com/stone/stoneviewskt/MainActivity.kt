@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
+import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
@@ -21,6 +22,7 @@ import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
+import com.stone.stoneviewskt.ui.parceldata.ParcelDataFragment
 import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
 import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
@@ -74,6 +76,7 @@ class MainActivity : BaseActivity() {
                 "图片滤镜" -> startNewUI(ImageFilterFragment::class.java)
                 "图片裁剪" -> startNewUI(StoneImageCropFragment::class.java)
                 "View Binding" -> startActivity<ViewBindActivity>()
+                "Parcel Data" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
             }
         }
 
@@ -104,7 +107,8 @@ class MainActivity : BaseActivity() {
                 "长图加载",
                 "图片滤镜",
                 "图片裁剪",
-                "View Binding"
+                "View Binding",
+                "Parcel Data"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }

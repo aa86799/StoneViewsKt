@@ -62,6 +62,7 @@ open class BaseActivity : SupportActivity() {
         //fragmentation 框架式 加载 SupportFragment
         (intent?.getSerializableExtra(KEY_FRAGMENT) as? Class<*>)?.let { cls ->
             val fragment = cls.newInstance() as SupportFragment
+            fragment.arguments = this@BaseActivity.intent?.extras
             loadRootFragment(android.R.id.content, fragment)
         }
     }
@@ -75,6 +76,6 @@ open class BaseActivity : SupportActivity() {
      * 可以不使用  inline + reified 来声明.
      */
     inline fun <reified T : Fragment> startNewUI(cls: Class<T>, vararg params: Pair<String, Any?>) {
-        startActivity<BaseActivity>(KEY_FRAGMENT to cls, *params)
+        startActivity<BaseActivity>(KEY_FRAGMENT to cls,  *params)
     }
 }
