@@ -9,7 +9,6 @@ if (isBuildDokit.toBoolean()) {
 android {
     compileSdkVersion builds.compileSdkVersion
 
-
     defaultConfig {
         applicationId "com.stone.stoneviewskt"
         minSdkVersion builds.minSdkVersion
@@ -78,11 +77,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    androidExtensions {//plugin: 'kotlin-android-extensions'
+        defaultCacheImplementation = "SPARSE_ARRAY" //default HASH_MAP
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(":viewbinding")
+    implementation refs.kotlin
     implementation refs.androidxCompat
     implementation refs.ktx
     implementation refs.constraintLayout

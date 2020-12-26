@@ -30,6 +30,7 @@ import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.util.showLong
+import com.stone.viewbinding.ViewBindActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -72,6 +73,7 @@ class MainActivity : BaseActivity() {
                 "长图加载" -> startNewUI(LongImageFragment::class.java)
                 "图片滤镜" -> startNewUI(ImageFilterFragment::class.java)
                 "图片裁剪" -> startNewUI(StoneImageCropFragment::class.java)
+                "View Binding" -> startActivity<ViewBindActivity>()
             }
         }
 
@@ -101,7 +103,8 @@ class MainActivity : BaseActivity() {
                 "Image_Matrix",
                 "长图加载",
                 "图片滤镜",
-                "图片裁剪"
+                "图片裁剪",
+                "View Binding"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
