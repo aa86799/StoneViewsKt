@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine
+import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine2
+import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFloydFilter
 import kotlinx.android.synthetic.main.fragment_image_filter.*
 import org.jetbrains.anko.support.v4.selector
 
@@ -53,7 +55,8 @@ class ImageFilterFragment : BaseFragment() {
                     }
 
                     2 -> {
-                        ImageFilterEngine.floydImage(bm)?.let {
+                        ImageFilterEngine2(ImageFloydFilter()).processBitmap(bm)?.let {
+//                        ImageFilterEngine.floydImage(bm)?.let {
                             fragment_image_filter_trans_iv.setImageBitmap(it)
                         }
                     }
