@@ -16,6 +16,7 @@ import com.stone.stoneviewskt.ui.gray.GrayFragment
 import com.stone.stoneviewskt.ui.imagecrop.StoneImageCropFragment
 import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
+import com.stone.stoneviewskt.ui.jetpack.datastore.DataStoreFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
@@ -77,6 +78,7 @@ class MainActivity : BaseActivity() {
                 "图片裁剪" -> startNewUI(StoneImageCropFragment::class.java)
                 "View Binding" -> startActivity<ViewBindActivity>()
                 "Parcel Data" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
+                "Data Store" -> startNewUI(DataStoreFragment::class.java)
             }
         }
 
@@ -108,7 +110,8 @@ class MainActivity : BaseActivity() {
                 "图片滤镜",
                 "图片裁剪",
                 "View Binding",
-                "Parcel Data"
+                "Parcel Data",
+                "Data Store",
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
