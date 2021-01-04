@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_fa_button_begin"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -78,10 +79,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ff00ff"
-        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/fragment_floatingaction_button_bottom" />
 
 <!--    -->
     <Button
@@ -89,8 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 4"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/fragment_fa_button_btn3"
+        app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
     <Button
@@ -98,8 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 3"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/fragment_fa_button_btn2"
+        app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
     <Button
@@ -107,8 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 2"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/fragment_fa_button_btn1"
+        app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
     <Button
@@ -116,7 +113,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 1"
-        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>

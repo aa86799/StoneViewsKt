@@ -47,6 +47,14 @@
         app:shapeAppearance="?attr/shapeAppearanceLargeComponent"
         app:tint="@android:color/holo_red_dark" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#cdff00ff"
+        app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_bottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/fragment_floatingaction_button_btn"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
