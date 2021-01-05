@@ -74,11 +74,16 @@
         app:tint="@color/colorAccent" />
 
 
+    <!--
+    android:elevation="6dp"
+    >=6dp 时，权重才超过 FloatingActionButton
+      -->
     <ImageView
         android:id="@+id/fragment_fa_button_v"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ff00ff"
+        android:elevation="6dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/fragment_floatingaction_button_bottom" />
@@ -89,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 4"
+        android:elevation="7dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
@@ -97,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 3"
+        android:elevation="7dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
@@ -105,6 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 2"
+        android:elevation="7dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>
@@ -113,6 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="btn 1"
+        android:elevation="7dp"
         app:layout_constraintBottom_toTopOf="@id/fragment_floatingaction_button_btn"
         app:layout_constraintLeft_toLeftOf="@id/fragment_floatingaction_button_bottom"
         app:layout_constraintRight_toRightOf="@id/fragment_floatingaction_button_bottom"/>

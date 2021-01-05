@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.transition.TransitionManager
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.util.logi
 import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_bottom
 import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_btn
 import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_top
@@ -43,13 +44,19 @@ class FloatingActionButtonFragment : BaseFragment() {
         /*
          * 约束动画
          * 要求 约束布局下的每个子view都有 id， 否则报， RuntimeException: All children of ConstraintLayout must have ids to use ConstraintSet.
-         *
+         * Constraints ： ViewGroup
+         *      getConstraintSet()
+         *      static class LayoutParams extends androidx.constraintlayout.widget.ConstraintLayout.LayoutParams
+         *          除父类的约束属性外，新增 elevation、alpha、平移、缩放、旋转等属性。
          */
         val set1 = ConstraintSet()
         val set2 = ConstraintSet()
         val root: ConstraintLayout = fragment_fa_button_begin
-        set1.clone(root)
-        set2.clone(requireContext(), R.layout.fragment_floatingaction_button)
+        set1.clone(root) //从约束布局对象中获取 约束集 对象
+        set2.clone(requireContext(), R.layout.fragment_floatingaction_button) //从约束布局文件中获取
+//        set1.clone(set2) //从set2拷贝到set1
+//        set1.clone(constraints) //
+
         fragment_floatingaction_button_bottom.setOnClickListener {
             TransitionManager.beginDelayedTransition(root)
             mIsShowMenu = !mIsShowMenu
@@ -59,6 +66,9 @@ class FloatingActionButtonFragment : BaseFragment() {
                 set1.applyTo(root)
             }
         }
+        val constraint = set1.getConstraint(R.id.fragment_floatingaction_button_bottom)
+        logi("${constraint.layout.bottomToBottom}")
+        logi("${constraint.layout.rightToRight}")
     }
 
     override fun getLayoutRes(): Int {
