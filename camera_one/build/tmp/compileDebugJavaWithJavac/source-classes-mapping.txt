@@ -1,2 +1,0 @@
-com/stone/camera/BuildConfig.java
- com.stone.camera.BuildConfig
