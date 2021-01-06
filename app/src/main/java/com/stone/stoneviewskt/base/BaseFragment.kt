@@ -1,6 +1,5 @@
 package com.stone.stoneviewskt.base
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,7 @@ import androidx.annotation.LayoutRes
  */
 abstract class BaseFragment : SupportFragment() {
 
-    protected lateinit var mActivity: Activity
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mActivity = activity!!
         return getLayoutView() ?: inflater.inflate(getLayoutRes(), container, false)
     }
 
@@ -27,6 +23,8 @@ abstract class BaseFragment : SupportFragment() {
         super.onViewCreated(view, savedInstanceState)
         onPreparedView(savedInstanceState)
     }
+
+    fun getCurActivity() = _mActivity
 
     @LayoutRes
     protected open fun getLayoutRes(): Int = 0

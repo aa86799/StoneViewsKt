@@ -40,7 +40,7 @@ class VideoCompressFragment: BaseFragment() {
 //                val mediaEntity = MediaEntity.newBuilder()
 //                    .localPath(mPath)
 //                    .fileType(MimeType.ofVideo())
-//                    .compressPath("${mActivity.externalCacheDir}/stone.mp4")
+//                    .compressPath("${_mActivity.externalCacheDir}/stone.mp4")
 //                    .mimeType(MimeType.createVideoType(mPath))
 //                    .build()
 //                val option = PhoenixOption().apply {
@@ -49,7 +49,7 @@ class VideoCompressFragment: BaseFragment() {
 //                val m = compressVideoProcessor?.syncProcess(requireContext(), mediaEntity, option)
 
 
-                val destPath = "${mActivity.externalCacheDir}/stone.mp4"
+                val destPath = "${_mActivity.externalCacheDir}/stone.mp4"
                 VideoCompress.compressVideoLow(mPath, destPath, object : CompressListener {
                     override fun onStart() {
 //                        startTime = System.currentTimeMillis()

@@ -99,7 +99,7 @@ class MediaRecordFragment : BaseFragment() {
 
     private fun doStart(): Boolean {
         try {
-            mAudioFile = File("${mActivity.externalCacheDir}/stone.m4a")
+            mAudioFile = File("${_mActivity.externalCacheDir}/stone.m4a")
             mAudioFile?.createNewFile()
 
             mMediaRecorder = MediaRecorder()
@@ -157,7 +157,7 @@ class MediaRecordFragment : BaseFragment() {
         try {
             mIsPlaying = true
             mMediaPlayer = MediaPlayer()
-            mMediaPlayer?.setDataSource("${mActivity.externalCacheDir}/stone.m4a")
+            mMediaPlayer?.setDataSource("${_mActivity.externalCacheDir}/stone.m4a")
             mMediaPlayer?.setOnCompletionListener {
                 stopPlay()
             }

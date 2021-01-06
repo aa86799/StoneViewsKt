@@ -25,7 +25,7 @@ class TabLayoutFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
         fragment_tab_layout_title.mIvLeft.setOnClickListener {
-            mActivity.finish()
+            _mActivity.finish()
         }
 
         for (tab in TABS) {

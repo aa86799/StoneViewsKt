@@ -28,19 +28,19 @@ class MDMainFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_md_main_title.mIvLeft.setOnClickListener { mActivity.finish() }
+        fragment_md_main_title.mIvLeft.setOnClickListener { _mActivity.finish() }
 
         fragment_md_main_rv.adapter = SampleAdapter2(TITLES) { _, title ->
             when (title) {
-                "TabLayout+ViewPager" -> (mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
-                "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
-                "BottomNavigationView" -> (mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
-                "BottomSheetBehavior" -> (mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
-                "BsbDialogOnlyFragment" -> (mActivity as BaseActivity).startNewUI(BsbDialogOnlyFragment::class.java)
-                "Chips" -> (mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
-                "Card" -> (mActivity as BaseActivity).startNewUI(CardFragment::class.java)
-                "FloatingActionButton" -> (mActivity as BaseActivity).startNewUI(FloatingActionButtonFragment::class.java)
-                "CollapsingToolbarLayout" -> (mActivity as BaseActivity).startNewUI(CollapsingFragment::class.java)
+                "TabLayout+ViewPager" -> (_mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
+                "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (_mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
+                "BottomNavigationView" -> (_mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
+                "BottomSheetBehavior" -> (_mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
+                "BsbDialogOnlyFragment" -> (_mActivity as BaseActivity).startNewUI(BsbDialogOnlyFragment::class.java)
+                "Chips" -> (_mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
+                "Card" -> (_mActivity as BaseActivity).startNewUI(CardFragment::class.java)
+                "FloatingActionButton" -> (_mActivity as BaseActivity).startNewUI(FloatingActionButtonFragment::class.java)
+                "CollapsingToolbarLayout" -> (_mActivity as BaseActivity).startNewUI(CollapsingFragment::class.java)
             }
         }
 

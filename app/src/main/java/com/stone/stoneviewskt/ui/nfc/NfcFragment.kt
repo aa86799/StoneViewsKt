@@ -40,8 +40,8 @@ class NfcFragment : BaseFragment() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun writeNFC() {
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED == mActivity.intent.action) {
-            val c = mActivity.intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED == _mActivity.intent.action) {
+            val c = _mActivity.intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
             val ndef = Ndef.get(c)
             val ndefTextRecord = NdefRecord.createTextRecord("zh_CN", "石破天")
             val ndefUriRecord = NdefRecord.createUri(Uri.parse("http://www.google.com"))
@@ -52,7 +52,7 @@ class NfcFragment : BaseFragment() {
     }
 
     private fun read() {
-        val array = mActivity.intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+        val array = _mActivity.intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
         array?.forEach {
             val message = it as NdefMessage
             message.records.forEach {

@@ -25,7 +25,7 @@ import permissions.dispatcher.RuntimePermissions
 class StoneImageCropFragment: BaseFragment() {
 
     companion object {
-        const val REQUEST_CODE_PHOTO = 0x123
+        private const val REQUEST_CODE_PHOTO = 0x123
     }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

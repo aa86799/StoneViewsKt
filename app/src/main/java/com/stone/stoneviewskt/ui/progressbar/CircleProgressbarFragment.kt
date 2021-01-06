@@ -38,7 +38,7 @@ class CircleProgressbarFragment: BaseFragment() {
     }
 
     override fun getLayoutView(): View? {
-        mBar = CircleProgressbarView(mActivity)
+        mBar = CircleProgressbarView(_mActivity)
         return mBar
     }
 }

@@ -17,6 +17,6 @@ class RadarFragment: BaseFragment() {
     }
 
     override fun getLayoutView(): View? {
-        return RadarView(mActivity)
+        return RadarView(_mActivity)
     }
 }

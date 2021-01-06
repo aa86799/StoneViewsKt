@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+		function changeImage(img) {
+           //window.stonejs.loadImage(0);
+           alert(img);
+           var reads = new FileReader();
+           var file = document.getElementById('fileImage').files[0];
+           reads.readAsDataURL(file);
+           reads.onload=function (e) {
+           	  document.getElementById("s_img").src = this.result;
+           };
+		}
+
+		function menuInit() {
+		    alert("menuInit 11");
+		}
+	</script>
+</head>
+<body>
+
+<p/>
+<!--<input type="file" name="loadImage" value="加载照片" accept="image/*"/>-->
+<input type="file" id="fileImage" name="loadImage" value="加载照片" accept="image/x-png,image/gif,image/jpeg" onchange="changeImage(this.value)"/>
+<p/>
+<img src="" id="s_img" width="320px" height="480px" />
+</body>
+</html>
+

@@ -1,0 +1,176 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/062487d72c639edd18ae018c5c50ebff/jetified-core-ktx-1.3.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.material:material:1.2.1] /Users/stone/.gradle/caches/transforms-2/files-2.1/627f8a0a9f14cbe0f38f94e7207f10cb/material-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/stone/.gradle/caches/transforms-2/files-2.1/077c208ddd7f47e9f674cc305dba96b0/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/0e7262b8c10bb9998b3c989917f0dbfd/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/4f2cc9a45a7fe0c4096aa619eee9f202/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/a67175b02d4a7b1804dd740523f91e59/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3595ceef3ec9b2f327966993d399801f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/13ba5a5cc8283b13eaba3a11bf84283c/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/ae84a49080358effe3c7ca5e12c978de/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/80eb71953841cc93130fe2e3f34a8592/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/44b8af361478d49d6fdb56c4127429e9/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/e37d7076f7028bcdc54a37600ad6bf1c/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3d82c45403b578239f280604ce3516ec/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3a0cb3fab869fc57f3f4c5fce4746db9/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/2f101a38431b9b04ac27af96de5b5950/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/1915e1afb25095e8dae23e8f660c7fc8/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/8decf24eda620987d2d51dd34a489792/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6e145bc4421e4277eda9ee3f5ad08625/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/b10f9a2f66b92bb50ff34bf14bee0566/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/341461ae9767e42fc991f982722b8a19/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3de3bac3c36ba893921c1eeb1a71d8d6/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/87659cf33a78cd9c0d3802c63bf31d51/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/71f5b129f2f970f38143ad2b086f8da1/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/d1e69d121cec6d5a4d20624c486d3ec5/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/c16cce549d952e645524c397e62d7dd4/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/f1722d963a78fe826a7aaefda9ca8a8f/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6759cbdf0666404a8a7d93afa2e802f6/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/843ed76c30310a59acd04d229f6fa42e/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+	package
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:2:5-31
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:1-24:12
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:4:5-80
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:4:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:5:5-64
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:5:22-62
+uses-feature#android.hardware.camera
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:7:5-59
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:7:19-57
+application
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:9:5-23:19
+MERGED from [com.google.android.material:material:1.2.1] /Users/stone/.gradle/caches/transforms-2/files-2.1/627f8a0a9f14cbe0f38f94e7207f10cb/material-1.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.2.1] /Users/stone/.gradle/caches/transforms-2/files-2.1/627f8a0a9f14cbe0f38f94e7207f10cb/material-1.2.1/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/stone/.gradle/caches/transforms-2/files-2.1/077c208ddd7f47e9f674cc305dba96b0/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/stone/.gradle/caches/transforms-2/files-2.1/077c208ddd7f47e9f674cc305dba96b0/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/341461ae9767e42fc991f982722b8a19/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/341461ae9767e42fc991f982722b8a19/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:14:9-54
+	android:icon
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:12:9-43
+	android:allowBackup
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:16:9-40
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:10:9-42
+activity#com.stone.camera.ui.MainActivity
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:17:9-22:20
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:17:19-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:18:13-21:29
+action#android.intent.action.MAIN
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:19:17-68
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:20:17-76
+	android:name
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml:20:27-74
+uses-sdk
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/062487d72c639edd18ae018c5c50ebff/jetified-core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/062487d72c639edd18ae018c5c50ebff/jetified-core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.material:material:1.2.1] /Users/stone/.gradle/caches/transforms-2/files-2.1/627f8a0a9f14cbe0f38f94e7207f10cb/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.2.1] /Users/stone/.gradle/caches/transforms-2/files-2.1/627f8a0a9f14cbe0f38f94e7207f10cb/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/stone/.gradle/caches/transforms-2/files-2.1/077c208ddd7f47e9f674cc305dba96b0/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/stone/.gradle/caches/transforms-2/files-2.1/077c208ddd7f47e9f674cc305dba96b0/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/0e7262b8c10bb9998b3c989917f0dbfd/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/0e7262b8c10bb9998b3c989917f0dbfd/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/4f2cc9a45a7fe0c4096aa619eee9f202/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/4f2cc9a45a7fe0c4096aa619eee9f202/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/a67175b02d4a7b1804dd740523f91e59/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/a67175b02d4a7b1804dd740523f91e59/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3595ceef3ec9b2f327966993d399801f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3595ceef3ec9b2f327966993d399801f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/13ba5a5cc8283b13eaba3a11bf84283c/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/13ba5a5cc8283b13eaba3a11bf84283c/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/ae84a49080358effe3c7ca5e12c978de/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/ae84a49080358effe3c7ca5e12c978de/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/80eb71953841cc93130fe2e3f34a8592/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/80eb71953841cc93130fe2e3f34a8592/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/44b8af361478d49d6fdb56c4127429e9/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/44b8af361478d49d6fdb56c4127429e9/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/e37d7076f7028bcdc54a37600ad6bf1c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/e37d7076f7028bcdc54a37600ad6bf1c/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3d82c45403b578239f280604ce3516ec/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3d82c45403b578239f280604ce3516ec/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3a0cb3fab869fc57f3f4c5fce4746db9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3a0cb3fab869fc57f3f4c5fce4746db9/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/2f101a38431b9b04ac27af96de5b5950/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/2f101a38431b9b04ac27af96de5b5950/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/1915e1afb25095e8dae23e8f660c7fc8/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/1915e1afb25095e8dae23e8f660c7fc8/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/8decf24eda620987d2d51dd34a489792/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/8decf24eda620987d2d51dd34a489792/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] /Users/stone/.gradle/caches/transforms-2/files-2.1/a8a1e7564c02a2fc42080146d2d0d0b4/core-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6e145bc4421e4277eda9ee3f5ad08625/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6e145bc4421e4277eda9ee3f5ad08625/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/b10f9a2f66b92bb50ff34bf14bee0566/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/b10f9a2f66b92bb50ff34bf14bee0566/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/341461ae9767e42fc991f982722b8a19/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/341461ae9767e42fc991f982722b8a19/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3de3bac3c36ba893921c1eeb1a71d8d6/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/3de3bac3c36ba893921c1eeb1a71d8d6/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/87659cf33a78cd9c0d3802c63bf31d51/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/87659cf33a78cd9c0d3802c63bf31d51/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/71f5b129f2f970f38143ad2b086f8da1/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/71f5b129f2f970f38143ad2b086f8da1/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/d1e69d121cec6d5a4d20624c486d3ec5/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/d1e69d121cec6d5a4d20624c486d3ec5/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/c16cce549d952e645524c397e62d7dd4/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/c16cce549d952e645524c397e62d7dd4/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/f1722d963a78fe826a7aaefda9ca8a8f/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/f1722d963a78fe826a7aaefda9ca8a8f/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6759cbdf0666404a8a7d93afa2e802f6/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/6759cbdf0666404a8a7d93afa2e802f6/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/843ed76c30310a59acd04d229f6fa42e/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/stone/.gradle/caches/transforms-2/files-2.1/843ed76c30310a59acd04d229f6fa42e/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		ADDED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml
+		INJECTED from /Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/src/main/AndroidManifest.xml

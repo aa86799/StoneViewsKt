@@ -42,14 +42,14 @@ android {
     }
 
     signingConfigs { //gradle assembleRelease
-//        myConfig {
-//            storeFile file("stone.keystore")
-//            storePassword "482935"
-//            keyAlias "stone"
-//            keyPassword "482935"
-//            v1SigningEnabled true
-//            v2SigningEnabled true
-//        }
+        myConfig {
+            storeFile file("stone.keystore")
+            storePassword "482935"
+            keyAlias "stone"
+            keyPassword "482935"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
     }
 
     buildTypes {
@@ -57,7 +57,7 @@ android {
             multiDexEnabled true
             minifyEnabled true
             zipAlignEnabled true
-//            signingConfig signingConfigs.myConfig
+            signingConfig signingConfigs.myConfig
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -65,7 +65,7 @@ android {
             multiDexEnabled true
             minifyEnabled false
             zipAlignEnabled true
-//            signingConfig signingConfigs.myConfig
+            signingConfig signingConfigs.myConfig
         }
     }
 

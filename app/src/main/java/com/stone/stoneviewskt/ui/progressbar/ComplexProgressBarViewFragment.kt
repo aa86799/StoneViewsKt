@@ -44,7 +44,7 @@ class ComplexProgressBarViewFragment: BaseFragment() {
     }
 
     override fun getLayoutView(): View? {
-        mBar = ComplexProgressBarView(mActivity)
+        mBar = ComplexProgressBarView(_mActivity)
         return mBar
     }
 }

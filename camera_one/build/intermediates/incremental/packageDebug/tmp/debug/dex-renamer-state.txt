@@ -1,0 +1,4 @@
+#Tue Jan 05 00:38:12 CST 2021
+base.0=/Users/stone/Documents/Project_AS_stone/StoneViewsKt/camera_one/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

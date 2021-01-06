@@ -32,6 +32,7 @@ import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
+import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
 import com.stone.stoneviewskt.util.showLong
 import com.stone.viewbinding.ViewBindActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -79,6 +80,7 @@ class MainActivity : BaseActivity() {
                 "View Binding" -> startActivity<ViewBindActivity>()
                 "Parcel Data" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
                 "Data Store" -> startNewUI(DataStoreFragment::class.java)
+                "WebView加载图片" -> startNewUI(ImageLoadWebViewFragment::class.java)
             }
         }
 
@@ -112,6 +114,7 @@ class MainActivity : BaseActivity() {
                 "View Binding",
                 "Parcel Data",
                 "Data Store",
+                "WebView加载图片",
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }

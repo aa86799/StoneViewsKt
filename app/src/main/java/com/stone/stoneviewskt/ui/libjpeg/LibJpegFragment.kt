@@ -48,10 +48,10 @@ class LibJpegFragment : BaseFragment() {
 //        val bitmap = BitmapFactory.decodeStream(resources.openRawResource(R.mipmap.back_girl)) //不会自动缩放
         fragment_lib_jpeg_ok.onClick {
             requestPermission()
-            if (ContextCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 //                compressJpeg(bitmap, 80, "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)}/jsy.jpg")  //路径方法 过时了
-                logi(mActivity.cacheDir.absolutePath)
-                val output = "${mActivity.cacheDir}/kotlin.jpg"
+                logi(_mActivity.cacheDir.absolutePath)
+                val output = "${_mActivity.cacheDir}/kotlin.jpg"
                 var quality = 100
                 do {
                     compressJpeg(bitmap, quality, output)
@@ -81,13 +81,13 @@ class LibJpegFragment : BaseFragment() {
     private external fun compressJpeg(bitmap: Bitmap, quality: Int, path: String)
 
     private fun requestPermission() {
-        if (ContextCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(mActivity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
-            Toast.makeText(mActivity, "申请权限", Toast.LENGTH_SHORT).show()
+            Toast.makeText(_mActivity, "申请权限", Toast.LENGTH_SHORT).show()
 
             // 申请权限
-            ActivityCompat.requestPermissions(mActivity, arrayOf(
+            ActivityCompat.requestPermissions(_mActivity, arrayOf(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE), 100);
         }

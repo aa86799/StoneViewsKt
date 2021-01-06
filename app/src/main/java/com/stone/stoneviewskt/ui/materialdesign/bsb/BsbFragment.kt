@@ -36,7 +36,7 @@ class BsbFragment : BaseFragment() {
          */
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior.peekHeight =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50f, mActivity.displayMetrics)
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50f, _mActivity.displayMetrics)
                 .toInt()
 
         bottomSheetBehavior.addBottomSheetCallback(object :

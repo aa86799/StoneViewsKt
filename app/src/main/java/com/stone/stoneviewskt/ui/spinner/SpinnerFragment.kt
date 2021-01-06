@@ -58,7 +58,7 @@ class SpinnerFragment: BaseFragment() {
     }
 
     private fun <T> getSpAdapter(listData: List<T>, isFirstBackGray: Boolean, itemText: ((itemPosition: Int) -> String)): ArrayAdapter<T> {
-        return object : ArrayAdapter<T>(mActivity, android.R.layout.simple_spinner_dropdown_item, listData) {
+        return object : ArrayAdapter<T>(_mActivity, android.R.layout.simple_spinner_dropdown_item, listData) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {//静态展示的
                 val view = super.getView(position, convertView, parent)
                 val tv = view.findViewById<TextView>(android.R.id.text1)

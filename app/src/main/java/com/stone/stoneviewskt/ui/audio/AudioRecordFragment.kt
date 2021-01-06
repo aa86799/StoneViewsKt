@@ -122,7 +122,7 @@ class AudioRecordFragment : BaseFragment() {
 
     private fun doStart(): Boolean {
         try {
-            mAudioFile = File("${mActivity.externalCacheDir}/stone.pcm")
+            mAudioFile = File("${_mActivity.externalCacheDir}/stone.pcm")
             mAudioFile?.createNewFile()
 
             val os = FileOutputStream(mAudioFile)
@@ -198,7 +198,7 @@ class AudioRecordFragment : BaseFragment() {
             mAudioTrack = AudioTrack(streamType, sampleRateInHz, channelConfig,
                     audioFormat, max(bufferSizeInBytes, mBufferSize), mode)
             mAudioTrack?.play() //调一次播放，等待写入
-            val fis = FileInputStream("${mActivity.externalCacheDir}/stone.pcm")
+            val fis = FileInputStream("${_mActivity.externalCacheDir}/stone.pcm")
             var read = fis.read(mBuffer)
             while (read > 0) {
                 val buffer = if (mPitchRatio == 1.0f) mBuffer else mAudioPitchProcessor.process(mPitchRatio, mSampleRateInHz, mBuffer)

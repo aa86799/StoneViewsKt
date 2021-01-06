@@ -37,7 +37,7 @@ class ObliqueProgressbarFragment : BaseFragment() {
     }
 
     override fun getLayoutView(): View? {
-        mViewer = ObliqueProgressbarView(mActivity)
+        mViewer = ObliqueProgressbarView(_mActivity)
         return mViewer
     }
 }
