@@ -3,6 +3,9 @@
 buildscript {
 //    ext.kotlin_version = '1.4.20'
     apply from: 'configs.gradle'
+    ext {
+        versions.kotlin = '1.4.21'
+    }
 
     repositories {
         maven { url 'https://maven.aliyun.com/repository/public' }
