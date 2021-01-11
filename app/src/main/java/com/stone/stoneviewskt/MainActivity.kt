@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.data.UserData
+import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
@@ -81,6 +82,7 @@ class MainActivity : BaseActivity() {
                 "Parcel Data" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
                 "Data Store" -> startNewUI(DataStoreFragment::class.java)
                 "WebView加载图片" -> startNewUI(ImageLoadWebViewFragment::class.java)
+                "Layout Animation" -> startNewUI(LayoutAnimFragment::class.java)
             }
         }
 
@@ -115,6 +117,7 @@ class MainActivity : BaseActivity() {
                 "Parcel Data",
                 "Data Store",
                 "WebView加载图片",
+                "Layout Animation"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
