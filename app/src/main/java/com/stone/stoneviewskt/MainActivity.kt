@@ -19,6 +19,7 @@ import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.jetpack.datastore.DataStoreFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
+import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
@@ -83,6 +84,7 @@ class MainActivity : BaseActivity() {
                 "Data Store" -> startNewUI(DataStoreFragment::class.java)
                 "WebView加载图片" -> startNewUI(ImageLoadWebViewFragment::class.java)
                 "Layout Animation" -> startNewUI(LayoutAnimFragment::class.java)
+                "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
             }
         }
 
@@ -117,7 +119,8 @@ class MainActivity : BaseActivity() {
                 "Parcel Data",
                 "Data Store",
                 "WebView加载图片",
-                "Layout Animation"
+                "Layout Animation",
+                "Lifecycle Observer"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
