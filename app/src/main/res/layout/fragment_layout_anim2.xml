@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_layout_anim_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#abc778"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/fragment_layout_anim_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@mipmap/back_girl_cmiki"
+        android:scaleType="center" />
+
+    <LinearLayout
+        android:id="@+id/fragment_layout_anim_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fragment_layout_anim_btn0"
+        android:layout_alignRight="@id/fragment_layout_anim_btn0"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/fragment_layout_anim_btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="btn 4"
+            app:layout_constraintBottom_toTopOf="@id/fragment_layout_anim_btn3"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_layout_anim_btn0"
+            app:layout_constraintRight_toRightOf="@id/fragment_layout_anim_btn0" />
+
+        <Button
+            android:id="@+id/fragment_layout_anim_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="btn 3"
+            app:layout_constraintBottom_toTopOf="@id/fragment_layout_anim_btn2"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_layout_anim_btn0"
+            app:layout_constraintRight_toRightOf="@id/fragment_layout_anim_btn0" />
+
+        <Button
+            android:id="@+id/fragment_layout_anim_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="btn 2"
+            app:layout_constraintBottom_toTopOf="@id/fragment_layout_anim_btn1"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_layout_anim_btn0"
+            app:layout_constraintRight_toRightOf="@id/fragment_layout_anim_btn0" />
+
+        <Button
+            android:id="@+id/fragment_layout_anim_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="btn 1"
+            app:layout_constraintBottom_toTopOf="@id/fragment_layout_anim_btn0"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_layout_anim_btn0"
+            app:layout_constraintRight_toRightOf="@id/fragment_layout_anim_btn0" />
+    </LinearLayout>
+    <!--    -->
+    <Button
+        android:id="@+id/fragment_layout_anim_btn0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:text="anim" />
+</RelativeLayout>

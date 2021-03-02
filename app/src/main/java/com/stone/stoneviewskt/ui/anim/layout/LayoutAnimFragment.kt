@@ -8,7 +8,7 @@ import android.view.animation.OvershootInterpolator
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_layout_anim.*
+import kotlinx.android.synthetic.main.fragment_layout_anim2.*
 
 /**
  * desc:
@@ -22,17 +22,19 @@ class LayoutAnimFragment : BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
+        //属性动画
         fragment_layout_anim_btn0.setOnClickListener {
             val anim = ObjectAnimator.ofInt(fragment_layout_anim_btn0.top, fragment_layout_anim_root.top)
             val trans = LayoutTransition()
-            trans.setDuration(1000)
+            trans.setDuration(2000)
             trans.setAnimator(LayoutTransition.CHANGE_APPEARING, anim)
             fragment_layout_anim_root.layoutTransition = trans
             fragment_layout_anim_group.visibility = View.VISIBLE
             anim.addUpdateListener {
                 logi("$anim: ${it.animatedFraction}  ${it.animatedValue}")
                 fragment_layout_anim_root.alpha = 0xff * it.animatedFraction
-                fragment_layout_anim_root.top = it.animatedValue as Int
+                fragment_layout_anim_iv.top = it.animatedValue as Int
+                fragment_layout_anim_group.top = it.animatedValue as Int
             }
             anim.interpolator = OvershootInterpolator()
             anim.start()
@@ -40,6 +42,7 @@ class LayoutAnimFragment : BaseFragment() {
     }
 
     override fun getLayoutRes(): Int {
-        return R.layout.fragment_layout_anim
+//        return R.layout.fragment_layout_anim
+        return R.layout.fragment_layout_anim2
     }
 }

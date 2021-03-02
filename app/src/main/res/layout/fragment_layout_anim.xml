@@ -8,6 +8,15 @@
     android:background="#abc778"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/fragment_layout_anim_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@mipmap/back_girl_cmiki"/>
+
 <!--
 ConstraintLayout 。
     android:layoutAnimation="@anim/tran_top"
