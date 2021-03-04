@@ -12,6 +12,7 @@ import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
+import com.stone.stoneviewskt.ui.dialog.MainDialogManagerFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
 import com.stone.stoneviewskt.ui.imagecrop.StoneImageCropFragment
@@ -85,6 +86,7 @@ class MainActivity : BaseActivity() {
                 "WebView加载图片" -> startNewUI(ImageLoadWebViewFragment::class.java)
                 "Layout Animation" -> startNewUI(LayoutAnimFragment::class.java)
                 "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
+                "Dialog" -> startNewUI(MainDialogManagerFragment::class.java)
             }
         }
 
@@ -120,7 +122,8 @@ class MainActivity : BaseActivity() {
                 "Data Store",
                 "WebView加载图片",
                 "Layout Animation",
-                "Lifecycle Observer"
+                "Lifecycle Observer",
+                "Dialog"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
