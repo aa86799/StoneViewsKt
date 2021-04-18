@@ -31,6 +31,7 @@ import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
 import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
 import com.stone.stoneviewskt.ui.radar.RadarFragment
+import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
@@ -87,6 +88,7 @@ class MainActivity : BaseActivity() {
                 "Layout Animation" -> startNewUI(LayoutAnimFragment::class.java)
                 "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
                 "Dialog" -> startNewUI(MainDialogManagerFragment::class.java)
+                "Room" -> startNewUI(RoomFragment::class.java)
             }
         }
 
@@ -123,7 +125,8 @@ class MainActivity : BaseActivity() {
                 "WebView加载图片",
                 "Layout Animation",
                 "Lifecycle Observer",
-                "Dialog"
+                "Dialog",
+                "Room"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }

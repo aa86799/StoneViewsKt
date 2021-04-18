@@ -101,6 +101,9 @@ dependencies {
     implementation refs.fragmentationx
     implementation refs.permissionsDispatcher
     kapt refs.permissionsDispatcherCompiler
+    implementation refs.roomRuntime
+    implementation refs.roomKtx
+    kapt refs.roomCompiler
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
 
     testImplementation 'junit:junit:4.13'
