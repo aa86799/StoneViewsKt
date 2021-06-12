@@ -1,20 +1,26 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-if (isBuildDokit.toBoolean()) {
-    apply plugin: 'com.didi.dokit'
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
+val isBuildDokit = false
+if (isBuildDokit) {
+    apply(plugin = "com.didi.dokit")
+}
+
+val builds: Map<String, Any> by extra
+
 android {
-    compileSdkVersion builds.compileSdkVersion
+    compileSdkVersion = builds["compileSdkVersion"].toString()
 
     defaultConfig {
-        applicationId "com.stone.stoneviewskt"
-        minSdkVersion builds.minSdkVersion
-        targetSdkVersion builds.targetSdkVersion
-        versionCode builds.versionCode
-        versionName builds.versionName
+        applicationId = "com.stone.stoneviewskt"
+        minSdkVersion(builds.minSdkVersion)
+        targetSdkVersion = builds.targetSdkVersion
+        versionCode = builds.versionCode
+        versionName = builds.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -27,12 +33,12 @@ android {
 
         ndk {
             //设置支持的SO库架构
-            abiFilters /*'armeabi' ,*/ 'armeabi-v7a' , 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters /*"armeabi" ,*/ "armeabi-v7a" , "arm64-v8a", "x86", "x86_64"
         }
     }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
-    ndkVersion '20.0.5594570'
+    ndkVersion "20.0.5594570"
 
     externalNativeBuild {
         cmake {
@@ -58,7 +64,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             signingConfig signingConfigs.myConfig
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
 
         debug {
@@ -75,45 +81,45 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 
-    androidExtensions {//plugin: 'kotlin-android-extensions'
+    androidExtensions {//plugin: "kotlin-android-extensions"
         defaultCacheImplementation = "SPARSE_ARRAY" //default HASH_MAP
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":viewbinding")
-    implementation refs.kotlin
-    implementation refs.androidxCompat
-    implementation refs.ktx
-    implementation refs.constraintLayout
-    implementation refs.recyclerviewX
-    implementation refs.anko
-    implementation refs.kotlinCoroutineAndroid
-    implementation refs.kotlinCoroutineCore
-    implementation refs.androidxLifecycle
-    implementation refs.material
-    implementation refs.mmkv
-    implementation refs.multidex
-    implementation refs.fragmentationx
-    implementation refs.permissionsDispatcher
-    kapt refs.permissionsDispatcherCompiler
-    implementation refs.roomRuntime
-    implementation refs.roomKtx
-    kapt refs.roomCompiler
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
+    implementation(fileTree(org.gradle.internal.impldep.bsh.commands.dir: "libs", include: ["*.jar"]))
+    implementation(project(":viewbinding")
+    implementation(refs.kotlin)
+    implementation(refs.androidxCompat)
+    implementation(refs.ktx)
+    implementation(refs.constraintLayout)
+    implementation(refs.recyclerviewX)
+    implementation(refs.anko)
+    implementation(refs.kotlinCoroutineAndroid)
+    implementation(refs.kotlinCoroutineCore)
+    implementation(refs.androidxLifecycle)
+    implementation(refs.material)
+    implementation(refs.mmkv)
+    implementation(refs.multidex)
+    implementation(refs.fragmentationx)
+    implementation(refs.permissionsDispatcher)
+    kapt(refs.permissionsDispatcherCompiler)
+    implementation(refs.roomRuntime)
+    implementation(refs.roomKtx)
+    kapt(refs.roomCompiler)
+    implementation("androidx.datastore:datastore-preferences:1.0.0-alpha05")
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation("junit:junit:4.13")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     if (isBuildDokit.toBoolean()) {
         //http://xingyun.xiaojukeji.com/docs/dokit/#/androidGuide  滴滴开发助手
-        debugImplementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
-        releaseImplementation 'com.didichuxing.doraemonkit:dokitx-no-op:3.3.5'
+        debugImplementation("com.didichuxing.doraemonkit:dokitx:3.3.5")
+        releaseImplementation("com.didichuxing.doraemonkit:dokitx-no-op:3.3.5")
     }
 }
 
