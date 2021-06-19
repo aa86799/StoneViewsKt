@@ -11,7 +11,9 @@ import java.io.IOException
 
 object FileUtil {
     private const val TAG = "FileUtil"
+    //  /storage/emulated/0/Android/data/包名/cache
 //    private val parentPath = StoneApp.instance.externalCacheDir
+    //  /storage/emulated/0/Android/data/包名/files
     private val parentPath = StoneApp.instance.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     private var storagePath = ""
     private const val DST_FOLDER_NAME = "PlayCamera"

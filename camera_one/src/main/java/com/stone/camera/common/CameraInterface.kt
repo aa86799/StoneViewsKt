@@ -17,7 +17,7 @@ class CameraInterface private constructor() {
     private var mCamera: Camera? = null
     private var mParams: Camera.Parameters? = null
     private var isPreviewing = false
-    private var mPreviwRate = -1f
+    private var mPreviewRate = -1f
 
     interface CamOpenOverCallback {
         fun cameraHasOpened()
@@ -78,7 +78,7 @@ class CameraInterface private constructor() {
                 e.printStackTrace()
             }
             isPreviewing = true
-            mPreviwRate = previewRate
+            mPreviewRate = previewRate
             mParams = mCamera!!.parameters //重新get一次  
             Log.i(
                 TAG, "PreviewSize--With = " + it.previewSize.width
@@ -99,7 +99,7 @@ class CameraInterface private constructor() {
             mCamera!!.setPreviewCallback(null)
             mCamera!!.stopPreview()
             isPreviewing = false
-            mPreviwRate = -1f
+            mPreviewRate = -1f
             mCamera!!.release()
             mCamera = null
         }

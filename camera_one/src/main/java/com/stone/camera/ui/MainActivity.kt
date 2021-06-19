@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -69,11 +70,11 @@ class MainActivity : AppCompatActivity() {
 
         //手动设置拍照ImageButton的大小为120dip×120dip
         val p2: ViewGroup.LayoutParams = btn_shutter.layoutParams
-        //        float v = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120, getResources().getDisplayMetrics());
-//        p2.width = (int) v;
-//        p2.height = (int) v;
-        p2.width = DisplayUtil.dip2px(this, 120f)
-        p2.height = DisplayUtil.dip2px(this, 120f)
+        val v = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120f, resources.displayMetrics);
+        p2.width = v.toInt()
+        p2.height = v.toInt()
+//        p2.width = DisplayUtil.dip2px(this, 120f)
+//        p2.height = DisplayUtil.dip2px(this, 120f)
         btn_shutter.layoutParams = p2
     }
 

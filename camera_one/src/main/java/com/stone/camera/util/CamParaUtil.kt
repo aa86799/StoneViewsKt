@@ -46,7 +46,6 @@ class CamParaUtil private constructor() {
 
     inner class CameraSizeComparator : Comparator<Camera.Size> {
         override fun compare(lhs: Camera.Size, rhs: Camera.Size): Int {
-            // TODO Auto-generated method stub  
             return when {
                 lhs.width == rhs.width -> {
                     0
