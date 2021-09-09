@@ -89,6 +89,7 @@ class MainActivity : BaseActivity() {
                 "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
                 "Dialog" -> startNewUI(MainDialogManagerFragment::class.java)
                 "Room" -> startNewUI(RoomFragment::class.java)
+                "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
             }
         }
 
@@ -126,7 +127,8 @@ class MainActivity : BaseActivity() {
                 "Layout Animation",
                 "Lifecycle Observer",
                 "Dialog",
-                "Room"
+                "Room",
+                "从系统加载多张图片"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 }
