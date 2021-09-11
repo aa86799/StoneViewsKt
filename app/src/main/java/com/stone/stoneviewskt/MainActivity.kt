@@ -24,6 +24,7 @@ import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
+import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
 import com.stone.stoneviewskt.ui.parceldata.ParcelDataFragment

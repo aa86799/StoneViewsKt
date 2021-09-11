@@ -6,6 +6,9 @@ import android.app.AsyncNotedAppOp
 import android.app.SyncNotedAppOp
 import android.content.Context
 import android.os.Build
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
@@ -22,6 +25,7 @@ import com.tencent.mmkv.MMKV
 class StoneApplication : MultiDexApplication() {
 
     var mTopActivity: Activity? = null
+    val dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     companion object {
         lateinit var instance: StoneApplication

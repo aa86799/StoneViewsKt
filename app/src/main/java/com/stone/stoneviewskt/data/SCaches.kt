@@ -2,11 +2,7 @@ package com.stone.stoneviewskt.data
 
 import androidx.annotation.WorkerThread
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.SharedPreferencesMigration
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.preferencesKey
-import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.core.*
 import com.stone.stoneviewskt.StoneApplication
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -25,13 +21,13 @@ class SCaches {
         private const val PREFERENCE_NAME = "Stone_DataStore"
 
         //use PreferenceDataStoreFactory   not DataStoreFactory
-        private val dataStore: DataStore<Preferences> = StoneApplication.instance.createDataStore(name = PREFERENCE_NAME)
+        private val dataStore: DataStore<Preferences> = StoneApplication.instance.dataStore
 
-        //迁移 SharedPreferences 到 DataStore
-        private var dataStore2: DataStore<Preferences> = StoneApplication.instance.createDataStore(
-                name = PREFERENCE_NAME,
-                migrations = listOf(SharedPreferencesMigration(StoneApplication.instance, "sp", setOf("key1", "key2")))
-        )
+//        //迁移 SharedPreferences 到 DataStore
+//        private var dataStore2: DataStore<Preferences> = preferencesDataStore(
+//                name = PREFERENCE_NAME,
+//                migrations = listOf(SharedPreferencesMigration(StoneApplication.instance, "sp", setOf("key1", "key2")))
+//        )
 
         suspend fun first() {
             dataStore.data.first()
@@ -48,7 +44,7 @@ class SCaches {
                             throw it
                         }
                     }*/.map {
-                        it[preferencesKey(name)]
+                        it[stringPreferencesKey(name)]
                     }
         }
 
@@ -63,7 +59,7 @@ class SCaches {
                             throw it
                         }
                     }*/.map {
-                        it[preferencesKey(name)]
+                        it[intPreferencesKey(name)]
                     }
         }
 
@@ -92,7 +88,7 @@ class SCaches {
         @WorkerThread
         suspend fun put(name: String, value: Int) {
             dataStore.edit {
-                val key = preferencesKey<Int>(name)
+                val key = intPreferencesKey(name)
 //                val key = it[name] ?: 0
                 it[key] = value
             }
@@ -101,7 +97,7 @@ class SCaches {
         @WorkerThread
         suspend fun put(name: String, value: Long) {
             dataStore.edit {
-                val key = preferencesKey<Long>(name)
+                val key = longPreferencesKey(name)
                 it[key] = value
             }
         }
@@ -109,7 +105,7 @@ class SCaches {
         @WorkerThread
         suspend fun put(name: String, value: Float) {
             dataStore.edit {
-                val key = preferencesKey<Float>(name)
+                val key = floatPreferencesKey(name)
                 it[key] = value
             }
         }
@@ -117,7 +113,7 @@ class SCaches {
         @WorkerThread
         suspend fun putDouble(name: String, value: Double) {
             dataStore.edit {
-                val key = preferencesKey<Double>(name)
+                val key = doublePreferencesKey(name)
                 it[key] = value
             }
         }
@@ -125,7 +121,7 @@ class SCaches {
         @WorkerThread
         suspend fun put(name: String, value: Boolean) {
             dataStore.edit {
-                val key = preferencesKey<Boolean>(name)
+                val key = booleanPreferencesKey(name)
                 it[key] = value
             }
         }
@@ -133,7 +129,7 @@ class SCaches {
         @WorkerThread
         suspend fun put(name: String, value: String) {
             dataStore.edit {
-                val key = preferencesKey<String>(name)
+                val key = stringPreferencesKey(name)
                 it[key] = value
             }
         }
