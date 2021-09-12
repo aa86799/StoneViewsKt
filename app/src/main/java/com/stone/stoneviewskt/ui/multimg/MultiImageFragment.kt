@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
-import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_multi_image.*
@@ -64,13 +63,6 @@ class MultiImageFragment : BaseFragment() {
                 if (it == 1) {
                     iv_img2.setImageURI(list[1])
                 }
-            }
-        }
-        it.data?.data?.let { uri ->
-            viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-//                val file = ImageUploadHelper.imageUri2File(uri) ?: return@launchWhenCreated
-//                val imgUri = Uri.fromFile(file)
-//                chooseAlbumResult(imgUri)
             }
         }
     }
@@ -137,9 +129,10 @@ class MultiImageFragment : BaseFragment() {
                 Toast.makeText(requireContext(), "granted", Toast.LENGTH_SHORT).show()
             }
 
+            //第一次请求权限被禁止，但未选择【不再提醒】
             ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), permission) -> {
-                if (mGrantedCallbackCallback != null) {
-                    mGrantedCallbackCallback?.invoke()
+                if (rationaleCallback != null) {
+                    rationaleCallback.invoke()
                     return
                 }
                 // show tips, needs permission why it is
