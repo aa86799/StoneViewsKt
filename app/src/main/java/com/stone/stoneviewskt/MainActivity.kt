@@ -56,6 +56,8 @@ class MainActivity : BaseActivity() {
             }
         }
 
+        startActivity<ComposeActivity>()
+
         setContentView(R.layout.activity_main)
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
