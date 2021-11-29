@@ -5,12 +5,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:name=".StoneApplication"
@@ -22,7 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,14 +35,22 @@
         </activity>
 
         <activity
+            android:name=".compose.ComposeActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".base.BaseActivity"
+            android:exported="false"
             android:theme="@style/StoneBaseMaterialTheme" />
         <activity android:name="com.stone.stoneviewskt.ui.gray.BaseGrayActivity" />
         <activity
             android:name=".ui.materialdesign.MDActivity"
+            android:exported="false"
             android:theme="@style/StoneBaseMaterialTheme" />
 
-        <activity android:name=".ui.nfc.NfcNdefActivity">
+        <activity
+            android:name=".ui.nfc.NfcNdefActivity"
+            android:exported="false">
             <!-- nfc类型有三种： NDEF，TECH，TAG，优先级依次降低 -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -46,7 +58,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.nfc.NfcTechActivity">
+        <activity
+            android:name=".ui.nfc.NfcTechActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
             </intent-filter>
@@ -56,7 +70,9 @@
                 android:resource="@xml/filter_nfc" />
         </activity>
 
-        <activity android:name=".ui.nfc.NfcTagActivity">
+        <activity
+            android:name=".ui.nfc.NfcTagActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />

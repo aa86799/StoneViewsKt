@@ -31,6 +31,14 @@ android {
         }
     }
 
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.0.5"
+        kotlinCompilerVersion '1.5.31'
+    }
+
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
     ndkVersion '20.0.5594570'
 
@@ -109,12 +117,32 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
-    implementation 'androidx.fragment:fragment-ktx:1.3.6'
-    implementation 'androidx.activity:activity-ktx:1.3.1'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+    implementation 'androidx.activity:activity-ktx:1.4.0'
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    /*compose begin*/
+    implementation 'androidx.compose.ui:ui:1.0.5'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.0.5'
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation 'androidx.compose.foundation:foundation:1.0.5'
+    // Material Design
+    implementation 'androidx.compose.material:material:1.0.5'
+    // Material design icons
+    implementation 'androidx.compose.material:material-icons-core:1.0.5'
+    implementation 'androidx.compose.material:material-icons-extended:1.0.5'
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0'
+    // Integration with observables
+    implementation 'androidx.compose.runtime:runtime-livedata:1.0.5'
+    implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.5'
+    /*compose end*/
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     if (isBuildDokit.toBoolean()) {
         //http://xingyun.xiaojukeji.com/docs/dokit/#/androidGuide  滴滴开发助手

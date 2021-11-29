@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
+import com.stone.stoneviewskt.compose.ComposeActivity
 import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
@@ -59,6 +60,7 @@ class MainActivity : BaseActivity() {
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "Compose" -> startActivity<ComposeActivity>()
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
                 "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
                 "雷达扫描旋转" -> startNewUI(RadarFragment::class.java)
@@ -99,6 +101,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+                "Compose",
                 "轮盘等分",
                 "卫星式菜单",
                 "雷达扫描旋转",
