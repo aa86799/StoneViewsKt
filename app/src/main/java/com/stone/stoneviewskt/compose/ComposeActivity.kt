@@ -4,14 +4,19 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -92,9 +97,12 @@ class ComposeActivity : AppCompatActivity() {
     @Composable
     fun Preview1() {
 //        loadRoot(Message("hello aaaaaaabbbb", "stone"))
-        AppTheme { // 依据系统是否是深色主题，来切换主题
-            materialMessageCard(Message("hello aaaaaaabbbb", "stone"))
-        }
+
+//        AppTheme { // 依据系统是否是深色主题，来切换主题
+//            materialMessageCard(Message("hello aaaaaaabbbb", "stone"))
+//        }
+
+        PreviewConversation()
     }
 
     @Composable
@@ -112,20 +120,60 @@ class ComposeActivity : AppCompatActivity() {
                     .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Column(Modifier.wrapContentSize(unbounded = true)) {
+
+            /*
+             * remember 将本地状态存储在内存中，MutableState 值更新时，
+             * 系统会自动重新绘制使用此状态的可组合项（及其子项）
+             */
+            var isExpanded by remember { mutableStateOf(false)}
+            // 当所提供的targetValue被更改时，动画将自动运行
+            val surfaceColor: Color by animateColorAsState(
+                if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface
+            )
+//            Column(Modifier.wrapContentSize(unbounded = true)
+            // 点击后，更新 isExpanded
+            Column(Modifier.clickable { isExpanded = !isExpanded }) {
                 Text(
                     text = msg.author,
                     color = MaterialTheme.colors.secondaryVariant,
                     style = MaterialTheme.typography.subtitle2
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Surface(shape = MaterialTheme.shapes.medium, elevation = 3.dp) {
+                Surface(
+                    shape = MaterialTheme.shapes.medium,
+                    elevation = 3.dp,
+                    color = surfaceColor,
+                    modifier = Modifier.animateContentSize().padding(1.dp) // 内容大小动画
+                ) {
                     Text(
                         text = msg.body,
+                        modifier = Modifier.padding(8.dp, 10.dp),
+                        maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                         style = MaterialTheme.typography.body2
                     )
                 }
             }
+        }
+    }
+
+    @Composable
+    fun Conversation(list: List<Message>) {
+        LazyColumn() {
+            items(list) { message ->
+                materialMessageCard(message)
+            }
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewConversation() {
+        AppTheme {
+            val list = mutableListOf<Message>()
+            (1..5).forEach {
+                list.add(Message("author$it", "醉里挑灯看剑，梦回吹角连营。八百里分麾下炙，五十弦翻塞外声，沙场秋点兵。马作的卢飞快，弓如霹雳弦惊。了却君王天下事，赢得生前身后名。可怜白发生！-$it"))
+            }
+            Conversation(list)
         }
     }
 }
