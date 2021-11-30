@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -88,11 +89,11 @@ class ComposeActivity : AppCompatActivity() {
     }
 
     @ExperimentalUnitApi
-    @Preview(name = "Light Mode") // 浅色主题预览
+    @Preview(name = "Light Mode", showBackground = true, backgroundColor = 0xccFFFF00, heightDp = 150) // 命名为浅色主题，展示背景色
 //    @Preview(
 //        uiMode = Configuration.UI_MODE_NIGHT_YES,
 //        showBackground = true,
-//        name = "Dark Mode" // 深色主题预览
+//        name = "Dark Mode" // 命名为深色主题
 //    )
     @Composable
     fun Preview1() {
@@ -110,7 +111,7 @@ class ComposeActivity : AppCompatActivity() {
         // 颜色、排版、形状
         Row(modifier = Modifier.padding(all = 10.dp)) {
             Image(
-                painter = painterResource(R.drawable.ic_launcher_background),
+                painter = painterResource(R.drawable.title_back),
                 contentDescription = null,
                 modifier = Modifier
                     // Set image size to 40 dp
@@ -143,7 +144,9 @@ class ComposeActivity : AppCompatActivity() {
                     shape = MaterialTheme.shapes.medium,
                     elevation = 3.dp,
                     color = surfaceColor,
-                    modifier = Modifier.animateContentSize().padding(1.dp) // 内容大小动画
+                    modifier = Modifier
+                        .animateContentSize()
+                        .padding(1.dp) // 内容大小动画
                 ) {
                     Text(
                         text = msg.body,
@@ -165,7 +168,6 @@ class ComposeActivity : AppCompatActivity() {
         }
     }
 
-    @Preview
     @Composable
     fun PreviewConversation() {
         AppTheme {
