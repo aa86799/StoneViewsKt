@@ -1,6 +1,6 @@
 package com.stone.stoneviewskt.compose
 
-import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,15 +14,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -55,8 +54,8 @@ class ComposeActivity : AppCompatActivity() {
         Column(Modifier.size(100.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = msg.author, fontStyle = FontStyle.Italic,
                     modifier = Modifier
-                        .alpha(0.5f)
-                        .then(Modifier.background(Color.Red)),
+                            .alpha(0.5f)
+                            .then(Modifier.background(Color.Red)),
             overflow = TextOverflow.Ellipsis, softWrap = true, maxLines = 1)
             OutlinedButton(onClick = {
                 toast("xxx")
@@ -68,15 +67,16 @@ class ComposeActivity : AppCompatActivity() {
                         painter = painterResource(R.drawable.ic_launcher_background),
                         contentDescription = "Contact profile picture",
                         modifier = Modifier
-                            // Set image size to 40 dp
-                            .size(40.dp)
-                            // Clip image to be shaped as a circle
-                            .clip(CircleShape)
+                                // Set image size to 40 dp
+                                .size(40.dp)
+                                // Clip image to be shaped as a circle
+                                .clip(CircleShape)
                 )
                 Column(Modifier.wrapContentSize(unbounded = true)) {
                     setTitle(msg.author)
                     setTitle(msg.body)
                 }
+
             }
         }
 
@@ -108,17 +108,21 @@ class ComposeActivity : AppCompatActivity() {
 
     @Composable
     fun materialMessageCard(msg: Message) {
+        val img = android.graphics.Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)
+        val canvas = android.graphics.Canvas(img)
+        canvas.drawColor(android.graphics.Color.RED)
+
         // 颜色、排版、形状
         Row(modifier = Modifier.padding(all = 10.dp)) {
-            Image(
-                painter = painterResource(R.drawable.title_back),
+//            Image(ImageBitmap.imageResource(id = R.mipmap.satellite_music),
+            Image(img.asImageBitmap(),
                 contentDescription = null,
                 modifier = Modifier
-                    // Set image size to 40 dp
-                    .size(40.dp)
-                    // Clip image to be shaped as a circle
-                    .clip(CircleShape)
-                    .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
+                        // Set image size to 40 dp
+                        .size(40.dp)
+                        // Clip image to be shaped as a circle
+                        .clip(CircleShape)
+                        .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
             )
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -145,8 +149,8 @@ class ComposeActivity : AppCompatActivity() {
                     elevation = 3.dp,
                     color = surfaceColor,
                     modifier = Modifier
-                        .animateContentSize()
-                        .padding(1.dp) // 内容大小动画
+                            .animateContentSize()
+                            .padding(1.dp) // 内容大小动画
                 ) {
                     Text(
                         text = msg.body,
@@ -173,7 +177,8 @@ class ComposeActivity : AppCompatActivity() {
         AppTheme {
             val list = mutableListOf<Message>()
             (1..5).forEach {
-                list.add(Message("author$it", "醉里挑灯看剑，梦回吹角连营。八百里分麾下炙，五十弦翻塞外声，沙场秋点兵。马作的卢飞快，弓如霹雳弦惊。了却君王天下事，赢得生前身后名。可怜白发生！-$it"))
+                list.add(Message("author$it", "醉里挑灯看剑，梦回吹角连营。八百里分麾下炙，" +
+                        "五十弦翻塞外声，沙场秋点兵。马作的卢飞快，弓如霹雳弦惊。了却君王天下事，赢得生前身后名。可怜白发生！-$it"))
             }
             Conversation(list)
         }
