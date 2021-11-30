@@ -1,5 +1,6 @@
 package com.stone.stoneviewskt.compose
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -82,11 +83,16 @@ class ComposeActivity : AppCompatActivity() {
     }
 
     @ExperimentalUnitApi
-    @Preview
+    @Preview(name = "Light Mode") // 浅色主题预览
+//    @Preview(
+//        uiMode = Configuration.UI_MODE_NIGHT_YES,
+//        showBackground = true,
+//        name = "Dark Mode" // 深色主题预览
+//    )
     @Composable
     fun Preview1() {
 //        loadRoot(Message("hello aaaaaaabbbb", "stone"))
-        AppTheme {
+        AppTheme { // 依据系统是否是深色主题，来切换主题
             materialMessageCard(Message("hello aaaaaaabbbb", "stone"))
         }
     }
@@ -113,10 +119,12 @@ class ComposeActivity : AppCompatActivity() {
                     style = MaterialTheme.typography.subtitle2
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = msg.body,
-                    style = MaterialTheme.typography.body2
-                )
+                Surface(shape = MaterialTheme.shapes.medium, elevation = 3.dp) {
+                    Text(
+                        text = msg.body,
+                        style = MaterialTheme.typography.body2
+                    )
+                }
             }
         }
     }
