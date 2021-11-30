@@ -5,12 +5,11 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,7 +47,9 @@ class ComposeActivity : AppCompatActivity() {
     fun loadRoot(msg: Message) {
         Column(Modifier.size(100.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = msg.author, fontStyle = FontStyle.Italic,
-                    modifier = Modifier.alpha(0.5f).then(Modifier.background(Color.Red)),
+                    modifier = Modifier
+                        .alpha(0.5f)
+                        .then(Modifier.background(Color.Red)),
             overflow = TextOverflow.Ellipsis, softWrap = true, maxLines = 1)
             OutlinedButton(onClick = {
                 toast("xxx")
@@ -60,10 +61,10 @@ class ComposeActivity : AppCompatActivity() {
                         painter = painterResource(R.drawable.ic_launcher_background),
                         contentDescription = "Contact profile picture",
                         modifier = Modifier
-                                // Set image size to 40 dp
-                                .size(40.dp)
-                                // Clip image to be shaped as a circle
-                                .clip(CircleShape)
+                            // Set image size to 40 dp
+                            .size(40.dp)
+                            // Clip image to be shaped as a circle
+                            .clip(CircleShape)
                 )
                 Column(Modifier.wrapContentSize(unbounded = true)) {
                     setTitle(msg.author)
@@ -71,7 +72,7 @@ class ComposeActivity : AppCompatActivity() {
                 }
             }
         }
-        PaddingValues.Absolute(10.dp, 20.dp, 10.dp, 20.dp)
+
     }
 
     @ExperimentalUnitApi
@@ -84,6 +85,39 @@ class ComposeActivity : AppCompatActivity() {
     @Preview
     @Composable
     fun Preview1() {
-        loadRoot(Message("hello aaaaaaabbbb", "stone"))
+//        loadRoot(Message("hello aaaaaaabbbb", "stone"))
+        AppTheme {
+            materialMessageCard(Message("hello aaaaaaabbbb", "stone"))
+        }
+    }
+
+    @Composable
+    fun materialMessageCard(msg: Message) {
+        // 颜色、排版、形状
+        Row(modifier = Modifier.padding(all = 10.dp)) {
+            Image(
+                painter = painterResource(R.drawable.ic_launcher_background),
+                contentDescription = null,
+                modifier = Modifier
+                    // Set image size to 40 dp
+                    .size(40.dp)
+                    // Clip image to be shaped as a circle
+                    .clip(CircleShape)
+                    .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Column(Modifier.wrapContentSize(unbounded = true)) {
+                Text(
+                    text = msg.author,
+                    color = MaterialTheme.colors.secondaryVariant,
+                    style = MaterialTheme.typography.subtitle2
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = msg.body,
+                    style = MaterialTheme.typography.body2
+                )
+            }
+        }
     }
 }
