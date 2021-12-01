@@ -4,8 +4,12 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -13,6 +17,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -21,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -54,8 +58,8 @@ class ComposeActivity : AppCompatActivity() {
         Column(Modifier.size(100.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = msg.author, fontStyle = FontStyle.Italic,
                     modifier = Modifier
-                            .alpha(0.5f)
-                            .then(Modifier.background(Color.Red)),
+                        .alpha(0.5f)
+                        .then(Modifier.background(Color.Red)),
             overflow = TextOverflow.Ellipsis, softWrap = true, maxLines = 1)
             OutlinedButton(onClick = {
                 toast("xxx")
@@ -67,10 +71,10 @@ class ComposeActivity : AppCompatActivity() {
                         painter = painterResource(R.drawable.ic_launcher_background),
                         contentDescription = "Contact profile picture",
                         modifier = Modifier
-                                // Set image size to 40 dp
-                                .size(40.dp)
-                                // Clip image to be shaped as a circle
-                                .clip(CircleShape)
+                            // Set image size to 40 dp
+                            .size(40.dp)
+                            // Clip image to be shaped as a circle
+                            .clip(CircleShape)
                 )
                 Column(Modifier.wrapContentSize(unbounded = true)) {
                     setTitle(msg.author)
@@ -118,11 +122,11 @@ class ComposeActivity : AppCompatActivity() {
             Image(img.asImageBitmap(),
                 contentDescription = null,
                 modifier = Modifier
-                        // Set image size to 40 dp
-                        .size(40.dp)
-                        // Clip image to be shaped as a circle
-                        .clip(CircleShape)
-                        .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
+                    // Set image size to 40 dp
+                    .size(40.dp)
+                    // Clip image to be shaped as a circle
+                    .clip(CircleShape)
+                    .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
             )
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -149,8 +153,8 @@ class ComposeActivity : AppCompatActivity() {
                     elevation = 3.dp,
                     color = surfaceColor,
                     modifier = Modifier
-                            .animateContentSize()
-                            .padding(1.dp) // 内容大小动画
+                        .animateContentSize()
+                        .padding(1.dp) // 内容大小动画
                 ) {
                     Text(
                         text = msg.body,
@@ -182,5 +186,46 @@ class ComposeActivity : AppCompatActivity() {
             }
             Conversation(list)
         }
+    }
+
+    enum class SurfaceState {
+        Pressed, Released
+    }
+    @Preview
+    @Composable
+    fun PressedSurface() {
+        // 看源码发现，pressed 、onPress 就是 MutableState 的 component1、component2;
+        // component1 是get ，component2是set
+        val (pressed, onPress) = remember { mutableStateOf(false) }
+        val transition = updateTransition(
+            targetState = if (pressed) SurfaceState.Pressed else SurfaceState.Released
+        )
+
+        val height by transition.animateDp { state ->
+            when (state) {
+                SurfaceState.Released -> 50.dp
+                SurfaceState.Pressed -> 350.dp
+            }
+        }
+        val surfaceColor by transition.animateColor { state ->
+            when (state) {
+                SurfaceState.Released -> Color.Blue
+                SurfaceState.Pressed -> Color.Red
+            }
+        }
+        val selectedAlpha by transition.animateFloat { state ->
+            when (state) {
+                SurfaceState.Released -> 0.5f
+                SurfaceState.Pressed -> 1f
+            }
+        }
+
+        Surface(
+            color = surfaceColor.copy(alpha = selectedAlpha),
+            modifier = Modifier
+                .toggleable(value = pressed, onValueChange = onPress)
+                .height(height)
+                .fillMaxWidth()
+        ){}
     }
 }
