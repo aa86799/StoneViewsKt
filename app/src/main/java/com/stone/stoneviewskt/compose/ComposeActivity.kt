@@ -16,6 +16,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
@@ -169,11 +170,20 @@ class ComposeActivity : AppCompatActivity() {
 
     @Composable
     fun Conversation(list: List<Message>) {
-        LazyColumn() {
+        LazyColumn {
             items(list) { message ->
                 materialMessageCard(message)
             }
         }
+
+    // LazyColumn, LazyRow 。它们是DSL实现的，content是LazyListScope类型。
+    // 相互间无法在内容上嵌套。
+//        LazyRow {
+//            item("") {}
+//        }
+//        Column() {
+//            Row {}
+//        }
     }
 
     @Composable
