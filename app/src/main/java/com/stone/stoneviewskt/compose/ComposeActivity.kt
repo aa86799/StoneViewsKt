@@ -26,7 +26,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.drawscope.inset
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -237,5 +240,35 @@ class ComposeActivity : AppCompatActivity() {
                 .height(height)
                 .fillMaxWidth()
         ){}
+    }
+
+    @Preview
+    @Composable
+    fun CanvasSample() {
+        // Canvas 可组合项，它将一个 DrawScope 为接收器的函数 (onDraw: DrawScope.() -> Unit) 作为参数，
+        // 从而允许代码块调用 DrawScope 中定义的成员函数。
+        androidx.compose.foundation.Canvas(
+            modifier = Modifier.size(120.dp)
+        ){
+            // Draw grey background, drawRect function is provided by the receiver
+            drawRect(color = Color.Gray)
+
+            // Inset content by 10 pixels on the left/right sides
+            // and 12 by the top/bottom
+            inset(10.0f, 12.0f) {
+
+            }
+            val quadrantSize = size / 2.0f
+
+            // Draw a rectangle within the inset bounds
+            drawRect(
+                size = quadrantSize,
+                color = Color.Red
+            )
+
+            rotate(180.0f) { // 默认绕 DrawContext 中心点
+                drawRect(size = quadrantSize, color = Color.Blue)
+            }
+        }
     }
 }
