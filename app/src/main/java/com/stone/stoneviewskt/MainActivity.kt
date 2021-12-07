@@ -37,6 +37,7 @@ import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
+import com.stone.stoneviewskt.ui.testscroll.ScrollFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
 import com.stone.stoneviewskt.util.showLong
@@ -63,6 +64,7 @@ class MainActivity : BaseActivity() {
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "Compose" -> startActivity<ComposeActivity>()
+                "滚动测试" -> startNewUI(ScrollFragment::class.java)
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
                 "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
                 "雷达扫描旋转" -> startNewUI(RadarFragment::class.java)
@@ -104,6 +106,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
                 "Compose",
+                "滚动测试",
                 "轮盘等分",
                 "卫星式菜单",
                 "雷达扫描旋转",
