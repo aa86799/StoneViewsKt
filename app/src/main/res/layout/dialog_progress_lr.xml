@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <com.stone.stoneviewskt.ui.progress.ProgressSeekBar
+        android:id="@+id/prd_op_light"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:maxHeight="4dp"
+        android:progressDrawable="@drawable/back_rect_round"
+        android:thumb="@drawable/circle_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:max="100"
+        tools:progress="50" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

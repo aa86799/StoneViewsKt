@@ -124,7 +124,7 @@ versions.hdoCircleImageview = '3.0.0'
 
 //java aop(Aspect Oriented Programming). url: https://github.com/eclipse/org.aspectj
 //guide url: https://www.eclipse.org/aspectj/doc/released/progguide/index.html
-versions.aspectj = '1.9.3.RC1'
+versions.aspectj = '1.9.8.RC3'
 
 //一个基于AspectJ并在此基础上扩展出来可应用于Android开发平台的AOP框架，可作用于java源码，class文件及jar包，同时支持kotlin的应用。
 // url: https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx

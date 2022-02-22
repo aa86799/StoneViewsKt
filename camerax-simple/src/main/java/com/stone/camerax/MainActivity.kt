@@ -1,23 +1,19 @@
 package com.stone.camerax
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.ImageFormat
-import android.util.Size
 import android.graphics.Matrix
-import android.hardware.camera2.params.StreamConfigurationMap
+import android.os.Bundle
 import android.util.Log
+import android.util.Size
 import android.view.MotionEvent
 import android.view.OrientationEventListener
 import android.view.Surface
-import android.view.TextureView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
-import androidx.camera.core.impl.OptionsBundle
-import androidx.camera.core.impl.PreviewConfig
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -147,8 +143,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Connect the preview use case to the previewView
-            preview.setSurfaceProvider(
-                    v_preview.createSurfaceProvider(camera.cameraInfo))
+            preview.setSurfaceProvider(v_preview.surfaceProvider)
         }, ContextCompat.getMainExecutor(this))
     }
 

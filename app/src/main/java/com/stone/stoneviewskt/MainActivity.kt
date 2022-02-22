@@ -29,6 +29,7 @@ import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
 import com.stone.stoneviewskt.ui.parceldata.ParcelDataFragment
+import com.stone.stoneviewskt.ui.progress.ProgressLRFragment
 import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
 import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
@@ -57,13 +58,14 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        startActivity<ComposeActivity>()
+//        startActivity<ComposeActivity>()
 
         setContentView(R.layout.activity_main)
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "Compose" -> startActivity<ComposeActivity>()
+                "左右进度" -> startNewUI(ProgressLRFragment::class.java)
                 "滚动测试" -> startNewUI(ScrollFragment::class.java)
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
                 "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
@@ -106,6 +108,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
                 "Compose",
+                "左右进度",
                 "滚动测试",
                 "轮盘等分",
                 "卫星式菜单",
