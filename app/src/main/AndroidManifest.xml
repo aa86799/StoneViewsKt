@@ -89,6 +89,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <service android:name=".service.CrossInterfaceService"
+            android:exported="true"
+            android:process=":CrossInterfaceService" />
+
     </application>
 
 </manifest>

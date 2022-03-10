@@ -12,6 +12,8 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
+import com.stone.stoneviewskt.service.CesManager
+import com.stone.stoneviewskt.service.core.SuperCross
 import com.stone.stoneviewskt.util.logi
 import com.tencent.mmkv.MMKV
 
@@ -41,6 +43,9 @@ class StoneApplication : MultiDexApplication() {
         super.onCreate()
         instance = this
         registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
+
+        SuperCross.instance.init(this)
+        SuperCross.instance.register(CesManager::class.java)
 
 //        val kits = mutableListOf<AbstractKit>()
 //        kits.add(CpuKit())
