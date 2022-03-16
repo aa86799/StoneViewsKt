@@ -2,6 +2,7 @@ package com.stone.stoneviewskt
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.compose.ComposeActivity
@@ -64,6 +65,18 @@ class MainActivity : BaseActivity() {
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "改变屏幕亮度" -> { // 亮度范围 [0,1]
+                    val att = window.attributes
+                    if (att.screenBrightness < 1f) {
+                        att.screenBrightness = 1f
+                        activity_main_rv.keepScreenOn = true // 屏幕常亮，阻止自动息屏
+                    } else {
+                        // 还原默认亮度策略
+                        att.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+                        activity_main_rv.keepScreenOn = false
+                    }
+                    window.attributes = att
+                }
                 "Compose" -> startActivity<ComposeActivity>()
                 "左右进度" -> startNewUI(ProgressLRFragment::class.java)
                 "滚动测试" -> startNewUI(ScrollFragment::class.java)
@@ -107,6 +120,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+                "改变屏幕亮度",
                 "Compose",
                 "左右进度",
                 "滚动测试",
