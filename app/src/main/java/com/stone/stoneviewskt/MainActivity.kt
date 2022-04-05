@@ -27,6 +27,7 @@ import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
+import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
 import com.stone.stoneviewskt.ui.parceldata.ParcelDataFragment
@@ -65,6 +66,7 @@ class MainActivity : BaseActivity() {
 
         activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
                 "改变屏幕亮度" -> { // 亮度范围 [0,1]
                     val att = window.attributes
                     if (att.screenBrightness < 1f) {
@@ -120,6 +122,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+                "自定义handler",
                 "改变屏幕亮度",
                 "Compose",
                 "左右进度",

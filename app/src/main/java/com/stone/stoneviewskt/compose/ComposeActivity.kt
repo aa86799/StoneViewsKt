@@ -1,8 +1,11 @@
 package com.stone.stoneviewskt.compose
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateColorAsState
@@ -59,6 +62,9 @@ class ComposeActivity : AppCompatActivity() {
     @Preview
     @Composable
     fun loadRoot(msg: Message) {
+        rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+
+        }
         Column(Modifier.size(100.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = msg.author, fontStyle = FontStyle.Italic,
                     modifier = Modifier
