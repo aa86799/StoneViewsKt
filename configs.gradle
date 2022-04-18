@@ -21,7 +21,7 @@ versions.androidxTestExt = '1.1.1'
 versions.espresso = '3.2.0'
 
 //kotlin
-versions.kotlin = '1.5.31'
+versions.kotlin = '1.6.20'
 //Android KTX 是一组 Kotlin 扩展程序，属于 Android Jetpack 系列. url: https://developer.android.google.cn/kotlin/ktx?hl=zh_cn
 versions.ktx = '1.3.2'
 //协程. url: https://github.com/Kotlin/kotlinx.coroutines

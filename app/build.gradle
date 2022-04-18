@@ -36,7 +36,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion "1.0.5"
-        kotlinCompilerVersion '1.5.31'
+        kotlinCompilerVersion '1.6.20'
     }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
@@ -117,13 +117,13 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
-    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation 'androidx.activity:activity-ktx:1.4.0'
 
     /*compose begin*/
     implementation 'androidx.compose.ui:ui:1.1.1'
     // Tooling support (Previews, etc.)
-    implementation 'androidx.compose.ui:ui-tooling:1.0.5'
+    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation 'androidx.compose.foundation:foundation:1.1.1'
     // Material Design
