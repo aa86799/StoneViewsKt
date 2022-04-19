@@ -134,7 +134,7 @@ versions.AspectJX = '2.0.4'
 versions.butterknife = '10.1.0'
 
 //跨组件、线程通信. url: https://github.com/greenrobot/EventBus
-versions.eventbus = '3.1.1'
+versions.eventbus = '3.3.1'
 
 //内存泄露检测. url: https://github.com/square/leakcanary
 versions.leakcanary = '2.0-alpha-3'
@@ -233,7 +233,11 @@ versions.consecutiveScroller = '2.5.0'
 //阿里对flutter的再封装项目. url: https://github.com/alibaba/flutter-go
 //有自己的规范，需要单独学习
 
+// https://developer.android.google.cn/training/data-storage/room
 versions.room = "2.2.6"
+
+// https://developer.android.google.cn/topic/libraries/architecture/workmanager
+versions.work = "2.7.1"
 
 /* -------------------------------- 类库引用: "group:name:version" -------------------------------------- */
 ext.refs = [:]
@@ -406,6 +410,9 @@ refs.consecutiveScroller = "com.github.donkingliang:ConsecutiveScroller:$version
 refs.roomRuntime = "androidx.room:room-runtime:$versions.room"
 refs.roomCompiler = "androidx.room:room-compiler:$versions.room"
 refs.roomKtx = "androidx.room:room-ktx:$versions.room"
+
+refs.workRuntime = "androidx.work:work-runtime:$versions.work"
+refs.workRuntimeKtx = "androidx.work:work-runtime-ktx:$versions.work"
 
 //refs.=":$versions."
 /* ---------------------------------------------------------------------- */

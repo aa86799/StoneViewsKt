@@ -21,6 +21,7 @@ import com.stone.stoneviewskt.ui.imagecrop.StoneImageCropFragment
 import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.jetpack.datastore.DataStoreFragment
+import com.stone.stoneviewskt.ui.jetpack.workmanager.WorkManagerFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
@@ -45,13 +46,18 @@ import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
 import com.stone.stoneviewskt.util.showLong
 import com.stone.viewbinding.ViewBindActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.activity_main_rv
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        EventBus.getDefault().register(this)
 
         if (!isTaskRoot) {//activity是否是任务栈中的根activity
             if (intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
@@ -113,6 +119,7 @@ class MainActivity : BaseActivity() {
                 "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
                 "Dialog" -> startNewUI(MainDialogManagerFragment::class.java)
                 "Room" -> startNewUI(RoomFragment::class.java)
+                "WorkManager" -> startNewUI(WorkManagerFragment::class.java)
                 "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
             }
         }
@@ -157,7 +164,13 @@ class MainActivity : BaseActivity() {
                 "Lifecycle Observer",
                 "Dialog",
                 "Room",
+                "WorkManager",
                 "从系统加载多张图片"
         ).mapIndexed { index, s -> "$index.$s" }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true, priority = 100)
+    fun onEvent() {
+
     }
 }
