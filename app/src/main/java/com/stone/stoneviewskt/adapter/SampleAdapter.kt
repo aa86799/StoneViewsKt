@@ -1,11 +1,10 @@
 package com.stone.stoneviewskt.adapter
 
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.stone.stoneviewskt.R
+import com.stone.stoneviewskt.common.BaseViewHolder
+import com.stone.stoneviewskt.common.inflate
+import com.stone.stoneviewskt.databinding.ItemSimpleList1Binding
 
 /**
  * desc:
@@ -14,29 +13,31 @@ import com.stone.stoneviewskt.R
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/4 11:14
  */
-class SampleAdapter(private val list: List<String>? = listOf(), private val itemClick: (Int, String)-> Unit): RecyclerView.Adapter<SampleAdapter.ViewHolder>() {
+class SampleAdapter(private val list: List<String>? = listOf(), private val itemClick: (Int, String)-> Unit): RecyclerView.Adapter<BaseViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
 //        return ViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false))
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_simple_list1, parent, false))
+//        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_simple_list1, parent, false))
+        return BaseViewHolder(inflate<ItemSimpleList1Binding>(parent))
     }
 
     override fun getItemCount(): Int {
         return list?.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        val bind = holder.mBind as ItemSimpleList1Binding
         list?.get(position)?.let { data ->
-            holder.tv.text = data
+            bind.itemSimpleListTv.text = data
 
-            holder.tv.setOnClickListener {
+            bind.itemSimpleListTv.setOnClickListener {
                 itemClick(position, data)
             }
         }
     }
 
-     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//         var tv: TextView = itemView.findViewById(android.R.id.text1)
-         var tv: Button = itemView.findViewById(R.id.item_simple_list_tv)
-     }
+//     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+////         var tv: TextView = itemView.findViewById(android.R.id.text1)
+//         var tv: Button = itemView.findViewById(R.id.item_simple_list_tv)
+//     }
 }

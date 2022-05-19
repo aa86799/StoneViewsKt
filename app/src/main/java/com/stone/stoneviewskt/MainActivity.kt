@@ -2,11 +2,13 @@ package com.stone.stoneviewskt
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.compose.ComposeActivity
 import com.stone.stoneviewskt.data.UserData
+import com.stone.stoneviewskt.databinding.ActivityMainBinding
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
@@ -22,6 +24,7 @@ import com.stone.stoneviewskt.ui.imagefilter.ImageFilterFragment
 import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.jetpack.datastore.DataStoreFragment
 import com.stone.stoneviewskt.ui.jetpack.workmanager.WorkManagerFragment
+import com.stone.stoneviewskt.ui.jumpfragment.JumpActivity
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
@@ -46,18 +49,18 @@ import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
 import com.stone.stoneviewskt.util.showLong
 import com.stone.viewbinding.ViewBindActivity
-import kotlinx.android.synthetic.main.activity_main.activity_main_rv
-import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity() {
 
+    private lateinit var mBind: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        EventBus.getDefault().register(this)
+//        EventBus.getDefault().register(this)
 
         if (!isTaskRoot) {//activity是否是任务栈中的根activity
             if (intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
@@ -68,20 +71,23 @@ class MainActivity : BaseActivity() {
 
 //        startActivity<ComposeActivity>()
 
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+        mBind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBind.root)
 
-        activity_main_rv.adapter = SampleAdapter(TITLES) { index, title ->
+        mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
                 "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
                 "改变屏幕亮度" -> { // 亮度范围 [0,1]
                     val att = window.attributes
                     if (att.screenBrightness < 1f) {
                         att.screenBrightness = 1f
-                        activity_main_rv.keepScreenOn = true // 屏幕常亮，阻止自动息屏
+                        mBind.activityMainRv.keepScreenOn = true // 屏幕常亮，阻止自动息屏
                     } else {
                         // 还原默认亮度策略
                         att.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
-                        activity_main_rv.keepScreenOn = false
+                        mBind.activityMainRv.keepScreenOn = false
                     }
                     window.attributes = att
                 }
@@ -129,6 +135,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+                "用FragmentManager实现fragment跳转",
                 "自定义handler",
                 "改变屏幕亮度",
                 "Compose",
@@ -171,6 +178,11 @@ class MainActivity : BaseActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true, priority = 100)
     fun onEvent() {
+        Log.i("TAG", "onEvent: ")
+    }
 
+    override fun onDestroy() {
+//        EventBus.getDefault().unregister(this)
+        super.onDestroy()
     }
 }

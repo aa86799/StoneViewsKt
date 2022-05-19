@@ -18,12 +18,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import kotlinx.android.synthetic.main.fragment_camerax_1.*
+import com.stone.camerax.databinding.ActivityCamerax1Binding
 import java.io.File
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mBind: ActivityCamerax1Binding
 
     companion object {
         private const val REQUEST_CODE_PERMISSIONS = 10
@@ -35,10 +37,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_camerax_1)
+        mBind = ActivityCamerax1Binding.inflate(layoutInflater)
+        setContentView(mBind.root)
 
         if (allPermissionsGranted()) {
-            v_preview.post { startCamera() }
+            mBind.vPreview.post { startCamera() }
         } else {
             ActivityCompat.requestPermissions(
                     this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
@@ -132,7 +135,7 @@ class MainActivity : AppCompatActivity() {
              * CameraControl 提供了 点击对焦功能
              */
             val cameraControl = camera.cameraControl
-            v_preview.setOnTouchListener { v, event ->
+            mBind.vPreview.setOnTouchListener { v, event ->
                 if (event.action == MotionEvent.ACTION_UP) {
                     /*
                      * 比如双击，调用下面的函数过多，报 error :  Cancelled by another startFocusAndMetering()
@@ -143,7 +146,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Connect the preview use case to the previewView
-            preview.setSurfaceProvider(v_preview.surfaceProvider)
+            preview.setSurfaceProvider(mBind.vPreview.surfaceProvider)
         }, ContextCompat.getMainExecutor(this))
     }
 
@@ -188,11 +191,11 @@ class MainActivity : AppCompatActivity() {
         val matrix = Matrix()
 
         // Compute the center of the view finder
-        val centerX = v_preview.width / 2f
-        val centerY = v_preview.height / 2f
+        val centerX = mBind.vPreview.width / 2f
+        val centerY = mBind.vPreview.height / 2f
 
         // Correct preview output to account for display rotation
-        val rotationDegrees = when(v_preview.display.rotation) {
+        val rotationDegrees = when(mBind.vPreview.display.rotation) {
             Surface.ROTATION_0 -> 0
             Surface.ROTATION_90 -> 90
             Surface.ROTATION_180 -> 180
@@ -209,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
-                v_preview.post { startCamera() }
+                mBind.vPreview.post { startCamera() }
             } else {
                 Toast.makeText(this,
                         "Permissions not granted by the user.",

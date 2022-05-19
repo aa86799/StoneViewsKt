@@ -1,12 +1,15 @@
 package com.stone.stoneviewskt.ui.materialdesign.bsb
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_bsb.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentBsbBinding
 
 /**
  * desc:
@@ -15,14 +18,18 @@ import kotlinx.android.synthetic.main.fragment_bsb.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/11 16:14
  */
-class BsbDialogOnlyFragment : BaseFragment() {
+class BsbDialogOnlyFragment : BaseBindFragment<FragmentBsbBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentBsbBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_bsb_sheet.visibility = View.GONE
+        mBind.fragmentBsbSheet.visibility = View.GONE
 
-        fragment_bsb_sheet_btn.setOnClickListener {
+        mBind.fragmentBsbSheetBtn.setOnClickListener {
             showSheetDialog()
         }
 
@@ -36,7 +43,7 @@ class BsbDialogOnlyFragment : BaseFragment() {
 
         val view = View.inflate(context, R.layout.dialog_test, null)
         //margin要使用 style。style中的dp-margin 效果翻倍了的感觉。 通常底部滑动出现，最终连接底部的，不需要margin。
-        val dialog = BottomSheetDialog(context!!, R.style.MyBottomSheetDialog)
+        val dialog = BottomSheetDialog(requireContext(), R.style.MyBottomSheetDialog)
 //        dialog.setContentView(R.layout.dialog_test)
 //        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 //        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -44,7 +51,7 @@ class BsbDialogOnlyFragment : BaseFragment() {
         dialog.setCanceledOnTouchOutside(false)
 
 //        val behavior = BottomSheetBehavior.from(view.parent as View)
-        val behavior =  dialog.behavior
+        val behavior = dialog.behavior
 //        behavior.peekHeight = 200
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
         behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
@@ -64,11 +71,6 @@ class BsbDialogOnlyFragment : BaseFragment() {
         }
         dialog.show()
 
-    }
-
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_bsb
     }
 
 }

@@ -10,13 +10,15 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.webkit.*
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentImageLoadWebBinding
 import com.stone.stoneviewskt.util.BitmapUtil
 import com.stone.stoneviewskt.util.KitKatUtil
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_image_load_web.*
 import org.jetbrains.anko.support.v4.alert
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.OnNeverAskAgain
@@ -31,7 +33,7 @@ import java.io.File
  * time:    2021/1/6 11:16
  */
 @RuntimePermissions
-class ImageLoadWebViewFragment: BaseFragment() {
+class ImageLoadWebViewFragment: BaseBindFragment<FragmentImageLoadWebBinding>() {
 
     private lateinit var mFileUploadWebChromeClient: FileUploadWebChromeClient
 
@@ -39,19 +41,23 @@ class ImageLoadWebViewFragment: BaseFragment() {
         private const val REQUEST_CODE_PHOTO = 0x123
     }
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageLoadWebBinding {
+        return inflateBinding(inflater, container)
+    }
+    
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_ilw_iv.setOnClickListener {
+        mBind.fragmentIlwIv.setOnClickListener {
           val method = "javascript:menuInit()"  //可以
 //            val method = "javascript:window.menuInit()" //可以
-            fragment_ilw_wv.loadUrl(method)
+            mBind.fragmentIlwWv.loadUrl(method)
 
 //            choosePhotoWithPermissionCheck()
         }
 
-        fragment_ilw_wv.setBackgroundColor(0)
-//        fragment_ilw_wv.setBackgroundResource(R.drawable.kotlin)
+        mBind.fragmentIlwWv.setBackgroundColor(0)
+//        mBind.fragmentIlwWv.setBackgroundResource(R.drawable.kotlin)
 
         mFileUploadWebChromeClient = object : FileUploadWebChromeClient(this@ImageLoadWebViewFragment) {
             override fun onReceivedTitle(view: WebView?, title: String?) {
@@ -118,30 +124,26 @@ class ImageLoadWebViewFragment: BaseFragment() {
                 super.onProgressChanged(view, newProgress)
             }
         }
-        fragment_ilw_wv.webChromeClient = mFileUploadWebChromeClient
+        mBind.fragmentIlwWv.webChromeClient = mFileUploadWebChromeClient
 
-        fragment_ilw_wv.settings.javaScriptEnabled = true //允许h5使用javascript
-        fragment_ilw_wv.settings.domStorageEnabled = true //允许android调用javascript
+        mBind.fragmentIlwWv.settings.javaScriptEnabled = true //允许h5使用javascript
+        mBind.fragmentIlwWv.settings.domStorageEnabled = true //允许android调用javascript
         //允许webview对文件的操作
-        fragment_ilw_wv.settings.allowUniversalAccessFromFileURLs = true
-        fragment_ilw_wv.settings.allowFileAccess = true
-        fragment_ilw_wv.settings.allowFileAccessFromFileURLs = true
-        fragment_ilw_wv.settings.loadsImagesAutomatically = true
+        mBind.fragmentIlwWv.settings.allowUniversalAccessFromFileURLs = true
+        mBind.fragmentIlwWv.settings.allowFileAccess = true
+        mBind.fragmentIlwWv.settings.allowFileAccessFromFileURLs = true
+        mBind.fragmentIlwWv.settings.loadsImagesAutomatically = true
         //android 5.0以上webview 加载https ，才会出现的问题，以下是解决方案
-        fragment_ilw_wv.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        fragment_ilw_wv.addJavascriptInterface(object {
+        mBind.fragmentIlwWv.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        mBind.fragmentIlwWv.addJavascriptInterface(object {
             @JavascriptInterface
             fun loadImage(type: Int) {
                 if (_mActivity == null || _mActivity.isFinishing) return
                 mFileUploadWebChromeClient.onlyCameraAllowed = (type == 1)
             }
         }, "stonejs")
-        fragment_ilw_wv.loadUrl("file:///android_asset/test.html")
+        mBind.fragmentIlwWv.loadUrl("file:///android_asset/test.html")
 
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_image_load_web
     }
 
     @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
@@ -165,7 +167,7 @@ class ImageLoadWebViewFragment: BaseFragment() {
 
                 val w = resources.displayMetrics.widthPixels / 3 * 3
                 val h = resources.displayMetrics.heightPixels / 3 * 3
-                fragment_ilw_iv.setImageBitmap(BitmapUtil.loadBitmapFromUri(it, w, h))
+                mBind.fragmentIlwIv.setImageBitmap(BitmapUtil.loadBitmapFromUri(it, w, h))
 
             }
         }

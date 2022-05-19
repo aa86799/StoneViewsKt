@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import com.stone.camera.R
 import com.stone.camera.common.CameraInterface
 import com.stone.camera.common.CameraSurfaceView
+import com.stone.camera.databinding.ActivityMainBinding
 import com.stone.camera.util.DisplayUtil
-import kotlinx.android.synthetic.main.acitivty_main.*
 
 /**
  * desc     :
@@ -26,10 +26,12 @@ import kotlinx.android.synthetic.main.acitivty_main.*
 class MainActivity : AppCompatActivity() {
     private var mSurfaceView: CameraSurfaceView? = null
     private var mPermissions = arrayOf(Manifest.permission.CAMERA)
+    private lateinit var mBind: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivty_main)
+        mBind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBind.root)
         val isAllGranted = checkPermissionAllGranted(mPermissions)
         if (isAllGranted) {
             hasPermission()
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, mPermissions, 0x1)
         }
 
-        btn_shutter.setOnClickListener { v ->
+        mBind.btnShutter.setOnClickListener { v ->
             when (v.id) {
                 R.id.btn_shutter -> CameraInterface.instance?.doTakePicture()
                 else -> {
@@ -69,13 +71,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         //手动设置拍照ImageButton的大小为120dip×120dip
-        val p2: ViewGroup.LayoutParams = btn_shutter.layoutParams
+        val p2: ViewGroup.LayoutParams = mBind.btnShutter.layoutParams
         val v = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120f, resources.displayMetrics);
         p2.width = v.toInt()
         p2.height = v.toInt()
 //        p2.width = DisplayUtil.dip2px(this, 120f)
 //        p2.height = DisplayUtil.dip2px(this, 120f)
-        btn_shutter.layoutParams = p2
+        mBind.btnShutter.layoutParams = p2
     }
 
     /**

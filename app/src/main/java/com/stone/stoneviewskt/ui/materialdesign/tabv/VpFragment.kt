@@ -1,10 +1,11 @@
 package com.stone.stoneviewskt.ui.materialdesign.tabv
 
 import android.os.Bundle
-import android.widget.TextView
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_vp.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentVpBinding
 
 /**
  * desc:
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_vp.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/25 19:18
  */
-class VpFragment: BaseFragment() {
+class VpFragment : BaseBindFragment<FragmentVpBinding>() {
 
     var mData: String = ""
 
@@ -21,12 +22,13 @@ class VpFragment: BaseFragment() {
         const val KEY_DATA = "key_data"
     }
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentVpBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
         mData = arguments?.getString(KEY_DATA) ?: return
-        fragment_vp_tv.text = mData
-    }
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_vp
+        mBind.fragmentVpTv.text = mData
     }
 }

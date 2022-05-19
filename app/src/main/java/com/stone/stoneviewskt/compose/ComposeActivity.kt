@@ -19,18 +19,20 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.res.painterResource
@@ -38,13 +40,16 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.*
+import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.unit.dp
 import com.stone.stoneviewskt.R
 import org.jetbrains.anko.toast
 
 class ComposeActivity : AppCompatActivity() {
 
-    @ExperimentalUnitApi
+//    @OptIn(ExperimentalUnitApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,7 +63,6 @@ class ComposeActivity : AppCompatActivity() {
 
     data class Message(val author: String, val body: String)
 
-    @ExperimentalUnitApi
     @Preview
     @Composable
     fun loadRoot(msg: Message) {
@@ -96,13 +100,14 @@ class ComposeActivity : AppCompatActivity() {
 
     }
 
-    @ExperimentalUnitApi
+//    @ExperimentalUnitApi
+    @OptIn(ExperimentalUnitApi::class)
     @Composable
     fun setTitle(title: String) {
         Text("$title", fontSize = TextUnit(18f, TextUnitType.Sp), textAlign = TextAlign.Center)
     }
 
-    @ExperimentalUnitApi
+//    @ExperimentalUnitApi
     @Preview(name = "Light Mode", showBackground = true, backgroundColor = 0xccFFFF00, heightDp = 150) // 命名为浅色主题，展示背景色
 //    @Preview(
 //        uiMode = Configuration.UI_MODE_NIGHT_YES,

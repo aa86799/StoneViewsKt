@@ -1,7 +1,9 @@
 package com.stone.stoneviewskt.ui.jetpack.workmanager
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
@@ -9,9 +11,9 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_work_manager.btn_one_time
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentWorkManagerBinding
 import java.util.concurrent.TimeUnit
 
 /**
@@ -21,12 +23,16 @@ import java.util.concurrent.TimeUnit
  * blog :   https://stone.blog.csdn.net
  * time:    2020/12/27 08:47
  */
-class WorkManagerFragment: BaseFragment() {
+class WorkManagerFragment: BaseBindFragment<FragmentWorkManagerBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentWorkManagerBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_one_time.setOnClickListener {
+        mBind.btnOneTime.setOnClickListener {
             // 周期性工作任务
             val periodic = PeriodicWorkRequestBuilder<UploadWorker>(10L, TimeUnit.SECONDS)
             // 一次性任务
@@ -65,9 +71,5 @@ class WorkManagerFragment: BaseFragment() {
             WorkManager.getInstance(requireContext())
                 .enqueue(uploadWorkRequest) // 执行worker的确切时间取决于 WorkRequest 中使用的约束和系统优化方式
         }
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_work_manager
     }
 }

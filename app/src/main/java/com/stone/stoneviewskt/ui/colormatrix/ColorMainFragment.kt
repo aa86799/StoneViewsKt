@@ -1,9 +1,11 @@
 package com.stone.stoneviewskt.ui.colormatrix
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_color_main.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentColorMainBinding
 
 /**
  * desc:
@@ -12,24 +14,25 @@ import kotlinx.android.synthetic.main.fragment_color_main.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/30 14:30
  */
-class ColorMainFragment : BaseFragment() {
+class ColorMainFragment : BaseBindFragment<FragmentColorMainBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentColorMainBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
         //色相、饱和度、亮度；调节 通过 ColorMatrix
-        btnColorPlate.setOnClickListener {
+        mBind.btnColorPlate.setOnClickListener {
             start(ColorPlateFragment())
 //            startActivity<BaseActivity>(BaseActivity.KEY_FRAGMENT to ColorPlateFragment::class.java)
         }
 
         //ColorMatrix
-        btnImageMatrix.setOnClickListener {
+        mBind.btnImageMatrix.setOnClickListener {
             start(ColorMatrixFragment())
         }
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_color_main
-    }
 }

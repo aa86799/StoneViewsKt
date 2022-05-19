@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions' // 应用了 compose 1.1，和 extensions一起编译会报错； 直接依赖的子module中的extensions也要移除掉
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 if (isBuildDokit.toBoolean()) {
     apply plugin: 'com.didi.dokit'
 }
@@ -33,10 +34,12 @@ android {
 
     buildFeatures {
         compose true
+        viewBinding true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion "1.0.5"
-        kotlinCompilerVersion '1.6.20'
+        kotlinCompilerExtensionVersion "1.1.1"
+        kotlinCompilerVersion '1.6.10'
     }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
@@ -86,9 +89,9 @@ android {
         jvmTarget = '1.8'
     }
 
-    androidExtensions {//plugin: 'kotlin-android-extensions'
-        defaultCacheImplementation = "SPARSE_ARRAY" //default HASH_MAP
-    }
+//    androidExtensions {//plugin: 'kotlin-android-extensions'
+//        defaultCacheImplementation = "SPARSE_ARRAY" //default HASH_MAP
+//    }
 }
 
 dependencies {
@@ -142,6 +145,7 @@ dependencies {
     /*compose end*/
 
     implementation(refs.eventbus)
+    annotationProcessor refs.eventbusCompiler
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

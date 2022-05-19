@@ -2,12 +2,15 @@ package com.stone.stoneviewskt.ui.imagefilter
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentImageFilterBinding
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine2
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFloydFilter
-import kotlinx.android.synthetic.main.fragment_image_filter.*
 import org.jetbrains.anko.support.v4.selector
 
 /**
@@ -17,10 +20,14 @@ import org.jetbrains.anko.support.v4.selector
  * blog :   https://stone.blog.csdn.net
  * time:    2020/12/4 11:04
  */
-class ImageFilterFragment : BaseFragment() {
+class ImageFilterFragment : BaseBindFragment<FragmentImageFilterBinding>() {
 
     init {
         System.loadLibrary("native-lib")
+    }
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageFilterBinding {
+        return inflateBinding(inflater, container)
     }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
@@ -30,9 +37,9 @@ class ImageFilterFragment : BaseFragment() {
 //        val bm = BitmapFactory.decodeResource(resources, R.mipmap.back_girl_test)
         val bm = BitmapFactory.decodeResource(resources, R.mipmap.screenshot_test)
 //        val bm = BitmapFactory.decodeResource(resources, R.mipmap.test_image)
-        fragment_image_filter_iv.setImageBitmap(bm) //原图
+        mBind.fragmentImageFilterIv.setImageBitmap(bm) //原图
 
-        fragment_image_filter_btn.setOnClickListener {
+        mBind.fragmentImageFilterBtn.setOnClickListener {
             selector(
                 "滤镜选择", listOf(
                     "黑白",
@@ -44,26 +51,26 @@ class ImageFilterFragment : BaseFragment() {
                 when (index) {
                     0 -> {
                         ImageFilterEngine.blackWhiteImage(bm)?.let {
-                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                            mBind.fragmentImageFilterTransIv.setImageBitmap(it)
                         }
                     }
 
                     1 -> {
                         ImageFilterEngine.blackWhiteReverseImage(bm)?.let {
-                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                            mBind.fragmentImageFilterTransIv.setImageBitmap(it)
                         }
                     }
 
                     2 -> {
                         ImageFilterEngine2(ImageFloydFilter()).processBitmap(bm)?.let {
 //                        ImageFilterEngine.floydImage(bm)?.let {
-                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                            mBind.fragmentImageFilterTransIv.setImageBitmap(it)
                         }
                     }
 
                     3 -> {
                         ImageFilterEngine.stuckiImage(bm)?.let {
-                            fragment_image_filter_trans_iv.setImageBitmap(it)
+                            mBind.fragmentImageFilterTransIv.setImageBitmap(it)
                         }
                     }
 
@@ -73,7 +80,4 @@ class ImageFilterFragment : BaseFragment() {
         }
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_image_filter
-    }
 }

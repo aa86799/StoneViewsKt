@@ -1,16 +1,16 @@
 package com.stone.stoneviewskt.ui.fab
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.transition.TransitionManager
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentFloatingactionButtonBeginBinding
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_bottom
-import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_btn
-import kotlinx.android.synthetic.main.fragment_floatingaction_button.fragment_floatingaction_button_top
-import kotlinx.android.synthetic.main.fragment_floatingaction_button_begin.*
 
 /**
  * desc:    悬浮按钮会处于它所在层次中的前景foreground.
@@ -19,26 +19,30 @@ import kotlinx.android.synthetic.main.fragment_floatingaction_button_begin.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/17 19:12
  */
-class FloatingActionButtonFragment : BaseFragment() {
+class FloatingActionButtonFragment : BaseBindFragment<FragmentFloatingactionButtonBeginBinding>() {
 
     private var mIsShowMenu = false
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentFloatingactionButtonBeginBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
         var flag = true
-        fragment_floatingaction_button_btn.setOnClickListener {
+        mBind.fragmentFloatingactionButtonBtn.setOnClickListener {
             flag = !flag
             //show animation使小部件变大并淡入，而hide animation使小部件变小并淡入。
-            if (flag) fragment_floatingaction_button_bottom.show()
-            else fragment_floatingaction_button_bottom.hide()
+            if (flag) mBind.fragmentFloatingactionButtonBottom.show()
+            else mBind.fragmentFloatingactionButtonBottom.hide()
         }
 
-        fragment_floatingaction_button_top.setOnClickListener {
+        mBind.fragmentFloatingactionButtonTop.setOnClickListener {
             //展开和收缩
             flag = !flag
-            if (flag) fragment_floatingaction_button_top.extend()
-            else fragment_floatingaction_button_top.shrink()
+            if (flag) mBind.fragmentFloatingactionButtonTop.extend()
+            else mBind.fragmentFloatingactionButtonTop.shrink()
         }
 
         /*
@@ -51,13 +55,13 @@ class FloatingActionButtonFragment : BaseFragment() {
          */
         val set1 = ConstraintSet()
         val set2 = ConstraintSet()
-        val root: ConstraintLayout = fragment_fa_button_begin
+        val root: ConstraintLayout = mBind.fragmentFaButtonBegin
         set1.clone(root) //从约束布局对象中获取 约束集 对象
         set2.clone(requireContext(), R.layout.fragment_floatingaction_button) //从约束布局文件中获取
 //        set1.clone(set2) //从set2拷贝到set1
 //        set1.clone(constraints) //
 
-        fragment_floatingaction_button_bottom.setOnClickListener {
+        mBind.fragmentFloatingactionButtonBottom.setOnClickListener {
             TransitionManager.beginDelayedTransition(root)
             mIsShowMenu = !mIsShowMenu
             if (mIsShowMenu) {

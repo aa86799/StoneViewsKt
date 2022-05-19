@@ -11,9 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.stone.stoneviewskt.R
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentDialogTestBinding
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_dialog_test.*
 
 /**
  * desc:
@@ -21,7 +21,9 @@ import kotlinx.android.synthetic.main.fragment_dialog_test.*
  * email:   aa86799@163.com
  * time:    2021/1/24 14:09
  */
-class TestDialogFragment: DialogFragment() {
+class TestDialogFragment : DialogFragment() {
+
+    private lateinit var mBind: FragmentDialogTestBinding
 
     //已过时
     override fun onAttach(activity: Activity) {
@@ -51,7 +53,8 @@ class TestDialogFragment: DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dialog_test, null)
+//        return inflater.inflate(R.layout.fragment_dialog_test, null)
+        return inflateBinding<FragmentDialogTestBinding>(inflater, container).root
         logi("onCreateView")
     }
 
@@ -61,7 +64,7 @@ class TestDialogFragment: DialogFragment() {
 
 //        childFragmentManager.findFragmentById(R.id.fragment_dialog_test_sub) as GrayFragment
 
-        fragment_dialog_test_btn.setOnClickListener {
+        mBind.fragmentDialogTestBtn.setOnClickListener {
             dismiss()
         }
     }

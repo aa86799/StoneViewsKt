@@ -5,11 +5,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentStoneImageCropBinding
 import com.stone.stoneviewskt.util.BitmapUtil
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_stone_image_crop.*
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.OnNeverAskAgain
 import permissions.dispatcher.RuntimePermissions
@@ -22,7 +24,11 @@ import permissions.dispatcher.RuntimePermissions
  * time:    2020/12/6 11:32
  */
 @RuntimePermissions
-class StoneImageCropFragment: BaseFragment() {
+class StoneImageCropFragment : BaseBindFragment<FragmentStoneImageCropBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentStoneImageCropBinding {
+        return inflateBinding(inflater, container)
+    }
 
     companion object {
         private const val REQUEST_CODE_PHOTO = 0x123
@@ -31,7 +37,7 @@ class StoneImageCropFragment: BaseFragment() {
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_sic_open_photo.setOnClickListener {
+        mBind.fragmentSicOpenPhoto.setOnClickListener {
             choosePhotoWithPermissionCheck()
         }
 
@@ -60,11 +66,11 @@ class StoneImageCropFragment: BaseFragment() {
         if (resultCode != RESULT_OK) return
         if (requestCode == REQUEST_CODE_PHOTO) {
             data?.data?.let {
-                fragment_sic_iv.setImageURI(it)  //无任务压缩处理，直接加载
-                
+                mBind.fragmentSicIv.setImageURI(it)  //无任务压缩处理，直接加载
+
                 val w = resources.displayMetrics.widthPixels / 3 * 3
                 val h = resources.displayMetrics.heightPixels / 3 * 3
-                fragment_sic_iv2.setImageBitmap(BitmapUtil.loadBitmapFromUri(it, w, h))
+                mBind.fragmentSicIv2.setImageBitmap(BitmapUtil.loadBitmapFromUri(it, w, h))
 //                fragment_sic_iv.setImageDrawable(BitmapUtil.loadDrawableFromUri(it, w, h))
 
             }
@@ -77,7 +83,4 @@ class StoneImageCropFragment: BaseFragment() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_stone_image_crop
-    }
 }

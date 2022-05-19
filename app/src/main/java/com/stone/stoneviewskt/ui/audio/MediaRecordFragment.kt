@@ -5,12 +5,15 @@ import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMediaRecordBinding
 import com.stone.stoneviewskt.util.loge
-import kotlinx.android.synthetic.main.fragment_media_record.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -30,7 +33,7 @@ import java.io.File
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class MediaRecordFragment : BaseFragment() {
+class MediaRecordFragment : BaseBindFragment<FragmentMediaRecordBinding>() {
 
     private var mMediaRecorder: MediaRecorder? = null
     private var mMediaPlayer: MediaPlayer? = null
@@ -40,31 +43,35 @@ class MediaRecordFragment : BaseFragment() {
     private var mIsPlaying = false
     private var mIsStartRecording = false
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMediaRecordBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_media_record_say.setOnTouchListener { v, event ->
+        mBind.fragmentMediaRecordSay.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startRecordWithPermissionCheck()
                 }
                 MotionEvent.ACTION_UP -> {
-                    loge("ACTION_UP" )
+                    loge("ACTION_UP")
                     stopRecord()
                 }
             }
             true
         }
 
-        fragment_media_record_play.setOnClickListener {
+        mBind.fragmentMediaRecordPlay.setOnClickListener {
             doPlay()
         }
     }
 
     @NeedsPermission(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun startRecord() {
-        fragment_media_record_say.text = "正在录音"
-        fragment_media_record_mic.imageResource = R.drawable.ic_baseline_mic_24
+        mBind.fragmentMediaRecordSay.text = "正在录音"
+        mBind.fragmentMediaRecordMic.imageResource = R.drawable.ic_baseline_mic_24
 
         lifecycleScope.launchWhenResumed {
             releaseRecord()
@@ -78,8 +85,8 @@ class MediaRecordFragment : BaseFragment() {
     }
 
     private fun stopRecord() {
-        fragment_media_record_say.text = "开始录音"
-        fragment_media_record_mic.imageResource = R.drawable.ic_baseline_mic_off_24
+        mBind.fragmentMediaRecordSay.text = "开始录音"
+        mBind.fragmentMediaRecordMic.imageResource = R.drawable.ic_baseline_mic_off_24
 
         lifecycleScope.launchWhenResumed {
             val result = withContext(Dispatchers.Main) {
@@ -99,7 +106,7 @@ class MediaRecordFragment : BaseFragment() {
 
     private fun doStart(): Boolean {
         try {
-            mAudioFile = File("${_mActivity.externalCacheDir}/stone.m4a")
+            mAudioFile = File("${requireActivity().externalCacheDir}/stone.m4a")
             mAudioFile?.createNewFile()
 
             mMediaRecorder = MediaRecorder()
@@ -115,7 +122,7 @@ class MediaRecordFragment : BaseFragment() {
             mIsStartRecording = true
             lifecycleScope.launchWhenResumed {
                 while (mIsStartRecording) {
-                    fragment_media_record_time.text = "${(System.currentTimeMillis() - mStartTime) / 1000}s"
+                    mBind.fragmentMediaRecordTime.text = "${(System.currentTimeMillis() - mStartTime) / 1000}s"
                     delay(1000)
                 }
             }
@@ -143,8 +150,8 @@ class MediaRecordFragment : BaseFragment() {
             withContext(Dispatchers.Main) {
                 mStopTime = System.currentTimeMillis()
                 if (mStopTime - mStartTime >= 3000) {
-                    fragment_media_record_tv.text = "录音时长: ${(mStopTime - mStartTime) / 1000}s"
-                    fragment_media_record_time.text = "${(mStopTime - mStartTime) / 1000}s"
+                    mBind.fragmentMediaRecordTv.text = "录音时长: ${(mStopTime - mStartTime) / 1000}s"
+                    mBind.fragmentMediaRecordTime.text = "${(mStopTime - mStartTime) / 1000}s"
                 }
             }
         } catch (e: Exception) {
@@ -157,7 +164,7 @@ class MediaRecordFragment : BaseFragment() {
         try {
             mIsPlaying = true
             mMediaPlayer = MediaPlayer()
-            mMediaPlayer?.setDataSource("${_mActivity.externalCacheDir}/stone.m4a")
+            mMediaPlayer?.setDataSource("${requireActivity().externalCacheDir}/stone.m4a")
             mMediaPlayer?.setOnCompletionListener {
                 stopPlay()
             }
@@ -173,7 +180,7 @@ class MediaRecordFragment : BaseFragment() {
             lifecycleScope.launchWhenResumed {
                 var seconds = mMediaPlayer!!.duration / 1000
                 while (mIsPlaying) {
-                    fragment_media_record_play_time.text = "播放倒计时: ${seconds}s"
+                    mBind.fragmentMediaRecordPlayTime.text = "播放倒计时: ${seconds}s"
                     if (seconds == 0) break
                     delay(1000)
                     seconds--
@@ -188,7 +195,7 @@ class MediaRecordFragment : BaseFragment() {
 
     private fun stopPlay() {
         mIsPlaying = false
-        mMediaPlayer?.setOnCompletionListener {  }
+        mMediaPlayer?.setOnCompletionListener { }
         mMediaPlayer?.setOnErrorListener { mp, what, extra -> true }
         mMediaPlayer?.stop()
         mMediaPlayer?.reset()
@@ -219,7 +226,4 @@ class MediaRecordFragment : BaseFragment() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_media_record
-    }
 }

@@ -43,10 +43,15 @@
             android:exported="false"
             android:theme="@style/StoneBaseMaterialTheme" />
         <activity android:name="com.stone.stoneviewskt.ui.gray.BaseGrayActivity" />
+
         <activity
             android:name=".ui.materialdesign.MDActivity"
             android:exported="false"
             android:theme="@style/StoneBaseMaterialTheme" />
+
+        <activity
+            android:name=".ui.jumpfragment.JumpActivity"
+            android:exported="false" />
 
         <activity
             android:name=".ui.nfc.NfcNdefActivity"

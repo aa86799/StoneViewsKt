@@ -6,14 +6,17 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentLibJpegBinding
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_lib_jpeg.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -29,10 +32,14 @@ import java.io.File
  * blog :   https://stone.blog.csdn.net
  * time:    2020/7/26 17:20
  */
-class LibJpegFragment : BaseFragment() {
+class LibJpegFragment : BaseBindFragment<FragmentLibJpegBinding>() {
 
     init {
         System.loadLibrary("native-lib")
+    }
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentLibJpegBinding {
+        return inflateBinding(inflater, container)
     }
 
     @SuppressLint("ResourceType")
@@ -41,12 +48,12 @@ class LibJpegFragment : BaseFragment() {
 
 //        val count = resources.openRawResource(R.drawable.kotlin).available()
         val count = resources.openRawResource(R.mipmap.back_girl).available()
-        fragment_lib_jpeg_before.text = "图片原始字节数(不受图片目录的密度影响)：$count 字节(B) = ${count/1024}KB"
+        mBind.fragmentLibJpegBefore.text = "图片原始字节数(不受图片目录的密度影响)：$count 字节(B) = ${count / 1024}KB"
 
 //        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.kotlin)
         val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl) //受dpi目录影响，会自动缩放
 //        val bitmap = BitmapFactory.decodeStream(resources.openRawResource(R.mipmap.back_girl)) //不会自动缩放
-        fragment_lib_jpeg_ok.onClick {
+        mBind.fragmentLibJpegOk.onClick {
             requestPermission()
             if (ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 //                compressJpeg(bitmap, 80, "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)}/jsy.jpg")  //路径方法 过时了
@@ -60,7 +67,7 @@ class LibJpegFragment : BaseFragment() {
                     val baos = ByteArrayOutputStream()
                     val op = BitmapFactory.decodeFile(output)
                         .compress(Bitmap.CompressFormat.JPEG, quality, baos)
-                    fragment_lib_jpeg_after.text = """
+                    mBind.fragmentLibJpegAfter.text = """
 > 存储bitmap像素所占内存: ${bitmap.byteCount} 字节(B) = ${bitmap.byteCount / 1024}KB；
 > bitmap所占像素已经分配的大小: ${bitmap.allocationByteCount} 字节(B) = ${bitmap.allocationByteCount / 1024}KB；
 > 上面的值，就是在当前设备的屏幕密度基础上，加载目标目录下 某dpi 密度，经缩放后的，实际占内存大小；
@@ -71,9 +78,9 @@ class LibJpegFragment : BaseFragment() {
                 """
 
                     quality -= 2 //质量递减
-                } while (outFileLength > 30*1024) //大于30k
+                } while (outFileLength > 30 * 1024) //大于30k
 
-                fragment_lib_jpeg_iv.setImageURI(File(output).toUri())
+                mBind.fragmentLibJpegIv.setImageURI(File(output).toUri())
             }
         }
     }
@@ -82,19 +89,19 @@ class LibJpegFragment : BaseFragment() {
 
     private fun requestPermission() {
         if (ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ContextCompat.checkSelfPermission(_mActivity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+        ) {
 
             Toast.makeText(_mActivity, "申请权限", Toast.LENGTH_SHORT).show()
 
             // 申请权限
-            ActivityCompat.requestPermissions(_mActivity, arrayOf(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE), 100);
+            ActivityCompat.requestPermissions(
+                _mActivity, arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ), 100
+            );
         }
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_lib_jpeg
     }
 
 

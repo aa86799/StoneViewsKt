@@ -3,35 +3,41 @@ package com.stone.stoneviewskt.ui.imagematrix
 import android.graphics.Matrix
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.EditText
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.activity_image_matrix.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentImageMatrixBinding
 
 /**
  * Matrix 用于图片操作：旋转、缩放、平移、错切。
  */
-class ImageMatrixFragment : BaseFragment() {
+class ImageMatrixFragment : BaseBindFragment<FragmentImageMatrixBinding>() {
     private var mEdWidth = 0
     private var mEdHeight = 0
     private val mImageMatrix = FloatArray(9)
     private val mEts = arrayOfNulls<EditText>(9)
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageMatrixBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        activity_image_matrix_imv_gl.post {
-            mEdWidth = activity_image_matrix_imv_gl.width / 3
-            mEdHeight = activity_image_matrix_imv_gl.height / 3
+        mBind.imvGl.post {
+            mEdWidth = mBind.imvGl.width / 3
+            mEdHeight = mBind.imvGl.height / 3
             addEts()
             initImageMatrix()
         }
 
-        activity_image_matrix_change.setOnClickListener {
+        mBind.btnChange.setOnClickListener {
             change()
         }
 
-        activity_image_matrix_reset.setOnClickListener {
+        mBind.btnReset.setOnClickListener {
             reset()
         }
     }
@@ -41,7 +47,7 @@ class ImageMatrixFragment : BaseFragment() {
             val et = EditText(requireContext())
             et.gravity = Gravity.CENTER
             mEts[i] = et
-            activity_image_matrix_imv_gl.addView(et, mEdWidth, mEdHeight)
+            mBind.imvGl.addView(et, mEdWidth, mEdHeight)
         }
     }
 
@@ -80,8 +86,8 @@ class ImageMatrixFragment : BaseFragment() {
 //        matrix.setTranslate(150, 150);
 //        matrix.setScale(2f, 2f)
 //        matrix.postTranslate(200f, 200f)
-        activity_image_matrix_imv.setImageMatrix(matrix)
-        activity_image_matrix_imv.invalidate()
+        mBind.imv.setImageMatrix(matrix)
+        mBind.imv.invalidate()
     }
 
     private fun reset() {
@@ -89,11 +95,7 @@ class ImageMatrixFragment : BaseFragment() {
         getImageMatrixArray()
         val matrix = Matrix()
         matrix.setValues(mImageMatrix)
-        activity_image_matrix_imv.setImageMatrix(matrix)
-        activity_image_matrix_imv.invalidate()
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.activity_image_matrix
+        mBind.imv.setImageMatrix(matrix)
+        mBind.imv.invalidate()
     }
 }

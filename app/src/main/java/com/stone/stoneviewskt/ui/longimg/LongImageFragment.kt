@@ -1,9 +1,11 @@
 package com.stone.stoneviewskt.ui.longimg
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_long_image.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentLongImageBinding
 
 /**
  * desc:
@@ -12,18 +14,19 @@ import kotlinx.android.synthetic.main.fragment_long_image.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/11/30 10:34
  */
-class LongImageFragment: BaseFragment() {
+class LongImageFragment : BaseBindFragment<FragmentLongImageBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentLongImageBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
         requireContext().assets.open("big.png").use {
-            fragment_long_image_iv.setImage(it)
+            mBind.fragmentLongImageIv.setImage(it)
         }
 
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_long_image
-    }
 }

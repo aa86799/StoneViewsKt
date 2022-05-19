@@ -7,13 +7,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.iceteck.silicompressorr.VideoCompress
 import com.iceteck.silicompressorr.VideoCompress.CompressListener
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentVideoCompressBinding
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_video_compress.*
 import kotlinx.coroutines.async
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
@@ -27,15 +29,17 @@ import java.io.File
  * time:    2020/8/2 19:24
  */
 @RuntimePermissions
-class VideoCompressFragment: BaseFragment() {
+class VideoCompressFragment: BaseBindFragment<FragmentVideoCompressBinding>() {
 
     private var mPath: String = ""
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentVideoCompressBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
-
-
-        fragment_video_compress_btn.setOnClickListener {
+        mBind.fragmentVideoCompressBtn.setOnClickListener {
             lifecycleScope.async {
 //                val mediaEntity = MediaEntity.newBuilder()
 //                    .localPath(mPath)
@@ -77,7 +81,7 @@ class VideoCompressFragment: BaseFragment() {
 
         }
 
-        fragment_video_compress_choose.setOnClickListener {
+        mBind.fragmentVideoCompressChoose.setOnClickListener {
             chooseVideoWithPermissionCheck()
         }
     }
@@ -128,7 +132,4 @@ class VideoCompressFragment: BaseFragment() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_video_compress
-    }
 }

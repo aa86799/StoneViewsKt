@@ -1,7 +1,7 @@
 package com.stone.stoneviewskt.data
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * desc:    plugin: 'kotlin-android-extensions'   对应  kotlinx.android.parcel.Parcelize 。

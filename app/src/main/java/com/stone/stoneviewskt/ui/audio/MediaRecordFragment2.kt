@@ -3,13 +3,16 @@ package com.stone.stoneviewskt.ui.audio
 import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMediaRecordBinding
 import com.stone.stoneviewskt.util.loge
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_media_record.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import org.jetbrains.anko.imageResource
@@ -27,7 +30,11 @@ import permissions.dispatcher.RuntimePermissions
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class MediaRecordFragment2 : BaseFragment() {
+class MediaRecordFragment2 : BaseBindFragment<FragmentMediaRecordBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMediaRecordBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
@@ -36,15 +43,15 @@ class MediaRecordFragment2 : BaseFragment() {
             lifecycleScope.launchWhenResumed {
                 async {
                     while (MediaRecordManager.mIsRecording) {
-                        fragment_media_record_wave.refreshElement(MediaRecordManager.getMaxAmplitude())
+                        mBind.fragmentMediaRecordWave.refreshElement(MediaRecordManager.getMaxAmplitude())
                         delay(100)
                     }
                 }
                 while (MediaRecordManager.mIsRecording) {
-                    fragment_media_record_time.text = "${(System.currentTimeMillis() - startTime) / 1000}s"
-                    fragment_media_record_wave.setText("${(3 * 60 * 1000 - (System.currentTimeMillis() - startTime)) / 1000}s")
+                    mBind.fragmentMediaRecordTime.text = "${(System.currentTimeMillis() - startTime) / 1000}s"
+                    mBind.fragmentMediaRecordWave.setText("${(3 * 60 * 1000 - (System.currentTimeMillis() - startTime)) / 1000}s")
                     delay(1000)
-                    logi("音量:${MediaRecordManager.getMaxAmplitude()}" )
+                    logi("音量:${MediaRecordManager.getMaxAmplitude()}")
                 }
             }
         }
@@ -55,10 +62,10 @@ class MediaRecordFragment2 : BaseFragment() {
 
         MediaRecordManager.setOnCompleteBlock { startTime, stopTime ->
             val span = (stopTime - startTime) / 1000
-            fragment_media_record_wave.setText("录音倒计时：${ 3 * 60 - span}s")
+            mBind.fragmentMediaRecordWave.setText("录音倒计时：${3 * 60 - span}s")
             if (span >= 3) {
-                fragment_media_record_tv.text = "录音时长: ${span}s"
-                fragment_media_record_time.text = "${span}s"
+                mBind.fragmentMediaRecordTv.text = "录音时长: ${span}s"
+                mBind.fragmentMediaRecordTime.text = "${span}s"
             }
             if (span < 5) {
                 //todo 小于5s
@@ -69,7 +76,7 @@ class MediaRecordFragment2 : BaseFragment() {
             lifecycleScope.launchWhenResumed {
                 var seconds = duration / 1000
                 while (MediaRecordManager.mIsPlaying) {
-                    fragment_media_record_play_time.text = "播放倒计时: ${seconds}s"
+                    mBind.fragmentMediaRecordPlayTime.text = "播放倒计时: ${seconds}s"
                     if (seconds == 0) break
                     delay(1000)
                     seconds--
@@ -77,7 +84,7 @@ class MediaRecordFragment2 : BaseFragment() {
             }
         }
 
-        fragment_media_record_say.setOnTouchListener { v, event ->
+        mBind.fragmentMediaRecordSay.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startRecordWithPermissionCheck()
@@ -85,15 +92,15 @@ class MediaRecordFragment2 : BaseFragment() {
                 MotionEvent.ACTION_UP -> {
                     loge("ACTION_UP")
                     stopRecord()
-                    fragment_media_record_wave.reset()
+                    mBind.fragmentMediaRecordWave.reset()
                 }
             }
             true
         }
 
-        fragment_media_record_play.setOnClickListener {
+        mBind.fragmentMediaRecordPlay.setOnClickListener {
             if (MediaRecordManager.mIsPlaying) {
-               MediaRecordManager.stopPlay()
+                MediaRecordManager.stopPlay()
             } else {
                 MediaRecordManager.play(requireContext())
             }
@@ -102,8 +109,8 @@ class MediaRecordFragment2 : BaseFragment() {
 
     @NeedsPermission(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun startRecord() {
-        fragment_media_record_say.text = "正在录音"
-        fragment_media_record_mic.imageResource = R.drawable.ic_baseline_mic_24
+        mBind.fragmentMediaRecordSay.text = "正在录音"
+        mBind.fragmentMediaRecordMic.imageResource = R.drawable.ic_baseline_mic_24
 
         lifecycleScope.launchWhenResumed {
             MediaRecordManager.releaseRecord()
@@ -112,8 +119,8 @@ class MediaRecordFragment2 : BaseFragment() {
     }
 
     private fun stopRecord() {
-        fragment_media_record_say.text = "开始录音"
-        fragment_media_record_mic.imageResource = R.drawable.ic_baseline_mic_off_24
+        mBind.fragmentMediaRecordSay.text = "开始录音"
+        mBind.fragmentMediaRecordMic.imageResource = R.drawable.ic_baseline_mic_off_24
 
         lifecycleScope.launchWhenResumed {
             MediaRecordManager.stopRecord()
@@ -143,7 +150,4 @@ class MediaRecordFragment2 : BaseFragment() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_media_record
-    }
 }

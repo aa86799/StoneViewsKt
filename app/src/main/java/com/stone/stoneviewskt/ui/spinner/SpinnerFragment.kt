@@ -3,15 +3,15 @@ package com.stone.stoneviewskt.ui.spinner
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.CheckedTextView
 import android.widget.TextView
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_spinner.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentSpinnerBinding
 
 /**
  * desc:    Spinner 测试
@@ -20,9 +20,13 @@ import kotlinx.android.synthetic.main.fragment_spinner.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/28 20:56
  */
-class SpinnerFragment: BaseFragment() {
+class SpinnerFragment : BaseBindFragment<FragmentSpinnerBinding>() {
 
     var mClick = false
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentSpinnerBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
@@ -35,7 +39,7 @@ class SpinnerFragment: BaseFragment() {
 
         val list = mutableListOf("abc", "cdf", "ggg")
 //        list.add(0, "请选择")
-        fragment_spinner_sp.adapter = getSpAdapter(list, true) {
+        mBind.fragmentSpinnerSp.adapter = getSpAdapter(list, true) {
             list[it]
         }
 //        fragment_spinner_sp.post {
@@ -44,7 +48,7 @@ class SpinnerFragment: BaseFragment() {
 //        }
 
 
-        fragment_spinner_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        mBind.fragmentSpinnerSp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -89,8 +93,4 @@ class SpinnerFragment: BaseFragment() {
 
     }
 
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_spinner
-    }
 }

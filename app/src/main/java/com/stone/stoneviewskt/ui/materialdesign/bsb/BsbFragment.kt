@@ -2,11 +2,14 @@ package com.stone.stoneviewskt.ui.materialdesign.bsb
 
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_bsb.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentBsbBinding
 import org.jetbrains.anko.displayMetrics
 
 /**
@@ -19,13 +22,17 @@ import org.jetbrains.anko.displayMetrics
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/10 20:02
  */
-class BsbFragment : BaseFragment() {
+class BsbFragment : BaseBindFragment<FragmentBsbBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentBsbBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
         //xml 中设置了 相应的 behavior
-        val bottomSheetBehavior = BottomSheetBehavior.from(fragment_bsb_sheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(mBind.fragmentBsbSheet)
         //默认true。false时，view会显示在父view的top， 下拖动后在父view的高度一半，再向下拖动，才显示在底部。
 //        bottomSheetBehavior.isFitToContents = false
         /*
@@ -50,13 +57,13 @@ class BsbFragment : BaseFragment() {
             }
         })
 
-        fragment_bsb_sheet.setOnClickListener {
+        mBind.fragmentBsbSheetBtn.setOnClickListener {
             bottomSheetBehavior.isHideable = true
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             bottomSheetBehavior.peekHeight = 10 //这时不起作用， 完全隐藏view
         }
 
-        fragment_bsb_sheet_btn.setOnClickListener {
+        mBind.fragmentBsbSheetBtn.setOnClickListener {
             bottomSheetBehavior.isHideable = false
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             bottomSheetBehavior.peekHeight = 50

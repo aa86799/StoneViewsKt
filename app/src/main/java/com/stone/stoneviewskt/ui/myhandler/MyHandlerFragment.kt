@@ -1,10 +1,12 @@
 package com.stone.stoneviewskt.ui.myhandler
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMyHandlerBinding
 import com.stone.stoneviewskt.util.logi
-import kotlinx.android.synthetic.main.fragment_my_handler.*
 
 /**
  * desc:    handler --sendMessage(message)--> messageQueue;
@@ -15,9 +17,13 @@ import kotlinx.android.synthetic.main.fragment_my_handler.*
  * blog :   https://stone.blog.csdn.net
  * time:    2022/3/27 10:56
  */
-class MyHandlerFragment: BaseFragment() {
+class MyHandlerFragment : BaseBindFragment<FragmentMyHandlerBinding>() {
 
     private var handler: MyHandler? = null
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMyHandlerBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
@@ -30,7 +36,7 @@ class MyHandlerFragment: BaseFragment() {
         t1.start()
 //        t1.join() // join()要求线程执行完毕；而 loop()是永真循环，不会主动结束
 
-        btn_main_looper.setOnClickListener {
+        mBind.btnMainLooper.setOnClickListener {
             Thread {
 //                handler = MyHandler(MyLooper.getMainLooper()!!, object : MyHandler.Callback {
 //                    override fun handleMessage(msg: MyMessage) {
@@ -51,8 +57,4 @@ class MyHandlerFragment: BaseFragment() {
         }
     }
 
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_my_handler
-    }
 }

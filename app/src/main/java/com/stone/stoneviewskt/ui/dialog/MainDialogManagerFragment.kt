@@ -1,9 +1,11 @@
 package com.stone.stoneviewskt.ui.dialog
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_main_dialog_manager.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMainDialogManagerBinding
 
 /**
  * desc:
@@ -12,17 +14,17 @@ import kotlinx.android.synthetic.main.fragment_main_dialog_manager.*
  * blog :   https://stone.blog.csdn.net
  * time:    2021/1/24 14:19
  */
-class MainDialogManagerFragment : BaseFragment() {
+class MainDialogManagerFragment : BaseBindFragment<FragmentMainDialogManagerBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMainDialogManagerBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_mdm_life.setOnClickListener {
+        mBind.fragmentMdmLife.setOnClickListener {
             TestDialogFragment().show(childFragmentManager, "TestDialogFragment")
         }
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_main_dialog_manager
     }
 }

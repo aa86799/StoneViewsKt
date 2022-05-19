@@ -3,10 +3,13 @@ package com.stone.stoneviewskt.ui.colormatrix
 import android.graphics.*
 import android.os.Bundle
 import android.text.InputType
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.EditText
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_color_matrix.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentColorMatrixBinding
 
 /**
  * desc:    ColorMatrix 4x5 float matrix.
@@ -17,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_color_matrix.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/30 14:30
  */
-class ColorMatrixFragment : BaseFragment() {
+class ColorMatrixFragment : BaseBindFragment<FragmentColorMatrixBinding>() {
 
     private lateinit var mBitmap: Bitmap
     private var mEtWidth = 0
@@ -26,16 +29,20 @@ class ColorMatrixFragment : BaseFragment() {
     private val mColorMatrix = FloatArray(20)
     private val mOptions = BitmapFactory.Options()
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentColorMatrixBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
         init()
 
-        btnChange.setOnClickListener {
+        mBind.btnChange.setOnClickListener {
             getMatrix()
             setImageMatrix()
         }
 
-        btnReset.setOnClickListener {
+        mBind.btnReset.setOnClickListener {
             loadBitmap()
             initMatrix()
             getMatrix()
@@ -43,30 +50,30 @@ class ColorMatrixFragment : BaseFragment() {
 
         }
 
-        btnNegative.setOnClickListener {
+        mBind.btnNegative.setOnClickListener {
             loadBitmap()
             mBitmap = ImageHelper.handleImageNegative(mBitmap)
-            fragment_color_matrix_iv.setImageBitmap(mBitmap)
+            mBind.fragmentColorMatrixIv.setImageBitmap(mBitmap)
         }
 
-        btnOldPhoto.setOnClickListener {
+        mBind.btnOldPhoto.setOnClickListener {
             loadBitmap()
             mBitmap = ImageHelper.handleImagePixelsOldPhoto(mBitmap)
-            fragment_color_matrix_iv.setImageBitmap(mBitmap)
+            mBind.fragmentColorMatrixIv.setImageBitmap(mBitmap)
         }
 
-        btnRelief.setOnClickListener {
+        mBind.btnRelief.setOnClickListener {
             loadBitmap()
             mBitmap = ImageHelper.handleImagePixelsRelief(mBitmap)
-            fragment_color_matrix_iv.setImageBitmap(mBitmap)
+            mBind.fragmentColorMatrixIv.setImageBitmap(mBitmap)
         }
     }
 
     private fun init() {
         loadBitmap()
-        fragment_color_matrix_group.post {
-            mEtWidth = fragment_color_matrix_group.width / 5
-            mEtHeight = fragment_color_matrix_group.height / 4
+        mBind.fragmentColorMatrixGroup.post {
+            mEtWidth = mBind.fragmentColorMatrixGroup.width / 5
+            mEtHeight = mBind.fragmentColorMatrixGroup.height / 4
             addEts()
             initMatrix()
         }
@@ -77,7 +84,7 @@ class ColorMatrixFragment : BaseFragment() {
 //        mBitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl, mOptions)
         mBitmap = BitmapFactory.decodeResource(resources, R.mipmap.back_girl)
         mOptions.inBitmap = mBitmap
-        fragment_color_matrix_iv.setImageBitmap(mBitmap)
+        mBind.fragmentColorMatrixIv.setImageBitmap(mBitmap)
     }
 
     private fun addEts() {
@@ -85,7 +92,7 @@ class ColorMatrixFragment : BaseFragment() {
             val editText = EditText(requireContext())
             editText.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED //有符号数字
             mEts.add(editText)
-            fragment_color_matrix_group.addView(editText, mEtWidth, mEtHeight)
+            mBind.fragmentColorMatrixGroup.addView(editText, mEtWidth, mEtHeight)
         }
     }
 
@@ -117,10 +124,7 @@ class ColorMatrixFragment : BaseFragment() {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.colorFilter = ColorMatrixColorFilter(colorMatrix)
         canvas.drawBitmap(mBitmap, 0f, 0f, paint)
-        fragment_color_matrix_iv.setImageBitmap(bmp)
+        mBind.fragmentColorMatrixIv.setImageBitmap(bmp)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_color_matrix
-    }
 }

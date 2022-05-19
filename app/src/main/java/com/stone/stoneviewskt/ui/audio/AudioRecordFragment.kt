@@ -4,12 +4,15 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.media.*
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentAudioRecordBinding
 import com.stone.stoneviewskt.util.loge
-import kotlinx.android.synthetic.main.fragment_audio_record.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.anko.imageResource
@@ -31,7 +34,7 @@ import kotlin.math.max
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class AudioRecordFragment : BaseFragment() {
+class AudioRecordFragment : BaseBindFragment<FragmentAudioRecordBinding>() {
 
     init {
         System.loadLibrary("native-lib")
@@ -54,41 +57,45 @@ class AudioRecordFragment : BaseFragment() {
         private const val mSampleRateInHz = 44100
     }
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentAudioRecordBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
         mAudioPitchProcessor = AudioPitchProcessor(mBufferSize)
 
-        fragment_audio_record_say.setOnTouchListener { v, event ->
+        mBind.fragmentAudioRecordSay.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startRecordWithPermissionCheck()
                 }
                 MotionEvent.ACTION_UP -> {
-                    loge("ACTION_UP" )
+                    loge("ACTION_UP")
                     stopRecord()
                 }
             }
             true
         }
 
-        fragment_audio_record_play.setOnClickListener {
+        mBind.fragmentAudioRecordPlay.setOnClickListener {
             doPlay()
         }
 
-        fragment_audio_pitch1.setOnClickListener {
+        mBind.fragmentAudioPitch1.setOnClickListener {
             mPitchRatio = 1f
         }
 
-        fragment_audio_pitch2.setOnClickListener {
+        mBind.fragmentAudioPitch2.setOnClickListener {
             mPitchRatio = 1.5f
         }
     }
 
     @NeedsPermission(Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun startRecord() {
-        fragment_audio_record_say.text = "正在录音"
-        fragment_audio_record_mic.imageResource = R.drawable.ic_baseline_mic_24
+        mBind.fragmentAudioRecordSay.text = "正在录音"
+        mBind.fragmentAudioRecordMic.imageResource = R.drawable.ic_baseline_mic_24
 
         lifecycleScope.launchWhenResumed {
             releaseRecord()
@@ -102,8 +109,8 @@ class AudioRecordFragment : BaseFragment() {
     }
 
     private fun stopRecord() {
-        fragment_audio_record_say.text = "开始录音"
-        fragment_audio_record_mic.imageResource = R.drawable.ic_baseline_mic_off_24
+        mBind.fragmentAudioRecordSay.text = "开始录音"
+        mBind.fragmentAudioRecordMic.imageResource = R.drawable.ic_baseline_mic_off_24
 
         lifecycleScope.launchWhenResumed {
             val result = withContext(Dispatchers.Main) {
@@ -122,7 +129,7 @@ class AudioRecordFragment : BaseFragment() {
 
     private fun doStart(): Boolean {
         try {
-            mAudioFile = File("${_mActivity.externalCacheDir}/stone.pcm")
+            mAudioFile = File("${requireActivity().externalCacheDir}/stone.pcm")
             mAudioFile?.createNewFile()
 
             val os = FileOutputStream(mAudioFile)
@@ -170,7 +177,7 @@ class AudioRecordFragment : BaseFragment() {
             withContext(Dispatchers.Main) {
                 mStopTime = System.currentTimeMillis()
                 if (mStopTime - mStartTime >= 3000) {
-                    fragment_audio_record_tv.text = "录音时长: ${(mStopTime - mStartTime) / 1000}s"
+                    mBind.fragmentAudioRecordTv.text = "录音时长: ${(mStopTime - mStartTime) / 1000}s"
                 }
             }
         } catch (e: Exception) {
@@ -195,10 +202,12 @@ class AudioRecordFragment : BaseFragment() {
             val mode = AudioTrack.MODE_STREAM
             val bufferSizeInBytes = AudioTrack.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat)
 
-            mAudioTrack = AudioTrack(streamType, sampleRateInHz, channelConfig,
-                    audioFormat, max(bufferSizeInBytes, mBufferSize), mode)
+            mAudioTrack = AudioTrack(
+                streamType, sampleRateInHz, channelConfig,
+                audioFormat, max(bufferSizeInBytes, mBufferSize), mode
+            )
             mAudioTrack?.play() //调一次播放，等待写入
-            val fis = FileInputStream("${_mActivity.externalCacheDir}/stone.pcm")
+            val fis = FileInputStream("${requireActivity().externalCacheDir}/stone.pcm")
             var read = fis.read(mBuffer)
             while (read > 0) {
                 val buffer = if (mPitchRatio == 1.0f) mBuffer else mAudioPitchProcessor.process(mPitchRatio, mSampleRateInHz, mBuffer)
@@ -242,7 +251,4 @@ class AudioRecordFragment : BaseFragment() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_audio_record
-    }
 }

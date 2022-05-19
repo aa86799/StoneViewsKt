@@ -1,10 +1,13 @@
 package com.stone.stoneviewskt.ui.materialdesign
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.stone.stoneviewskt.adapter.SampleAdapter2
 import com.stone.stoneviewskt.base.BaseActivity
-import com.stone.stoneviewskt.base.BaseFragment
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMdMainBinding
 import com.stone.stoneviewskt.ui.card.CardFragment
 import com.stone.stoneviewskt.ui.fab.FloatingActionButtonFragment
 import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
@@ -14,7 +17,6 @@ import com.stone.stoneviewskt.ui.materialdesign.chips.ChipsFragment
 import com.stone.stoneviewskt.ui.materialdesign.collapsing.CollapsingFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabcoor.TabCoorAppbarFragment
 import com.stone.stoneviewskt.ui.materialdesign.tabv.TabLayoutFragment
-import kotlinx.android.synthetic.main.fragment_md_main.*
 
 /**
  * desc:
@@ -23,14 +25,18 @@ import kotlinx.android.synthetic.main.fragment_md_main.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/25 12:53
  */
-class MDMainFragment : BaseFragment() {
+class MDMainFragment : BaseBindFragment<FragmentMdMainBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMdMainBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_md_main_title.mIvLeft.setOnClickListener { _mActivity.finish() }
+        mBind.fragmentMdMainTitle.mIvLeft.setOnClickListener { _mActivity.finish() }
 
-        fragment_md_main_rv.adapter = SampleAdapter2(TITLES) { _, title ->
+        mBind.fragmentMdMainRv.adapter = SampleAdapter2(TITLES) { _, title ->
             when (title) {
                 "TabLayout+ViewPager" -> (_mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
                 "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (_mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
@@ -48,18 +54,15 @@ class MDMainFragment : BaseFragment() {
 
     companion object {
         val TITLES = listOf(
-                "TabLayout+ViewPager",
-                "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
-                "BottomNavigationView",
-                "BsbDialogOnlyFragment",
-                "Chips",
-                "Card",
-                "FloatingActionButton",
-                "CollapsingToolbarLayout"
+            "TabLayout+ViewPager",
+            "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
+            "BottomNavigationView",
+            "BsbDialogOnlyFragment",
+            "Chips",
+            "Card",
+            "FloatingActionButton",
+            "CollapsingToolbarLayout"
         )
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_md_main
-    }
 }

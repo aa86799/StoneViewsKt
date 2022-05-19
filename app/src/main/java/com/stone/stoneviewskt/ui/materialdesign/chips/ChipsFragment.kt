@@ -1,10 +1,12 @@
 package com.stone.stoneviewskt.ui.materialdesign.chips
 
 import android.os.Bundle
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentChipsBinding
 import com.stone.stoneviewskt.util.showShort
-import kotlinx.android.synthetic.main.fragment_chips.*
 
 /**
  * desc:
@@ -13,23 +15,21 @@ import kotlinx.android.synthetic.main.fragment_chips.*
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/11 20:24
  */
-class ChipsFragment: BaseFragment() {
+class ChipsFragment : BaseBindFragment<FragmentChipsBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentChipsBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        fragment_chips_entry.setOnClickListener {
-
-        }
-        fragment_chips_entry.setOnCloseIconClickListener {
+        mBind.fragmentChipsEntry.setOnCloseIconClickListener {
             showShort("click close icon")
         }
-        fragment_chips_choice.setOnCheckedChangeListener { buttonView, isChecked ->
+        mBind.fragmentChipsChoice.setOnCheckedChangeListener { buttonView, isChecked ->
             showShort("$isChecked")
         }
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_chips
-    }
 }

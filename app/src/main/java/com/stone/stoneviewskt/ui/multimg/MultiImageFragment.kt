@@ -9,7 +9,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -18,12 +20,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_multi_image.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentMultiImageBinding
 import org.jetbrains.anko.support.v4.alert
 
-class MultiImageFragment : BaseFragment() {
+class MultiImageFragment : BaseBindFragment<FragmentMultiImageBinding>() {
 
     private var mGrantedCallbackCallback: (() -> Unit)? = null
     private var mDeniedCallbackCallback: (() -> Unit)? = null
@@ -58,19 +60,23 @@ class MultiImageFragment : BaseFragment() {
                 list.add(clipData.getItemAt(it).uri)
                 Log.i("TAG", "mChooseAlbumLauncher: ${list[it]}")
                 if (it == 0) {
-                    iv_img1.setImageURI(list[0])
+                    mBind.ivImg1.setImageURI(list[0])
                 }
                 if (it == 1) {
-                    iv_img2.setImageURI(list[1])
+                    mBind.ivImg2.setImageURI(list[1])
                 }
             }
         }
     }
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMultiImageBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_select_image.setOnClickListener {
+        mBind.btnSelectImage.setOnClickListener {
             albumPermissionHandle {
                 mChooseAlbumLauncher.launch(
                     Intent(Intent.ACTION_PICK, null)
@@ -80,10 +86,6 @@ class MultiImageFragment : BaseFragment() {
             }
         }
 //        Intent.createChooser()
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_multi_image
     }
 
     fun requestForResult(block: (ActivityResult) -> Unit): ActivityResultLauncher<Intent> {

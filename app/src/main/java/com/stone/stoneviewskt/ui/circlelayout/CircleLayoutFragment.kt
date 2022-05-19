@@ -5,14 +5,17 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.stone.stoneviewskt.BuildConfig
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_circle_layout.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentCircleLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.yesButton
@@ -24,15 +27,19 @@ import org.jetbrains.anko.yesButton
  * blog :   https://stone.blog.csdn.net
  * time:    2020/7/26 23:02
  */
-class CircleLayoutFragment: BaseFragment() {
+class CircleLayoutFragment : BaseBindFragment<FragmentCircleLayoutBinding>() {
 
     private var mIsShow = true
 
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentCircleLayoutBinding {
+        return inflateBinding(inflater, container)
+    }
+
     override fun onPreparedView(savedInstanceState: Bundle?) {
-        fragment_cl_menu.show()
+        mBind.fragmentClMenu.show()
 //        fragment_cl_menu.hide()
 
-        fragment_cl_ip.onClick {
+        mBind.fragmentClIp.onClick {
             alert {
                 title = "当前服务地址"
                 message = "http://192.168.1.11"
@@ -42,7 +49,7 @@ class CircleLayoutFragment: BaseFragment() {
             }.show()
         }
 
-        fragment_cl_tool.setOnClickListener {
+        mBind.fragmentClTool.setOnClickListener {
             alert {
                 title = "package name"
                 message = BuildConfig.APPLICATION_ID
@@ -52,7 +59,7 @@ class CircleLayoutFragment: BaseFragment() {
             }.show()
         }
 
-        fragment_cl_menu.setOnClickListener {
+        mBind.fragmentClMenu.setOnClickListener {
             it as ExtendedFloatingActionButton
             if (!mIsShow) {
                 it.extend() //展开
@@ -64,17 +71,16 @@ class CircleLayoutFragment: BaseFragment() {
             switchMenu(!mIsShow)
         }
 
-        fragment_cl_menu.post {
-            fragment_cl_menu.performClick()
+        mBind.fragmentClMenu.post {
+            mBind.fragmentClMenu.performClick()
         }
     }
-
 
 
     //开关菜单
     private fun switchMenu(isShow: Boolean) {
         mIsShow = isShow
-        val itemViews = fragment_cl_root.children.filterNot { it == fragment_cl_menu }
+        val itemViews = mBind.fragmentClRoot.children.filterNot { it == mBind.fragmentClMenu }
         val radius = (resources.getDimension(R.dimen.dp_10) * 15).toInt()
         val start = if (isShow) 0 else radius
         val end = if (isShow) radius else 0
@@ -98,7 +104,7 @@ class CircleLayoutFragment: BaseFragment() {
                 ObjectAnimator.ofFloat(
                     view,
                     "alpha",
-                    if (isShow) 0f  else 1f,
+                    if (isShow) 0f else 1f,
                     if (isShow) 1f else 0f
                 ).apply {
 //                    interpolator = BounceInterpolator() //弹跳式，闪闪的
@@ -111,9 +117,5 @@ class CircleLayoutFragment: BaseFragment() {
 //        set.playSequentially(animators) //顺序执行
         set.playTogether(animators)  //同步执行
         set.start()
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_circle_layout
     }
 }

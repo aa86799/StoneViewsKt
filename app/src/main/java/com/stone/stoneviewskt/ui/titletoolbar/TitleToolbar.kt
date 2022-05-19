@@ -2,13 +2,13 @@ package com.stone.stoneviewskt.ui.titletoolbar
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.stone.stoneviewskt.R
-import kotlinx.android.synthetic.main.layout_title_toolbar.view.*
+import com.stone.stoneviewskt.common.inflate
+import com.stone.stoneviewskt.databinding.LayoutTitleToolbarBinding
 import org.jetbrains.anko.imageResource
 
 /**
@@ -31,11 +31,13 @@ class TitleToolbar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     private var mRightImageVisibility: Boolean = true
     private var mRightViewRes: Int = RES_NONE
 
-    lateinit var mTvLeft: TextView
-    lateinit var mTvMiddle: TextView
-    lateinit var mTvRight: TextView
-    lateinit var mIvLeft: ImageView
-    lateinit var mIvRight: ImageView
+    val mTvLeft: TextView
+    val mTvMiddle: TextView
+    val mTvRight: TextView
+    val mIvLeft: ImageView
+    val mIvRight: ImageView
+
+    private var mBind: LayoutTitleToolbarBinding
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
@@ -46,7 +48,8 @@ class TitleToolbar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     }
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_title_toolbar, this, true)
+//        LayoutInflater.from(context).inflate(R.layout.layout_title_toolbar, this, true)
+        mBind = inflate<LayoutTitleToolbarBinding>(this, true)
 
         if (attrs != null) {
             val ary = context.obtainStyledAttributes(attrs, R.styleable.TitleToolbar)
@@ -63,11 +66,11 @@ class TitleToolbar(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
             ary.recycle()
         }
 
-        mTvLeft = layout_title_toolbar_left_tv
-        mIvLeft = layout_title_toolbar_left_iv
-        mTvMiddle = layout_title_toolbar_middle_tv
-        mTvRight = layout_title_toolbar_right_tv
-        mIvRight = layout_title_toolbar_right_iv
+        mTvLeft = mBind.layoutTitleToolbarLeftTv
+        mIvLeft = mBind.layoutTitleToolbarLeftIv
+        mTvMiddle = mBind.layoutTitleToolbarMiddleTv
+        mTvRight = mBind.layoutTitleToolbarRightTv
+        mIvRight = mBind.layoutTitleToolbarRightIv
 
         mLeftText?.let { mTvLeft.text = it }
         mTvLeft.visibility = if (mLeftVisibility) View.VISIBLE else View.GONE

@@ -2,38 +2,41 @@ package com.stone.stoneviewskt.ui.testscroll
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
-import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_scroll.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentScrollBinding
 
 /**
  * 滚动到底
  */
-class ScrollFragment: BaseFragment() {
+class ScrollFragment : BaseBindFragment<FragmentScrollBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentScrollBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        val maxH = 600*3
-        val minH = 600*2
-        tv_second.setOnClickListener {
-            tv_third.updateLayoutParams {
+        val maxH = 600 * 3
+        val minH = 600 * 2
+        mBind.tvSecond.setOnClickListener {
+            mBind.tvThird.updateLayoutParams {
                 if (maxH != this.height) {
                     this.height = maxH
                 } else {
                     this.height = minH
                 }
             }
-            Log.i("TAG", "onPreparedView: ${tv_third.bottom}")
-            sv_scroll.post {
-                sv_scroll.smoothScrollTo(0, tv_third.bottom) // 滚动到 某子view 的bottom
+            Log.i("TAG", "onPreparedView: ${mBind.tvThird.bottom}")
+            mBind.svScroll.post {
+                mBind.svScroll.smoothScrollTo(0, mBind.tvThird.bottom) // 滚动到 某子view 的bottom
 //                sv_scroll.fullScroll(View.FOCUS_DOWN) // 滚动到最底部
             }
         }
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_scroll
-    }
 }

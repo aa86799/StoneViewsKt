@@ -2,14 +2,16 @@ package com.stone.stoneviewskt.ui.materialdesign.tabv
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_tab_layout.*
+import com.stone.stoneviewskt.common.BaseBindFragment
+import com.stone.stoneviewskt.common.inflateBinding
+import com.stone.stoneviewskt.databinding.FragmentTabLayoutBinding
 import org.jetbrains.anko.textColor
 
 
@@ -20,21 +22,25 @@ import org.jetbrains.anko.textColor
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/25 13:32
  */
-class TabLayoutFragment : BaseFragment() {
+class TabLayoutFragment : BaseBindFragment<FragmentTabLayoutBinding>() {
+
+    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentTabLayoutBinding {
+        return inflateBinding(inflater, container)
+    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
-        fragment_tab_layout_title.mIvLeft.setOnClickListener {
+        mBind.fragmentTabLayoutTitle.mIvLeft.setOnClickListener {
             _mActivity.finish()
         }
 
         for (tab in TABS) {
-            fragment_tab_layout_tl.addTab(fragment_tab_layout_tl.newTab().setText(tab))
+            mBind.fragmentTabLayoutTl.addTab(mBind.fragmentTabLayoutTl.newTab().setText(tab))
 
         }
-        fragment_tab_layout_tl2.addTab(fragment_tab_layout_tl2.newTab().setText("A"))
+        mBind.fragmentTabLayoutTl2.addTab(mBind.fragmentTabLayoutTl2.newTab().setText("A"))
         //设置右上角，角标；类似小红点效果
-        fragment_tab_layout_tl2.getTabAt(0)?.orCreateBadge?.let {
+        mBind.fragmentTabLayoutTl2.getTabAt(0)?.orCreateBadge?.let {
             it.isVisible = true
             it.badgeTextColor = Color.YELLOW
             it.backgroundColor = Color.RED
@@ -49,14 +55,14 @@ class TabLayoutFragment : BaseFragment() {
             })
         }
         val pageTitleList = (1..10).toList().map { "$it" }
-        fragmentManager?: return
-        fragment_tab_layout_vp.adapter = VpAdapter(pageTitleList, list, fragmentManager!!)
-        fragment_tab_layout_tl3.setupWithViewPager(fragment_tab_layout_vp)
+        fragmentManager ?: return
+        mBind.fragmentTabLayoutVp.adapter = VpAdapter(pageTitleList, list, requireFragmentManager())
+        mBind.fragmentTabLayoutTl3.setupWithViewPager(mBind.fragmentTabLayoutVp)
 
         pageTitleList.indices.forEach {
-            fragment_tab_layout_tl3.getTabAt(it)?.customView = makeTabView(pageTitleList, it)
+            mBind.fragmentTabLayoutTl3.getTabAt(it)?.customView = makeTabView(pageTitleList, it)
         }
-        fragment_tab_layout_tl3.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        mBind.fragmentTabLayoutTl3.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab) {
             }
 
@@ -73,7 +79,7 @@ class TabLayoutFragment : BaseFragment() {
 //        fragment_tab_layout_tl3.getTabAt(0)?.customView?.isSelected = true
 //        fragment_tab_layout_tl3.getTabAt(0)?.select()
         //强行设置第0个
-        ((fragment_tab_layout_tl3.getTabAt(0)?.customView as ViewGroup).getChildAt(0) as TextView).textColor = Color.GREEN
+        ((mBind.fragmentTabLayoutTl3.getTabAt(0)?.customView as ViewGroup).getChildAt(0) as TextView).textColor = Color.GREEN
     }
 
     private fun makeTabView(titles: List<String>, position: Int): View {
@@ -101,10 +107,6 @@ class TabLayoutFragment : BaseFragment() {
 
     companion object {
         private val TABS = (1..10).map { "$it" }
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_tab_layout
     }
 
 }
