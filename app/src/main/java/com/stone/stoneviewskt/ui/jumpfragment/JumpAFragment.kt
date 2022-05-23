@@ -8,6 +8,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
+import com.stone.stoneviewskt.common.clickWithTrigger
 import com.stone.stoneviewskt.common.debounceClick
 import com.stone.stoneviewskt.common.debounceClickWidthHandler
 import com.stone.stoneviewskt.common.inflateBinding
@@ -69,6 +70,8 @@ class JumpAFragment : JumpFragment<FragmentJumpABinding>() {
 
         mBind.btnJaClickE.debounceClickWidthHandler { }
         mBind.btnJaClickF.debounceClickWidthHandler(originBlock = { })
+
+        mBind.btnJaClickG.clickWithTrigger { }
     }
 
 

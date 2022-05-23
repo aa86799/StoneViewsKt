@@ -92,3 +92,42 @@ fun View.debounceClickWidthHandler(delayMs: Long = 600L, originBlock: View.OnCli
     originBlock ?: return
     debounceClickWidthHandler(delayMs) { originBlock.onClick(this) }
 }
+
+//--------------
+
+/**
+ * 记录系统时间，以判断 是否能执行真实点击事件。
+ * 会一开始就触发真实回调，后面的连续快速点击，不会触发。
+ */
+fun <T : View> T.clickWithTrigger(time: Long = 600, block: (T) -> Unit) {
+    triggerDelay = time
+    setOnClickListener {
+        logi("start: ${System.currentTimeMillis()}")
+        if (clickEnable()) {
+            logi("end: ${System.currentTimeMillis()}")
+            block(it as T)
+        }
+    }
+}
+
+private var <T : View> T.triggerLastTime: Long
+    get() = if (getTag(1123460103) != null) getTag(1123460103) as Long else 0
+    set(value) {
+        setTag(1123460103, value)
+    }
+
+private var <T : View> T.triggerDelay: Long
+    get() = if (getTag(1123461123) != null) getTag(1123461123) as Long else -1
+    set(value) {
+        setTag(1123461123, value)
+    }
+
+private fun <T : View> T.clickEnable(): Boolean {
+    var flag = false
+    val currentClickTime = System.currentTimeMillis()
+    if (currentClickTime - triggerLastTime >= triggerDelay) {
+        flag = true
+    }
+    triggerLastTime = currentClickTime
+    return flag
+}

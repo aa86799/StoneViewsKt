@@ -113,4 +113,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_ja_click_e" />
+
+    <Button
+        android:id="@+id/btn_ja_click_g"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="点击事件g"
+        android:backgroundTint="#ff0eff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_ja_click_f" />
 </androidx.constraintlayout.widget.ConstraintLayout>
