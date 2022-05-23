@@ -32,14 +32,16 @@ class JumpCFragment : JumpFragment<FragmentJumpCBinding>() {
         info.append("activity fragmentManager:").append(requireActivity().supportFragmentManager).appendLine()
         mBind.tvJcInfo.text = info.toString()
 
+
         mBind.btnJcToA.setOnClickListener {
-//            requireActivity().supportFragmentManager
-            childFragmentManager.commit {
+//            childFragmentManager.commit { // 父容器的 container id，无法使用 child fragment manager
+            requireActivity().supportFragmentManager.commit {
                 add<JumpBFragment>(R.id.activity_jump_fragment_root, args = Bundle().apply {
 //                putParcelable(SyncStateContract.Constants.KEY_DATA, mPickItem)
 //                putParcelable(SyncStateContract.Constants.KEY_PICK_DETAIL, mPickDetail)
 //                putBoolean(SyncStateContract.Constants.KEY_IS_FROM_PICK_CONTENT, true)
                 })
+                addToBackStack(null)
             }
         }
 
