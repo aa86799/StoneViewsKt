@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="job_id"/>
+    <item type="id" name="runnable_id"/>
+    <item type="id" name="trigger_last_time_id"/>
+</resources>

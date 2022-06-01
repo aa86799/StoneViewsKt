@@ -3,13 +3,13 @@ package com.stone.stoneviewskt.common
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.util.loge
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
 
 /**
  * desc:
@@ -23,11 +23,10 @@ import java.util.*
  *  若block中是 CoroutineScope.()  这样的，在每次调用 CoroutineScope 实例对象时，就会触发。
  * 会在最后一次 松开超时后， 执行 end
  */
-private val jobUuid = UUID.randomUUID().hashCode()
 private var <T : View> T.mDebounceSuspendJob: Job?
-    get() = if (getTag(jobUuid) != null) getTag(jobUuid) as Job? else null
+    get() = if (getTag(R.id.job_id) != null) getTag(R.id.job_id) as Job? else null
     set(value) {
-        setTag(jobUuid, value)
+        setTag(R.id.job_id, value)
     }
 
 fun <T : View> T.debounceClick(coroutineScope: CoroutineScope, delayMs: Long = 600L, block: suspend (T) -> Unit) {
@@ -63,11 +62,10 @@ fun <T : View> T.debounceClick(owner: LifecycleOwner, originBlock: View.OnClickL
  */
 //private val debounceHandle: Handler by lazy { Handler(Looper.getMainLooper()) }
 
-private val runnableUuid = UUID.randomUUID().hashCode()
 private var <T : View> T.mDebounceHandleRunnable: Runnable?
-    get() = if (getTag(runnableUuid) != null) getTag(runnableUuid) as Runnable? else null
+    get() = if (getTag(R.id.runnable_id) != null) getTag(R.id.runnable_id) as Runnable? else null
     set(value) {
-        setTag(runnableUuid, value)
+        setTag(R.id.runnable_id, value)
     }
 
 fun <T : View> T.debounceClickWidthHandler(delayMs: Long = 600L, callback: (T) -> Unit) {
@@ -96,11 +94,10 @@ fun <T : View> T.debounceClickWidthHandler(delayMs: Long = 600L, originBlock: Vi
  * 记录系统时间，以判断 是否能执行真实点击事件。
  * 会一开始就触发真实回调，后面的连续快速点击，不会触发。
  */
-private val triggerLastTimeUuid = UUID.randomUUID().hashCode()
 private var <T : View> T.triggerLastTime: Long
-    get() = if (getTag(triggerLastTimeUuid) != null) getTag(triggerLastTimeUuid) as Long else 0
+    get() = if (getTag(R.id.trigger_last_time_id) != null) getTag(R.id.trigger_last_time_id) as Long else 0
     set(value) {
-        setTag(triggerLastTimeUuid, value)
+        setTag(R.id.trigger_last_time_id, value)
     }
 
 private fun <T : View> T.clickEnable(delayMs: Long): Boolean {
