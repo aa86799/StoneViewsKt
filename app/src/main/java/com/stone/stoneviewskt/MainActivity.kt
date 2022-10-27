@@ -2,6 +2,8 @@ package com.stone.stoneviewskt
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.WindowManager
 import com.stone.stoneviewskt.adapter.SampleAdapter
@@ -43,6 +45,7 @@ import com.stone.stoneviewskt.ui.radar.RadarFragment
 import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
+import com.stone.stoneviewskt.ui.simulate.SimulateEventFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.ui.testscroll.ScrollFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
@@ -56,6 +59,8 @@ import org.jetbrains.anko.startActivity
 class MainActivity : BaseActivity() {
 
     private lateinit var mBind: ActivityMainBinding
+
+    val handler = Handler(Looper.myLooper()!!)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,6 +132,7 @@ class MainActivity : BaseActivity() {
                 "Room" -> startNewUI(RoomFragment::class.java)
                 "WorkManager" -> startNewUI(WorkManagerFragment::class.java)
                 "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
+                "模拟点击" ->  startNewUI(SimulateEventFragment::class.java)
             }
         }
 
@@ -172,7 +178,8 @@ class MainActivity : BaseActivity() {
                 "Dialog",
                 "Room",
                 "WorkManager",
-                "从系统加载多张图片"
+                "从系统加载多张图片",
+                "模拟点击"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 

@@ -38,7 +38,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.6.10'
+//        kotlinCompilerVersion '1.6.10' // 配置过时，compose 会用 buildScript中配置的 kotlin 版本
     }
     packagingOptions {
         resources {

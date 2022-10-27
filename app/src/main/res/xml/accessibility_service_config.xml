@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:accessibilityEventTypes="typeAllMask"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/click_desc"
+    android:notificationTimeout="100"
+    tools:ignore="UnusedAttribute" />
+
+<!--
+accessibilityEventTypes：响应的事件类型（单击、长按、滑动、通知等），typeAllMask表示响应全部事件
+accessibilityFeedbackType：反馈方式，比如是语音播放，还是震动等
+accessibilityFlags：需要获取哪些信息，有flagDefault、flagReportViewIds 和 flagRetrieveInteractiveWindows
+canPerformGestures：是否允许app发送手势（api24及以上才可以使用手势）
+description：描述（会在开启辅助功能页面看到这段文字）
+notificationTimeout：响应时间间隔，设为100
+packageNames：需要辅助的app包名，默认是所有app
+它们的意义具体
+参见：https://blog.csdn.net/wxz1179503422/article/details/105114129
+
+除了提供配置文件来配置辅助服务了参数之外，还可以通过代码来配置，
+具体参考：https://blog.csdn.net/qq_30379689/article/details/53242953
+-->

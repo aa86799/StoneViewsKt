@@ -43,7 +43,7 @@ android {
     }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
-    ndkVersion '20.0.5594570'
+//    ndkVersion '20.0.5594570'
 
     externalNativeBuild {
         cmake {

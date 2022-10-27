@@ -8,7 +8,7 @@ ext.builds = builds //使用 ext 扩展属性
 builds.compileSdkVersion = 31
 builds.minSdkVersion = 21
 builds.targetSdkVersion = 31
-builds.buildToolsVersion = '30.0.1'
+builds.buildToolsVersion = '30.0.3'
 builds.versionCode = 1
 builds.versionName = "1.0"
 
@@ -28,7 +28,7 @@ versions.ktx = '1.3.2'
 versions.kotlinCoroutine = '1.4.2'
 //Kotlin库，它使Android应用程序开发更快更容易. url: https://github.com/Kotlin/anko
 versions.anko = '0.10.8'
-versions.androidxLifecycle = '2.2.0-rc03'
+versions.androidxLifecycle = '2.5.1'
 
 //安卓兼容包，未来是 androidx
 versions.supportAppcompat = '28.0.0'

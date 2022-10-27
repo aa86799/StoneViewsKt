@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StoneViewsKt</string>
+    <string name="click_desc">click window screen</string>
 </resources>

@@ -67,6 +67,8 @@ class StoneApplication : MultiDexApplication() {
 //        DoraemonKit.install(this, kits, DOKIT_PID);
 
         val rootDir = MMKV.initialize(this) //腾讯mmkv：key-value
+        // 创建自己的实例  参数1：库的key， 参数2：库的模式（多进程或单进程）
+        MMKV.mmkvWithID("stoneViewsKt", MMKV.MULTI_PROCESS_MODE)
         logi("MMKV rootDir: $rootDir")
 //        MMKV.defaultMMKV().encode()
 //        MMKV.defaultMMKV().decodeBool()
