@@ -58,7 +58,7 @@ versions.okhttp = '4.2.2'
 versions.okio = '2.4.1'
 
 //封装网络请求与响应。可结合 okhttp、gson、rxjava. url: https://github.com/square/retrofit
-versions.retrofit = '2.6.2'
+versions.retrofit = '2.9.0'
 
 //动态切换 retrofit 中的 baseUrl。 url: https://github.com/JessYanCoding/RetrofitUrlManager
 versions.retrofitUrlManage = '1.4.0'

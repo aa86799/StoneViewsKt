@@ -1,0 +1,15 @@
+
+比如asm要达成的目标
+把
+@POST("?debug=api.moveAudit.dismissList") // 多商品移库-确认移库
+@FormUrlEncoded
+fun dismissList(@FieldMap body: Map<String, String>, @Header("OA-Sign") signHeader: String): Call<InterfaceResponse<MultiScanConfirmData>>
+
+自定义注解，用于函数上，
+@SGET("api.moveAudit.dismissList")
+@SPOST("api.moveAudit.dismissList")
+fun xxx(): Call<InterfaceResponse<MultiScanConfirmData>>   自动修改函数参数，因为这个参数都是一样的
+
+首先应该自定义 gradle plugin
+在 plugin ，Transform 中，获取 项目中 .class 路径；再经由 asm 处理
+

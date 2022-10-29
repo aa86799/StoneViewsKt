@@ -88,7 +88,7 @@ object Versions {
     val pageindicatorview = "1.0.1"
     val support_design = "1.3.0"
     val support_cardview = "1.0.0"
-    val retrofit2 = "2.6.1"
+    val retrofit2 = "2.9.0"
     val aliyun_oss = "2.8.4"
     val ratingbar = "1.1.2"
     val PickerView = "3.2.7"

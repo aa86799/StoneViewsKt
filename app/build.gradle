@@ -147,6 +147,9 @@ dependencies {
     implementation(refs.eventbus)
     annotationProcessor refs.eventbusCompiler
 
+    implementation(refs.retrofit)
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.3'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
