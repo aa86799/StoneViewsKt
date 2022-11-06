@@ -139,6 +139,7 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.4.0'
     // Integration with ViewModels
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
+//    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1"
     // Integration with observables
     implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
     implementation 'androidx.compose.runtime:runtime-rxjava2:1.1.1'

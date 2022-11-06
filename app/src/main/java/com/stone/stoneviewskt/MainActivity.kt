@@ -33,6 +33,7 @@ import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
+import com.stone.stoneviewskt.ui.mvi.easy.MVIEasyFragment
 import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
@@ -65,18 +66,18 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        EventBus.getDefault().register(this)
+        //        EventBus.getDefault().register(this)
 
-        if (!isTaskRoot) {//activity是否是任务栈中的根activity
+        if (!isTaskRoot) { //activity是否是任务栈中的根activity
             if (intent.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER)) {
                 finish()
                 return
             }
         }
 
-//        startActivity<ComposeActivity>()
+        //        startActivity<ComposeActivity>()
 
-//        setContentView(R.layout.activity_main)
+        //        setContentView(R.layout.activity_main)
         mBind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBind.root)
 
@@ -89,8 +90,7 @@ class MainActivity : BaseActivity() {
                     if (att.screenBrightness < 1f) {
                         att.screenBrightness = 1f
                         mBind.activityMainRv.keepScreenOn = true // 屏幕常亮，阻止自动息屏
-                    } else {
-                        // 还原默认亮度策略
+                    } else { // 还原默认亮度策略
                         att.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
                         mBind.activityMainRv.keepScreenOn = false
                     }
@@ -132,7 +132,8 @@ class MainActivity : BaseActivity() {
                 "Room" -> startNewUI(RoomFragment::class.java)
                 "WorkManager" -> startNewUI(WorkManagerFragment::class.java)
                 "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
-                "模拟点击" ->  startNewUI(SimulateEventFragment::class.java)
+                "模拟点击" -> startNewUI(SimulateEventFragment::class.java)
+                "MVI架构示例" -> startNewUI(MVIEasyFragment::class.java)
             }
         }
 
@@ -141,45 +142,46 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
-                "用FragmentManager实现fragment跳转",
-                "自定义handler",
-                "改变屏幕亮度",
-                "Compose",
-                "左右进度",
-                "滚动测试",
-                "轮盘等分",
-                "卫星式菜单",
-                "雷达扫描旋转",
-                "灰度化",
-                "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频)",
-                "斜线进度条",
-                "圆环进度条",
-                "左边横向圆角进度条，右边文本为  \"进度/最大进度\"",
-                "绘制时钟表盘",
-                "材料设计",
-                "Spinner",
-                "NDK: lib jpeg",
-                "Floating_Action_Button + Constraint_Layout(圆形布局)",
-                "Media_Record",
-                "Media_Record2",
-                "Audio_Record",
-                "Video_Compress",
-                "Color_Matrix",
-                "Image_Matrix",
-                "长图加载",
-                "图片滤镜",
-                "图片裁剪",
-                "View Binding",
-                "Parcel Data",
-                "Data Store",
-                "WebView加载图片",
-                "Layout Animation",
-                "Lifecycle Observer",
-                "Dialog",
-                "Room",
-                "WorkManager",
-                "从系统加载多张图片",
-                "模拟点击"
+            "用FragmentManager实现fragment跳转",
+            "自定义handler",
+            "改变屏幕亮度",
+            "Compose",
+            "左右进度",
+            "滚动测试",
+            "轮盘等分",
+            "卫星式菜单",
+            "雷达扫描旋转",
+            "灰度化",
+            "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频)",
+            "斜线进度条",
+            "圆环进度条",
+            "左边横向圆角进度条，右边文本为  \"进度/最大进度\"",
+            "绘制时钟表盘",
+            "材料设计",
+            "Spinner",
+            "NDK: lib jpeg",
+            "Floating_Action_Button + Constraint_Layout(圆形布局)",
+            "Media_Record",
+            "Media_Record2",
+            "Audio_Record",
+            "Video_Compress",
+            "Color_Matrix",
+            "Image_Matrix",
+            "长图加载",
+            "图片滤镜",
+            "图片裁剪",
+            "View Binding",
+            "Parcel Data",
+            "Data Store",
+            "WebView加载图片",
+            "Layout Animation",
+            "Lifecycle Observer",
+            "Dialog",
+            "Room",
+            "WorkManager",
+            "从系统加载多张图片",
+            "模拟点击",
+            "MVI架构示例"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 
@@ -189,7 +191,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-//        EventBus.getDefault().unregister(this)
+        //        EventBus.getDefault().unregister(this)
         super.onDestroy()
     }
 }
