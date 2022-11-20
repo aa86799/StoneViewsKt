@@ -24,7 +24,7 @@ class MVIEasyFragment : BaseFragment() {
         super.onPreparedView(savedInstanceState)
 
         mRvData = view?.findViewById(R.id.rv_data)
-        mAdapter = MviDataAdapter(mutableListOf())
+        mAdapter = MviDataAdapter()
         mRvData?.adapter = mAdapter
 
         // 订阅状态
@@ -45,10 +45,16 @@ class MVIEasyFragment : BaseFragment() {
                             is MainUiState.LoadSuccess -> {
                                 logi("rv show data, add data of page ${it.page}, dismiss loading view")
                                 if (it.page == 1) { // refresh action
-                                    mAdapter.data.clear()
+                                    mAdapter.updateData(it.data)
+
+                                    // 模拟 区间删除; 注意item 数据要有个类似唯一的标记；否则添加再删除，就可能混乱了； 比如将 MviData#strId 字段注释后，多次点击刷新后就出现问题了
+                                    /*if (mAdapter.dataset.size > 6) {
+                                        mAdapter.removeAll(mAdapter.dataset.subList(3, 5), true)
+                                    }
+                                    mAdapter.addAll(it.data)*/
+                                } else {
+                                    mAdapter.addAll(it.data)
                                 }
-                                mAdapter.data.addAll(it.data)
-                                mAdapter.notifyDataSetChanged()
                             }
                             is MainUiState.LoadError -> {
                                 if (mPage > 0) mPage--
@@ -107,7 +113,7 @@ class MVIEasyFragment : BaseFragment() {
         // }
         view?.findViewById<Button>(R.id.btn_refresh)?.setOnClickListener { // mViewModel.refresh()   以前 就是在 view 中使用 vm, 直接调用 vm 的具体 操作数据的函数
             mPage = 1
-            mViewModel.dispatch(MainIntent.Refresh)
+            mViewModel.dispatch(MainIntent.Refresh())
 
             // lifecycleScope.launchWhenCreated {
             //     flowTest.emit(1 + Random.nextInt(1..10))

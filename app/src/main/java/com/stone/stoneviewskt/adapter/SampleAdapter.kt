@@ -2,7 +2,7 @@ package com.stone.stoneviewskt.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.stone.stoneviewskt.common.BaseViewHolder
+import com.stone.stoneviewskt.common.BaseBindingViewHolder
 import com.stone.stoneviewskt.common.inflate
 import com.stone.stoneviewskt.databinding.ItemSimpleList1Binding
 
@@ -13,19 +13,19 @@ import com.stone.stoneviewskt.databinding.ItemSimpleList1Binding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/4 11:14
  */
-class SampleAdapter(private val list: List<String>? = listOf(), private val itemClick: (Int, String)-> Unit): RecyclerView.Adapter<BaseViewHolder>() {
+class SampleAdapter(private val list: List<String>? = listOf(), private val itemClick: (Int, String)-> Unit): RecyclerView.Adapter<BaseBindingViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseBindingViewHolder {
 //        return ViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false))
 //        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_simple_list1, parent, false))
-        return BaseViewHolder(inflate<ItemSimpleList1Binding>(parent))
+        return BaseBindingViewHolder(inflate<ItemSimpleList1Binding>(parent))
     }
 
     override fun getItemCount(): Int {
         return list?.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseBindingViewHolder, position: Int) {
         val bind = holder.mBind as ItemSimpleList1Binding
         list?.get(position)?.let { data ->
             bind.itemSimpleListTv.text = data

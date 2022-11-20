@@ -7,7 +7,6 @@ import com.stone.stoneviewskt.ui.mvi.data.MviDatasource
 import com.stone.stoneviewskt.ui.mvi.data.MviRepository
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -24,8 +23,8 @@ class MviEasyViewModel(private val repository: MviRepository = MviRepository(Mvi
     /**
      * 事件意图
      */
-//    private val userIntent = MutableSharedFlow<MainIntent>()
-    private val userIntent = MutableSharedFlow<MainIntent>(2, 3, BufferOverflow.SUSPEND)
+    private val userIntent = MutableSharedFlow<MainIntent>()
+//    private val userIntent = MutableSharedFlow<MainIntent>(2, 3, BufferOverflow.SUSPEND)
 
     /**
      * 分发用户事件
@@ -41,28 +40,28 @@ class MviEasyViewModel(private val repository: MviRepository = MviRepository(Mvi
         viewModelScope.launch {
             userIntent.distinctUntilChanged().collect {
                 when (it) {
-                    is MainIntent.Refresh -> refresh()
-                    is MainIntent.LoadPageData -> loadPageData(it.page, it.pageSize)
+                    is MainIntent.Refresh -> refresh(it)
+                    is MainIntent.LoadPageData -> loadPageData(it, it.page, it.pageSize)
                     else -> {}
                 }
             }
         }
     }
 
-    private fun refresh() {
+    private fun refresh(intent: MainIntent) {
         logi("refresh")
-        loadPageData(1, 5)
+        loadPageData(intent, 1, 5)
     }
 
     // 加载分页数据
-    private fun loadPageData(page: Int, pageSize: Int) {
+    private fun loadPageData(intent: MainIntent, page: Int, pageSize: Int) {
         logi("loadPageData  $page")
         viewModelScope.launch {
             flow<MutableList<MviData>> {
                 logi("emit data in ${Thread.currentThread().name}")
                 val list = repository.getListMviData(page, pageSize)
                 // 模拟正常 emit 数据，或发生了异常
-                if (Random.nextBoolean())
+                if (Random.nextBoolean() && intent !is MainIntent.Refresh)
                     throw Exception("An error has occurred")
                 else emit(list)
             }.onStart {
@@ -97,7 +96,12 @@ sealed class MainUiState {
 }
 
 sealed class MainIntent {
-    object Refresh : MainIntent() // 刷新
+    /*
+     * 尽量不要用 object 定义 意图类；每次从 UI层 发送来的意图，正常情况下都是要响应的；
+     * 而使用 object 单例后，和 sharedStateFlow 的 distinctUntilChanged() 本意有冲突了：
+     * 连续发送单例事件 非首次的、后续的 就被过滤掉了。
+     */
+    class Refresh : MainIntent() // 刷新
 
     // Sealed types cannot be instantiated
     /*sealed*/ class LoadPageData(val page: Int, val pageSize: Int) : MainIntent() // 加载分页数据

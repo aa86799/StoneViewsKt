@@ -1,10 +1,8 @@
 package com.stone.stoneviewskt.ui.mvi.easy
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.stone.stoneviewskt.adapter.BaseRvAdapter
+import com.stone.stoneviewskt.common.BaseViewHolder
 import com.stone.stoneviewskt.ui.mvi.data.MviData
 
 /**
@@ -14,7 +12,7 @@ import com.stone.stoneviewskt.ui.mvi.data.MviData
  * blog :   https://stone.blog.csdn.net
  * time:    2022/11/6 16:24
  */
-class MviDataAdapter(val data: MutableList<MviData>) : RecyclerView.Adapter<MviDataViewHolder>() {
+/*class MviDataAdapter(val data: MutableList<MviData>) : RecyclerView.Adapter<MviDataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MviDataViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
@@ -28,9 +26,14 @@ class MviDataAdapter(val data: MutableList<MviData>) : RecyclerView.Adapter<MviD
     override fun getItemCount(): Int {
         return data.size
     }
-
-
-
 }
 
-class MviDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class MviDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)*/
+
+
+class MviDataAdapter : BaseRvAdapter<MviData>(android.R.layout.simple_list_item_1) {
+
+    override fun fillData(holder: BaseViewHolder, position: Int, data: MviData) {
+        holder.findView<TextView>(android.R.id.text1).text = "id=${data.id},title=${data.title}"
+    }
+}
