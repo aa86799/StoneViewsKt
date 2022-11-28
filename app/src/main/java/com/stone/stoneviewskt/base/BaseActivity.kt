@@ -50,7 +50,7 @@ open class BaseActivity : SupportActivity() {
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = statusBarColor()
-            window.navigationBarColor = Color.TRANSPARENT //应用内 导航栏，如 actionBar
+            window.navigationBarColor = Color.TRANSPARENT //应用内 导航栏，如 actionBar、底部虚拟按键背景
         }
 
         //supportFragmentManager 加载 fragment 到 android.R.id.content

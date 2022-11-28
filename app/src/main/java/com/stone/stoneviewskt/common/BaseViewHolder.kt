@@ -5,6 +5,7 @@ import android.view.View
 import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 
+// 若定义成 BaseViewHolder(val itemView: View) 会有inflate 为null 的 bug
 @Suppress("UNCHECKED_CAST")
 class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mViews: SparseArray<View> = SparseArray()

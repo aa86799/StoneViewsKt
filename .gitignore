@@ -16,3 +16,5 @@ gradle/*
 .idea/*
 build/*
 stone.keystore
+
+gradlew
