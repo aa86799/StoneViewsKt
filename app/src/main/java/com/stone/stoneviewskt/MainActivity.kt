@@ -48,6 +48,7 @@ import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.simulate.SimulateEventFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
+import com.stone.stoneviewskt.ui.successiveclick.SuccessiveClickFragment
 import com.stone.stoneviewskt.ui.testscroll.ScrollFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
@@ -83,6 +84,7 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
                 "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
                 "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
                 "改变屏幕亮度" -> { // 亮度范围 [0,1]
@@ -142,6 +144,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+            "连续点击测试",
             "用FragmentManager实现fragment跳转",
             "自定义handler",
             "改变屏幕亮度",

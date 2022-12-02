@@ -3,6 +3,7 @@ package com.stone.stoneviewskt.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.stone.stoneviewskt.common.BaseBindingViewHolder
+import com.stone.stoneviewskt.common.debounceClickWidthHandler
 import com.stone.stoneviewskt.common.inflate
 import com.stone.stoneviewskt.databinding.ItemSimpleList1Binding
 
@@ -30,7 +31,7 @@ class SampleAdapter(private val list: List<String>? = listOf(), private val item
         list?.get(position)?.let { data ->
             bind.itemSimpleListTv.text = data
 
-            bind.itemSimpleListTv.setOnClickListener {
+            bind.itemSimpleListTv.debounceClickWidthHandler {
                 itemClick(position, data)
             }
         }
