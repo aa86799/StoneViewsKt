@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
-<!--
-https://material.io/develop/android/components/chip/
-Chip 简短的一段信息：一个icon、文本、关闭按钮(或说右按钮).
-ChipGroup 默认多选模式；app:singleSelection="true" 为单选
--->
-    <com.google.android.material.chip.Chip
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="default : style Action"
-        app:chipIcon="@mipmap/satellite_thought" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--  如果icon是圆形，可以和左边的圆角重合的。  -->
-    <com.google.android.material.chip.Chip
-        android:id="@+id/fragment_chips_entry"
-        style="@style/Widget.MaterialComponents.Chip.Entry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="style entry "
-        app:chipIcon="@drawable/back_rect_round" />
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/fragment_chips_choice"
-        style="@style/Widget.MaterialComponents.Chip.Choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="style choice "
-        app:chipIcon="@mipmap/satellite_thought" />
-
-    <com.google.android.material.chip.Chip
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="style filter "
-        app:chipIcon="@mipmap/satellite_thought"
-        app:chipStrokeColor="#f00ff0" />
-
-    <com.google.android.material.chip.ChipGroup
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:singleSelection="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <!--
+        https://material.io/develop/android/components/chip/
+        Chip 简短的一段信息：一个icon、文本、关闭按钮(或说右按钮).
+        ChipGroup 默认多选模式；app:singleSelection="true" 为单选
+        -->
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="default : style Action"
+            app:chipIcon="@mipmap/satellite_thought" />
+
+        <!--  如果icon是圆形，可以和左边的圆角重合的。  -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/fragment_chips_entry"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="style entry "
+            app:chipIcon="@drawable/back_rect_round" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/fragment_chips_choice1"
+            android:id="@+id/fragment_chips_choice"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="style choice 1"
+            android:text="style choice "
             app:chipIcon="@mipmap/satellite_thought" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/fragment_chips_choice2"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="style choice 2"
-            app:chipIcon="@mipmap/satellite_thought" />
+            android:text="style filter "
+            app:chipIcon="@mipmap/satellite_thought"
+            app:chipStrokeColor="#f00ff0" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/fragment_chips_choice3"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="style choice 3"
-            app:chipIcon="@mipmap/satellite_thought" />
-    </com.google.android.material.chip.ChipGroup>
-</LinearLayout>
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/fragment_chips_choice1"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="style choice 1"
+                app:chipIcon="@mipmap/satellite_thought" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/fragment_chips_choice2"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="style choice 2"
+                app:chipIcon="@mipmap/satellite_thought" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/fragment_chips_choice3"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="style choice 3"
+                app:chipIcon="@mipmap/satellite_thought" />
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
+</layout>

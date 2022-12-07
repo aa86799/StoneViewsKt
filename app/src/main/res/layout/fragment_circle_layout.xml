@@ -1,100 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_cl_root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/fragment_cl_ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="server address"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="0"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/fragment_cl_tool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="包信息"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="60"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/fragment_cl_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="server address"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="0"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/fragment_cl_tool2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="too2"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="120"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/fragment_cl_tool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="包信息"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="60"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/fragment_cl_tool3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="too3"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="180"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/fragment_cl_tool2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="too2"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="120"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/fragment_cl_tool4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="too4"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="240"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/fragment_cl_tool3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="too3"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="180"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/fragment_cl_tool5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="too5"
-        android:textSize="18sp"
-        app:layout_constraintCircle="@id/fragment_cl_menu"
-        app:layout_constraintCircleAngle="300"
-        app:layout_constraintCircleRadius="100dp"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/fragment_cl_tool4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="too4"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="240"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
 
-    <!--  图片 要放 svg 才会显示
-    FloatingActionButton 只能设置 src
-    ExtendedFloatingActionButton
-        text
-        icon
-     -->
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fragment_cl_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_menu_24"
-        android:text="stone"
-        app:fabSize="normal"
-        app:icon="@drawable/ic_baseline_menu_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/fragment_cl_tool5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="too5"
+            android:textSize="18sp"
+            app:layout_constraintCircle="@id/fragment_cl_menu"
+            app:layout_constraintCircleAngle="300"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
+
+        <!--  图片 要放 svg 才会显示
+        FloatingActionButton 只能设置 src
+        ExtendedFloatingActionButton
+            text
+            icon
+         -->
+        <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fragment_cl_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_menu_24"
+            android:text="stone"
+            app:fabSize="normal"
+            app:icon="@drawable/ic_baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

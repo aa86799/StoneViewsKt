@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.stone.stoneviewskt.ui.longimg.LongImageView
-        android:id="@+id/fragment_long_image_iv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</ScrollView>
+        android:layout_height="match_parent">
+
+        <com.stone.stoneviewskt.ui.longimg.LongImageView
+            android:id="@+id/fragment_long_image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
+</layout>

@@ -1,11 +1,9 @@
 package com.stone.stoneviewskt.ui.card
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentCardBinding
 
 /**
@@ -18,11 +16,7 @@ import com.stone.stoneviewskt.databinding.FragmentCardBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/12 11:00
  */
-class CardFragment : BaseBindFragment<FragmentCardBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentCardBinding {
-        return inflateBinding(inflater, container)
-    }
+class CardFragment : BaseBindFragment<FragmentCardBinding>(R.layout.fragment_card) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

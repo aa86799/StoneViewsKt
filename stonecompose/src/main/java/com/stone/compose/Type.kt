@@ -1,5 +1,4 @@
-package com.stone.stoneviewskt.compose
-
+package com.stone.compose
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily

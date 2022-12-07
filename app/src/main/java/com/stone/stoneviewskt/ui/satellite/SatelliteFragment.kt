@@ -1,10 +1,11 @@
 package com.stone.stoneviewskt.ui.satellite
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentSatelliteBinding
 import com.stone.stoneviewskt.util.showShort
 
@@ -15,11 +16,7 @@ import com.stone.stoneviewskt.util.showShort
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/6 15:12
  */
-class SatelliteFragment : BaseBindFragment<FragmentSatelliteBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentSatelliteBinding {
-        return inflateBinding(inflater, container)
-    }
+class SatelliteFragment : BaseBindFragment<FragmentSatelliteBinding>(R.layout.fragment_satellite) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)

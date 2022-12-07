@@ -2,13 +2,10 @@ package com.stone.stoneviewskt.ui.materialdesign.bnv
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentBnvBinding
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.delay
@@ -20,11 +17,7 @@ import kotlinx.coroutines.delay
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/10 19:12
  */
-class BnvFragment : BaseBindFragment<FragmentBnvBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentBnvBinding {
-        return inflateBinding(inflater, container)
-    }
+class BnvFragment : BaseBindFragment<FragmentBnvBinding>(R.layout.fragment_bnv) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

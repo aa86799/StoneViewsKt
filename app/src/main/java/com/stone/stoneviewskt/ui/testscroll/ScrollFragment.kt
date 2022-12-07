@@ -2,21 +2,15 @@ package com.stone.stoneviewskt.ui.testscroll
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentScrollBinding
 
 /**
  * 滚动到底
  */
-class ScrollFragment : BaseBindFragment<FragmentScrollBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentScrollBinding {
-        return inflateBinding(inflater, container)
-    }
+class ScrollFragment : BaseBindFragment<FragmentScrollBinding>(R.layout.fragment_scroll) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

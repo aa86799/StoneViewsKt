@@ -2,12 +2,10 @@ package com.stone.stoneviewskt.ui.gray
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.lifecycle.lifecycleScope
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentGrayBinding
 
 /**
@@ -17,11 +15,7 @@ import com.stone.stoneviewskt.databinding.FragmentGrayBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/6 19:45
  */
-class GrayFragment : BaseBindFragment<FragmentGrayBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentGrayBinding {
-        return inflateBinding(inflater, container)
-    }
+class GrayFragment : BaseBindFragment<FragmentGrayBinding>(R.layout.fragment_gray) {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onPreparedView(savedInstanceState: Bundle?) {

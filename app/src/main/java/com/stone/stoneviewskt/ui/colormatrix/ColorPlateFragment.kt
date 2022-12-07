@@ -3,13 +3,10 @@ package com.stone.stoneviewskt.ui.colormatrix
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentColorPlateBinding
 import org.jetbrains.anko.imageBitmap
 import org.jetbrains.anko.sdk27.coroutines.onSeekBarChangeListener
@@ -21,7 +18,7 @@ import org.jetbrains.anko.sdk27.coroutines.onSeekBarChangeListener
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/30 15:20
  */
-class ColorPlateFragment : BaseBindFragment<FragmentColorPlateBinding>() {
+class ColorPlateFragment : BaseBindFragment<FragmentColorPlateBinding>(R.layout.fragment_color_plate) {
 
     private lateinit var mBitmap: Bitmap
     private var mHue = 0f //色相
@@ -31,10 +28,6 @@ class ColorPlateFragment : BaseBindFragment<FragmentColorPlateBinding>() {
     companion object {
         private const val MAX_VALUE = 255
         private const val MID_VALUE = 127
-    }
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentColorPlateBinding {
-        return inflateBinding(inflater, container)
     }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

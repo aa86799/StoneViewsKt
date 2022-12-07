@@ -5,8 +5,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
@@ -14,7 +12,6 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.stone.stoneviewskt.BuildConfig
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentCircleLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
@@ -27,13 +24,9 @@ import org.jetbrains.anko.yesButton
  * blog :   https://stone.blog.csdn.net
  * time:    2020/7/26 23:02
  */
-class CircleLayoutFragment : BaseBindFragment<FragmentCircleLayoutBinding>() {
+class CircleLayoutFragment : BaseBindFragment<FragmentCircleLayoutBinding>(R.layout.fragment_circle_layout) {
 
     private var mIsShow = true
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentCircleLayoutBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         mBind.fragmentClMenu.show()

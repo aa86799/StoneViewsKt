@@ -5,10 +5,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentStoneImageCropBinding
 import com.stone.stoneviewskt.util.BitmapUtil
 import com.stone.stoneviewskt.util.logi
@@ -24,11 +22,7 @@ import permissions.dispatcher.RuntimePermissions
  * time:    2020/12/6 11:32
  */
 @RuntimePermissions
-class StoneImageCropFragment : BaseBindFragment<FragmentStoneImageCropBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentStoneImageCropBinding {
-        return inflateBinding(inflater, container)
-    }
+class StoneImageCropFragment : BaseBindFragment<FragmentStoneImageCropBinding>(R.layout.fragment_stone_image_crop) {
 
     companion object {
         private const val REQUEST_CODE_PHOTO = 0x123

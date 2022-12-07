@@ -1,14 +1,11 @@
 package com.stone.stoneviewskt.ui.fab
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.transition.TransitionManager
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentFloatingactionButtonBeginBinding
 import com.stone.stoneviewskt.util.logi
 
@@ -19,13 +16,9 @@ import com.stone.stoneviewskt.util.logi
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/17 19:12
  */
-class FloatingActionButtonFragment : BaseBindFragment<FragmentFloatingactionButtonBeginBinding>() {
+class FloatingActionButtonFragment : BaseBindFragment<FragmentFloatingactionButtonBeginBinding>(R.layout.fragment_floatingaction_button_begin) {
 
     private var mIsShowMenu = false
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentFloatingactionButtonBeginBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

@@ -2,11 +2,8 @@ package com.stone.stoneviewskt.ui.materialdesign.tabcoor
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentAppbarLayoutBinding
 
 /**
@@ -16,11 +13,7 @@ import com.stone.stoneviewskt.databinding.FragmentAppbarLayoutBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/27 11:06
  */
-class TabCoorAppbarFragment : BaseBindFragment<FragmentAppbarLayoutBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentAppbarLayoutBinding {
-        return inflateBinding(inflater, container)
-    }
+class TabCoorAppbarFragment : BaseBindFragment<FragmentAppbarLayoutBinding>(R.layout.fragment_appbar_layout) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

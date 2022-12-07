@@ -4,13 +4,10 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.media.*
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentAudioRecordBinding
 import com.stone.stoneviewskt.util.loge
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +31,7 @@ import kotlin.math.max
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class AudioRecordFragment : BaseBindFragment<FragmentAudioRecordBinding>() {
+class AudioRecordFragment : BaseBindFragment<FragmentAudioRecordBinding>(R.layout.fragment_audio_record) {
 
     init {
         System.loadLibrary("native-lib")
@@ -55,10 +52,6 @@ class AudioRecordFragment : BaseBindFragment<FragmentAudioRecordBinding>() {
 
     companion object {
         private const val mSampleRateInHz = 44100
-    }
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentAudioRecordBinding {
-        return inflateBinding(inflater, container)
     }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

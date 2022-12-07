@@ -37,10 +37,6 @@
         </activity>
 
         <activity
-            android:name=".compose.ComposeActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".base.BaseActivity"
             android:exported="false"
             android:theme="@style/StoneBaseMaterialTheme" />

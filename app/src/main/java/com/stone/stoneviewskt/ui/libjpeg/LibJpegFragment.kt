@@ -32,14 +32,10 @@ import java.io.File
  * blog :   https://stone.blog.csdn.net
  * time:    2020/7/26 17:20
  */
-class LibJpegFragment : BaseBindFragment<FragmentLibJpegBinding>() {
+class LibJpegFragment : BaseBindFragment<FragmentLibJpegBinding>(R.layout.fragment_lib_jpeg) {
 
     init {
         System.loadLibrary("native-lib")
-    }
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentLibJpegBinding {
-        return inflateBinding(inflater, container)
     }
 
     @SuppressLint("ResourceType")

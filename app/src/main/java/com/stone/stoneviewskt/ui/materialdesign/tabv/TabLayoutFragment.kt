@@ -22,11 +22,7 @@ import org.jetbrains.anko.textColor
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/25 13:32
  */
-class TabLayoutFragment : BaseBindFragment<FragmentTabLayoutBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentTabLayoutBinding {
-        return inflateBinding(inflater, container)
-    }
+class TabLayoutFragment : BaseBindFragment<FragmentTabLayoutBinding>(R.layout.fragment_tab_layout) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

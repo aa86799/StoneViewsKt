@@ -9,9 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -20,12 +18,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentMultiImageBinding
 import org.jetbrains.anko.support.v4.alert
 
-class MultiImageFragment : BaseBindFragment<FragmentMultiImageBinding>() {
+class MultiImageFragment : BaseBindFragment<FragmentMultiImageBinding>(R.layout.fragment_multi_image) {
 
     private var mGrantedCallbackCallback: (() -> Unit)? = null
     private var mDeniedCallbackCallback: (() -> Unit)? = null
@@ -67,10 +65,6 @@ class MultiImageFragment : BaseBindFragment<FragmentMultiImageBinding>() {
                 }
             }
         }
-    }
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMultiImageBinding {
-        return inflateBinding(inflater, container)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

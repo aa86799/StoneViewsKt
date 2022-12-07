@@ -1,8 +1,9 @@
-package com.stone.stoneviewskt.compose
+package com.stone.compose
 
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -40,12 +41,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import com.stone.stoneviewskt.R
-import org.jetbrains.anko.toast
+import com.stone.stonecompose.R
 
 class ComposeActivity : AppCompatActivity() {
 
@@ -63,9 +65,14 @@ class ComposeActivity : AppCompatActivity() {
 
     data class Message(val author: String, val body: String)
 
+    class MsgProvider(override val values: Sequence<String>) : PreviewParameterProvider<String> {
+//        override val values: Sequence<String>
+//            get() = listOf<>()
+    }
+
     @Preview
     @Composable
-    fun loadRoot(msg: Message) {
+    fun loadRoot(@PreviewParameter(MsgProvider::class, 1) msg: Message) {
         rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
 
         }
@@ -76,7 +83,7 @@ class ComposeActivity : AppCompatActivity() {
                         .then(Modifier.background(Color.Red)),
             overflow = TextOverflow.Ellipsis, softWrap = true, maxLines = 1)
             OutlinedButton(onClick = {
-                toast("xxx")
+                Toast.makeText(this@ComposeActivity, "xxx", Toast.LENGTH_SHORT).show()
             }) {
                 Text(text = msg.body)
             }

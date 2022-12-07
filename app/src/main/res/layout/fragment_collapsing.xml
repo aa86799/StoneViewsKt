@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/fragment_collapsing_app_bar"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <!--
-        外层是      AppBarLayout ， 见 fragment_appbar_layout.xml
-        -->
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/fragment_collapsing_ctl"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/fragment_collapsing_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--
+            外层是      AppBarLayout ， 见 fragment_appbar_layout.xml
+            -->
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/fragment_collapsing_ctl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:contentScrim="@color/colorPrimary"
+                app:expandedTitleTextAppearance="@style/TextStyle1"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/back_girl" />
+                <!--
+                app:layout_collapseMode：子布局折叠模式
+                pin：固定模式，在折叠的时候最后固定在顶端
+                parallax：视差模式，在折叠的时候会有个视差折叠的效果;
+                        且折叠后， Toolbar的 logo、navigation 会隐藏。
+                -->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/fragment_collapsing_tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
-            app:contentScrim="@color/colorPrimary"
-            app:expandedTitleTextAppearance="@style/TextStyle1"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/back_girl" />
-<!--
-app:layout_collapseMode：子布局折叠模式
-pin：固定模式，在折叠的时候最后固定在顶端
-parallax：视差模式，在折叠的时候会有个视差折叠的效果;
-        且折叠后， Toolbar的 logo、navigation 会隐藏。
--->
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/fragment_collapsing_tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="800dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/back_rect_round" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="800dp"
-                android:scaleType="fitStart"
-                android:src="@drawable/back_rect_round" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_mic_24"
+            app:layout_anchor="@id/fragment_collapsing_app_bar"
+            app:layout_anchorGravity="bottom|right|end" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_anchor="@id/fragment_collapsing_app_bar"
-        app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_baseline_mic_24"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_anchor="@id/fragment_collapsing_app_bar"
-        app:layout_anchorGravity="bottom"
-        android:src="@drawable/satellite_icn_plus"/>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/satellite_icn_plus"
+            app:layout_anchor="@id/fragment_collapsing_app_bar"
+            app:layout_anchorGravity="bottom" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

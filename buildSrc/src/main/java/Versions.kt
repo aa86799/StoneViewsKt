@@ -17,8 +17,8 @@
 object Versions {
     const val versionName = "1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
-    const val COMPILE_SDK = 31
-    const val TARGET_SDK = 31
+    const val COMPILE_SDK = 33
+    const val TARGET_SDK = 33
     const val MIN_SDK = 21
 
     const val ANDROID_GRADLE_PLUGIN = "4.2.1"
@@ -64,7 +64,7 @@ object Versions {
     val hiltJetPack = "1.0.0-alpha01"
     val junit = "4.13.2"
     val junitExt = "1.1.3"
-    val lifecycle = "2.4.1"
+    val lifecycle = "2.5.1"
     val lottie = "3.0.0"
     val material = "1.6.0"
     val mockito = "3.3.1"

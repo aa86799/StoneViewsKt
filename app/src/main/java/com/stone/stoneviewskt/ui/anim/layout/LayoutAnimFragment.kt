@@ -3,12 +3,10 @@ package com.stone.stoneviewskt.ui.anim.layout
 import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentLayoutAnim2Binding
 import com.stone.stoneviewskt.util.logi
 
@@ -20,11 +18,7 @@ import com.stone.stoneviewskt.util.logi
  * time:    2021/1/11 12:04
  */
 // FragmentLayoutAnim1Binding
-class LayoutAnimFragment : BaseBindFragment<FragmentLayoutAnim2Binding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentLayoutAnim2Binding {
-        return inflateBinding(inflater, container)
-    }
+class LayoutAnimFragment : BaseBindFragment<FragmentLayoutAnim2Binding>(R.layout.fragment_layout_anim2) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

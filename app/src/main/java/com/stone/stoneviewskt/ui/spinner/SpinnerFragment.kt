@@ -3,14 +3,13 @@ package com.stone.stoneviewskt.ui.spinner
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentSpinnerBinding
 
 /**
@@ -20,13 +19,9 @@ import com.stone.stoneviewskt.databinding.FragmentSpinnerBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/28 20:56
  */
-class SpinnerFragment : BaseBindFragment<FragmentSpinnerBinding>() {
+class SpinnerFragment : BaseBindFragment<FragmentSpinnerBinding>(R.layout.fragment_spinner) {
 
     var mClick = false
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentSpinnerBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

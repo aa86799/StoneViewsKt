@@ -10,11 +10,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.webkit.*
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentImageLoadWebBinding
 import com.stone.stoneviewskt.util.BitmapUtil
 import com.stone.stoneviewskt.util.KitKatUtil
@@ -33,7 +31,7 @@ import java.io.File
  * time:    2021/1/6 11:16
  */
 @RuntimePermissions
-class ImageLoadWebViewFragment: BaseBindFragment<FragmentImageLoadWebBinding>() {
+class ImageLoadWebViewFragment: BaseBindFragment<FragmentImageLoadWebBinding>(R.layout.fragment_image_load_web) {
 
     private lateinit var mFileUploadWebChromeClient: FileUploadWebChromeClient
 
@@ -41,10 +39,6 @@ class ImageLoadWebViewFragment: BaseBindFragment<FragmentImageLoadWebBinding>() 
         private const val REQUEST_CODE_PHOTO = 0x123
     }
 
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageLoadWebBinding {
-        return inflateBinding(inflater, container)
-    }
-    
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 

@@ -1,10 +1,8 @@
 package com.stone.stoneviewskt.ui.myhandler
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentMyHandlerBinding
 import com.stone.stoneviewskt.util.logi
 
@@ -17,13 +15,9 @@ import com.stone.stoneviewskt.util.logi
  * blog :   https://stone.blog.csdn.net
  * time:    2022/3/27 10:56
  */
-class MyHandlerFragment : BaseBindFragment<FragmentMyHandlerBinding>() {
+class MyHandlerFragment : BaseBindFragment<FragmentMyHandlerBinding>(R.layout.fragment_my_handler) {
 
     private var handler: MyHandler? = null
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMyHandlerBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

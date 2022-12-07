@@ -82,18 +82,19 @@ class StoneActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
                     flag = true
                 }
             }
-            ani.addListener(object : Animator.AnimatorListener{
-                override fun onAnimationRepeat(animation: Animator?) {
+            ani.addListener(object : Animator.AnimatorListener {
+
+                override fun onAnimationRepeat(animation: Animator) {
                 }
 
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
 
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
+                override fun onAnimationCancel(animation: Animator) {
                 }
 
-                override fun onAnimationStart(animation: Animator?) {
+                override fun onAnimationStart(animation: Animator) {
                 }
             })
         }

@@ -3,12 +3,9 @@ package com.stone.stoneviewskt.ui.colormatrix
 import android.graphics.*
 import android.os.Bundle
 import android.text.InputType
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.EditText
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentColorMatrixBinding
 
 /**
@@ -20,7 +17,7 @@ import com.stone.stoneviewskt.databinding.FragmentColorMatrixBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/30 14:30
  */
-class ColorMatrixFragment : BaseBindFragment<FragmentColorMatrixBinding>() {
+class ColorMatrixFragment : BaseBindFragment<FragmentColorMatrixBinding>(R.layout.fragment_color_matrix) {
 
     private lateinit var mBitmap: Bitmap
     private var mEtWidth = 0
@@ -28,10 +25,6 @@ class ColorMatrixFragment : BaseBindFragment<FragmentColorMatrixBinding>() {
     private val mEts = mutableListOf<EditText>()
     private val mColorMatrix = FloatArray(20)
     private val mOptions = BitmapFactory.Options()
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentColorMatrixBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

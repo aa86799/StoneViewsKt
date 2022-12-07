@@ -2,11 +2,8 @@ package com.stone.stoneviewskt.ui.imagefilter
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentImageFilterBinding
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine
 import com.stone.stoneviewskt.ui.imagefilter.filters.ImageFilterEngine2
@@ -20,14 +17,10 @@ import org.jetbrains.anko.support.v4.selector
  * blog :   https://stone.blog.csdn.net
  * time:    2020/12/4 11:04
  */
-class ImageFilterFragment : BaseBindFragment<FragmentImageFilterBinding>() {
+class ImageFilterFragment : BaseBindFragment<FragmentImageFilterBinding>(R.layout.fragment_image_filter) {
 
     init {
         System.loadLibrary("native-lib")
-    }
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageFilterBinding {
-        return inflateBinding(inflater, container)
     }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

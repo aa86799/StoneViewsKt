@@ -5,13 +5,10 @@ import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentMediaRecordBinding
 import com.stone.stoneviewskt.util.loge
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +30,7 @@ import java.io.File
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class MediaRecordFragment : BaseBindFragment<FragmentMediaRecordBinding>() {
+class MediaRecordFragment : BaseBindFragment<FragmentMediaRecordBinding>(R.layout.fragment_media_record) {
 
     private var mMediaRecorder: MediaRecorder? = null
     private var mMediaPlayer: MediaPlayer? = null
@@ -42,10 +39,6 @@ class MediaRecordFragment : BaseBindFragment<FragmentMediaRecordBinding>() {
     private var mStopTime = 0L
     private var mIsPlaying = false
     private var mIsStartRecording = false
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMediaRecordBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

@@ -146,7 +146,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
         canvas.drawBitmap(mBitmap!!, matrix, null)
     }
 
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+    override fun onTouch(v: View?, event: MotionEvent): Boolean {
         //将onTouch事件交给手势处理
         return mGestureDetector!!.onTouchEvent(event)
     }
@@ -154,7 +154,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
     /**
      * 手指按下的回调
      */
-    override fun onDown(e: MotionEvent?): Boolean {
+    override fun onDown(e: MotionEvent): Boolean {
         //如果移动还没有停止，强制停止
         if (!mScroller!!.isFinished) {
             mScroller!!.forceFinished(true)
@@ -168,7 +168,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
      * @param distanceX x方向移动的距离
      * @param distanceY y方向移动的距离
      */
-    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+    override fun onScroll(e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
         //上下移动的时候，需要改变显示的区域 改mRect
         mRect!!.offset(0, distanceY.toInt())
         //处理上下边界问题
@@ -190,7 +190,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
      * @param velocityX 每秒移动的x像素点
      * @param velocityY 每秒移动的y像素点
      */
-    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+    override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
         mScroller!!.fling(0, mRect!!.top,
             0, (-velocityY).toInt(),
             0, 0,
@@ -199,12 +199,12 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
     }
 
 
-    override fun onShowPress(e: MotionEvent?) {}
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+    override fun onShowPress(e: MotionEvent) {}
+    override fun onSingleTapUp(e: MotionEvent): Boolean {
         return false
     }
 
-    override fun onLongPress(e: MotionEvent?) {}
+    override fun onLongPress(e: MotionEvent) {}
 
     override fun computeScroll() {
         super.computeScroll()
@@ -218,6 +218,5 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
             invalidate()
         }
     }
-
 
 }

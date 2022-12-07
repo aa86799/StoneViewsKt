@@ -1,11 +1,9 @@
 package com.stone.stoneviewskt.ui.room
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentRoomBinding
 import com.stone.stoneviewskt.ui.room.data.AddressData
 import com.stone.stoneviewskt.util.showShort
@@ -20,14 +18,10 @@ import kotlin.random.Random
  * blog :   https://stone.blog.csdn.net
  * time:    2021/4/4 15:04
  */
-class RoomFragment : BaseBindFragment<FragmentRoomBinding>() {
+class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_room) {
 
     var mId = 0L
     var mAddressData: AddressData? = null
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentRoomBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

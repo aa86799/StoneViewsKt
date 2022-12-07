@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.compose
+package com.stone.compose
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

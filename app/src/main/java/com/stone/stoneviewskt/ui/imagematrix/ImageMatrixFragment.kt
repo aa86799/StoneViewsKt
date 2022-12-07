@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentImageMatrixBinding
@@ -13,15 +14,11 @@ import com.stone.stoneviewskt.databinding.FragmentImageMatrixBinding
 /**
  * Matrix 用于图片操作：旋转、缩放、平移、错切。
  */
-class ImageMatrixFragment : BaseBindFragment<FragmentImageMatrixBinding>() {
+class ImageMatrixFragment : BaseBindFragment<FragmentImageMatrixBinding>(R.layout.fragment_image_matrix) {
     private var mEdWidth = 0
     private var mEdHeight = 0
     private val mImageMatrix = FloatArray(9)
     private val mEts = arrayOfNulls<EditText>(9)
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentImageMatrixBinding {
-        return inflateBinding(inflater, container)
-    }
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

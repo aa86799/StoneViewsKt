@@ -1,10 +1,8 @@
 package com.stone.stoneviewskt.ui.colormatrix
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentColorMainBinding
 
 /**
@@ -14,11 +12,7 @@ import com.stone.stoneviewskt.databinding.FragmentColorMainBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/30 14:30
  */
-class ColorMainFragment : BaseBindFragment<FragmentColorMainBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentColorMainBinding {
-        return inflateBinding(inflater, container)
-    }
+class ColorMainFragment : BaseBindFragment<FragmentColorMainBinding>(R.layout.fragment_color_main) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

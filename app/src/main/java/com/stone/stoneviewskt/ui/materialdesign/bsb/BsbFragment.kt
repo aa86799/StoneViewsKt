@@ -2,13 +2,10 @@ package com.stone.stoneviewskt.ui.materialdesign.bsb
 
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentBsbBinding
 import org.jetbrains.anko.displayMetrics
 
@@ -22,11 +19,7 @@ import org.jetbrains.anko.displayMetrics
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/10 20:02
  */
-class BsbFragment : BaseBindFragment<FragmentBsbBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentBsbBinding {
-        return inflateBinding(inflater, container)
-    }
+class BsbFragment : BaseBindFragment<FragmentBsbBinding>(R.layout.fragment_bsb) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

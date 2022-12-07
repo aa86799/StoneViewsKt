@@ -54,7 +54,8 @@ class TestDialogFragment : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 //        return inflater.inflate(R.layout.fragment_dialog_test, null)
-        return inflateBinding<FragmentDialogTestBinding>(inflater, container).root
+        mBind = inflateBinding(inflater, container)
+        return mBind.root
         logi("onCreateView")
     }
 

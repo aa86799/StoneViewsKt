@@ -2,11 +2,8 @@ package com.stone.stoneviewskt.ui.materialdesign.collapsing
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentCollapsingBinding
 import com.stone.stoneviewskt.util.showShort
 
@@ -17,11 +14,7 @@ import com.stone.stoneviewskt.util.showShort
  * blog :   https://stone.blog.csdn.net
  * time:    2020/8/9 15:30
  */
-class CollapsingFragment : BaseBindFragment<FragmentCollapsingBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentCollapsingBinding {
-        return inflateBinding(inflater, container)
-    }
+class CollapsingFragment : BaseBindFragment<FragmentCollapsingBinding>(R.layout.fragment_collapsing) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

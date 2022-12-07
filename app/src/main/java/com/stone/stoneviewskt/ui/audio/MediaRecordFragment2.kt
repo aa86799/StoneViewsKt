@@ -3,13 +3,10 @@ package com.stone.stoneviewskt.ui.audio
 import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentMediaRecordBinding
 import com.stone.stoneviewskt.util.loge
 import com.stone.stoneviewskt.util.logi
@@ -30,11 +27,7 @@ import permissions.dispatcher.RuntimePermissions
  * time:    2020/7/28 11:26
  */
 @RuntimePermissions
-class MediaRecordFragment2 : BaseBindFragment<FragmentMediaRecordBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMediaRecordBinding {
-        return inflateBinding(inflater, container)
-    }
+class MediaRecordFragment2 : BaseBindFragment<FragmentMediaRecordBinding>(R.layout.fragment_media_record) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

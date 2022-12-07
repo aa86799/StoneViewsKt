@@ -1,68 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".base.BaseActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.stone.stoneviewskt.ui.satellite.SatelliteMenuView
-        android:id="@+id/fragment_satellite_sm_menu"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:sm_position="sm_left_top"
-        app:sm_radius="200dp">
+        tools:context=".base.BaseActivity">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/satellite_button">
+        <com.stone.stoneviewskt.ui.satellite.SatelliteMenuView
+            android:id="@+id/fragment_satellite_sm_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:sm_position="sm_left_top"
+            app:sm_radius="200dp">
 
-            <ImageView
-                android:id="@+id/fragment_satellite_iv_plus"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/satellite_icn_plus" />
-        </RelativeLayout>
+                android:background="@drawable/satellite_button">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_music"
-            android:tag="music" />
+                <ImageView
+                    android:id="@+id/fragment_satellite_iv_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/satellite_icn_plus" />
+            </RelativeLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_place"
-            android:tag="place" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_music"
+                android:tag="music" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_sleep"
-            android:tag="sleep" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_place"
+                android:tag="place" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_thought"
-            android:tag="thought" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_sleep"
+                android:tag="sleep" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_camera"
-            android:tag="camera" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_thought"
+                android:tag="thought" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/satellite_with"
-            android:tag="personal" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_camera"
+                android:tag="camera" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/satellite_with"
+                android:tag="personal" />
 
 
-    </com.stone.stoneviewskt.ui.satellite.SatelliteMenuView>
+        </com.stone.stoneviewskt.ui.satellite.SatelliteMenuView>
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

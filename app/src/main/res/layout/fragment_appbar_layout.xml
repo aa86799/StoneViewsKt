@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--  支持响应滚动手势的app bar布局。实际上是一个 纵向的 LinearLayout
-与AppbarLayout组合的滚动布局(RecyclerView, NestedScrollView等),
-需要设置 app:layout_behavior. 没有设置的话, AppbarLayout 将不会响应滚动布局的滚动事件
-
-对 AppbarLayout 下的子View添加app:layout_scrollFlags 来设置各子View执行的动作
-layout_scrollFlags：
-scroll: 值设为scroll的View会跟随滚动事件一起发生移动。就是当指定的ScrollView发生滚动时，
-    该View也跟随一起滚动，就好像这个View也是属于这个ScrollView一样。
-enterAlways: 值设为enterAlways的View,当任何时候ScrollView往下滚动时，该View会直接往下滚动。
-    而不用考虑ScrollView是否在滚动到最顶部还是哪里.
-scroll|enterAlways: 在任何地方上下滚动，都会触发；
-    向下滚动，AppbarLayout随之向下；向上滚动，AppbarLayout随之向上。
-scroll|exitUntilCollapsed:
-    当这个View要往上逐渐“消逝”时，会一直往上滑动，
-    直到剩下的的高度达到它的最小高度(minHeight)后，再响应ScrollView的内部滑动事件。
-scroll|enterAlways|enterAlwaysCollapsed:
-    view在往下“出现”的时候，首先是enterAlways效果，
-    当View的高度达到最小高度时，View就暂时不去往下滚动，
-    直到ScrollView滑动到顶部不再滑动时，
-    View再继续往下滑动，直到滑到View的顶部结束
-
--->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/fragment_appbar_layout_abl"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/fragment_appbar_layout_tb"
+        <!--  支持响应滚动手势的app bar布局。实际上是一个 纵向的 LinearLayout
+        与AppbarLayout组合的滚动布局(RecyclerView, NestedScrollView等),
+        需要设置 app:layout_behavior. 没有设置的话, AppbarLayout 将不会响应滚动布局的滚动事件
+
+        对 AppbarLayout 下的子View添加app:layout_scrollFlags 来设置各子View执行的动作
+        layout_scrollFlags：
+        scroll: 值设为scroll的View会跟随滚动事件一起发生移动。就是当指定的ScrollView发生滚动时，
+            该View也跟随一起滚动，就好像这个View也是属于这个ScrollView一样。
+        enterAlways: 值设为enterAlways的View,当任何时候ScrollView往下滚动时，该View会直接往下滚动。
+            而不用考虑ScrollView是否在滚动到最顶部还是哪里.
+        scroll|enterAlways: 在任何地方上下滚动，都会触发；
+            向下滚动，AppbarLayout随之向下；向上滚动，AppbarLayout随之向上。
+        scroll|exitUntilCollapsed:
+            当这个View要往上逐渐“消逝”时，会一直往上滑动，
+            直到剩下的的高度达到它的最小高度(minHeight)后，再响应ScrollView的内部滑动事件。
+        scroll|enterAlways|enterAlwaysCollapsed:
+            view在往下“出现”的时候，首先是enterAlways效果，
+            当View的高度达到最小高度时，View就暂时不去往下滚动，
+            直到ScrollView滑动到顶部不再滑动时，
+            View再继续往下滑动，直到滑到View的顶部结束
+
+        -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/fragment_appbar_layout_abl"
             android:layout_width="match_parent"
-            android:minHeight="15dp"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/fragment_appbar_layout_tb2"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/fragment_appbar_layout_tb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="15dp"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/fragment_appbar_layout_tb2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="15dp"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/fragment_appbar_layout_tl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="enterAlwaysCollapsed" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:minHeight="15dp"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/fragment_appbar_layout_tl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="enterAlwaysCollapsed"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fragment_appbar_layout_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.core.widget.NestedScrollView>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fragment_appbar_layout_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

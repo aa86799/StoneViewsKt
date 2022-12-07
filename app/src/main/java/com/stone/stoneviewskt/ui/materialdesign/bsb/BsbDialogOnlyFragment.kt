@@ -1,14 +1,11 @@
 package com.stone.stoneviewskt.ui.materialdesign.bsb
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentBsbBinding
 
 /**
@@ -18,11 +15,7 @@ import com.stone.stoneviewskt.databinding.FragmentBsbBinding
  * blog :   https://stone.blog.csdn.net
  * time:    2020/5/11 16:14
  */
-class BsbDialogOnlyFragment : BaseBindFragment<FragmentBsbBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentBsbBinding {
-        return inflateBinding(inflater, container)
-    }
+class BsbDialogOnlyFragment : BaseBindFragment<FragmentBsbBinding>(R.layout.fragment_bsb) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)

@@ -1,5 +1,4 @@
-package com.stone.stoneviewskt.compose
-
+package com.stone.compose
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

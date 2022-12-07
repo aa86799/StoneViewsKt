@@ -8,12 +8,12 @@ if (isBuildDokit.toBoolean()) {
 }
 
 android {
-    compileSdkVersion builds.compileSdkVersion
+    compileSdkVersion Versions.COMPILE_SDK
 
     defaultConfig {
         applicationId "com.stone.stoneviewskt"
-        minSdkVersion builds.minSdkVersion
-        targetSdkVersion builds.targetSdkVersion
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
         versionCode builds.versionCode
         versionName builds.versionName
 
@@ -33,14 +33,15 @@ android {
     }
 
     buildFeatures {
-        compose true
-        viewBinding true
+//        compose true
+//        viewBinding true
+        dataBinding true // 布局最外层必须要写 <layout>，否则不会生成 Binding 类
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion "1.1.1"
-        kotlinCompilerVersion '1.6.10'
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion "1.1.1"
+//        kotlinCompilerVersion '1.6.10'
+//    }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
 //    ndkVersion '20.0.5594570'
@@ -121,32 +122,36 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
-    implementation 'androidx.fragment:fragment-ktx:1.4.1'
-    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.5.4'
+    implementation 'androidx.activity:activity-ktx:1.6.1'
+
+    implementation "$Libs.LIFECYCLE_VIEW_MODEL_KTX:$Versions.lifecycle"
 
     /*compose begin*/
-    implementation 'androidx.compose.ui:ui:1.1.1'
-    // Tooling support (Previews, etc.)
-    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
-    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation 'androidx.compose.foundation:foundation:1.1.1'
-    // Material Design
-    implementation 'androidx.compose.material:material:1.1.1'
-    // Material design icons
-    implementation 'androidx.compose.material:material-icons-core:1.1.1'
-    implementation 'androidx.compose.material:material-icons-extended:1.1.1'
-    // Integration with activities
-    implementation 'androidx.activity:activity-compose:1.4.0'
-    // Integration with ViewModels
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
-//    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1"
-    // Integration with observables
-    implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
-    implementation 'androidx.compose.runtime:runtime-rxjava2:1.1.1'
+//    implementation 'androidx.compose.ui:ui:1.1.1'
+//    // Tooling support (Previews, etc.)
+//    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
+//    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+//    implementation 'androidx.compose.foundation:foundation:1.1.1'
+//    // Material Design
+//    implementation 'androidx.compose.material:material:1.1.1'
+//    // Material design icons
+//    implementation 'androidx.compose.material:material-icons-core:1.1.1'
+//    implementation 'androidx.compose.material:material-icons-extended:1.1.1'
+//    // Integration with activities
+//    implementation 'androidx.activity:activity-compose:1.4.0'
+//    // Integration with ViewModels
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
+////    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1"
+//    // Integration with observables
+//    implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
+//    implementation 'androidx.compose.runtime:runtime-rxjava2:1.1.1'
     /*compose end*/
 
     implementation(refs.eventbus)
     annotationProcessor refs.eventbusCompiler
+
+    implementation "com.github.lisawray.groupie:groupie:2.10.1"
 
     implementation(refs.retrofit)
     implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.3'

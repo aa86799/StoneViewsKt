@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.WindowManager
 import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
-import com.stone.stoneviewskt.compose.ComposeActivity
 import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.databinding.ActivityMainBinding
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
@@ -33,6 +32,7 @@ import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
+import com.stone.stoneviewskt.ui.multiviewype.MultiViewTypeFragment
 import com.stone.stoneviewskt.ui.mvi.easy.MVIEasyFragment
 import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
@@ -84,6 +84,7 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "多ViewType的Adapter" -> startNewUI(MultiViewTypeFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
                 "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
                 "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
@@ -98,7 +99,6 @@ class MainActivity : BaseActivity() {
                     }
                     window.attributes = att
                 }
-                "Compose" -> startActivity<ComposeActivity>()
                 "左右进度" -> startNewUI(ProgressLRFragment::class.java)
                 "滚动测试" -> startNewUI(ScrollFragment::class.java)
                 "轮盘等分" -> startNewUI(RouletteFragment::class.java)
@@ -144,11 +144,11 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+            "多ViewType的Adapter",
             "连续点击测试",
             "用FragmentManager实现fragment跳转",
             "自定义handler",
             "改变屏幕亮度",
-            "Compose",
             "左右进度",
             "滚动测试",
             "轮盘等分",

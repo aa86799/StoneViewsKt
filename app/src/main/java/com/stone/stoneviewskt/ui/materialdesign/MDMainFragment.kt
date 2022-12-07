@@ -1,12 +1,10 @@
 package com.stone.stoneviewskt.ui.materialdesign
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.adapter.SampleAdapter2
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.common.BaseBindFragment
-import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentMdMainBinding
 import com.stone.stoneviewskt.ui.card.CardFragment
 import com.stone.stoneviewskt.ui.fab.FloatingActionButtonFragment
@@ -25,11 +23,7 @@ import com.stone.stoneviewskt.ui.materialdesign.tabv.TabLayoutFragment
  * blog :   https://stone.blog.csdn.net
  * time:    2020/4/25 12:53
  */
-class MDMainFragment : BaseBindFragment<FragmentMdMainBinding>() {
-
-    override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMdMainBinding {
-        return inflateBinding(inflater, container)
-    }
+class MDMainFragment : BaseBindFragment<FragmentMdMainBinding>(R.layout.fragment_md_main) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
