@@ -7,7 +7,7 @@ import com.stone.stoneviewskt.base.BaseActivity
 
 abstract class BaseBindActivity<VB : ViewDataBinding>(@LayoutRes resId: Int): BaseActivity() {
 
-    protected val mBind: VB by lazy { binding(resId) }
+    protected val mBind: VB by lazy { DataBindingUtil.setContentView(this, resId) }
+    protected val _bind: VB? = mBind
 
-    private fun <T : ViewDataBinding> binding(@LayoutRes resId: Int): T = DataBindingUtil.setContentView(this, resId)
 }

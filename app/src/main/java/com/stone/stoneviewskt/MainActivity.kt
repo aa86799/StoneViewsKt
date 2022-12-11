@@ -84,6 +84,7 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "ContentProvider相关" -> startNewUI(MultiViewTypeFragment::class.java)
                 "多ViewType的Adapter" -> startNewUI(MultiViewTypeFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
                 "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
@@ -144,6 +145,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+            "ContentProvider相关",
             "多ViewType的Adapter",
             "连续点击测试",
             "用FragmentManager实现fragment跳转",

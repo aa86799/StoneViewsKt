@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.databinding.DataBindingUtil
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.DialogProgressLrBinding
@@ -28,6 +29,7 @@ class ProgressLeftRightDialog constructor(context: Context, lightProgress: Float
     }
 
     init {
+        DataBindingUtil.inflate<DialogProgressLrBinding>(LayoutInflater.from(context), R.layout.dialog_progress_lr, null, false)
         setCanceledOnTouchOutside(false)
 
 //        val contentView = LayoutInflater.from(context).inflate(R.layout.dialog_progress_lr, null)

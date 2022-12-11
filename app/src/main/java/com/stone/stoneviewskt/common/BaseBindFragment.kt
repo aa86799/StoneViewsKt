@@ -22,18 +22,14 @@ import com.stone.stoneviewskt.base.BaseFragment
 abstract class BaseBindFragment<VB : ViewDataBinding>(@LayoutRes private val resId: Int) : BaseFragment() {
 
     protected lateinit var mBind: VB
+    protected var _bind: VB? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBind = binding(inflater, resId ,container)
+        mBind =  DataBindingUtil.inflate(inflater, resId, container, false)
+        _bind = mBind
         mBind.root.isClickable = true // 当前fragment触发的事件，当前来消费
         return mBind.root
     }
-
-    private fun <T : ViewDataBinding> binding(
-        inflater: LayoutInflater,
-        @LayoutRes layoutId: Int,
-        container: ViewGroup?
-    ): T = DataBindingUtil.inflate<T>(inflater, layoutId, container, false)
 
     open fun onBackPressed(): Boolean = false
 
