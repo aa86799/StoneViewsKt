@@ -87,7 +87,7 @@ class MainActivity : BaseActivity() {
                 "ContentProvider相关" -> startNewUI(MultiViewTypeFragment::class.java)
                 "多ViewType的Adapter" -> startNewUI(MultiViewTypeFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
-                "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
+                "用FragmentManager实现fragment跳转(内有防重点击示例)" -> startActivity<JumpActivity>()
                 "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
                 "改变屏幕亮度" -> { // 亮度范围 [0,1]
                     val att = window.attributes
@@ -148,7 +148,7 @@ class MainActivity : BaseActivity() {
             "ContentProvider相关",
             "多ViewType的Adapter",
             "连续点击测试",
-            "用FragmentManager实现fragment跳转",
+            "用FragmentManager实现fragment跳转(内有防重点击示例)",
             "自定义handler",
             "改变屏幕亮度",
             "左右进度",

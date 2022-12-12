@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
  * 会在最后一次 松开超时后， 执行 end
  */
 private var <T : View> T.mDebounceSuspendJob: Job?
-    get() = if (getTag(R.id.job_id) != null) getTag(R.id.job_id) as Job? else null
+    get() = getTag(R.id.job_id) as? Job
     set(value) {
         setTag(R.id.job_id, value)
     }
@@ -60,10 +60,8 @@ fun <T : View> T.debounceClick(owner: LifecycleOwner, originBlock: View.OnClickL
 /**
  * 利用 Handler + Runnable 防抖
  */
-//private val debounceHandle: Handler by lazy { Handler(Looper.getMainLooper()) }
-
 private var <T : View> T.mDebounceHandleRunnable: Runnable?
-    get() = if (getTag(R.id.runnable_id) != null) getTag(R.id.runnable_id) as Runnable? else null
+    get() = getTag(R.id.runnable_id) as Runnable?
     set(value) {
         setTag(R.id.runnable_id, value)
     }
@@ -95,7 +93,7 @@ fun <T : View> T.debounceClickWidthHandler(delayMs: Long = 600L, originBlock: Vi
  * 会一开始就触发真实回调，后面的连续快速点击，不会触发。
  */
 private var <T : View> T.triggerLastTime: Long
-    get() = if (getTag(R.id.trigger_last_time_id) != null) getTag(R.id.trigger_last_time_id) as Long else 0
+    get() = getTag(R.id.trigger_last_time_id)?.toString()?.toLong() ?: 0
     set(value) {
         setTag(R.id.trigger_last_time_id, value)
     }
@@ -110,6 +108,7 @@ private fun <T : View> T.clickEnable(delayMs: Long): Boolean {
     return flag
 }
 
+@Suppress("UNCHECKED_CAST")
 fun <T : View> T.clickWithTrigger(delayMs: Long = 600, block: (T) -> Unit) {
     setOnClickListener {
         logi("start: ${System.currentTimeMillis()}")
