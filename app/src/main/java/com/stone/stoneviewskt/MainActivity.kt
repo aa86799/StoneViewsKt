@@ -17,6 +17,7 @@ import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
+import com.stone.stoneviewskt.ui.contentp.ContentProviderHomeFragment
 import com.stone.stoneviewskt.ui.dialog.MainDialogManagerFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
@@ -84,7 +85,7 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
-                "ContentProvider相关" -> startNewUI(MultiViewTypeFragment::class.java)
+                "ContentProvider相关" -> startNewUI(ContentProviderHomeFragment::class.java)
                 "多ViewType的Adapter" -> startNewUI(MultiViewTypeFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
                 "用FragmentManager实现fragment跳转(内有防重点击示例)" -> startActivity<JumpActivity>()

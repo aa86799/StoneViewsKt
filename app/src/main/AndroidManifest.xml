@@ -110,6 +110,11 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
+        <provider
+            android:authorities="com.stone.cper"
+            android:name=".ui.contentp.MyContentProvider"
+            android:exported="false" />
+
     </application>
 
 </manifest>
