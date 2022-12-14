@@ -9,6 +9,7 @@ import com.stone.stoneviewskt.ui.room.data.AddressData
 import com.stone.stoneviewskt.util.showShort
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.math.abs
 import kotlin.random.Random
 
 /**
@@ -26,12 +27,12 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        val range = 0..Random.nextInt()
+        val range = 0..abs(Random.nextInt())
         mBind.fragmentRoomInsert.setOnClickListener {
             lifecycleScope.launchWhenResumed {
                 withContext(Dispatchers.IO) {
-                    addDatabase.addressDao()
-                        .insert(AddressData(range.random(), "stone", "123456", "add"))
+                    appDatabase.addressDao()
+                        .insert(AddressData(range.random(), "stone", "123456", "addr-${Random.nextInt()}"))
                 }
 
             }
@@ -40,7 +41,7 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
         mBind.fragmentRoomDelete.setOnClickListener {
             lifecycleScope.launchWhenResumed {
                 mAddressData?.let {
-                    val result = addDatabase.addressDao().delete(it)
+                    val result = appDatabase.addressDao().delete(it)
                     mBind.fragmentRoomResult.text = "delete: $result"
                 }
             }
@@ -50,7 +51,7 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
             lifecycleScope.launchWhenResumed {
                 mAddressData?.let {
                     it.phone = "1999999999"
-                    val result = addDatabase.addressDao().update(it)
+                    val result = appDatabase.addressDao().update(it)
                     mBind.fragmentRoomResult.text = "update: $result"
                 }
             }
@@ -59,16 +60,16 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
         mBind.fragmentRoomQuery.setOnClickListener {
             lifecycleScope.launchWhenResumed {
 //               mAddressData = addDatabase.addressDao().queryItem(mId)
-                mAddressData = addDatabase.addressDao().queryList().takeIf { it.isNotEmpty() }?.last()
+                mAddressData = appDatabase.addressDao().queryList().takeIf { it.isNotEmpty() }?.last()
                 if (mAddressData == null) {
                     mBind.fragmentRoomResult.text = "queryItem is empty"
                 } else {
                     mBind.fragmentRoomResult.text = "queryItem: $mAddressData"
                 }
 
-                mBind.fragmentRoomAll.text = addDatabase.addressDao().queryList().joinToString("\n")
+                mBind.fragmentRoomAll.text = appDatabase.addressDao().queryList().joinToString("\n")
 
-                showShort("${addDatabase.addressDao().queryByCondition("ston").size}")
+                showShort("${appDatabase.addressDao().queryByCondition("ston").size}")
             }
         }
 

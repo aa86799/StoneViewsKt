@@ -15,6 +15,11 @@
 
     <permission android:name="android.permission.INJECT_EVENTS" />
 
+    <queries>
+    <!--  API 30后，调用方，需要在<queries>中定义  -->
+        <provider android:authorities="com.stone.cper" />
+    </queries>
+
     <application
         android:name=".StoneApplication"
         android:allowBackup="true"
@@ -113,7 +118,7 @@
         <provider
             android:authorities="com.stone.cper"
             android:name=".ui.contentp.MyContentProvider"
-            android:exported="false" />
+            android:exported="true" />
 
     </application>
 

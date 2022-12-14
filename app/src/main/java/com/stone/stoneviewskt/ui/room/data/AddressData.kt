@@ -17,4 +17,8 @@ data class AddressData(
     @ColumnInfo(name = "add_name") var name: String,
     var phone: String,
     var address: String
-)
+) {
+    companion object {
+
+    }
+}
