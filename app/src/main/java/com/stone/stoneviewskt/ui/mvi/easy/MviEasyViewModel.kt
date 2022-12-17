@@ -3,8 +3,8 @@ package com.stone.stoneviewskt.ui.mvi.easy
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.stone.stoneviewskt.ui.mvi.data.MviData
-import com.stone.stoneviewskt.ui.mvi.data.MviDatasource
-import com.stone.stoneviewskt.ui.mvi.data.MviRepository
+import com.stone.stoneviewskt.ui.mvi.easy.datasource.MviDatasource
+import com.stone.stoneviewskt.ui.mvi.easy.datasource.MviRepository
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*

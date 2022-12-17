@@ -35,6 +35,7 @@ import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
 import com.stone.stoneviewskt.ui.multiviewype.MultiViewTypeFragment
 import com.stone.stoneviewskt.ui.mvi.easy.MVIEasyFragment
+import com.stone.stoneviewskt.ui.mvi.pack.MVIPackFragment
 import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
@@ -138,6 +139,7 @@ class MainActivity : BaseActivity() {
                 "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
                 "模拟点击" -> startNewUI(SimulateEventFragment::class.java)
                 "MVI架构示例" -> startNewUI(MVIEasyFragment::class.java)
+                "MVI架构示例2" -> startNewUI(MVIPackFragment::class.java)
             }
         }
 
@@ -187,7 +189,8 @@ class MainActivity : BaseActivity() {
             "WorkManager",
             "从系统加载多张图片",
             "模拟点击",
-            "MVI架构示例"
+            "MVI架构示例",
+            "MVI架构示例2"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 

@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.DialogProgressLrBinding
-import com.stone.stoneviewskt.ui.toast.stoneToast
+import com.stone.stoneviewskt.util.stoneToast
 
 /**
  * desc:    图片底部操作layout

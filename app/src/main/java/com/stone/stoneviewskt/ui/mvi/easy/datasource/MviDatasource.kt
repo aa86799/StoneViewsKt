@@ -1,4 +1,6 @@
-package com.stone.stoneviewskt.ui.mvi.data
+package com.stone.stoneviewskt.ui.mvi.easy.datasource
+
+import com.stone.stoneviewskt.ui.mvi.data.MviData
 
 class MviDatasource {
 

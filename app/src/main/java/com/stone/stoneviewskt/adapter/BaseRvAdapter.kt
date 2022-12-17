@@ -16,15 +16,17 @@ abstract class BaseRvAdapter<T>(@LayoutRes private val itemLayoutId: Int, val da
 
     private var mOnItemClickListener: OnItemClickListener<T>? = null
 
-    fun updateData(data: List<T>) {
+    fun updateData(data: List<T>?) {
         this.dataset.clear()
-        this.dataset.addAll(data)
+        if (!data.isNullOrEmpty())
+            this.dataset.addAll(data)
         notifyDataSetChanged()
     }
 
-    fun updateData(data: Set<T>) {
+    fun updateData(data: Set<T>?) {
         this.dataset.clear()
-        this.dataset.addAll(data)
+        if (!data.isNullOrEmpty())
+            this.dataset.addAll(data)
         notifyDataSetChanged()
     }
 
@@ -40,8 +42,9 @@ abstract class BaseRvAdapter<T>(@LayoutRes private val itemLayoutId: Int, val da
         }
     }
 
-    fun addAll(data: List<T>, isNotifyItemRange: Boolean = false) {
+    fun addAll(data: List<T>?, isNotifyItemRange: Boolean = false) {
         // eg.  data.size = 5; dataset.size=3;   dataset.addAll(data)  3+5=8;  dataset.size =8;
+        if (data.isNullOrEmpty()) return
         this.dataset.apply {
             addAll(data)
             if (!isNotifyItemRange) {
