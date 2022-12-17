@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentJumpCBinding
+import com.stone.stoneviewskt.util.logi
 
 /**
  * desc:
@@ -30,25 +33,46 @@ class JumpCFragment : JumpFragment<FragmentJumpCBinding>() {
         info.append("parent:").append(parentFragment).appendLine()
         info.append("parent fragmentManager:").append(parentFragmentManager).appendLine()
         info.append("activity fragmentManager:").append(requireActivity().supportFragmentManager).appendLine()
+        info.append("fromFragment: ${arguments?.getString("fromFragment")}")
         mBind.tvJcInfo.text = info.toString()
 
-
         mBind.btnJcToA.setOnClickListener {
-//            childFragmentManager.commit { // 父容器的 container id，无法使用 child fragment manager
-            requireActivity().supportFragmentManager.commit {
-                add<JumpBFragment>(R.id.activity_jump_fragment_root, args = Bundle().apply {
-//                putParcelable(SyncStateContract.Constants.KEY_DATA, mPickItem)
-//                putParcelable(SyncStateContract.Constants.KEY_PICK_DETAIL, mPickDetail)
-//                putBoolean(SyncStateContract.Constants.KEY_IS_FROM_PICK_CONTENT, true)
-                })
-                addToBackStack(null)
+//            val fa = parentFragmentManager.fragments.find { it is JumpAFragment }
+            val fa = parentFragmentManager.findFragmentByTag("tagA")
+            if (fa?.lifecycle?.currentState == Lifecycle.State.RESUMED) {
+                // 栈里只有一个 fragment 时，popBackStack() 是没有效果的
+                parentFragmentManager.popBackStack()
+                parentFragmentManager.popBackStack()
+            } else {
+                parentFragmentManager.commit {
+                    remove(this@JumpCFragment)
+                    add<JumpAFragment>(R.id.activity_jump_fragment_root, args = Bundle().apply {
+                        putString("fromFragment", this@JumpCFragment::class.java.canonicalName)
+                    })
+                }
             }
         }
 
         mBind.btnJcToB.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
 
+        lifecycleScope.launchWhenResumed {
+            requireActivity().supportFragmentManager.fragments.reversed().forEach { // 反序，从栈顶开始
+                if (it is JumpFragment<*> && it.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                    logi( "JumpCFragment: onResume: fragment: $it")
+                }
+            }
         }
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        logi( "JumpCFragment: hidden: $hidden")
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        logi("destroy $this")
+    }
 }

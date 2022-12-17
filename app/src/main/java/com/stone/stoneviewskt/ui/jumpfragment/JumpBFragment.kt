@@ -1,16 +1,17 @@
 package com.stone.stoneviewskt.ui.jumpfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentJumpBBinding
+import com.stone.stoneviewskt.util.logi
 
 /**
  * desc:
@@ -32,32 +33,39 @@ class JumpBFragment : JumpFragment<FragmentJumpBBinding>() {
         info.append("parent:").append(parentFragment).appendLine()
         info.append("parent fragmentManager:").append(parentFragmentManager).appendLine()
         info.append("activity fragmentManager:").append(requireActivity().supportFragmentManager).appendLine()
+        info.append("fromFragment: ${arguments?.getString("fromFragment")}")
         mBind.tvJbInfo.text = info.toString()
 
         mBind.btnJbToA.setOnClickListener {
-//            childFragmentManager.commit { // 父容器的 container id，无法使用 child fragment manager
-            requireActivity().supportFragmentManager.commit {
-                add<JumpBFragment>(R.id.activity_jump_fragment_root, args = Bundle().apply {
-//                putParcelable(SyncStateContract.Constants.KEY_DATA, mPickItem)
-//                putParcelable(SyncStateContract.Constants.KEY_PICK_DETAIL, mPickDetail)
-//                putBoolean(SyncStateContract.Constants.KEY_IS_FROM_PICK_CONTENT, true)
+            parentFragmentManager.popBackStack()
+        }
+
+        mBind.btnJbToC.setOnClickListener {
+            parentFragmentManager.commit {
+                hide(this@JumpBFragment)
+                add<JumpCFragment>(R.id.activity_jump_fragment_root, tag = "tagC", args = Bundle().apply {
+                    putString("fromFragment", this@JumpBFragment::class.java.canonicalName)
                 })
                 addToBackStack(null)
             }
         }
 
-        mBind.btnJbToC.setOnClickListener {
-
+        lifecycleScope.launchWhenResumed {
+            parentFragmentManager.fragments.reversed().forEach { // 反序，从栈顶开始
+                if (it is JumpFragment<*> && it.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                    logi( "JumpBFragment: onResume: fragment: $it")
+                }
+            }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        requireActivity().supportFragmentManager.fragments.reversed().forEach { // 反序，从栈顶开始
-            if (it is JumpFragment<*> && it.lifecycle.currentState == Lifecycle.State.RESUMED) {
-                Log.i("TAG", "onResume: fragment: $it")
-                return
-            }
-        }
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        logi( "JumpBFragment: hidden: $hidden")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        logi("destroy $this")
     }
 }

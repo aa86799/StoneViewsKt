@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_jump_fragment_root"
-    android:tag="pick-container"
+    android:name="com.stone.stoneviewskt.ui.jumpfragment.JumpAFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:tag="tagA" />
 
-<!--
-fragment-ktx lib中，定义了： <item name="fragment_container_view_tag" type="id"/>
+    <!--
+    fragment-ktx lib中，定义了： <item name="fragment_container_view_tag" type="id"/>
 
-android:id="@id/fragment_container_view_tag"
+    android:id="@id/fragment_container_view_tag"
 
--->
+    -->

@@ -2,8 +2,6 @@ package com.stone.stoneviewskt.ui.jumpfragment
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.stone.stoneviewskt.R
 
 /**
@@ -27,10 +25,11 @@ class JumpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jump_fragment)
-        supportFragmentManager.commit {
-            add<JumpAFragment>(R.id.activity_jump_fragment_root)
-//            replace<JumpAFragment>(R.id.activity_jump_fragment_root)
-        }
+
+//        supportFragmentManager.commit {
+//            add<JumpAFragment>(R.id.activity_jump_fragment_root)
+////            replace<JumpAFragment>(R.id.activity_jump_fragment_root)
+//        }
 
     }
 

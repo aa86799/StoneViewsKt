@@ -7,13 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tv_ja_title"
             android:layout_width="wrap_content"
@@ -50,92 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="跳转到C"
+            android:text="跳转到C(会remove自身)"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_ja_to_b" />
 
-        <Button
-            android:id="@+id/btn_ja_click_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件A"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_ja_to_c" />
-
-        <Button
-            android:id="@+id/btn_ja_click_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件B"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_ja_click_a"
-            app:layout_constraintTop_toTopOf="@id/btn_ja_click_a" />
-
-        <Button
-            android:id="@+id/btn_ja_click_c"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件C"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_ja_click_b" />
-
-        <Button
-            android:id="@+id/btn_ja_click_d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件d"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_ja_click_c"
-            app:layout_constraintTop_toTopOf="@id/btn_ja_click_c" />
-
-        <Button
-            android:id="@+id/btn_ja_click_e"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="点击事件e"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_ja_click_d" />
-
-        <Button
-            android:id="@+id/btn_ja_click_f"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点击事件f"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_ja_click_e"
-            app:layout_constraintTop_toTopOf="@id/btn_ja_click_e" />
-
-        <Button
-            android:id="@+id/btn_ja_click_g"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件g"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_ja_click_f" />
-
-        <Button
-            android:id="@+id/btn_ja_click_h"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#ff0eff"
-            android:text="点击事件h"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_ja_click_g"
-            app:layout_constraintTop_toTopOf="@id/btn_ja_click_g" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

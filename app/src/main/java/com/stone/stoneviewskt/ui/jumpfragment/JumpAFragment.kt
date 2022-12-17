@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.common.clickWithTrigger
-import com.stone.stoneviewskt.common.debounceClick
-import com.stone.stoneviewskt.common.debounceClickWidthHandler
 import com.stone.stoneviewskt.common.inflateBinding
 import com.stone.stoneviewskt.databinding.FragmentJumpABinding
 import com.stone.stoneviewskt.util.logi
@@ -24,7 +22,6 @@ import com.stone.stoneviewskt.util.logi
  */
 class JumpAFragment : JumpFragment<FragmentJumpABinding>() {
 
-    var mFlag = false
     override fun getViewBind(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentJumpABinding {
         return inflateBinding(inflater, container)
     }
@@ -39,57 +36,41 @@ class JumpAFragment : JumpFragment<FragmentJumpABinding>() {
         mBind.tvJaInfo.text = info.toString()
 
         mBind.btnJaToB.setOnClickListener {
-            //            childFragmentManager.commit { // 父容器的 container id，无法使用 child fragment manager
-            requireActivity().supportFragmentManager.commit {
-                add<JumpBFragment>(R.id.activity_jump_fragment_root, args = Bundle().apply {
-//                putParcelable(SyncStateContract.Constants.KEY_DATA, mPickItem)
-//                putParcelable(SyncStateContract.Constants.KEY_PICK_DETAIL, mPickDetail)
-//                putBoolean(SyncStateContract.Constants.KEY_IS_FROM_PICK_CONTENT, true)
+//            requireActivity().supportFragmentManager.commit {
+            parentFragmentManager.commit {
+                hide(this@JumpAFragment)
+                add<JumpBFragment>(R.id.activity_jump_fragment_root, tag = "tagB", args = Bundle().apply {
+                    putString("fromFragment", this@JumpAFragment::class.java.canonicalName)
                 })
                 addToBackStack(null)
             }
         }
 
-        mBind.btnJaClickA.debounceClick(lifecycleScope) {
-            Thread {
-                logi("sleep start")
-                Thread.sleep(2000)
-                logi("sleep end")
-                mFlag = !mFlag
-                mBind.btnJaClickA.post { // 主线程刷新图片
-                    // 在end 之后， refresh 之前，退出界面， back退出和home退出，都没问题
-                    // 可能的问题就是，异常情况，引起了界面重建， mBind、view 为null
-                    logi("image refresh")
-                    mBind.ivImg.setImageResource(if (mFlag) R.drawable.kotlin else R.drawable.satellite_button)
-                }
-            }.start()
-        }
-        mBind.btnJaClickB.debounceClick(this) { }
-        mBind.btnJaClickC.debounceClick(lifecycleScope, originBlock = { })
-        mBind.btnJaClickD.debounceClick(this, originBlock = { })
-
-        mBind.btnJaClickE.debounceClickWidthHandler { }
-        mBind.btnJaClickF.debounceClickWidthHandler(originBlock = { })
-
-        mBind.btnJaClickG.clickWithTrigger {
-            Thread {
-                logi("sleep start")
-                Thread.sleep(2000)
-                logi("sleep end")
-                mFlag = !mFlag
-                mBind.btnJaClickA.post { // 主线程刷新图片
-                    // 在end 之后， refresh 之前，退出界面， back退出和home退出，都没问题
-                    // 可能的问题就是，异常情况，引起了界面重建， mBind、view 为null
-                    logi("image refresh")
-                    mBind.ivImg.setImageResource(if (mFlag) R.drawable.kotlin else R.drawable.satellite_button)
-                }
-            }.start()
+        mBind.btnJaToC.setOnClickListener {
+            parentFragmentManager.commit {
+                remove(this@JumpAFragment)
+                add<JumpCFragment>(R.id.activity_jump_fragment_root, tag = "tagC", args = Bundle().apply {
+                    putString("fromFragment", this@JumpAFragment::class.java.canonicalName)
+                })
+            }
         }
 
-        mBind.btnJaClickH.clickWithTrigger(originBlock = {
-            logi("btnJaClickG")
-        })
+        lifecycleScope.launchWhenResumed {
+            requireActivity().supportFragmentManager.fragments.reversed().forEach { // 反序，从栈顶开始
+                if (it is JumpFragment<*> && it.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                    logi( "JumpAFragment: onResume: fragment: $it")
+                }
+            }
+        }
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        logi( "JumpAFragment: hidden: $hidden")
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        logi("destroy $this")
+    }
 }
