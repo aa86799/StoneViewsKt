@@ -9,6 +9,6 @@ class DataResultAdapter(private val data: ArrayList<String>) : BaseRvAdapter<Str
 
     override fun fillData(holder: BaseViewHolder, position: Int, data: String) {
         val btn = holder.itemView.findViewById<Button>(R.id.item_simple_list_tv)
-        btn.text = data
+        btn.text = "No.${position + 1}  Data: $data"
     }
 }

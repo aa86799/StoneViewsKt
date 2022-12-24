@@ -4,8 +4,6 @@ import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.util.loge
-import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -34,9 +32,9 @@ fun <T : View> T.debounceClick(coroutineScope: CoroutineScope, delayMs: Long = 6
     setOnClickListener {
         mDebounceSuspendJob?.cancel()
         mDebounceSuspendJob = coroutineScope.launch {
-            logi("start: ${System.currentTimeMillis()}")
+//            logi("start: ${System.currentTimeMillis()}")
             delay(delayMs)
-            logi("end: ${System.currentTimeMillis()}")
+//            logi("end: ${System.currentTimeMillis()}")
             block(this@debounceClick)
             mDebounceSuspendJob = null
         }
@@ -69,13 +67,13 @@ private var <T : View> T.mDebounceHandleRunnable: Runnable?
 fun <T : View> T.debounceClickWidthHandler(delayMs: Long = 600L, callback: (T) -> Unit) {
     // 对于回调函数 callback 中，要考虑 界面销毁，view 为null 的问题。 eg. 异步线程回调、网络请求回调
     setOnClickListener {
-        logi("start: ${System.currentTimeMillis()}  ${this.handler}")
+//        logi("start: ${System.currentTimeMillis()}  ${this.handler}")
         mDebounceHandleRunnable?.let {
-            loge("remove")
+//            loge("remove")
             this.handler.removeCallbacks(it)
         }
         mDebounceHandleRunnable = Runnable {
-            logi("end: ${System.currentTimeMillis()}")
+//            logi("end: ${System.currentTimeMillis()}")
             callback(this)
             mDebounceHandleRunnable = null
         }
@@ -111,9 +109,9 @@ private fun <T : View> T.clickEnable(delayMs: Long): Boolean {
 @Suppress("UNCHECKED_CAST")
 fun <T : View> T.clickWithTrigger(delayMs: Long = 600, block: (T) -> Unit) {
     setOnClickListener {
-        logi("start: ${System.currentTimeMillis()}")
+//        logi("start: ${System.currentTimeMillis()}")
         if (clickEnable(delayMs)) {
-            logi("end: ${System.currentTimeMillis()}")
+//            logi("end: ${System.currentTimeMillis()}")
             block(it as T)
         }
     }

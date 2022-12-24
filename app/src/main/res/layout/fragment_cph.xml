@@ -8,12 +8,36 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_query_address_all"
+            android:id="@+id/btn_address_query_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="address All"
+            android:text="address query all"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_address_query_where"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address query， where add_name=?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_query_all" />
+
+        <Button
+            android:id="@+id/btn_address_fuzzy_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address fuzzy query，where add_name like ... and phone=?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_query_where" />
+
+        <Button
+            android:id="@+id/btn_query_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address item"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_fuzzy_query" />
 
         <Button
             android:id="@+id/btn_query_address_add"
@@ -21,7 +45,23 @@
             android:layout_height="wrap_content"
             android:text="address add"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_query_address_all" />
+            app:layout_constraintTop_toBottomOf="@id/btn_query_address_item" />
+
+        <Button
+            android:id="@+id/btn_address_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_query_address_add" />
+
+        <Button
+            android:id="@+id/btn_address_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address update"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_del" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_result"
@@ -30,7 +70,7 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_query_address_add"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_update"
             tools:listitem="@layout/item_simple_list2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,14 +7,23 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import androidx.core.net.toUri
 import androidx.sqlite.db.SupportSQLiteQueryBuilder
 import com.stone.stoneviewskt.ui.room.appDatabase
 import com.stone.stoneviewskt.util.logi
 
+/**
+ * desc   : ROOM + ContentProvider 示例
+ *          address 相关的增、删、改、查(模糊查)示例 都有了
+ *          示例中关于 User表、User相关的Uri 等示例不全
+ * author : stone
+ * email  : aa86799@163.com
+ * time   : 2022/12/13 14:33
+ */
 class MyContentProvider : ContentProvider() {
 
     /*
-     * contentUri = "content://com.stone.cper/"
+     * contentUri = "content://com.stone.cper/..."
      * 调用端：contentResolver.insert(CONTENT_URI, contentValues)
      */
 
@@ -27,6 +36,8 @@ class MyContentProvider : ContentProvider() {
         private const val FUNC_ADDRESS_ALL = 10
         private const val FUNC_ADDRESS_WHICH = 11
         private const val FUNC_ADDRESS_ADD = 12
+        private const val FUNC_ADDRESS_DEL = 13
+        private const val FUNC_ADDRESS_UPDATE = 14
 
         private const val FUNC_USER_DATA_ALL = 20
         private const val FUNC_USER_DATA_WHICH = 21
@@ -42,30 +53,21 @@ class MyContentProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         logi("MyContentProvider onCreate") // 初始化在 application的 attachBaseContext()和 onCreate()之间
+        // matcher.addURI 建立对应关系
         matcher.addURI(authority, "address/all", FUNC_ADDRESS_ALL)
         matcher.addURI(authority, "address/item/add", FUNC_ADDRESS_ADD)
-        matcher.addURI(authority, "address/item/#", FUNC_ADDRESS_WHICH) // 这里的#代表任意数字
-        matcher.addURI(authority, "address/*", FUNC_ADDRESS_ADD)
+        matcher.addURI(authority, "address/item/del", FUNC_ADDRESS_DEL)
+        matcher.addURI(authority, "address/item/update", FUNC_ADDRESS_UPDATE)
+        matcher.addURI(authority, "address/item/#", FUNC_ADDRESS_WHICH) // 这里的#代表任意数字，本示例仅在查询使用，查询第几行数据
+        matcher.addURI(authority, "address/*", FUNC_ADDRESS_ADD) // * 则代表匹配任意长度的任意字符，一般没啥实际意义
 
         matcher.addURI(authority, "user/all", FUNC_USER_DATA_ALL)
         matcher.addURI(authority, "user/item/#", FUNC_USER_DATA_WHICH) // 这里的#代表任意数字
         matcher.addURI(authority, "user/item/add", FUNC_USER_DATA_ADD)
         matcher.addURI(authority, "user/item/del", FUNC_USER_DATA_DEL)
         matcher.addURI(authority, "user/item/update", FUNC_USER_DATA_UPDATE)
-        matcher.addURI(authority, "user/*", FUNC_USER_DATA) // * 则代表匹配任意长度的任意字符
+        matcher.addURI(authority, "user/*", FUNC_USER_DATA) // * 则代表匹配任意长度的任意字符，一般没啥实际意义
         return true
-    }
-
-    override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? {
-        val table = getTableName(uri)
-        return appDatabase.openHelper.readableDatabase.query(
-            SupportSQLiteQueryBuilder.builder(table)
-                .selection(selection, selectionArgs)
-                .columns(projection)
-                .orderBy(sortOrder)
-                .create()
-        )
-//        ContentUris.parseId("")
     }
 
     /*
@@ -87,26 +89,67 @@ class MyContentProvider : ContentProvider() {
         } else null
     }
 
-    override fun insert(uri: Uri, values: ContentValues?): Uri { // values 中的 key 为表的 列名
-        // 插入后，返回的是新 插入的  行id，这和原本数据表的 id 字段没关系；当表有过删除操作后，再插入，那 行id 肯定和 表字段 id 对不上的 ???
+    override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? {
+        val flag = when (matcher.match(uri)) {
+            FUNC_ADDRESS_ALL, FUNC_ADDRESS_WHICH -> true
+            FUNC_USER_DATA_ALL, FUNC_USER_DATA_WHICH -> true
+            else -> false
+        }
+        if (!flag) return null // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
+
+        val table = getTableName(uri)
+        return appDatabase.openHelper.readableDatabase.query(
+            SupportSQLiteQueryBuilder.builder(table)
+                .selection(selection, selectionArgs)
+                .columns(projection)
+                .orderBy(sortOrder)
+                .create()
+        )
+//        ContentUris.parseId(uri) // 可以获取到 uri 路径 最后 的数字，如 content://.../../9  获取到数字 9
+    }
+
+    override fun insert(uri: Uri, values: ContentValues?): Uri? { // values 中的 key 为表的 列名
+        val flag = when (matcher.match(uri)) {
+            FUNC_ADDRESS_ADD -> true
+            FUNC_USER_DATA_ADD -> true
+            else -> false
+        }
+        if (!flag) return null // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
+
         val rowId = appDatabase.openHelper.writableDatabase.insert(getTableName(uri), SQLiteDatabase.CONFLICT_REPLACE, values)
-        return ContentUris.withAppendedId(uri, rowId)
+        // 虽然这样返回，也不会报错；但 uri 是带有 add后缀的； 最终返回的就是 .../add/rowId；不符合返回值的注释语义
+        // 查看文档 insert()的文档注释，返回值 Uri，应该是表示 新插入项
+        // 感觉应该如上描述的；但最后试了返回 null，也没有什么问题
+//        return ContentUris.withAppendedId(uri, rowId)
+        return ContentUris.withAppendedId("$contentUriStr/address/item".toUri(), rowId)
+//        return null
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+        val flag = when (matcher.match(uri)) {
+            FUNC_ADDRESS_DEL -> true
+            FUNC_USER_DATA_DEL -> true
+            else -> false
+        }
+        if (!flag) return 0 // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
         return appDatabase.openHelper.writableDatabase.delete(getTableName(uri), selection, selectionArgs)
     }
 
     override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {
+        val flag = when (matcher.match(uri)) {
+            FUNC_ADDRESS_UPDATE -> true
+            FUNC_USER_DATA_UPDATE -> true
+            else -> false
+        }
+        if (!flag) return 0 // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
         return appDatabase.openHelper.writableDatabase.update(getTableName(uri), SQLiteDatabase.CONFLICT_REPLACE, values, selection, selectionArgs)
     }
 
+    // 根据 uri，匹配出对应的数据表
     private fun getTableName(uri: Uri): String? {
         return when (matcher.match(uri)) {
-            FUNC_ADDRESS_ALL -> TABLE_ADDRESS
-            FUNC_ADDRESS_ADD -> TABLE_ADDRESS
-            FUNC_USER_DATA_WHICH -> TABLE_USER
-            FUNC_USER_DATA -> TABLE_USER
+            FUNC_ADDRESS_ALL, FUNC_ADDRESS_ADD, FUNC_ADDRESS_DEL, FUNC_ADDRESS_WHICH, FUNC_ADDRESS_UPDATE -> TABLE_ADDRESS
+            FUNC_USER_DATA_WHICH, FUNC_USER_DATA -> TABLE_USER
             else -> null
         }
     }

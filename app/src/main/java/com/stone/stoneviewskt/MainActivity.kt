@@ -10,6 +10,7 @@ import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.databinding.ActivityMainBinding
+import com.stone.stoneviewskt.recyclerview.RecyclerViewDemoFragment
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
 import com.stone.stoneviewskt.ui.audio.MediaRecordFragment
@@ -17,7 +18,7 @@ import com.stone.stoneviewskt.ui.audio.MediaRecordFragment2
 import com.stone.stoneviewskt.ui.circlelayout.CircleLayoutFragment
 import com.stone.stoneviewskt.ui.clock.ClockFragment
 import com.stone.stoneviewskt.ui.colormatrix.ColorMainFragment
-import com.stone.stoneviewskt.ui.contentp.ContentProviderHomeFragment
+import com.stone.stoneviewskt.ui.contentp.ContentProviderFragment
 import com.stone.stoneviewskt.ui.dialog.MainDialogManagerFragment
 import com.stone.stoneviewskt.ui.gray.BaseGrayActivity
 import com.stone.stoneviewskt.ui.gray.GrayFragment
@@ -33,7 +34,6 @@ import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
-import com.stone.stoneviewskt.ui.multiviewype.MultiViewTypeFragment
 import com.stone.stoneviewskt.ui.mvi.easy.MVIEasyFragment
 import com.stone.stoneviewskt.ui.mvi.pack.MVIPackFragment
 import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
@@ -86,8 +86,8 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
-                "ContentProvider相关" -> startNewUI(ContentProviderHomeFragment::class.java)
-                "多ViewType的Adapter" -> startNewUI(MultiViewTypeFragment::class.java)
+                "ContentProvider相关" -> startNewUI(ContentProviderFragment::class.java)
+                "RecyclerViewDemo" -> startNewUI(RecyclerViewDemoFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
                 "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
                 "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
@@ -149,7 +149,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "ContentProvider相关",
-            "多ViewType的Adapter",
+            "RecyclerViewDemo",
             "连续点击测试",
             "用FragmentManager实现fragment跳转",
             "自定义handler",
