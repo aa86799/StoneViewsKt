@@ -51,6 +51,7 @@ import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.simulate.SimulateEventFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.ui.successiveclick.SuccessiveClickFragment
+import com.stone.stoneviewskt.ui.sys.InstalledAppPackageFragment
 import com.stone.stoneviewskt.ui.testscroll.ScrollFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
@@ -86,6 +87,7 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
+                "InstalledAppPackage" -> startNewUI(InstalledAppPackageFragment::class.java)
                 "ContentProvider相关" -> startNewUI(ContentProviderFragment::class.java)
                 "RecyclerViewDemo" -> startNewUI(RecyclerViewDemoFragment::class.java)
                 "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
@@ -148,6 +150,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
+            "InstalledAppPackage",
             "ContentProvider相关",
             "RecyclerViewDemo",
             "连续点击测试",

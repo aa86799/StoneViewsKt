@@ -18,6 +18,12 @@
     <queries>
     <!--  API 30后，调用方，需要在<queries>中定义  -->
         <provider android:authorities="com.stone.cper" />
+
+        <!--    获取已安装app，匹配的 intent   -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
     </queries>
 
     <application
