@@ -8,6 +8,7 @@ import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentMdMainBinding
 import com.stone.stoneviewskt.ui.card.CardFragment
 import com.stone.stoneviewskt.ui.fab.FloatingActionButtonFragment
+import com.stone.stoneviewskt.ui.materialdesign.bab.BabFragment
 import com.stone.stoneviewskt.ui.materialdesign.bnv.BnvFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbDialogOnlyFragment
 import com.stone.stoneviewskt.ui.materialdesign.bsb.BsbFragment
@@ -35,6 +36,7 @@ class MDMainFragment : BaseBindFragment<FragmentMdMainBinding>(R.layout.fragment
                 "TabLayout+ViewPager" -> (_mActivity as BaseActivity).startNewUI(TabLayoutFragment::class.java)
                 "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView" -> (_mActivity as BaseActivity).startNewUI(TabCoorAppbarFragment::class.java)
                 "BottomNavigationView" -> (_mActivity as BaseActivity).startNewUI(BnvFragment::class.java)
+                "BottomAppBar" -> (_mActivity as BaseActivity).startNewUI(BabFragment::class.java)
                 "BottomSheetBehavior" -> (_mActivity as BaseActivity).startNewUI(BsbFragment::class.java)
                 "BsbDialogOnlyFragment" -> (_mActivity as BaseActivity).startNewUI(BsbDialogOnlyFragment::class.java)
                 "Chips" -> (_mActivity as BaseActivity).startNewUI(ChipsFragment::class.java)
@@ -51,6 +53,7 @@ class MDMainFragment : BaseBindFragment<FragmentMdMainBinding>(R.layout.fragment
             "TabLayout+ViewPager",
             "CoordinatorLayout+AppBarLayout+TabLayout+NestedScrollView",
             "BottomNavigationView",
+            "BottomAppBar",
             "BsbDialogOnlyFragment",
             "Chips",
             "Card",

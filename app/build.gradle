@@ -154,7 +154,7 @@ dependencies {
     implementation "com.github.lisawray.groupie:groupie:2.10.1"
 
     implementation(refs.retrofit)
-    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.3'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.4'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

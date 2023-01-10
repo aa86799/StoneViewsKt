@@ -93,7 +93,7 @@ class ImageChoosePop {
         }
     }
 
-    open fun takePhoto(requestCode: Int = TO_TAKE_PHOTO) {
+    fun takePhoto(requestCode: Int = TO_TAKE_PHOTO) {
         activityContext?.get()?.takeIf { !it.isFinishing } ?: return
         val configAuthority = "com.stone.stoneviewskt"
 

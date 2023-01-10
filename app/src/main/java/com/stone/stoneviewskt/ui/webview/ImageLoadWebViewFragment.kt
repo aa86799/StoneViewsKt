@@ -43,7 +43,7 @@ class ImageLoadWebViewFragment: BaseBindFragment<FragmentImageLoadWebBinding>(R.
         super.onPreparedView(savedInstanceState)
 
         mBind.fragmentIlwIv.setOnClickListener {
-          val method = "javascript:menuInit()"  //可以
+            val method = "javascript:menuInit()"  //可以
 //            val method = "javascript:window.menuInit()" //可以
             mBind.fragmentIlwWv.loadUrl(method)
 
