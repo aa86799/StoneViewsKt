@@ -13,15 +13,25 @@
 
             <!--
             外层是      AppBarLayout ， 见 fragment_appbar_layout.xml
+            titleEnabled 默认为 true，启用标题动画
+            expandedTitleGravity 展开时 gravity
+            collapsedTitleGravity 收缩时 gravity
+            collapsedTitleTextAppearance 收缩设置标题文本样式: size, color
+            expandedTitleTextAppearance 展开设置标题文本样式: size, color
+            contentScrim 当剩余折叠高度是ToolBar高度的两倍的时候，contentScrim设置的背景色就出现了
+            也可以通过代码设置
             -->
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/fragment_collapsing_ctl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:collapsedTitleGravity="top|end"
+                app:collapsedTitleTextAppearance="@style/TextStyle1"
                 app:contentScrim="@color/colorPrimary"
+                app:expandedTitleGravity="center_horizontal|bottom"
                 app:expandedTitleTextAppearance="@style/TextStyle1"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleEnabled="true">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -33,12 +43,17 @@
                 pin：固定模式，在折叠的时候最后固定在顶端
                 parallax：视差模式，在折叠的时候会有个视差折叠的效果;
                         且折叠后， Toolbar的 logo、navigation 会隐藏。
+
+                在CollapsingToolbarLayout中的 Toolbar，
+                titleTextColor属性值设置无效
                 -->
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/fragment_collapsing_tool_bar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin" />
+                    app:layout_collapseMode="pin"
+                    app:title="Content Title"
+                    app:titleTextColor="@color/colorAccent" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 

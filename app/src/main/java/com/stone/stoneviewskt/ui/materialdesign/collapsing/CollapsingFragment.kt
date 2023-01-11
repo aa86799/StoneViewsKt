@@ -28,9 +28,10 @@ class CollapsingFragment : BaseBindFragment<FragmentCollapsingBinding>(R.layout.
             showShort("hei hei")
         }
 
-
-        mBind.fragmentCollapsingCtl.setCollapsedTitleTextColor(Color.RED)
-        mBind.fragmentCollapsingCtl.setExpandedTitleColor(Color.MAGENTA)
+        // 收缩时 标题 color
+        mBind.fragmentCollapsingCtl.setCollapsedTitleTextColor(Color.WHITE)
+        // 展开时 标题 color
+//        mBind.fragmentCollapsingCtl.setExpandedTitleColor(Color.MAGENTA)
     }
 
 }

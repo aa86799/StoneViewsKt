@@ -38,7 +38,7 @@ versions.constraintLayout = '2.0.4'
 versions.recyclerviewX = '1.2.1'
 versions.viewpager2 = '1.0.0'
 //原 design 包下的大部分类移到了这里，含有：appbar, tabLayout 等
-versions.material = '1.1.0'
+versions.material = '1.8.0-rc01'
 //官方多 dex 分包. doc: https://developer.android.com/studio/build/multidex
 versions.multidex = '2.0.1'
 versions.multidexInstrumentation = '2.0.0'
@@ -176,9 +176,6 @@ versions.labelsView = '1.5.0'
 
 //手动签名. https://github.com/gcacace/android-signaturepad
 versions.signaturePad = '1.2.1'
-
-//材料设计. url: https://github.com/navasmdc/MaterialDesignLibrary
-versions.materialDesign = '1.5@aar'
 
 //轮播图. url: https://github.com/youth5201314/banner
 versions.youthBanner = '1.4.10'
@@ -374,8 +371,6 @@ refs.flycoTabLayout= "com.flyco.tablayout:FlycoTabLayout_Lib:$versions.flycoTabL
 refs.labelsView= "com.github.donkingliang:LabelsView:$versions.labelsView"
 
 refs.signaturePad= "com.github.gcacace:signature-pad:$versions.signaturePad"
-
-refs.materialDesign= "com.github.navasmdc:MaterialDesign:$versions.materialDesign"
 
 refs.youthBanner= "com.youth.banner:banner:$versions.youthBanner"
 
