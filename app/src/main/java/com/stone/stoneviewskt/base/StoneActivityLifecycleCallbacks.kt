@@ -88,7 +88,7 @@ class StoneActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-
+                    content.removeView(fv)
                 }
 
                 override fun onAnimationCancel(animation: Animator) {

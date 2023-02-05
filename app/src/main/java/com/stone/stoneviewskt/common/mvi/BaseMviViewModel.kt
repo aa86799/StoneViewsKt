@@ -43,6 +43,7 @@ abstract class BaseMviViewModel : ViewModel() {
     }
 
     protected fun sendUiState(block: IUiState.() -> IUiState) {
+//    protected fun sendUiState(block: (IUiState) -> IUiState) {
 //        _uiStateFlow.update { block(it) }
         _uiStateFlow.update { _uiStateFlow.value.block() }
     }

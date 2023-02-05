@@ -11,6 +11,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.stone.stoneviewskt.base.FloatActivityLifecycleCallbacks
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
 import com.stone.stoneviewskt.service.CesManager
 import com.stone.stoneviewskt.service.core.SuperCross
@@ -43,6 +44,7 @@ class StoneApplication : MultiDexApplication() {
         super.onCreate()
         instance = this
         registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
+        registerActivityLifecycleCallbacks(FloatActivityLifecycleCallbacks())
 
         SuperCross.instance.init(this)
         SuperCross.instance.register(CesManager::class.java)
