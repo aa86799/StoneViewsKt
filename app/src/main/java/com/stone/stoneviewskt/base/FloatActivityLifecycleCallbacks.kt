@@ -38,11 +38,11 @@ class FloatActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
     private val ivWebMap = arrayMapOf<Int, ImageView>() // web 小图标
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        
+
     }
 
     override fun onActivityStarted(activity: Activity) {
-        
+
     }
 
     override fun onActivityResumed(activity: Activity) {
@@ -50,15 +50,15 @@ class FloatActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityPaused(activity: Activity) {
-        
+
     }
 
     override fun onActivityStopped(activity: Activity) {
-        
+
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        
+
     }
 
     override fun onActivityDestroyed(activity: Activity) {
@@ -107,18 +107,15 @@ class FloatActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val appOpsMgr = activity.getSystemService(Context.APP_OPS_SERVICE) as? AppOpsManager
             val mode = appOpsMgr?.checkOpNoThrow(
-                "android:system_alert_window", Process.myUid(), activity.packageName
+                AppOpsManager.OPSTR_SYSTEM_ALERT_WINDOW, Process.myUid(), activity.packageName
             )
-            if (mode != AppOpsManager.MODE_ALLOWED && mode == AppOpsManager.MODE_IGNORED) {
+            if (mode != AppOpsManager.MODE_ALLOWED && mode != AppOpsManager.MODE_IGNORED) {
+                requestPermission(activity)
                 return
             }
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(activity)) {
-                // 没有权限，须要申请权限，由于是打开一个授权页面，因此拿不到返回状态的，因此建议是在onResume方法中重新执行一次校验
-                val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
-//            intent.data = Uri.parse("package:" + activity.packageName)
-                intent.data = Uri.fromParts("package", activity.packageName, null)
-                startActivity(activity, intent, null)
+                requestPermission(activity)
                 return
             }
         }
@@ -133,5 +130,13 @@ class FloatActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
                 })
             }
         }
+    }
+
+    private fun requestPermission(activity: Activity) {
+        // 没有权限，须要申请权限，由于是打开一个授权页面，因此拿不到返回状态的，因此建议是在onResume方法中重新执行一次校验
+        val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
+//            intent.data = Uri.parse("package:" + activity.packageName)
+        intent.data = Uri.fromParts("package", activity.packageName, null)
+        startActivity(activity, intent, null)
     }
 }

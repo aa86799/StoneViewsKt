@@ -89,6 +89,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.stone.stoneviewskt'
 
 //    androidExtensions {//plugin: 'kotlin-android-extensions'
 //        defaultCacheImplementation = "SPARSE_ARRAY" //default HASH_MAP
@@ -124,6 +125,11 @@ dependencies {
 
     implementation 'androidx.fragment:fragment-ktx:1.5.4'
     implementation 'androidx.activity:activity-ktx:1.6.1'
+
+//    implementation 'com.huawei.hms:scanplus:2.9.0.300' // sdk 比较大，兼容的更好、机型更多
+    implementation 'com.huawei.hms:scan:2.9.0.300'
+
+    implementation 'io.github.aa86799:android-runtime-permission:1.0.5'
 
     implementation "$Libs.LIFECYCLE_VIEW_MODEL_KTX:$Versions.lifecycle"
 

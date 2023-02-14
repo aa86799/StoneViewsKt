@@ -1,5 +1,6 @@
 package com.stone.stoneviewskt.base
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.stone.stoneviewskt.R
+import com.stone.stoneviewskt.ui.scan.CodeScanFragment
 import org.jetbrains.anko.startActivity
 
 /**
@@ -109,5 +111,14 @@ open class BaseActivity : SupportActivity() {
      */
     inline fun <reified T : Fragment> startNewUI(cls: Class<T>, vararg params: Pair<String, Any?>) {
         startActivity<BaseActivity>(KEY_FRAGMENT to cls,  *params)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        supportFragmentManager.fragments.forEach {
+            if (it is CodeScanFragment) {
+                it.onActivityResult(requestCode, resultCode, data)
+            }
+        }
     }
 }
