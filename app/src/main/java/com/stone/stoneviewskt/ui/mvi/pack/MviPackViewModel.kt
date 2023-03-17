@@ -1,8 +1,6 @@
 package com.stone.stoneviewskt.ui.mvi.pack
 
-import androidx.lifecycle.viewModelScope
 import com.stone.stoneviewskt.common.mvi.*
-import kotlinx.coroutines.launch
 
 class MviPackViewModel(private val repository: PackRepository = PackRepository(PackDatasource())) : BaseMviViewModel() {
 
@@ -18,13 +16,15 @@ class MviPackViewModel(private val repository: PackRepository = PackRepository(P
     }
 
     private fun loadPageData(page: Int) {
-        viewModelScope.launch {
-            requestDataWithFlow(request = repository.getListMviData(page, PAGE_SIZE), successCallback = {
-                sendUiState {
-                    LoadSuccessPageDataState(if (page == 1) PackUiState.RefreshPageDataSuccess() else PackUiState.LoadPageDataSuccess(), it, page)
-                }
-            })
-        }
+        requestDataWithFlow(request = { repository.getListMviData(page, PAGE_SIZE) }, successCallback = {
+            sendUiState {
+                LoadSuccessPageDataState(if (page == 1) PackUiState.RefreshPageDataSuccess() else PackUiState.LoadPageDataSuccess(), it, page)
+            }
+        }, failCallback = {
+            sendUiState {
+                LoadErrorState("操作失败：$it")
+            }
+        })
     }
 
 }

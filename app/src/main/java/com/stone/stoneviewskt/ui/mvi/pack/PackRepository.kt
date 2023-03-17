@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class PackRepository(private val datasource: PackDatasource) {
 
-    suspend fun getListMviData(page: Int, pageSize: Int): Flow<BaseResult<ArrayList<MviData>?>> {
+    suspend fun getListMviData(page: Int, pageSize: Int): Flow<BaseResult<ArrayList<MviData>?>?> {
         return datasource.getListMviData(page, pageSize)
     }
 }

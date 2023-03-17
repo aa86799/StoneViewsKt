@@ -20,7 +20,9 @@ class LoadingDialog(context: Context) : Dialog(context, R.style.LoadingDialog) {
         setContentView(binding.root)
         val window = window
         val lp = window!!.attributes
-        lp.width = 250.dp
+//        lp.width = 250.dp
+//        lp.height = 150.dp
+        lp.width = 150.dp
         lp.height = 150.dp
         lp.gravity = Gravity.CENTER
         window.attributes = lp

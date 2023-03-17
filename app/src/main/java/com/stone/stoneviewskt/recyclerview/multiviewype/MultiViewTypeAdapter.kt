@@ -47,5 +47,4 @@ class MultiViewTypeAdapter : BaseRvMultiAdapter<Any>() {
             }
         }
     }
-
 }

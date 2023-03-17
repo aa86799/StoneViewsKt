@@ -8,7 +8,7 @@ import kotlin.random.Random
 
 class PackDatasource {
 
-    suspend fun getListMviData(page: Int, pageSize: Int): Flow<BaseResult<ArrayList<MviData>?>> {
+    suspend fun getListMviData(page: Int, pageSize: Int): Flow<BaseResult<ArrayList<MviData>?>?> {
         return flow {
             val list = arrayListOf<MviData>()
             (0 until pageSize).forEach {

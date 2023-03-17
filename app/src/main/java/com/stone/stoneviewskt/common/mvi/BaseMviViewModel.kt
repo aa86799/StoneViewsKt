@@ -2,6 +2,7 @@ package com.stone.stoneviewskt.common.mvi
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.stone.stoneviewskt.BuildConfig
 import com.stone.stoneviewskt.common.mvi.data.BaseResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -67,14 +68,14 @@ abstract class BaseMviViewModel : ViewModel() {
      */
     protected fun <T : Any> requestDataWithFlow(
         showLoading: Boolean = true,
-        request: Flow<BaseResult<T?>>,
+        request: suspend () -> Flow<BaseResult<T?>?>,
         successCallback: (T?) -> Unit,
         failCallback: suspend (String) -> Unit = { errMsg ->  //默认异常处理，子类可以进行覆写
             sendUiState { LoadErrorState(errMsg) }
         }
     ) {
         viewModelScope.launch {
-            request
+            request()
                 .onStart {
                     if (showLoading) {
                         sendUiState { LoadingState(true) }
@@ -91,11 +92,13 @@ abstract class BaseMviViewModel : ViewModel() {
                 }
                 .flowOn(Dispatchers.Main)
                 .collect {
-                    delay(500) // 模拟用的
-                    if (it.success == true) {
+                    if (BuildConfig.DEBUG) {
+                        delay(1500) // 模拟用的
+                    }
+                    if (it?.success == true) {
                         successCallback(it.data)
                     } else {
-                        failCallback(if (it.message.isNullOrEmpty()) "发生了错误" else it.message!!)
+                        failCallback(if (it?.message.isNullOrEmpty()) "发生了错误" else it?.message!!)
                     }
                 }
         }
