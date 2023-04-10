@@ -53,6 +53,7 @@ import com.stone.stoneviewskt.ui.successiveclick.SuccessiveClickFragment
 import com.stone.stoneviewskt.ui.sys.InstalledAppPackageFragment
 import com.stone.stoneviewskt.ui.testscroll.ScrollFragment
 import com.stone.stoneviewskt.ui.video.VideoCompressFragment
+import com.stone.stoneviewskt.ui.viewtransform.ViewTransformFragment
 import com.stone.stoneviewskt.ui.webview.ImageLoadWebViewFragment
 import com.stone.stoneviewskt.util.showLong
 import com.stone.viewbinding.ViewBindActivity
@@ -87,6 +88,7 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan)" -> startNewUI(CodeScanFragment::class.java)
+                "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
                 "InstalledAppPackage" -> startNewUI(InstalledAppPackageFragment::class.java)
                 "ContentProvider相关" -> startNewUI(ContentProviderFragment::class.java)
                 "RecyclerViewDemo" -> startNewUI(RecyclerViewDemoFragment::class.java)
@@ -151,6 +153,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan)",
+            "View通过平移、旋转、缩放后，顶点映射",
             "InstalledAppPackage",
             "ContentProvider相关",
             "RecyclerViewDemo",
