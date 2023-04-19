@@ -8,6 +8,7 @@ import android.view.View
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentViewTransformBinding
+import com.stone.stoneviewskt.util.loge
 import com.stone.stoneviewskt.util.logi
 
 /**
@@ -30,6 +31,9 @@ class ViewTransformFragment: BaseBindFragment<FragmentViewTransformBinding>(R.la
         var ry = 0f
         var sx = 1f
         var sy = 1f
+
+        selfProperties(mBind.btnAction)
+        loge("----------------")
         mBind.btnAction.setOnClickListener {
             val view = mBind.ivImg
 //            view.pivotX = view.left + view.width/2f
@@ -138,6 +142,7 @@ class ViewTransformFragment: BaseBindFragment<FragmentViewTransformBinding>(R.la
         matrix.postRotate(model.rotation, cx, cy) // 以view的中心点旋转
         matrix.postTranslate(model.translationX, model.translationY)
         matrix.mapRect(dst, src)
+        logi("matrix: $matrix")
         /*
          * 旋转 用 mapPoints() 会有问题；具体怎么解决，暂时还没法子；但用 mapRect() 就正常了
          *
@@ -150,6 +155,13 @@ class ViewTransformFragment: BaseBindFragment<FragmentViewTransformBinding>(R.la
          *
          *      post->RST ==> T(S(R))
          *      post->SRT ==> T(R(S))
+         *
+         * preXxx()，当前矩阵在 左/前;
+         *      pre->TRS ==> T(R(S))
+         *      pre->TSR ==> T(S(R))
+         *
+         *      pre->RST ==> R(S(T))
+         *      pre->SRT ==> S(R(T))
          */
     }
 
