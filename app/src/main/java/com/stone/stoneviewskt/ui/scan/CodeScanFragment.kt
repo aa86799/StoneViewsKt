@@ -1,5 +1,8 @@
 package com.stone.stoneviewskt.ui.scan
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -12,6 +15,7 @@ import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentCodeScanBinding
+import com.stone.stoneviewskt.util.stoneToast
 
 class CodeScanFragment : BaseBindFragment<FragmentCodeScanBinding>(R.layout.fragment_code_scan) {
 
@@ -34,7 +38,11 @@ class CodeScanFragment : BaseBindFragment<FragmentCodeScanBinding>(R.layout.frag
             }
         }
 
-        mBind.tvCode
+        mBind.btnCopy.setOnClickListener {
+            val cm = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            cm.setPrimaryClip(ClipData.newPlainText("copy text", mBind.tvCode.text.toString()))
+            stoneToast("复制完成")
+        }
     }
 
     private fun buildBitmapByContent(content: String): Bitmap? {

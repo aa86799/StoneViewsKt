@@ -1,4 +1,6 @@
-# StoneViews [![AppVeyor](https://img.shields.io/badge/StoneViews-stone-red.svg)](https://github.com/aa86799/StoneViews)
+# StoneViews [![AppVeyor](https://img.shields.io/badge/StoneViews-stone-red.svg)](https://github.com/aa86799/StoneViews)   [![HitCount](https://hits.dwyl.com/aa86799/StoneViewsKt.svg?style=flat)](http://hits.dwyl.com/aa86799/StoneViewsKt)
+
+  
   之前的[MyCustomView](https://github.com/aa86799/MyCustomView)项目，以module来分隔各种效果，造成后期
   setting.xml越来越难控制(特别是在创建临时性的demo-module后)。
   本项目会穿插kotlin代码，以达到自我熟练使用的目的。
