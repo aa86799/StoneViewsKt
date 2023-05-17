@@ -231,7 +231,7 @@ versions.consecutiveScroller = '2.5.0'
 //有自己的规范，需要单独学习
 
 // https://developer.android.google.cn/training/data-storage/room
-versions.room = "2.2.6"
+versions.room = "2.5.1"
 
 // https://developer.android.google.cn/topic/libraries/architecture/workmanager
 versions.work = "2.7.1"

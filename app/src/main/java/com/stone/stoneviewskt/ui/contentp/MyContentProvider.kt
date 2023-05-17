@@ -97,18 +97,20 @@ class MyContentProvider : ContentProvider() {
         }
         if (!flag) return null // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
 
-        val table = getTableName(uri)
-        return appDatabase.openHelper.readableDatabase.query(
-            SupportSQLiteQueryBuilder.builder(table)
-                .selection(selection, selectionArgs)
-                .columns(projection)
-                .orderBy(sortOrder)
-                .create()
-        )
+        return getTableName(uri)?.let {
+            appDatabase.openHelper.readableDatabase.query(
+                SupportSQLiteQueryBuilder.builder(it)
+                    .selection(selection, selectionArgs)
+                    .columns(projection)
+                    .orderBy(sortOrder)
+                    .create()
+            )
+        }
 //        ContentUris.parseId(uri) // 可以获取到 uri 路径 最后 的数字，如 content://.../../9  获取到数字 9
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? { // values 中的 key 为表的 列名
+        val valuesTemp = values ?: ContentValues()
         val flag = when (matcher.match(uri)) {
             FUNC_ADDRESS_ADD -> true
             FUNC_USER_DATA_ADD -> true
@@ -116,7 +118,7 @@ class MyContentProvider : ContentProvider() {
         }
         if (!flag) return null // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
 
-        val rowId = appDatabase.openHelper.writableDatabase.insert(getTableName(uri), SQLiteDatabase.CONFLICT_REPLACE, values)
+        val rowId = getTableName(uri)?.let { appDatabase.openHelper.writableDatabase.insert(it, SQLiteDatabase.CONFLICT_REPLACE, valuesTemp) } ?: 0
         // 虽然这样返回，也不会报错；但 uri 是带有 add后缀的； 最终返回的就是 .../add/rowId；不符合返回值的注释语义
         // 查看文档 insert()的文档注释，返回值 Uri，应该是表示 新插入项
         // 感觉应该如上描述的；但最后试了返回 null，也没有什么问题
@@ -132,17 +134,18 @@ class MyContentProvider : ContentProvider() {
             else -> false
         }
         if (!flag) return 0 // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
-        return appDatabase.openHelper.writableDatabase.delete(getTableName(uri), selection, selectionArgs)
+        return getTableName(uri)?.let { appDatabase.openHelper.writableDatabase.delete(it, selection, selectionArgs) } ?: 0
     }
 
     override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {
+        val valuesTemp = values ?: ContentValues()
         val flag = when (matcher.match(uri)) {
             FUNC_ADDRESS_UPDATE -> true
             FUNC_USER_DATA_UPDATE -> true
             else -> false
         }
         if (!flag) return 0 // 不符合uri规则就退出；否则 若是一个没有预定义的 uri，后续操作会引发错误
-        return appDatabase.openHelper.writableDatabase.update(getTableName(uri), SQLiteDatabase.CONFLICT_REPLACE, values, selection, selectionArgs)
+        return getTableName(uri)?.let {appDatabase.openHelper.writableDatabase.update(it, SQLiteDatabase.CONFLICT_REPLACE, valuesTemp, selection, selectionArgs) } ?: 0
     }
 
     // 根据 uri，匹配出对应的数据表
