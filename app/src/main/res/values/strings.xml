@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">StoneViewsKt</string>
     <string name="click_desc">click window screen</string>
+
+    <string name="shortcutshortlabel1">短名称1</string>
+    <string name="shortcutlonglabel1">长长的名称1</string>
+    <string name="shortcutdisabledmessage1">禁用消息1</string>
+    <string name="shortcutshortlabel2">短名称2</string>
+    <string name="shortcutlonglabel2">长长的名称2</string>
+    <string name="shortcutdisabledmessage2">禁用消息2</string>
 </resources>

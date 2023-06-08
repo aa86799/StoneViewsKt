@@ -47,6 +47,7 @@ import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.scan.CodeScanFragment
+import com.stone.stoneviewskt.ui.shortcut.AppIconShortcutFragment
 import com.stone.stoneviewskt.ui.simulate.SimulateEventFragment
 import com.stone.stoneviewskt.ui.spinner.SpinnerFragment
 import com.stone.stoneviewskt.ui.successiveclick.SuccessiveClickFragment
@@ -88,6 +89,7 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan)" -> startNewUI(CodeScanFragment::class.java)
+                "长按桌面图标弹出快捷菜单" -> startNewUI(AppIconShortcutFragment::class.java)
                 "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
                 "InstalledAppPackage" -> startNewUI(InstalledAppPackageFragment::class.java)
                 "ContentProvider相关" -> startNewUI(ContentProviderFragment::class.java)
@@ -153,6 +155,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan)",
+            "长按桌面图标弹出快捷菜单",
             "View通过平移、旋转、缩放后，顶点映射",
             "InstalledAppPackage",
             "ContentProvider相关",

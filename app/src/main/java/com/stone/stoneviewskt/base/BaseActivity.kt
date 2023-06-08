@@ -24,10 +24,12 @@ open class BaseActivity : SupportActivity() {
 
     companion object {
         const val KEY_FRAGMENT = "KEY_FRAGMENT"
+        const val KEY_FRAGMENT_NAME = "KEY_FRAGMENT_NAME"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
+//        requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {//android 30
             val windowInsetsController = window.decorView.windowInsetsController
@@ -98,6 +100,14 @@ open class BaseActivity : SupportActivity() {
             val fragment = cls.newInstance() as SupportFragment
             fragment.arguments = this@BaseActivity.intent?.extras
             loadRootFragment(android.R.id.content, fragment)
+        }
+
+        if (intent?.getSerializableExtra(KEY_FRAGMENT) as? Class<*> == null) {
+            intent?.getStringExtra(KEY_FRAGMENT_NAME)?.let { cls ->
+                val fragment = Class.forName(cls).newInstance() as SupportFragment
+                fragment.arguments = this@BaseActivity.intent?.extras
+                loadRootFragment(android.R.id.content, fragment)
+            }
         }
     }
 

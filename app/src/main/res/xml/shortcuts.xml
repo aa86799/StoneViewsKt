@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="background_settings"
+        android:enabled="true"
+        android:icon="@mipmap/satellite_button_normal"
+        android:shortcutShortLabel="@string/shortcutshortlabel1"
+        android:shortcutLongLabel="@string/shortcutlonglabel1"
+        android:shortcutDisabledMessage="@string/shortcutdisabledmessage1">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.stone.stoneviewskt"
+            android:targetClass="com.stone.stoneviewskt.ui.shortcut.ShortcutActivity1" />
+        <categories android:name="android.shortcut.conversation"/>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="pip_settings"
+        android:enabled="false"
+        android:icon="@mipmap/satellite_button_pressed"
+        android:shortcutShortLabel="@string/shortcutshortlabel2"
+        android:shortcutLongLabel="@string/shortcutlonglabel2"
+        android:shortcutDisabledMessage="@string/shortcutdisabledmessage2">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.stone.stoneviewskt"
+            android:targetClass="com.stone.stoneviewskt.ui.shortcut.ShortcutActivity2" />
+    </shortcut>
+
+</shortcuts>

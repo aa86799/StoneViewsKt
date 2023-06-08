@@ -45,9 +45,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--      静态的快捷菜单配置文件，必须指定在含有   action-main/category-launcher 所在 <activity/>中    -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts"/>
         </activity>
 
         <activity
@@ -95,6 +98,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.shortcut.ShortcutActivity1" />
+        <activity android:name=".ui.shortcut.ShortcutActivity2" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
