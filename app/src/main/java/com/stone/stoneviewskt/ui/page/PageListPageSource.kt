@@ -33,9 +33,6 @@ class PageListPageSource : PagingSource<Int, CustomerData>() {
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CustomerData> {
-        if (BuildConfig.DEBUG) { // 防止加载数据过快，loading 效果看不到
-            delay(1000)
-        }
         val currentPage = params.key ?: 1 // 当前页码
         val pageSize = params.loadSize // 每页多少条数据
         var bean: CustomerPageData? = null // 分页数据

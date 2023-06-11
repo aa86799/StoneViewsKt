@@ -29,7 +29,7 @@ class PageListViewModel : ViewModel() {
                 prefetchDistance = 1   // prefetchDistance条数据 时加载下一页
             ),
             // 每页都会调用一次 pagingSource#load(), 请求数据
-            pagingSourceFactory = { PageListPageSource() }
+            pagingSourceFactory = { PageListPageSource2() }
         ).flow.cachedIn(viewModelScope) // 设置缓存
     }
 }

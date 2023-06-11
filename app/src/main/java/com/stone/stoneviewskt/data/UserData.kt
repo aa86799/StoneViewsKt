@@ -17,4 +17,9 @@ data class UserData(val name: String, val pwd: String, val isAdult: Boolean): Pa
 // 分页请求的数据响应，至少要返回一个总数量; page、pageIndex 都可本地定义，然后 可以计算出当前请求响应后，历史返回的总数量；最终计算出是否还有下一页
 data class CustomerPageData(val totalCount: Int, val data: List<CustomerData>)
 
+// base 分页数据类
+open class BasePageData<T>(open val totalCount: Int, val data: List<T>)
+
 data class CustomerData(val id: String, val name: String)
+
+
