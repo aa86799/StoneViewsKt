@@ -123,8 +123,10 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
-    implementation 'androidx.fragment:fragment-ktx:1.5.4'
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
     implementation 'androidx.activity:activity-ktx:1.6.1'
+
+    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
 
 //    implementation 'com.huawei.hms:scanplus:2.9.0.300' // sdk 比较大，兼容的更好、机型更多
     implementation 'com.huawei.hms:scan:2.9.0.300'

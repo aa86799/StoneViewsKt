@@ -19,6 +19,7 @@
         android:elevation="0dp"
         android:gravity="center_vertical"
         android:padding="10dp"
+        android:textAllCaps="false"
         android:textSize="14sp"
         app:icon="@drawable/satellite_icn_plus"
         app:iconGravity="end"

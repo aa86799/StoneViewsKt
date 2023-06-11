@@ -37,6 +37,7 @@ import com.stone.stoneviewskt.ui.mvi.pack.MVIPackFragment
 import com.stone.stoneviewskt.ui.myhandler.MyHandlerFragment
 import com.stone.stoneviewskt.ui.nfc.NfcFragment
 import com.stone.stoneviewskt.ui.nfc.NfcNdefActivity
+import com.stone.stoneviewskt.ui.page.PageListFragment
 import com.stone.stoneviewskt.ui.parceldata.ParcelDataFragment
 import com.stone.stoneviewskt.ui.progress.ProgressLRFragment
 import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
@@ -89,6 +90,7 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan)" -> startNewUI(CodeScanFragment::class.java)
+                "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试" -> startNewUI(PageListFragment::class.java)
                 "长按桌面图标弹出快捷菜单" -> startNewUI(AppIconShortcutFragment::class.java)
                 "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
                 "InstalledAppPackage" -> startNewUI(InstalledAppPackageFragment::class.java)
@@ -155,6 +157,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan)",
+            "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试",
             "长按桌面图标弹出快捷菜单",
             "View通过平移、旋转、缩放后，顶点映射",
             "InstalledAppPackage",

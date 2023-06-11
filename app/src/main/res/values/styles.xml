@@ -43,4 +43,12 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="myProgressBarStyle" >
+        　　<item name="android:indeterminateDrawable">@drawable/progressbar_bg</item>
+        　　<item name="android:minWidth">46dip</item>
+        　　<item name="android:maxWidth">46dip</item>
+        　　<item name="android:minHeight">46dip</item>
+        　　<item name="android:maxHeight">46dip</item>
+    </style>
+
 </resources>
