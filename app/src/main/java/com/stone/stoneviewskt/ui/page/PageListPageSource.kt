@@ -2,12 +2,10 @@ package com.stone.stoneviewskt.ui.page
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.stone.stoneviewskt.BuildConfig
 import com.stone.stoneviewskt.data.CustomerData
 import com.stone.stoneviewskt.data.CustomerPageData
 import com.stone.stoneviewskt.util.logi
 import com.stone.stoneviewskt.util.showShort
-import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 /**
@@ -61,7 +59,7 @@ class PageListPageSource : PagingSource<Int, CustomerData>() {
             it.printStackTrace()
             if (it !is java.util.concurrent.CancellationException) {
                 showShort("出错了" + it.message)
-                return LoadResult.Error(it) // 如果返回 error，那后续 加载更多将不会触发
+                return LoadResult.Error(it) // 如果返回 error，那后续 加载更多(即底部上拉)将不会触发
             }
         }
         val prevKey = if (currentPage > 1) currentPage - 1 else null // 当前页不是第一页的话，前一页为当前页减一

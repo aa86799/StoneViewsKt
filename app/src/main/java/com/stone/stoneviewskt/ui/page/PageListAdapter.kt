@@ -12,16 +12,14 @@ import com.stone.stoneviewskt.data.CustomerData
 import com.stone.stoneviewskt.util.logi
 
 /**
- * desc:
+ * desc:    分页 adapter
+ *          不能删除数据，无法直接从 PagingDataAdapter 获取到 内部集合数据
  * author:  stone
  * email:   aa86799@163.com
  * blog :   https://stone.blog.csdn.net
  * time:    2023/6/10 11:20
  */
 class PageListAdapter: PagingDataAdapter<CustomerData, BaseViewHolder>(object : DiffUtil.ItemCallback<CustomerData>() {
-    /*
-     * 如果 areItemsTheSame 返回 true，但是仍然会展示相同的数据，可能是因为 areContentsTheSame 返回 false
-     */
 
     // 是否是同一条 item
     override fun areItemsTheSame(oldItem: CustomerData, newItem: CustomerData): Boolean {

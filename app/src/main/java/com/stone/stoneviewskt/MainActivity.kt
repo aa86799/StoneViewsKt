@@ -46,6 +46,7 @@ import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
 import com.stone.stoneviewskt.ui.radar.RadarFragment
 import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
+import com.stone.stoneviewskt.ui.rvlist.StringListFragment
 import com.stone.stoneviewskt.ui.satellite.SatelliteFragment
 import com.stone.stoneviewskt.ui.scan.CodeScanFragment
 import com.stone.stoneviewskt.ui.shortcut.AppIconShortcutFragment
@@ -90,6 +91,7 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan)" -> startNewUI(CodeScanFragment::class.java)
+                "RecyclerView系列中的ListAdapter(示例)" -> startNewUI(StringListFragment::class.java)
                 "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试" -> startNewUI(PageListFragment::class.java)
                 "长按桌面图标弹出快捷菜单" -> startNewUI(AppIconShortcutFragment::class.java)
                 "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
@@ -157,6 +159,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan)",
+            "RecyclerView系列中的ListAdapter(示例)",
             "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试",
             "长按桌面图标弹出快捷菜单",
             "View通过平移、旋转、缩放后，顶点映射",

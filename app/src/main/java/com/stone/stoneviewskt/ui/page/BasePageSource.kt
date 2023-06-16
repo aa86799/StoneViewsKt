@@ -35,9 +35,11 @@ abstract class BasePageSource<T: Any> : PagingSource<Int, T>() {
             bean = it
         }.onFailure {
             it.printStackTrace()
+            // 当数据加载中时，销毁了界面(比如--回退到上一页)，就有很大概率触发 CancellationException
+            // 跳过该异常
             if (it !is java.util.concurrent.CancellationException) {
                 showShort("出错了" + it.message)
-                return LoadResult.Error(it) // 如果返回 error，那后续 加载更多将不会触发
+                return LoadResult.Error(it) // 如果返回 error，那后续 加载更多(即底部上拉)将不会触发
             }
         }
         val prevKey = if (currentPage > 1) currentPage - 1 else null // 当前页不是第一页的话，前一页为当前页减一
