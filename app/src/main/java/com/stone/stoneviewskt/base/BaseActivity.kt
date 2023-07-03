@@ -131,4 +131,10 @@ open class BaseActivity : SupportActivity() {
             }
         }
     }
+
+    override fun finish() {
+        super.finish()
+        // 退出时，当前 activity 执行 exitAnim；resume - Activity 执行 enterAnim
+        overridePendingTransition(R.anim.activity_x_ltr_enter, R.anim.activity_x_ltr_exit)
+    }
 }

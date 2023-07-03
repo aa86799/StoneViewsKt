@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="600"
+        android:fromXDelta="40%p"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:toXDelta="0" />
+
+    <alpha
+        android:duration="400"
+        android:fromAlpha="0.9"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:toAlpha="1.0" />
+
+</set>
+<!-- 从向右左 用于 enter (新打开 activity) 的动画，  -->

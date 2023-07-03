@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
+import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.StoneApplication
 import com.stone.stoneviewskt.util.loge
 import org.jetbrains.anko.backgroundColor
@@ -54,6 +55,9 @@ class StoneActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
         if (activity.javaClass.simpleName == "MainActivity") {
             addFullViewWithAnimator(activity)
         }
+
+        // startActivity后，新创建的 activity 先执行 enterAnim；前一个 Activity 执行 exitAnim
+        activity.overridePendingTransition(R.anim.activity_x_rtl_enter, R.anim.activity_x_rtl_exit)
     }
 
     override fun onActivityResumed(activity: Activity) {
