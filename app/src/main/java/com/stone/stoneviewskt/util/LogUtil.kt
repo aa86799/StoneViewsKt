@@ -1,6 +1,7 @@
 package com.stone.stoneviewskt.util
 
 import android.util.Log
+import com.stone.stoneviewskt.BuildConfig
 
 /**
  * desc   :
@@ -11,13 +12,16 @@ import android.util.Log
 private const val TAG = "stone-log--> "
 
 fun logi(msg: String) {
-    Log.i(TAG, msg)
+    if (BuildConfig.DEBUG)
+        Log.i(TAG, msg)
 }
 
 fun loge(msg: String) {
-    Log.e(TAG, msg)
+    if (BuildConfig.DEBUG)
+        Log.e(TAG, msg)
 }
 
 fun loge(msg: String, throwable: Throwable) {
-    Log.e(TAG, msg, throwable)
+    if (BuildConfig.DEBUG)
+        Log.e(TAG, msg, throwable)
 }

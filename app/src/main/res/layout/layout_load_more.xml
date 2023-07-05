@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#1a0effc2"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
@@ -49,17 +50,19 @@
 
     <Button
         android:id="@+id/btn_retry"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_retry_bg"
         android:gravity="center"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="重试"
+        android:textColor="#303133"
         android:textSize="18sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        tools:text="重试 "
+        tools:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

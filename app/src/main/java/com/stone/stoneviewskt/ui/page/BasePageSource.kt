@@ -23,7 +23,7 @@ abstract class BasePageSource<T: Any> : PagingSource<Int, T>() {
         }
     }
 
-    abstract fun loadData(pageIndex: Int, pageSize: Int): BasePageData<T>?
+    abstract suspend fun loadData(pageIndex: Int, pageSize: Int): BasePageData<T>?
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, T> {
         val currentPage = params.key ?: 1 // 当前页码

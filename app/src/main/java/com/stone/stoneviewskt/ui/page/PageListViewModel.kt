@@ -25,12 +25,12 @@ class PageListViewModel : ViewModel() {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
-                initialLoadSize = 15, // 初始取的 pageSize，通常要大于指定的 pageSize   但大于了，在retry时又会出现bug
-                prefetchDistance = 1   // prefetchDistance条数据 时加载下一页
+                initialLoadSize = 10, // 初始取的 pageSize，通常要大于指定的 pageSize   但大于了，在retry时又会出现bug
+                prefetchDistance = 1   // prefetchDistance条数据 时加载下一页, 等于0时，不会加载下一页
             ),
             // 每页都会调用一次 pagingSource#load(), 请求数据
-//            pagingSourceFactory = { PageListPageSource2() }
-            pagingSourceFactory = { PageListPageSource() }
+            pagingSourceFactory = { PageListPageSource2() }
+//            pagingSourceFactory = { PageListPageSource() }
         ).flow.cachedIn(viewModelScope) // 设置缓存
     }
 }

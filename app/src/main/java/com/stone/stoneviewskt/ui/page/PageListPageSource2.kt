@@ -1,8 +1,10 @@
 package com.stone.stoneviewskt.ui.page
 
+import com.stone.stoneviewskt.BuildConfig
 import com.stone.stoneviewskt.data.BasePageData
 import com.stone.stoneviewskt.data.CustomerData
 import com.stone.stoneviewskt.util.logi
+import kotlinx.coroutines.delay
 
 /**
  * desc:    分页数据源
@@ -13,7 +15,10 @@ import com.stone.stoneviewskt.util.logi
  */
 class PageListPageSource2 : BasePageSource<CustomerData>() {
 
-    override fun loadData(pageIndex: Int, pageSize: Int): BasePageData<CustomerData>? {
+    override suspend fun loadData(pageIndex: Int, pageSize: Int): BasePageData<CustomerData>? {
+        if (BuildConfig.DEBUG) { // 防止加载数据过快，loading 效果看不到
+            delay(1000)
+        }
         return mockData(pageIndex, pageSize)
     }
 
