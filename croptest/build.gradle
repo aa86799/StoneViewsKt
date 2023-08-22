@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.stone.crop"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 

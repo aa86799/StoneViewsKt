@@ -1,10 +1,22 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-android-extensions' // 应用了 compose 1.1，和 extensions一起编译会报错； 直接依赖的子module中的extensions也要移除掉
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-parcelize'
-if (isBuildDokit.toBoolean()) {
-    apply plugin: 'com.didi.dokit'
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+////apply plugin: 'kotlin-android-extensions' // 应用了 compose 1.1，和 extensions一起编译会报错； 直接依赖的子module中的extensions也要移除掉
+//apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-parcelize'
+//if (isBuildDokit.toBoolean()) {
+//    apply plugin: 'com.didi.dokit'
+//}
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+//    id 'kotlin-android-extensions' // The 'kotlin-android-extensions' Gradle plugin is no longer supported
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+//    id "com.google.dagger.hilt.android"
+    id "com.google.devtools.ksp"
+//    if (isBuildDokit.toBoolean()) {
+//        id "com.didi.dokit" // id不对
+//    }
 }
 
 android {
@@ -99,6 +111,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":viewbinding")
+    implementation project(path: ':lib_anno')
+    ksp(project(":lib_ksp"))
     implementation refs.kotlin
     implementation refs.androidxCompat
     implementation refs.ktx

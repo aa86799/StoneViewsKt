@@ -11,6 +11,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.stone.lib.ksp.Hello
 import com.stone.stoneviewskt.base.FloatActivityLifecycleCallbacks
 import com.stone.stoneviewskt.base.StoneActivityLifecycleCallbacks
 import com.stone.stoneviewskt.service.CesManager
@@ -40,8 +41,14 @@ class StoneApplication : MultiDexApplication() {
         MultiDex.install(this)
     }
 
+    @Hello
+    fun abc() {
+
+    }
+
     override fun onCreate() {
         super.onCreate()
+        HelloStone().sayHello()
         instance = this
         registerActivityLifecycleCallbacks(StoneActivityLifecycleCallbacks())
         registerActivityLifecycleCallbacks(FloatActivityLifecycleCallbacks())
