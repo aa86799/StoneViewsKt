@@ -6,6 +6,7 @@ import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentRoomBinding
 import com.stone.stoneviewskt.ui.room.data.AddressData
+import com.stone.stoneviewskt.util.logi
 import com.stone.stoneviewskt.util.showShort
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -31,8 +32,9 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
         mBind.fragmentRoomInsert.setOnClickListener {
             lifecycleScope.launchWhenResumed {
                 withContext(Dispatchers.IO) {
+                    logi("id: ${range.random()}")
                     appDatabase.addressDao()
-                        .insert(AddressData(range.random(), "stone", "123456", "addr-${Random.nextInt()}"))
+                        .insertAndReplace(AddressData(range.random(), "stone-${Random.nextInt()}", "123${Random.nextInt()}", "addr-${Random.nextInt()}"))
                 }
 
             }
@@ -69,7 +71,7 @@ class RoomFragment : BaseBindFragment<FragmentRoomBinding>(R.layout.fragment_roo
 
                 mBind.fragmentRoomAll.text = appDatabase.addressDao().queryList().joinToString("\n")
 
-                showShort("${appDatabase.addressDao().queryByCondition("ston").size}")
+                showShort("${appDatabase.addressDao().queryByCondition("stone").size}")
             }
         }
 

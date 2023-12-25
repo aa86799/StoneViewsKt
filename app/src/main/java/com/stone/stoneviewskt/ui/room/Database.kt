@@ -18,7 +18,7 @@ import com.stone.stoneviewskt.ui.room.data.UserData
  * blog :   https://stone.blog.csdn.net
  * time:    2021/4/4 12:33
  */
-@Database(entities = [AddressData::class, UserData::class], version = 1, exportSchema = false)
+@Database(entities = [AddressData::class, UserData::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun addressDao(): AddressDao
     abstract fun userDao(): UserDao

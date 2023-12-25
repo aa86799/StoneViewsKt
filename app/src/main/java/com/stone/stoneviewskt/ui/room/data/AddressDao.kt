@@ -16,7 +16,7 @@ interface AddressDao {
     fun queryByCondition(queryCondition: String): List<AddressData>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(address: AddressData)
+    fun insertAndReplace(address: AddressData)
 
     @Delete
     fun delete(address: AddressData): Int
