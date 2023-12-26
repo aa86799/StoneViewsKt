@@ -81,12 +81,17 @@ class GodFloatViewWithWindowManager : FrameLayout {
             mLp.alpha = 0.5f // 透明
             mWindowManager.addView(this, mLp)
 
-//            mDecorView?.postDelayed({
-//                // 默认是居中的   如下设置，效果是  左上角
-//                mLp.x = -getScreenWidth() / 2
-//                mLp.y = -getScreenHeight() / 2
-//                mWindowManager.updateViewLayout(this, mLp)
-//            }, 500)
+            mDecorView?.postDelayed({
+                // 默认是居中的   在 windowManager 中，当前 view 都不可超过屏幕边界
+                mLp.x = -getScreenWidth() / 2 // 左
+//                AlertDialog.Builder(context)
+//                    .setMessage("${getScreenWidth() / 2}  ${measuredWidth / 2}")
+//                    .create()
+//                    .show()
+//                mLp.y = -getScreenHeight() / 2 // 上
+                mLp.y = getScreenHeight() // 下
+                mWindowManager.updateViewLayout(this, mLp)
+            }, 500)
 
         }
     }
