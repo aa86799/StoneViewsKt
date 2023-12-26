@@ -17,7 +17,8 @@ class LongImageFragment : BaseBindFragment<FragmentLongImageBinding>(R.layout.fr
     override fun onPreparedView(savedInstanceState: Bundle?) {
         super.onPreparedView(savedInstanceState)
 
-        requireContext().assets.open("big.png").use {
+//        requireContext().assets.open("big.png").use {
+        requireContext().assets.open("qinlan.jpg").use {
             mBind.fragmentLongImageIv.setImage(it)
         }
 
