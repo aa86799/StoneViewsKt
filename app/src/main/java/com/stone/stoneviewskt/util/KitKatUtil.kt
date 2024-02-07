@@ -108,13 +108,12 @@ object KitKatUtil {
 
         try {
             cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-            if (cursor != null && cursor!!.moveToFirst()) {
-                val column_index = cursor!!.getColumnIndexOrThrow(column)
-                return cursor!!.getString(column_index)
+            if (cursor != null && cursor.moveToFirst()) {
+                val column_index = cursor.getColumnIndexOrThrow(column)
+                return cursor.getString(column_index)
             }
         } finally {
-            if (cursor != null)
-                cursor!!.close()
+            cursor?.close()
         }
         return null
     }

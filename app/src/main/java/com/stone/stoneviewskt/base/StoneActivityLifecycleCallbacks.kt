@@ -82,7 +82,7 @@ class StoneActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
             ani.addUpdateListener {
                 val fraction = it.animatedFraction
                 if (fraction > 0.5f && !flag) {
-                    AlertDialog.Builder(activity).setMessage("stone").create().show()
+                    AlertDialog.Builder(activity).setMessage("addFullViewWithAnimator").create().show()
                     flag = true
                 }
             }
