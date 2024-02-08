@@ -8,6 +8,12 @@ import com.stone.stoneviewskt.databinding.FragmentStringListBinding
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.delay
 
+/**
+ * desc:    RecyclerView.ListAdapter 示例
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2023/6/16
+ */
 class StringListFragment: BaseBindFragment<FragmentStringListBinding>(R.layout.fragment_string_list) {
 
     private val adapter by lazy {

@@ -17,6 +17,12 @@ import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentCodeScanBinding
 import com.stone.stoneviewskt.util.stoneToast
 
+/**
+ * desc:
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2023/2/14
+ */
 class CodeScanFragment : BaseBindFragment<FragmentCodeScanBinding>(R.layout.fragment_code_scan) {
 
     private val mPermissionCheck = PermissionCheck()

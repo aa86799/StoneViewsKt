@@ -26,6 +26,7 @@ import com.stone.stoneviewskt.ui.imagematrix.ImageMatrixFragment
 import com.stone.stoneviewskt.ui.jetpack.datastore.DataStoreFragment
 import com.stone.stoneviewskt.ui.jetpack.workmanager.WorkManagerFragment
 import com.stone.stoneviewskt.ui.jumpfragment.JumpActivity
+import com.stone.stoneviewskt.ui.ks.KeyStoreFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
@@ -90,8 +91,9 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
-                "二维码扫扫描(华为Scan)" -> startNewUI(CodeScanFragment::class.java)
-                "RecyclerView系列中的ListAdapter(示例)" -> startNewUI(StringListFragment::class.java)
+                "二维码扫扫描(华为Scan) [@stone 23/2/14]" -> startNewUI(CodeScanFragment::class.java)
+                "Android Keystore [@stone 24/2/7]" -> startNewUI(KeyStoreFragment::class.java)
+                "RecyclerView系列中的ListAdapter(示例) [23/6/16]" -> startNewUI(StringListFragment::class.java)
                 "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试" -> startNewUI(PageListFragment2::class.java)
                 "长按桌面图标弹出快捷菜单" -> startNewUI(AppIconShortcutFragment::class.java)
                 "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
@@ -158,8 +160,9 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
-            "二维码扫扫描(华为Scan)",
-            "RecyclerView系列中的ListAdapter(示例)",
+            "二维码扫扫描(华为Scan) [@stone 23/2/14]",
+            "Android Keystore [@stone 24/2/7]",
+            "RecyclerView系列中的ListAdapter(示例) [23/6/16]",
             "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试",
             "长按桌面图标弹出快捷菜单",
             "View通过平移、旋转、缩放后，顶点映射",
