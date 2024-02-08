@@ -1,0 +1,137 @@
+f89d9c5 (HEAD -> master, origin/master, origin/HEAD) 增加时间标记
+5bbcc79 AndroidKeyStore 加解密(AES、RSA)
+533e83e 增加混淆规则，自定义混淆字典文件：obfuscation_dictionary.txt
+7bbb948 windowmanager实现的悬浮 view
+7a83d02 长图加载
+73720ad room，增加索引
+4a7dec4 ksp: SymbolProcessor, demo
+aeca92c 分页 Adapter-UI 辅助类 PageUiHelper
+5fdf137 全局增加 activity 的进入退出动画
+d50eaf2 基于DiffUtil的Rv#Adapter 实现，StringListAdapter、StringListAdapter2
+b04da29 base 分页数据源
+5f51900 Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试 (示例)
+3a3dc62 桌面长按图标出现快捷方式 shortcut.xml，AppIconShortcutFragment
+b3f1fd1 update room, fix compile error
+31bf31c CodeScanFragment, 增加扫描内容复制功能。update README.md
+f3f210b update ViewTransformFragment
+d4e8193 remove compose demo
+4349b7f view tramsform demo
+7bb9239 BaseMviViewModel 优化
+fda24ca update gradle; add hms scan demo
+8250216 悬浮窗口的两种实现；含有webView的Activity中增加web小图标的ImageView于左上角
+c3ea50a windowInsetsController 设置状态栏、导航栏
+4124cfe CollapsingToolbarLayout 示例再探
+04ed8b9 MD Component: BottomAppBar
+f34e84a 获取已安装应用 包名，和应用名
+5123f6c MultiViewType RecyclerView
+33376f0 ROOM + ContentProvider 示例，支持API 30(android 11); MultiViewType RecyclerView
+85111dd 连续点击示例；FragmentContainerView 显示fragment，FragmentManager ktx 方法 添加、移除、隐藏 fragment
+960302a mvi 封装；基于 mvi 的 分页加载数据 示例
+9f45b0b ContentProvider 结合 room db, 实现了query()
+558ddf2 MyContentProvider 初始化测试
+7586e38 简化CodeExtend.kt中的扩展属性的get()实现代码
+fdbb2bf ViewBinding、DataBinding 优化
+01c537c 应用DataBinding，取消 ViewBinding
+ab8f8d5 ButtonFastClickUtils 按钮防快速点击的一种实现：间隔多久就会实际触发一次
+5a26ab8 update annotation
+22f20f8 BaseRvAdapter, mvi demo
+50fea7c MVI 架构示例；熟悉了 SharedFlow和StateFlow
+7caf200 some updates
+beda9d9 AccessibilityService mock user gesture
+b5f7cf8 规避 IllegalArgumentException: The key must be an application-specific resource id； 防止getTag/setTag 时，key重复
+22e7b95 优化debounceClick
+52fb4ab CodeExtend.kt ，增加 view click 时的 防抖动函数
+bb1ce58 去除app application中的extensions； 应用ViewBinding; compose 1.1.1
+25f2b07 WorkManager 的应用
+d102245 update some aar version
+9f574cc 自定义handler
+307a223 改变屏幕亮度; 屏幕常亮
+0578e1d aidl test
+cc20d03 进度条，默认值在中间，左负右正
+2996b69 ScrollFragment; 滚动到底
+6cad9de compose, foundation.Canvas 示例
+b7d8cf9 compose, LazyColumn、LazyRow
+8b9f386 compose，transition 动画
+63e5e5c Image 图像尝试：仅支持 jpg、png、webp、vector xml 和新创建的 Bitmap 位图
+5b07773 compose, 预览设置
+67347ae compose, 可变状态追踪存储；根据状态进行色彩变化动画
+fae25eb 依据系统是否是深色主题，来切换主题
+86b2e6d compose, 启用material 主题
+4ebe82b compose, Column、Row、Text、Button
+8186595  compose module; app/compose 配置
+3192821 访问相册权限 bug
+83d3bad 调用系统相册 Intent 选择多张照片
+f3bed3e 转场动画(未完成)
+cb252a4 temp: 选择多图
+fc8c60c androidx.navigation.fragment.NavHostFragment 示例; 测试CropImageView
+61cfe4a camera-one opt
+34ec1f7 as 4.2.1
+f1422af 动画示例更新
+0e4e496 room db
+68bf4c2 DialogFragment 示例；lifecycle#addObserver(LifecycleEventObserver)
+0d9d86a Lifecycle Observer
+d538da8 layout 应用属性动画，改变view top、alpha 属性
+e833a2f git rm build文件
+232d9a0 自定义相机
+0f387da webview+js 选择照片、拍照
+2162719 elevation, translationZ 属性使用，有权重效果
+d073957 ConstraintSet 约束动画
+9274341 DataStore试用，目前是有问题的
+dad9014 基础数据封装Result； viewModel相关的Event封装
+1c13e59 kotlin 类委托实现 ImageFilterEngine2
+0ed4bf2 @Parcelize 自动生成 Parcelable 模板代码
+348e7a6 ViewBinding 实践
+6b5a705 滴滴Dokit工具
+4800501 floyd steinberg 图片滤镜；stucki 图片滤镜
+ceba7b7 图片滤镜cpp实现
+415bda9 BitmapUtil#resize()
+6cf8a67 长图加载
+6fa6d82 图片矩阵、颜色矩阵注释
+c34cb0b ImageMatrixFragment：3x3矩阵 Matrix 操作
+ee83742 图片压缩
+a5ae4c3 ColorMatrix, ColorMatrixColorFilter；图片颜色矩阵；图片像素点操作
+94726c2 使用 fragmentation 框架；kotlin 1.4.0；
+93c1d6e nfc基本api的使用，未实测
+def1b5e 自定义toast
+ae67502 对 MainActivity 增加 isTaskRoot() 处理
+f6d9156 图片缩放
+e58eef9 音频处理优化
+c04783b compile version 30时重写webView 修复
+787e7ec CollapsingToolbarLayout 折叠/展开 Toolbar
+e65371c 视频压缩
+64c4d6e add libjpeg.so
+d7a4489 target version = api 30; api30权限申请监听AppOpsManager； api30状态栏设置(待验证)
+97a12fb MediaRecord+MediaPlayer音频录音与播放; AudioRecord+AudioTrack音频录音与播放(播放时，采用smbPitchShift.cpp进行音高处理)
+fe7d659 更新 arm64-v8a/libturbojpeg.a 静态库
+3fe7432 readme: CircleLayoutFragment
+45dc912 CircleLayoutFragment: FloatingActionButton + ConstraintLayout(圆形布局) + 两个属性动画的同步使用
+4d5e9ab lipjpeg: 使用libturbojpeg.a静态库，压缩png图片为3字节(rgb)每像素的jpg图片
+f906f0b MD-FloatingActionButton，悬浮式button，带有显式隐藏动画。(背景色设置需要api21)
+1d3ca54 MD-CardView，卡片；DraggableLinearLayout 可拖动 LinearLayout
+8768058 multiDex
+736ec5f MD-Chips, icon+label, 横向的小布局；可以在右边显示删除按钮，可以多选、单选
+27e4cb0 MD-BottomSheetDialog、BottomSheetDialogFragment
+c7d3fa3 MD-BottomSheetBehavior，底部可拖动view
+9b59cbb MD-BottomNavigationView，底部导航栏 icon+label
+b827cd3 MD-TabLayout中 tabItem的自定义、本身支持的text&icon样式、角标设置
+8d8b9b9 CoordinatorLayout+AppBarLayout+NestedScrollView 滚动效果
+87edfdc Spinner 组件测试
+2a9fcce crmeraX 示例。sdk还不完美
+0bc9282 ActivityLifecycleCallbacks实现中，对MainActivity添加一个全屏的动画view
+da6012b 状态栏背景设置
+ddcddd4 MD-theme, button 应用
+e920f99 ClockView, TabLayoutFragment
+1e66196 MD-TabLayout，自定义Tab，加ViewPager+FragmentPagerAdapter
+234af36 自定义 TitleToolbar
+b5df895 绘制时钟表盘
+e5607cc 斜线式、圆环式、图文式进度条
+5002567 update readme.md
+181c9ea update readme.md
+3414320 Update README.md
+99a3a18 Update README.md
+2dc8bc8 activity&view 灰度化实现
+e1ab290 雷达扫描旋转
+0c0da7d 雷达扫描旋转
+808ed86 轮盘view 更新
+b66f4fe SatelliteMenu 卫星式菜单
+b75b653 init

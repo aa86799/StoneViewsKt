@@ -10,42 +10,47 @@
 
 # All Effects
 
- - No.001. RouletteView 自实现轮盘，实现圆形等分成扇形绘制，每个扇形区的点击事件。
+ - RouletteView 自实现轮盘，实现圆形等分成扇形绘制，每个扇形区的点击事件。
 
     ![RouletteView](https://github.com/aa86799/images/blob/master/rouletteview2.gif)
 
- - No.002. SatelliteMenu 卫星式菜单，绘制四分之一圆，n个item，则夹角为90度/(n-1); 利用弧度、角度、半径(作三角斜边)，以正、余弦公式求(x,y)
+ - SatelliteMenu 卫星式菜单，绘制四分之一圆，n个item，则夹角为90度/(n-1); 利用弧度、角度、半径(作三角斜边)，以正、余弦公式求(x,y)
 
     ![SatelliteMenu](https://github.com/aa86799/images/blob/master/satellitemenu.gif)
 
- - No.003. RadarView 雷达效果，主要是SweepGradient的运用
+ - RadarView 雷达效果，主要是SweepGradient的运用
 
     ![RadarView](https://github.com/aa86799/images/blob/master/radar.gif)
 
- - No.004. BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
+ - BaseGrayActivity(通过 window.decorView 实现灰度化)、InjectGrayWebView(注入 css 实现灰度化)
  
     ![BaseGrayActivity](https://github.com/aa86799/images/blob/master/grayapp.png)
 
- - No.005. ObliqueProgressbarView 斜线进度条，与随机位置绘制小点
+ - ObliqueProgressbarView 斜线进度条，与随机位置绘制小点
  
     ![ObliqueProgressbarView](https://github.com/aa86799/images/blob/master/ObliqueProgressbarView.gif) 
 
- - No.006. CircleProgressbarView 圆环进度。自适应text宽度
+ - CircleProgressbarView 圆环进度。自适应text宽度
  
     ![CircleProgressbarView](https://github.com/aa86799/images/blob/master/CircleProgressbarView.gif)  
 
- - No.007. ComplexProgressBarView 左边横向圆角进度条，右边文本为  "进度/最大进度"
+ - ComplexProgressBarView 左边横向圆角进度条，右边文本为  "进度/最大进度"
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/ComplexProgressBarView.gif)
     
- - No.008. ClockView 时钟
+ - ClockView 时钟
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/ClockView.gif)
     
- - No.009. TabLayoutFragment,  MD-TabLayout，自定义Tab，加ViewPager+FragmentPagerAdapter 
+ - TabLayoutFragment,  MD-TabLayout，自定义Tab，加ViewPager+FragmentPagerAdapter 
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/TabLayoutFragment.gif)
 
- - NO.010 CircleLayoutFragment:  FloatingActionButton + ConstraintLayout(圆形布局) + 两个属性动画的同步使用
+ - CircleLayoutFragment:  FloatingActionButton + ConstraintLayout(圆形布局) + 两个属性动画的同步使用
  
     ![ComplexProgressBarView](https://github.com/aa86799/images/blob/master/CircleLayout.gif)
+
+ - obfuscation_dictionary.txt 代码混淆字典，见 proguard-rules.pro 中的应用。编译后，dex2jar 看到的效果：
+
+   ![obfuscation dictionary](https://github.com/aa86799/images/blob/master/obfuscation_code.jpg)
+
