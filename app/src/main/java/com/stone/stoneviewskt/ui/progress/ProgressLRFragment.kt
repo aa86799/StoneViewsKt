@@ -4,6 +4,12 @@ import android.os.Bundle
 import android.widget.TextView
 import com.stone.stoneviewskt.base.BaseFragment
 
+/**
+ * desc:    左右进度
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2022/2/22
+ */
 class ProgressLRFragment : BaseFragment() {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

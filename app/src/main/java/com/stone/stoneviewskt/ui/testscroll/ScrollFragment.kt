@@ -8,7 +8,10 @@ import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentScrollBinding
 
 /**
- * 滚动到底
+ * desc:    滚动到底
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2021/12/7
  */
 class ScrollFragment : BaseBindFragment<FragmentScrollBinding>(R.layout.fragment_scroll) {
 

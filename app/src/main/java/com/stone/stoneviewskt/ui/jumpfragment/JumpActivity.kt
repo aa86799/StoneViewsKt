@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.stone.stoneviewskt.R
 
 /**
- * desc:
+ * desc:    用FragmentManager实现fragment跳转
  * author:  stone
  * email:   aa86799@163.com
  * blog :   https://stone.blog.csdn.net

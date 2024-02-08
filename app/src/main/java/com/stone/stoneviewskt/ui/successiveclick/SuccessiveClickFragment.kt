@@ -10,6 +10,12 @@ import com.stone.stoneviewskt.common.debounceClickWidthHandler
 import com.stone.stoneviewskt.databinding.FragmentSuccessiveClickBinding
 import com.stone.stoneviewskt.util.logi
 
+/**
+ * desc:    防连续点击示例
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2022/12/2
+ */
 class SuccessiveClickFragment: BaseBindFragment<FragmentSuccessiveClickBinding>(R.layout.fragment_successive_click) {
 
     private var mFlag = false

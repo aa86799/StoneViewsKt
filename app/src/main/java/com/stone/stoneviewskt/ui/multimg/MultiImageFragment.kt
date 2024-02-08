@@ -23,6 +23,12 @@ import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentMultiImageBinding
 import org.jetbrains.anko.support.v4.alert
 
+/**
+ * desc:    从系统加载多张图片
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2021/9/9
+ */
 class MultiImageFragment : BaseBindFragment<FragmentMultiImageBinding>(R.layout.fragment_multi_image) {
 
     private var mGrantedCallbackCallback: (() -> Unit)? = null

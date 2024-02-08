@@ -12,6 +12,12 @@ import com.stone.stoneviewskt.base.BaseFragment
 import com.stone.stoneviewskt.util.logi
 import kotlinx.coroutines.flow.catch
 
+/**
+ * desc:
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2022/11/6
+ */
 class MVIEasyFragment : BaseFragment() {
 
     @PublishedApi

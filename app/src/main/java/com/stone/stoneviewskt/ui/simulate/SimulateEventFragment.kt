@@ -8,6 +8,12 @@ import com.stone.stoneviewskt.common.BaseBindFragment
 import com.stone.stoneviewskt.databinding.FragmentSimulateEventBinding
 import com.tencent.mmkv.MMKV
 
+/**
+ * desc:    模拟点击
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2022/10/27
+ */
 class SimulateEventFragment: BaseBindFragment<FragmentSimulateEventBinding>(R.layout.fragment_simulate_event) {
 
     override fun onPreparedView(savedInstanceState: Bundle?) {

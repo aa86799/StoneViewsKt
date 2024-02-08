@@ -91,19 +91,19 @@ class MainActivity : BaseActivity() {
 
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
-                "二维码扫扫描(华为Scan) [@stone 23/2/14]" -> startNewUI(CodeScanFragment::class.java)
-                "Android Keystore [@stone 24/2/7]" -> startNewUI(KeyStoreFragment::class.java)
+                "二维码扫扫描(华为Scan) [23/2/14]" -> startNewUI(CodeScanFragment::class.java)
+                "Android Keystore [24/2/7]" -> startNewUI(KeyStoreFragment::class.java)
                 "RecyclerView系列中的ListAdapter(示例) [23/6/16]" -> startNewUI(StringListFragment::class.java)
-                "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试" -> startNewUI(PageListFragment2::class.java)
-                "长按桌面图标弹出快捷菜单" -> startNewUI(AppIconShortcutFragment::class.java)
-                "View通过平移、旋转、缩放后，顶点映射" -> startNewUI(ViewTransformFragment::class.java)
-                "InstalledAppPackage" -> startNewUI(InstalledAppPackageFragment::class.java)
-                "ContentProvider相关" -> startNewUI(ContentProviderFragment::class.java)
-                "RecyclerViewDemo" -> startNewUI(RecyclerViewDemoFragment::class.java)
-                "连续点击测试" -> startNewUI(SuccessiveClickFragment::class.java)
-                "用FragmentManager实现fragment跳转" -> startActivity<JumpActivity>()
-                "自定义handler" -> startNewUI(MyHandlerFragment::class.java)
-                "改变屏幕亮度" -> { // 亮度范围 [0,1]
+                "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试 [23/6/10]" -> startNewUI(PageListFragment2::class.java)
+                "长按桌面图标弹出快捷菜单 [23/6/8]" -> startNewUI(AppIconShortcutFragment::class.java)
+                "View通过平移、旋转、缩放后，顶点映射 [23/4/3]" -> startNewUI(ViewTransformFragment::class.java)
+                "InstalledAppPackage [22/12/30]" -> startNewUI(InstalledAppPackageFragment::class.java)
+                "ContentProvider相关 [22/12/11]" -> startNewUI(ContentProviderFragment::class.java)
+                "RecyclerView 多种 ViewType 示例 [22/12/24]" -> startNewUI(RecyclerViewDemoFragment::class.java)
+                "防连续点击 [22/12/2]" -> startNewUI(SuccessiveClickFragment::class.java)
+                "用FragmentManager实现fragment跳转 [22/5/19]" -> startActivity<JumpActivity>()
+                "自定义handler [22/3/27]" -> startNewUI(MyHandlerFragment::class.java)
+                "改变屏幕亮度 [22/3/16]" -> { // 亮度范围 [0,1]
                     val att = window.attributes
                     if (att.screenBrightness < 1f) {
                         att.screenBrightness = 1f
@@ -114,44 +114,44 @@ class MainActivity : BaseActivity() {
                     }
                     window.attributes = att
                 }
-                "左右进度" -> startNewUI(ProgressLRFragment::class.java)
-                "滚动测试" -> startNewUI(ScrollFragment::class.java)
-                "轮盘等分" -> startNewUI(RouletteFragment::class.java)
-                "卫星式菜单" -> startNewUI(SatelliteFragment::class.java)
-                "雷达扫描旋转" -> startNewUI(RadarFragment::class.java)
-                "灰度化" -> startActivity<BaseGrayActivity>(KEY_FRAGMENT to GrayFragment::class.java)
-                "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频)" -> startNewUI(GrayFragment::class.java)
-                "斜线进度条" -> startNewUI(ObliqueProgressbarFragment::class.java)
-                "圆环进度条" -> startNewUI(CircleProgressbarFragment::class.java)
-                "左边横向圆角进度条，右边文本为  \"进度/最大进度\"" -> startNewUI(ComplexProgressBarViewFragment::class.java)
-                "绘制时钟表盘" -> startNewUI(ClockFragment::class.java)
-                "材料设计" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
-                "Spinner" -> startNewUI(SpinnerFragment::class.java)
-                "NDK: lib jpeg" -> startNewUI(LibJpegFragment::class.java)
-                "Floating_Action_Button + Constraint_Layout(圆形布局)" -> startNewUI(CircleLayoutFragment::class.java)
-                "Media_Record" -> startNewUI(MediaRecordFragment::class.java)
-                "Media_Record2" -> startNewUI(MediaRecordFragment2::class.java)
-                "Audio_Record" -> startNewUI(AudioRecordFragment::class.java)
-                "Video_Compress" -> startNewUI(VideoCompressFragment::class.java)
-                "Nfc_Fragment" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
-                "Color_Matrix" -> startNewUI(ColorMainFragment::class.java)
-                "Image_Matrix" -> startNewUI(ImageMatrixFragment::class.java)
-                "长图加载" -> startNewUI(LongImageFragment::class.java)
-                "图片滤镜" -> startNewUI(ImageFilterFragment::class.java)
-                "图片裁剪" -> startNewUI(StoneImageCropFragment::class.java)
-                "View Binding" -> startActivity<ViewBindActivity>()
-                "Parcel Data" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
-                "Data Store" -> startNewUI(DataStoreFragment::class.java)
-                "WebView加载图片" -> startNewUI(ImageLoadWebViewFragment::class.java)
-                "Layout Animation" -> startNewUI(LayoutAnimFragment::class.java)
-                "Lifecycle Observer" -> startNewUI(LifecycleFragment::class.java)
-                "Dialog" -> startNewUI(MainDialogManagerFragment::class.java)
-                "Room" -> startNewUI(RoomFragment::class.java)
-                "WorkManager" -> startNewUI(WorkManagerFragment::class.java)
-                "从系统加载多张图片" -> startNewUI(MultiImageFragment::class.java)
-                "模拟点击" -> startNewUI(SimulateEventFragment::class.java)
-                "MVI架构示例" -> startNewUI(MVIEasyFragment::class.java)
-                "MVI架构示例2" -> startNewUI(MVIPackFragment::class.java)
+                "左右进度 [22/2/22]" -> startNewUI(ProgressLRFragment::class.java)
+                "滚动测试 [21/12/7]" -> startNewUI(ScrollFragment::class.java)
+                "轮盘等分 [20/4/4]" -> startNewUI(RouletteFragment::class.java)
+                "卫星式菜单 [20/4/6]" -> startNewUI(SatelliteFragment::class.java)
+                "雷达扫描旋转 [20/4/6]" -> startNewUI(RadarFragment::class.java)
+                "灰度化 [20/4/6]" -> startActivity<BaseGrayActivity>(KEY_FRAGMENT to GrayFragment::class.java)
+                "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频) [20/4/6]" -> startNewUI(GrayFragment::class.java)
+                "斜线进度条 [20/4/6]" -> startNewUI(ObliqueProgressbarFragment::class.java)
+                "圆环进度条 [20/4/11]" -> startNewUI(CircleProgressbarFragment::class.java)
+                "左边横向圆角进度条，右边文本为  \"进度/最大进度\" [20/4/11]" -> startNewUI(ComplexProgressBarViewFragment::class.java)
+                "绘制时钟表盘 [20/4/15]" -> startNewUI(ClockFragment::class.java)
+                "材料设计 [20/4/26]" -> startActivity<MDActivity>(KEY_FRAGMENT to MDMainFragment::class.java)
+                "Spinner [20/4/28]" -> startNewUI(SpinnerFragment::class.java)
+                "NDK: lib jpeg [20/7/26]" -> startNewUI(LibJpegFragment::class.java)
+                "Floating_Action_Button + Constraint_Layout(圆形布局) [20/7/26]" -> startNewUI(CircleLayoutFragment::class.java)
+                "Media_Record [20/7/28]" -> startNewUI(MediaRecordFragment::class.java)
+                "Media_Record2 [20/7/28]" -> startNewUI(MediaRecordFragment2::class.java)
+                "Audio_Record [20/7/28]" -> startNewUI(AudioRecordFragment::class.java)
+                "Video_Compress [20/8/2]" -> startNewUI(VideoCompressFragment::class.java)
+                "Nfc_Fragment [20/8/23]" -> startActivity<NfcNdefActivity>(KEY_FRAGMENT to NfcFragment::class.java)
+                "Color_Matrix [20/8/30]" -> startNewUI(ColorMainFragment::class.java)
+                "Image_Matrix [20/11/9]" -> startNewUI(ImageMatrixFragment::class.java)
+                "长图加载 [20/11/30]" -> startNewUI(LongImageFragment::class.java)
+                "图片滤镜 [20/12/4]" -> startNewUI(ImageFilterFragment::class.java)
+                "图片裁剪 [20/12/6]" -> startNewUI(StoneImageCropFragment::class.java)
+                "View Binding [20/12/26]" -> startActivity<ViewBindActivity>()
+                "Parcel Data [20/12/26]" -> startNewUI(ParcelDataFragment::class.java, "user" to UserData("stone", "123456", true))
+                "Data Store [20/12/27]" -> startNewUI(DataStoreFragment::class.java)
+                "WebView加载图片 [21/1/6]" -> startNewUI(ImageLoadWebViewFragment::class.java)
+                "Layout Animation [21/1/11]" -> startNewUI(LayoutAnimFragment::class.java)
+                "Lifecycle Observer [21/1/13]" -> startNewUI(LifecycleFragment::class.java)
+                "Dialog [21/1/24]" -> startNewUI(MainDialogManagerFragment::class.java)
+                "Room [21/4/4]" -> startNewUI(RoomFragment::class.java)
+                "WorkManager [20/12/27]" -> startNewUI(WorkManagerFragment::class.java)
+                "从系统加载多张图片 [21/9/9]" -> startNewUI(MultiImageFragment::class.java)
+                "模拟点击 [22/10/27]" -> startNewUI(SimulateEventFragment::class.java)
+                "MVI架构示例 [22/11/6]" -> startNewUI(MVIEasyFragment::class.java)
+                "MVI架构示例2：模拟分页加载 [22/12/17]" -> startNewUI(MVIPackFragment::class.java)
             }
         }
 
@@ -160,56 +160,56 @@ class MainActivity : BaseActivity() {
 
     companion object {
         val TITLES = listOf(
-            "二维码扫扫描(华为Scan) [@stone 23/2/14]",
-            "Android Keystore [@stone 24/2/7]",
+            "二维码扫扫描(华为Scan) [23/2/14]",
+            "Android Keystore [24/2/7]",
             "RecyclerView系列中的ListAdapter(示例) [23/6/16]",
-            "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试",
-            "长按桌面图标弹出快捷菜单",
-            "View通过平移、旋转、缩放后，顶点映射",
-            "InstalledAppPackage",
-            "ContentProvider相关",
-            "RecyclerViewDemo",
-            "连续点击测试",
-            "用FragmentManager实现fragment跳转",
-            "自定义handler",
-            "改变屏幕亮度",
-            "左右进度",
-            "滚动测试",
-            "轮盘等分",
-            "卫星式菜单",
-            "雷达扫描旋转",
-            "灰度化",
-            "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频)",
-            "斜线进度条",
-            "圆环进度条",
-            "左边横向圆角进度条，右边文本为  \"进度/最大进度\"",
-            "绘制时钟表盘",
-            "材料设计",
-            "Spinner",
-            "NDK: lib jpeg",
-            "Floating_Action_Button + Constraint_Layout(圆形布局)",
-            "Media_Record",
-            "Media_Record2",
-            "Audio_Record",
-            "Video_Compress",
-            "Color_Matrix",
-            "Image_Matrix",
-            "长图加载",
-            "图片滤镜",
-            "图片裁剪",
-            "View Binding",
-            "Parcel Data",
-            "Data Store",
-            "WebView加载图片",
-            "Layout Animation",
-            "Lifecycle Observer",
-            "Dialog",
-            "Room",
-            "WorkManager",
-            "从系统加载多张图片",
-            "模拟点击",
-            "MVI架构示例",
-            "MVI架构示例2"
+            "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试 [23/6/10]",
+            "长按桌面图标弹出快捷菜单 [23/6/8]",
+            "View通过平移、旋转、缩放后，顶点映射 [23/4/3]",
+            "InstalledAppPackage [22/12/30]",
+            "ContentProvider相关 [22/12/11]",
+            "RecyclerView 多种 ViewType 示例 [22/12/24]",
+            "防连续点击 [22/12/2]",
+            "用FragmentManager实现fragment跳转 [22/5/19]",
+            "自定义handler [22/3/27]",
+            "改变屏幕亮度 [22/3/16]",
+            "左右进度 [22/2/22]",
+            "滚动测试 [21/12/7]",
+            "轮盘等分 [20/4/4]",
+            "卫星式菜单 [20/4/6]",
+            "雷达扫描旋转 [20/4/6]",
+            "灰度化 [20/4/6]",
+            "仅WebView灰度化(对某些网站可能并没有效果，如腾讯视频) [20/4/6]",
+            "斜线进度条 [20/4/6]",
+            "圆环进度条 [20/4/11]",
+            "左边横向圆角进度条，右边文本为  \"进度/最大进度\" [20/4/11]",
+            "绘制时钟表盘 [20/4/15]",
+            "材料设计 [20/4/26]",
+            "Spinner [20/4/28]",
+            "NDK: lib jpeg [20/7/26]",
+            "Floating_Action_Button + Constraint_Layout(圆形布局) [20/7/26]",
+            "Media_Record [20/7/28]",
+            "Media_Record2 [20/7/28]",
+            "Audio_Record [20/7/28]",
+            "Video_Compress [20/8/2]",
+            "Color_Matrix [20/8/30]",
+            "Image_Matrix [20/11/9]",
+            "长图加载 [20/11/30]",
+            "图片滤镜 [20/12/4]",
+            "图片裁剪 [20/12/6]",
+            "View Binding [20/12/26]",
+            "Parcel Data [20/12/26]",
+            "Data Store [20/12/27]",
+            "WebView加载图片 [21/1/6]",
+            "Layout Animation [21/1/11]",
+            "Lifecycle Observer [21/1/13]",
+            "Dialog [21/1/24]",
+            "Room [21/4/4]",
+            "WorkManager [20/12/27]",
+            "从系统加载多张图片 [21/9/9]",
+            "模拟点击 [22/10/27]",
+            "MVI架构示例 [22/11/6]",
+            "MVI架构示例2：模拟分页加载 [22/12/17]"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 

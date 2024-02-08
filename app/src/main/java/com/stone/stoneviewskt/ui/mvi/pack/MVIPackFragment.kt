@@ -16,10 +16,15 @@ import com.stone.stoneviewskt.util.logi
 import com.stone.stoneviewskt.util.stoneToast
 
 /**
+ * desc:
  * PackDatasource 中 模拟了 发生错误，抛出异常的代码
  * 在当前界面就会有个 不正常的现象，如：已加载 n>1 页的数据后， 点击刷新数据，这时 mPage=1，刷新时发生了异常，
  *      数据没有更新，还是 原来的 n 页数据；再点击加载下一页，就会将 mPage++；看起来可能数据反而更少了；
  *   所以，增加一个 mLastPage 参数
+ *
+ * author:  stone
+ * email:   aa86799@163.com
+ * time:    2022/12/17
  */
 class MVIPackFragment : BaseMviFragment<FragmentMviBinding>(R.layout.fragment_mvi) {
 
