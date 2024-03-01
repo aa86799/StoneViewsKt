@@ -32,6 +32,7 @@ import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
+import com.stone.stoneviewskt.ui.mina.MinaFragment
 import com.stone.stoneviewskt.ui.multimg.MultiImageFragment
 import com.stone.stoneviewskt.ui.mvi.easy.MVIEasyFragment
 import com.stone.stoneviewskt.ui.mvi.pack.MVIPackFragment
@@ -92,6 +93,8 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan) [23/2/14]" -> startNewUI(CodeScanFragment::class.java)
+                "apache mina (socket connect) [24/0227]" -> startNewUI(MinaFragment::class.java)
+//                "http server" -> startNewUI(xx::class.java)
                 "Android Keystore [24/2/7]" -> startNewUI(KeyStoreFragment::class.java)
                 "RecyclerView系列中的ListAdapter(示例) [23/6/16]" -> startNewUI(StringListFragment::class.java)
                 "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试 [23/6/10]" -> startNewUI(PageListFragment2::class.java)
@@ -161,6 +164,8 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan) [23/2/14]",
+            "apache mina (socket connect) [24/0227]",
+//            "http server",
             "Android Keystore [24/2/7]",
             "RecyclerView系列中的ListAdapter(示例) [23/6/16]",
             "Paging3分页+ConcatAdapter+空数据视图+下拉刷新(SwipeRefreshLayout)+加载更多+错误重试 [23/6/10]",

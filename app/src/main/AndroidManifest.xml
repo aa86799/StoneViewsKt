@@ -130,6 +130,8 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
+        <service android:name="com.stone.stoneviewskt.ui.mina.hhf.service.LongConnectService" />
+
         <provider
             android:authorities="com.stone.cper"
             android:name=".ui.contentp.MyContentProvider"

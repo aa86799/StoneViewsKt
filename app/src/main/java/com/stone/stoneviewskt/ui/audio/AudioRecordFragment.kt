@@ -2,9 +2,11 @@ package com.stone.stoneviewskt.ui.audio
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.media.*
 import android.os.Bundle
 import android.view.MotionEvent
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.stone.stoneviewskt.R
 import com.stone.stoneviewskt.common.BaseBindFragment
@@ -132,6 +134,16 @@ class AudioRecordFragment : BaseBindFragment<FragmentAudioRecordBinding>(R.layou
             val audioFormat = AudioFormat.ENCODING_PCM_16BIT
             val bufferSizeInBytes = AudioRecord.getMinBufferSize(mSampleRateInHz, channelConfig, audioFormat)
 
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return false
+            }
             mAudioRecord = AudioRecord(audioSource, mSampleRateInHz, channelConfig, audioFormat, max(bufferSizeInBytes, mBufferSize))
             mAudioRecord?.startRecording()
             mStartTime = System.currentTimeMillis()

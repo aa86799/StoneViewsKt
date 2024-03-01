@@ -111,7 +111,8 @@ class KeyStoreFragment: BaseBindFragment<FragmentKstoreBinding>(R.layout.fragmen
             keyStore.load(null)
             val secretKey = keyStore.getKey(keystoreAlias, null)
             val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
-            // 手动加盐(IV)报错了: java.security.InvalidAlgorithmParameterException: Caller-provided IV not permitted
+            // 手动加盐(IV)报错了: java.security.InvalidAlgorithmParameterException:
+            // Caller-provided IV not permitted   (不被允许)
 //            cipher.init(Cipher.ENCRYPT_MODE, secretKey, IvParameterSpec(salt))
             // 自动 生成 IV
             cipher.init(Cipher.ENCRYPT_MODE, secretKey)
