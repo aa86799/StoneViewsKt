@@ -30,6 +30,7 @@ import com.stone.stoneviewskt.ui.ks.KeyStoreFragment
 import com.stone.stoneviewskt.ui.libjpeg.LibJpegFragment
 import com.stone.stoneviewskt.ui.lifecycle.LifecycleFragment
 import com.stone.stoneviewskt.ui.longimg.LongImageFragment
+import com.stone.stoneviewskt.ui.mahjong.HmRuleFragment
 import com.stone.stoneviewskt.ui.materialdesign.MDActivity
 import com.stone.stoneviewskt.ui.materialdesign.MDMainFragment
 import com.stone.stoneviewskt.ui.mina.MinaFragment
@@ -155,6 +156,8 @@ class MainActivity : BaseActivity() {
                 "模拟点击 [22/10/27]" -> startNewUI(SimulateEventFragment::class.java)
                 "MVI架构示例 [22/11/6]" -> startNewUI(MVIEasyFragment::class.java)
                 "MVI架构示例2：模拟分页加载 [22/12/17]" -> startNewUI(MVIPackFragment::class.java)
+
+                "花麻计算器" -> startNewUI(HmRuleFragment::class.java)
             }
         }
 
@@ -214,7 +217,9 @@ class MainActivity : BaseActivity() {
             "从系统加载多张图片 [21/9/9]",
             "模拟点击 [22/10/27]",
             "MVI架构示例 [22/11/6]",
-            "MVI架构示例2：模拟分页加载 [22/12/17]"
+            "MVI架构示例2：模拟分页加载 [22/12/17]",
+
+            "花麻计算器"
         ).mapIndexed { index, s -> "$index.$s" }
     }
 

@@ -23,7 +23,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         // kotlin 版本过高，可能对 compose 有影响？ 依赖 ksp 的新版本，要求 升级 kotlin
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20'
         classpath "com.huawei.agconnect:agcp:1.6.0.300"

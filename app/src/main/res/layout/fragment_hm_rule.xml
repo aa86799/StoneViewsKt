@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/et_bottom_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="底花"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_bottom_score"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="50dp"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:singleLine="true"
+            android:text="3"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/et_bottom_score_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_self_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:text="自有花"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_bottom_score" />
+
+        <TextView
+            android:id="@+id/tv_self_score"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:text="1"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/et_bottom_score"
+            app:layout_constraintTop_toBottomOf="@id/et_bottom_score" />
+
+
+        <Button
+            android:id="@+id/btn_plus_score"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:text="+1花"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_self_score" />
+
+        <Button
+            android:id="@+id/btn_minus_score"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="-1花"
+            app:layout_constraintStart_toEndOf="@id/btn_plus_score"
+            app:layout_constraintTop_toBottomOf="@id/tv_self_score" />
+
+        <TextView
+            android:id="@+id/tv_power_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:text="番数"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_plus_score" />
+
+        <TextView
+            android:id="@+id/tv_power"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:maxLength="1"
+            android:text="2"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/et_bottom_score"
+            app:layout_constraintTop_toBottomOf="@id/btn_plus_score" />
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:text="+1番"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_power" />
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="-1番"
+            app:layout_constraintStart_toEndOf="@id/btn_plus"
+            app:layout_constraintTop_toBottomOf="@id/tv_power" />
+
+        <Button
+            android:id="@+id/btn_result"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="计算"
+            app:layout_constraintStart_toStartOf="@id/btn_plus"
+            app:layout_constraintTop_toBottomOf="@id/btn_plus" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:background="#abc777"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/btn_result"
+            app:layout_constraintTop_toTopOf="@id/btn_result"
+            tools:text="80" />
+
+        <TextView
+            android:id="@+id/tv_calc_process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#f0f0f0"
+            android:gravity="center"
+            android:textColor="#f0cf"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_result"
+            tools:text="80" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
