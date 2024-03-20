@@ -96,5 +96,52 @@ class HmRuleFragment : BaseBindFragment<FragmentHmRuleBinding>(R.layout.fragment
             sb.append("=$result")
             mBind.tvCalcProcess.text = sb.toString()
         }
+
+        quickQuery()
+    }
+
+    private fun quickQuery() {
+        val query = """
+            "番数，自有花，得分(向上取整)" 速查表
+            1番：
+                0~2，  10分
+                3~7，  20分
+                8~12， 30分
+                
+            2番：
+                0~2，  20分
+                3~4，  30分
+                5~7，  40分
+                8~9，  50分
+                10~12，60分
+                
+            3番：
+                0，    30分
+                1~2，  40分
+                3，    50分
+                4，    60分
+                5，    70分
+                6~7，  80分
+                8，    90分
+                9，    100分
+                10，   110分
+                11~12，120分
+                
+            4番：
+                0，  50分
+                1，  70分
+                2，  80分
+                3，  100分
+                4，  120分
+                5，  130分
+                6，  150分
+                7，  160分
+                8，  180分
+                9，  200分
+                10， 210分
+                11， 230分
+                12， 240分
+        """.trimIndent()
+        mBind.tvQuickQuery.text = query
     }
 }
