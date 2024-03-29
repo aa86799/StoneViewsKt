@@ -56,8 +56,13 @@
         <activity
             android:name=".base.BaseActivity"
             android:exported="false"
+            android:configChanges="screenSize|orientation"
             android:theme="@style/StoneBaseMaterialTheme" />
         <activity android:name="com.stone.stoneviewskt.ui.gray.BaseGrayActivity" />
+
+        <activity android:name=".ui.savedstate.SavedStateActivity"
+            android:configChanges="screenSize|orientation"
+            android:exported="false"/>
 
         <activity
             android:name=".ui.materialdesign.MDActivity"
