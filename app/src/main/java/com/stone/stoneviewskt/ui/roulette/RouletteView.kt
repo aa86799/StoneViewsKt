@@ -7,7 +7,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import com.stone.stoneviewskt.R
-import com.stone.stoneviewskt.util.getRandomColor
+import com.stone.stoneviewskt.util.getRandomArgbColor
 import com.stone.stoneviewskt.util.loge
 import java.util.*
 import kotlin.math.min
@@ -33,7 +33,7 @@ class RouletteView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
                 if (i == 0)
                     mColorList.add(Color.RED)
                 else
-                    mColorList.add(getRandomColor())
+                    mColorList.add(getRandomArgbColor())
                 mPathList.clear()
                 mPathList.add(Path())
                 loge("color list " + mColorList.size)
@@ -94,7 +94,7 @@ class RouletteView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
             if (i == 0)
                 mColorList.add(Color.RED)
             else
-                mColorList.add(getRandomColor())
+                mColorList.add(getRandomArgbColor())
             mPathList.add(Path())
             loge("color list " + mColorList.size)
         }

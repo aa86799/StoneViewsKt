@@ -47,6 +47,7 @@ import com.stone.stoneviewskt.ui.progressbar.CircleProgressbarFragment
 import com.stone.stoneviewskt.ui.progressbar.ComplexProgressBarViewFragment
 import com.stone.stoneviewskt.ui.progressbar.ObliqueProgressbarFragment
 import com.stone.stoneviewskt.ui.radar.RadarFragment
+import com.stone.stoneviewskt.ui.rain.RainFragment
 import com.stone.stoneviewskt.ui.room.RoomFragment
 import com.stone.stoneviewskt.ui.roulette.RouletteFragment
 import com.stone.stoneviewskt.ui.rvlist.StringListFragment
@@ -95,6 +96,7 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan) [23/2/14]" -> startNewUI(CodeScanFragment::class.java)
+                "雨 [24/5/19]" -> startNewUI(RainFragment::class.java)
                 "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]" -> startNewUI(SavedStateHandleFragment::class.java)
 //                "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]" -> startActivity<SsActivity>()
                 "apache mina (socket connect) [24/0227]" -> startNewUI(MinaFragment::class.java)
@@ -170,6 +172,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan) [23/2/14]",
+            "雨 [24/5/19]",
             "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]",
             "apache mina (socket connect) [24/0227]",
 //            "http server",
