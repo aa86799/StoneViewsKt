@@ -47,7 +47,8 @@ android {
     buildFeatures {
 //        compose true
 //        viewBinding true
-        dataBinding true // 布局最外层必须要写 <layout>，否则不会生成 Binding 类
+        dataBinding true
+        aidl true// 布局最外层必须要写 <layout>，否则不会生成 Binding 类
     }
 
 //    composeOptions {
@@ -93,14 +94,23 @@ android {
         }
     }
 
+//    compileOptions {
+//        sourceCompatibility 1.8
+//        targetCompatibility 1.8
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = '1.8'
+//    }
+
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
     namespace 'com.stone.stoneviewskt'
 
 //    androidExtensions {//plugin: 'kotlin-android-extensions'
@@ -111,8 +121,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":viewbinding")
-    implementation project(path: ':lib_anno')
-    ksp(project(":lib_ksp"))
     implementation refs.kotlin
     implementation refs.androidxCompat
     implementation refs.ktx

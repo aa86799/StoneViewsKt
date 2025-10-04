@@ -23,9 +23,9 @@ object Versions {
 
     const val ANDROID_GRADLE_PLUGIN = "4.2.1"
     const val GOOGLE_SERVICES = "4.3.3"
-    const val KOTLIN = "1.6.20"
+    const val KOTLIN = "1.9.22"
     const val NAVIGATION = "2.2.2"
-    const val KOTLIN_STDLIB = "1.6.20"
+    const val KOTLIN_STDLIB = "1.9.22"
 
     const val ACITIVITY = "1.4.1"
     const val FRAGMENT = "1.4.1"
