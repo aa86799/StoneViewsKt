@@ -8,6 +8,7 @@ import com.stone.stoneviewskt.adapter.SampleAdapter
 import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.databinding.ActivityMainBinding
+import com.stone.stoneviewskt.eraser.EraserFragment
 import com.stone.stoneviewskt.recyclerview.RecyclerViewDemoFragment
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment
@@ -96,7 +97,8 @@ class MainActivity : BaseActivity() {
         mBind.activityMainRv.adapter = SampleAdapter(TITLES) { index, title ->
             when (title.substring("$index.".length)) {
                 "二维码扫扫描(华为Scan) [23/2/14]" -> startNewUI(CodeScanFragment::class.java)
-                "雨 [24/5/19]" -> startNewUI(RainFragment::class.java)
+                "上下图层模拟擦除效果 [25/10/08]" -> startNewUI(EraserFragment::class.java)
+                "代码雨 [24/5/19]" -> startNewUI(RainFragment::class.java)
                 "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]" -> startNewUI(SavedStateHandleFragment::class.java)
 //                "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]" -> startActivity<SsActivity>()
                 "apache mina (socket connect) [24/0227]" -> startNewUI(MinaFragment::class.java)
@@ -172,7 +174,8 @@ class MainActivity : BaseActivity() {
     companion object {
         val TITLES = listOf(
             "二维码扫扫描(华为Scan) [23/2/14]",
-            "雨 [24/5/19]",
+            "上下图层模拟擦除效果 [25/10/08]",
+            "代码雨 [24/5/19]",
             "SavedStateHandle 保存和恢复 UI 状态 [24/3/28]",
             "apache mina (socket connect) [24/0227]",
 //            "http server",
