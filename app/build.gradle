@@ -45,16 +45,20 @@ android {
     }
 
     buildFeatures {
-//        compose true
+        compose true
 //        viewBinding true
         dataBinding true
         aidl true// 布局最外层必须要写 <layout>，否则不会生成 Binding 类
     }
 
-//    composeOptions {
-//        kotlinCompilerExtensionVersion "1.1.1"
-//        kotlinCompilerVersion '1.6.10'
-//    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+        kotlinCompilerVersion '1.9.0'
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 
     //specify specific version. "major.minor.build" 要求 在 sdk/ndk/ 目录下的
 //    ndkVersion '20.0.5594570'
@@ -99,16 +103,12 @@ android {
 //        targetCompatibility 1.8
 //    }
 //
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
 
+    // 2025 之后的 Android Studio，在settings中设置的 gradle 的jdk版本，必须和 项目中的配置的一致
+    // 而且 8.x 的gradle 还不能低于 jdk 17
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     namespace 'com.stone.stoneviewskt'
@@ -180,6 +180,13 @@ dependencies {
 //    implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
 //    implementation 'androidx.compose.runtime:runtime-rxjava2:1.1.1'
     /*compose end*/
+
+    // compose bom
+    def composeBom = platform('androidx.compose:compose-bom:2025.01.00')
+    implementation composeBom
+    androidTestImplementation composeBom
+    // 必须依赖 compose:runtime
+    implementation("androidx.compose.runtime:runtime")
 
     implementation(refs.eventbus)
     annotationProcessor refs.eventbusCompiler

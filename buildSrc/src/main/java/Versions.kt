@@ -17,8 +17,8 @@
 object Versions {
     const val versionName = "1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
-    const val COMPILE_SDK = 33
-    const val TARGET_SDK = 33
+    const val COMPILE_SDK = 35
+    const val TARGET_SDK = 36
     const val MIN_SDK = 21
 
     const val ANDROID_GRADLE_PLUGIN = "4.2.1"

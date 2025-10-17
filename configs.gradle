@@ -7,7 +7,7 @@ def builds = [:] //map
 ext.builds = builds //使用 ext 扩展属性
 builds.compileSdkVersion = 31
 builds.minSdkVersion = 21
-builds.targetSdkVersion = 31
+builds.targetSdkVersion = 35
 builds.buildToolsVersion = '30.0.3'
 builds.versionCode = 1
 builds.versionName = "1.0"
@@ -23,7 +23,7 @@ versions.espresso = '3.2.0'
 //kotlin
 versions.kotlin = '1.9.22'
 //Android KTX 是一组 Kotlin 扩展程序，属于 Android Jetpack 系列. url: https://developer.android.google.cn/kotlin/ktx?hl=zh_cn
-versions.ktx = '1.3.2'
+versions.ktx = '1.15.0'
 //协程. url: https://github.com/Kotlin/kotlinx.coroutines
 versions.kotlinCoroutine = '1.4.2'
 //Kotlin库，它使Android应用程序开发更快更容易. url: https://github.com/Kotlin/anko

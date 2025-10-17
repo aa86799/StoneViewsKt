@@ -13,7 +13,7 @@ class ImageFilterEngine2(filter: IImageFilter): IImageFilter by filter {
 
     fun processBitmap(bitmap: Bitmap): Bitmap? {
 //        val bmp = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        val bmp = bitmap.copy(bitmap.config, true)
+        val bmp = bitmap.copy(bitmap.config!!, true)
         this.process(bmp)
         return bmp
     }

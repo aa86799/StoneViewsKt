@@ -168,7 +168,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
      * @param distanceX x方向移动的距离
      * @param distanceY y方向移动的距离
      */
-    override fun onScroll(e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+    override fun onScroll(p0: MotionEvent?, e2: MotionEvent, distanceY: Float, p3: Float): Boolean {
         //上下移动的时候，需要改变显示的区域 改mRect
         mRect!!.offset(0, distanceY.toInt())
         //处理上下边界问题
@@ -190,7 +190,7 @@ class LongImageView: View, View.OnTouchListener, GestureDetector.OnGestureListen
      * @param velocityX 每秒移动的x像素点
      * @param velocityY 每秒移动的y像素点
      */
-    override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+    override fun onFling(p0: MotionEvent?, e2: MotionEvent, velocityY: Float, p3: Float): Boolean {
         mScroller!!.fling(0, mRect!!.top,
             0, (-velocityY).toInt(),
             0, 0,

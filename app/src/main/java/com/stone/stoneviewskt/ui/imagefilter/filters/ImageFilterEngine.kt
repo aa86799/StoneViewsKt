@@ -29,7 +29,7 @@ object ImageFilterEngine {
 
     private fun processBitmap(bitmap: Bitmap, filter: IImageFilter): Bitmap? {
 //        val bmp = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        val bmp = bitmap.copy(bitmap.config, true)
+        val bmp = bitmap.copy(bitmap.config!!, true)
         filter.process(bmp)
         return bmp
     }

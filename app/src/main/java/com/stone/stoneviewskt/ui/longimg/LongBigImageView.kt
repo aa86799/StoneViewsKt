@@ -155,7 +155,7 @@ class LongBigImageView : View, View.OnTouchListener, GestureDetector.OnGestureLi
     //第七步 处理滑动事件(手势)指手势的拖动
     //e1 开始事件
     //e2 即时事件也就是滑动时
-    override fun onScroll(e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+    override fun onScroll(p0: MotionEvent?, e2: MotionEvent, distanceY: Float, p3: Float): Boolean {
         logi("执行onScroll: ")
 
         //上下滑动时，直接改变Rect的显示区域
@@ -178,7 +178,7 @@ class LongBigImageView : View, View.OnTouchListener, GestureDetector.OnGestureLi
     }
 
     //第八步 处理惯性问题(手势)指手势的滑动
-    override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+    override fun onFling(p0: MotionEvent?, e2: MotionEvent, velocityY: Float, p3: Float): Boolean {
         logi("执行onFling: ")
         //velocityY表示Y轴的惯性值，startX和startY为滑动的开始位置,minY和maxY为滑动距离的最小值和最大值
         //  logi("onFling: mRect.top -->"+mRect.top);
