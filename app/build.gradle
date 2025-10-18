@@ -208,6 +208,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5'
     // Optional - Integration with LiveData
     implementation 'androidx.compose.runtime:runtime-livedata'
+    implementation 'androidx.compose.ui:ui-text-google-fonts'
+    implementation "com.google.accompanist:accompanist-adaptive:0.37.3"
 
     implementation(refs.eventbus)
     annotationProcessor refs.eventbusCompiler

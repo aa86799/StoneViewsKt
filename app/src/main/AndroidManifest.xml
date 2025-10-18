@@ -107,6 +107,8 @@
         <activity android:name=".ui.shortcut.ShortcutActivity1" />
         <activity android:name=".ui.shortcut.ShortcutActivity2" />
 
+        <activity android:name=".compose.ComposeMainActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.stone.stoneviewskt"
