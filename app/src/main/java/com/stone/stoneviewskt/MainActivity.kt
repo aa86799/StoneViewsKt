@@ -9,7 +9,7 @@ import com.stone.stoneviewskt.base.BaseActivity
 import com.stone.stoneviewskt.compose.ComposeMainActivity
 import com.stone.stoneviewskt.data.UserData
 import com.stone.stoneviewskt.databinding.ActivityMainBinding
-import com.stone.stoneviewskt.eraser.EraserFragment
+import com.stone.stoneviewskt.ui.eraser.EraserFragment
 import com.stone.stoneviewskt.recyclerview.RecyclerViewDemoFragment
 import com.stone.stoneviewskt.ui.anim.layout.LayoutAnimFragment
 import com.stone.stoneviewskt.ui.audio.AudioRecordFragment

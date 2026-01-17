@@ -16,7 +16,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.stone.stoneviewskt.eraser.EraserView
+        <com.stone.stoneviewskt.ui.eraser.EraserView
             android:id="@+id/evImg"
             android:layout_width="match_parent"
             android:layout_height="0dp"

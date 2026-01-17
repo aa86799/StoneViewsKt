@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.eraser
+package com.stone.stoneviewskt.ui.eraser
 
 import android.os.Bundle
 import com.stone.stoneviewskt.R

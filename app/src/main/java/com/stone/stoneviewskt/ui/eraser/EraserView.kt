@@ -1,4 +1,4 @@
-package com.stone.stoneviewskt.eraser
+package com.stone.stoneviewskt.ui.eraser
 
 import android.content.Context
 import android.graphics.*  
@@ -20,7 +20,7 @@ class EraserView @JvmOverloads constructor(
     context: Context,  
     attrs: AttributeSet? = null,  
     defStyleAttr: Int = 0  
-) : View(context, attrs, defStyleAttr) {  
+) : View(context, attrs, defStyleAttr) {
 
     // 底图 (被擦出来后显示的图)  
     private var backgroundBitmap: Bitmap  
@@ -33,7 +33,7 @@ class EraserView @JvmOverloads constructor(
     private val eraserPaint = Paint().apply {  
         // *** 核心：设置混合模式为 CLEAR ***  
         // 在目标像素上绘制时，会清除目标像素，使其变为完全透明。  
-        xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)  
+        xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
         style = Paint.Style.STROKE  
         strokeJoin = Paint.Join.ROUND // 路径连接处为圆角  
         strokeCap = Paint.Cap.ROUND   // 路径起始处为圆形  
